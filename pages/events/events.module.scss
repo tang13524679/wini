@@ -1,0 +1,105 @@
+.container {
+    background-color: #760f10;
+    height: 100%;
+    overflow: auto;
+    :global {
+        .banner-holder {
+            background: url('/assets/events/red-envelope/banner_pc.jpg')
+                no-repeat;
+            background-size: 100% auto;
+            height: 500px;
+            @media (max-width: 640px) {
+                background: url('/assets/events/red-envelope/banner_mobile.jpg')
+                    no-repeat;
+                background-size: 100% auto;
+                height: 400px;
+            }
+        }
+        .sec {
+            background: #700000;
+            border: 6px solid #cb0000;
+            border-radius: 20px;
+        }
+        .offset-title {
+            position: relative;
+            bottom: 10px;
+        }
+        .offset-flag {
+            position: absolute;
+            top: -40px;
+            left: -20px;
+        }
+        .rank {
+            margin: 10px 0;
+            .index {
+                color: #700000;
+                background-color: white;
+                border-radius: 100%;
+                width: 20px;
+                height: 20px;
+                text-align: center;
+            }
+            .player {
+                color: white;
+            }
+            .amount {
+                color: #fff000;
+            }
+            .time {
+                color: #ffffffb2;
+            }
+        }
+        .star {
+            width: 24px;
+            height: 24px;
+            background: url('/assets/events/red-envelope/star.png') no-repeat;
+            background-size: 100% 100%;
+        }
+        .yellow {
+            color: #fff000;
+        }
+        table,
+        th,
+        td {
+            border: 1px solid #fff000;
+            text-align: center;
+        }
+        th {
+            background-color: #530000;
+        }
+        ul,
+        li {
+            list-style: disc;
+        }
+        li {
+            margin: 10px 0;
+        }
+        .model {
+            color: white;
+            width: 500px;
+            // height: 400px;
+            background-color: #ff0e16;
+            border: 6px solid #ffffff;
+            border-radius: 32px;
+            padding: 20px 0;
+            position: relative;
+            right: 250px;
+            bottom: 250px;
+            @media (max-width: 640px) {
+                width: 100vw;
+                right: 50vw;
+                bottom: 250px;
+            }
+            .close {
+                position: absolute;
+                right: 20px;
+                top: 20px;
+                cursor: pointer;
+            }
+            .msg {
+                font-size: 16px;
+                padding: 10px;
+            }
+        }
+    }
+}

@@ -1,0 +1,318 @@
+
+.signInBtn {
+  position: relative;
+  margin-left: 20px;
+  .icon-gift {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+  }
+}
+.bgInnerPage {
+  .rightPoster {
+    background: var(--mainColor);
+    position: relative;
+    .posterContain {
+      position: absolute;
+      bottom: 0;
+      left: 30px;
+      &.join {
+        width: 345px;
+        height: 576px
+      }
+      &.login.phone {
+        width: 273px;
+        height: 410px
+      }
+      &.login.username {
+        width: 320px;
+        height: 367px;
+      }
+    }
+  }
+}
+
+.ant-modal-wrap.loginModal {
+  .ant-modal-content,.ant-modal-body {
+    background: transparent;
+    border: 0;
+  }
+  .ant-modal-close {
+    top: 30px;
+    right: 30px;
+  }
+}
+
+
+// App.scss
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+}
+
+.backButton {
+  cursor: pointer;
+  color: #3EBE16;
+  font-size: 20px;
+}
+
+.languageSelector {
+  position: relative;
+  font-size: 16px;
+}
+
+.logoContainer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.logoImage {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.logoName {
+  font-size: 40px;
+  margin-top: 10px;
+}
+
+.tabBar {
+  display: flex;
+  margin: 20px 0;
+}
+
+.tabButton {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #9AA3AF;
+  border-bottom: 2px solid transparent;
+
+  &.selectedTab {
+    color: #fff;
+    background-color: #1D1E22;
+    border-bottom-color: #3EBE16;
+  }
+}
+
+.inputContainer {
+  margin-bottom: 20px;
+
+  input {
+    width: 100%;
+    height: 48px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+
+  .inputIcon {
+    margin-right: 10px;
+  }
+
+  .errorText {
+    color: #FC2220;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+}
+
+.rememberForgotContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+
+  .rememberPassword {
+    display: flex;
+    align-items: center;
+    color: #e0e0e0;
+    font-size: 20px;
+  }
+
+  .forgotPassword {
+    color: #3d97ff;
+    cursor: pointer;
+  }
+}
+
+.loginRegisterButton {
+  width: 80%;
+  height: 48px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: #fff;
+  background: linear-gradient(to right, #5D5DED, #522F7F);
+  border-radius: 25px;
+  cursor: pointer;
+
+  .loginRegisterButtonText {
+    margin-right: 6px;
+  }
+}
+
+.bottomText {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+
+  .contactSupport {
+    color: #3d97ff;
+    cursor: pointer;
+  }
+}
+.tab-bar{
+  .hr{
+    width: 100%;
+    height: 1.2px;
+    flex-shrink: 0;
+    fill: #0F0E0C;
+    stroke-width: 0.383px;
+    stroke: #393937;
+    background: #000;
+    margin-bottom: 19px;
+  }
+  .tabBar-list{
+    display: flex;
+    margin: 0 10px;
+    
+    .tab{
+      width: 50%;
+      height: 43.706px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #959ea8;
+      font-family: Inter;
+      font-size: 13.802px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      img{
+        width: 18.019px;
+        height: 16.869px;
+        flex-shrink: 0;
+        margin-right: 2px;
+      }
+    }
+    .tab.active{
+      background: linear-gradient(180deg, #2C2F34 0%, #2C3532 61.98%, #2C4130 100%);
+      color: #fff;
+      border-bottom: 2px solid #00FF18;
+    }
+  }
+  .tabBar-content{
+    background: #1B1B1F;
+    margin-top: 15px;
+    .content{
+      .text-box{
+        padding: 19px 30px 0;
+        .title{
+          margin-bottom: 20px;
+          p{
+            display: flex;
+            align-items: center;
+            color: #959EA8;
+            font-family: Inter;
+            font-size: 13.802px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 0;
+            span{
+              width: 8.818px;
+              height: 8.818px;
+              border-radius: 100%;
+              margin-right: 10px;
+              background: #45DA1E;
+              box-shadow: 0 0 5px #45DA1E;
+            }
+          }
+          .txt{
+            color: #959EA8;
+            font-family: Inter;
+            font-size: 11.501px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.2;
+            text-align: center;
+          }
+        }
+        ul{
+          padding-left: 0;
+          li{
+            display: flex;
+            margin-bottom: 20px;
+            .num{
+              margin-right: 8.2px;
+              width: 15.911px;
+              height: 15.911px;
+              flex-shrink: 0;
+              border-radius: 100%;
+              color: #FFF;
+              font-family: Inter;
+              font-size: 12px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 15.911px;
+              text-align: center;
+              background: linear-gradient(0deg, #4FBFF6 4.5%, #6D85FA 48.64%, #8B5EFF 95.5%);;
+            }
+            p{
+              color: #959EA8;
+              font-family: Inter;
+              font-size: 13.018px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 1.1;
+              margin-bottom: 0;
+              margin-top: 1px;
+              span{
+                color: #FF5325;
+              }
+            }
+          }
+        }
+      }
+      .promotion-btn{
+        display: flex;
+        justify-content: center;
+        padding-bottom: 23px;
+        .btn{
+          width: 151.878px;
+          height: 40.863px;
+          flex-shrink: 0;
+          color: #FFF;
+          font-family: Inter;
+          font-size: 13.802px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 40.863px;
+          text-align: center;
+          border-radius: 4.601px;
+          border: 1.15px solid #384E37;
+          background: #2A2B30;
+          margin: 0 8px;
+        }
+      }
+    }
+  }
+}

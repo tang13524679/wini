@@ -1,0 +1,50 @@
+{
+    "vipProgress": "VIP Progress",
+    "currentFlowLabel": "Current Flow",
+    "moreInfoLabel": "More Info",
+    "vipLevelLabel": "VIP Level",
+    "vipLevelDialogTitle": "VIP Levels Details",
+    "vipLevelDialogItems": [
+        "After reaching the required betting amount, the system will automatically update the VIP club membership.",
+        "The relegation betting amount is the valid betting amount within 90 days after the user upgrades. If users fail the relegation, the membership level will automatically be downgraded to the next level until quitting out the membership club.",
+        "VIP Club membership level is not transferable to others.",
+        "The official has the right to adjust the corresponding VIP level for each member. Each different VIP level will enjoy different suitable privileges.",
+        "All VIP details and descriptions, the final interpretation right belongs to the official."
+    ],
+    "vipCardCurrentLevel": "current level",
+    "vipCardUpgrade": "upgrade flow: ",
+    "vipCardRelegation": "relegation water: ",
+    "rebatesLabel": "Daily Rebates",
+    "rebatesDialogTitle": "VIP Rebates Details",
+    "rebatesDialogItems": [
+        "In order to keep VIP ‘s membership status, all promotions will help members reach the cumulative deposit threshold.",
+        "VIP specials are calculated based on the accumulated valid betting amount of the month to ensure that VIP members retain their rank.",
+        "For all those above promotions, members need to meet the betting betting rounds first before withdrawing.",
+        "The official has the right to edit, implement, expand the scale and cancel some preferential content."
+    ],
+    "gameTypeLabel": "Game Type",
+    "rebatesGameTypes": {
+        "TY": "Sports",
+        "SX": "Casino",
+        "CP": "Lottery",
+        "DZ": "E-games",
+        "BY": "Fishing",
+        "QP": "Cards",
+        "SLOT": "Slots",
+        "DJ": "E-sports",
+        "SB": "Sicbo",
+        "SD": "DiscJolt"
+    },
+    "specialBonusLabel": "Special Reward",
+    "bonusProportion": "Rewards Proportion",
+    "bonusMaxLimit": "Rewards Max Limit",
+    "conditionsHeading": "Terms and Conditions",
+    "conditions": [
+        "VIP Privileges and Super Privileges are only valid upon receipt of previous promotional offers and do not accrue with previous promotions.",
+        "Members use VIP terms and privileges, deliberately use members' preferences in the terms, or use privileges to influence other players, the official has the right to revoke the privileges immediately.",
+        "The official reserves the right to change the content of the event at any time, as well as expand, cancel or terminate some or all of the event without prior notice to members. In this case, the official will send an explanation to the member as soon as possible.",
+        "VIP specials will be announced on the event page from time to time, please pay attention to the event page to get the earliest discount.",
+        "The VIP Member Exclusive Care Department will notify the latest VIP exclusive offers via member phone or email. So please make sure that all the information you provide to us is correct so you don't miss out on any offers.",
+        "The details and description of VIP, the final interpretation right belongs to the official."
+    ]
+}

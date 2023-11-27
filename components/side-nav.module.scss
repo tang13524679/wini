@@ -1,0 +1,73 @@
+.container {
+    height: 100vh;
+    overflow: auto;
+    background-color: #07070D;
+    :global {
+        .ant-menu-item.line {
+            height: 1px;
+            background: var(--white6);
+            margin-top: 0.75rem;
+            margin-bottom: 0.75rem;
+            padding: 0 !important;
+        }
+        .ant-menu-item {
+            padding: 10px 0;
+            // max-width: ;
+            &:hover {
+                color: var(--mainYellow);
+                background-color: var(--hoverMainYellowBg);
+                border-radius: 4px;
+            }
+        }
+        .ant-menu-submenu {
+            padding: 0;
+            &:hover {
+                color: var(--mainYellow);
+                background-color: var(--hoverMainYellowBg);
+                border-radius: 4px;
+            }
+        }
+        .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+            color: var(--mainYellow);
+            background-color: var(--hoverMainYellowBg);
+            border-radius: 4px;
+            .ant-menu-title-content {
+                color: var(--mainYellow);
+            }
+        }
+        .ant-menu-title-content {
+            font-size: 16px;
+            color: var(--white70);
+        }
+        .ant-menu-inline,
+        .ant-menu-vertical {
+            border-right: none;
+            color: var(--white70);
+        }
+        .ant-menu-inline .ant-menu-item:after {
+            display: none;
+        }
+        .ant-menu.ant-menu-inline-collapsed > .ant-menu-item {
+            padding: 6px calc(50% - 13px);
+        }
+        .ant-menu.ant-menu-inline-collapsed
+            > .ant-menu-submenu
+            > .ant-menu-submenu-title {
+            padding: 6px calc(50% - 13px);
+        }
+        .ant-menu-inline .ant-menu-item {
+            width: 100%;
+        }
+        .ant-menu-submenu-arrow {
+            color: var(--white);
+        }
+        .ant-menu-submenu:hover
+            > .ant-menu-submenu-title
+            > .ant-menu-submenu-arrow,
+        .ant-menu-submenu:hover
+            > .ant-menu-submenu-title
+            > .ant-menu-submenu-expand-icon {
+            color: var(--mainYellow);
+        }
+    }
+}

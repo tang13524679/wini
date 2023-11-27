@@ -1,0 +1,23 @@
+.box{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 23px;
+  :global{
+    .btn{            
+      width: 151.878px;
+      height: 40.863px;
+      flex-shrink: 0;
+      color: #FFF;
+      font-family: Inter;
+      font-size: 13.802px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 40.863px;
+      text-align: center;
+      border-radius: 4.601px;
+      border: 1.15px solid #384E37;
+      background: #2A2B30;
+      margin: 0 8px;
+    }
+  }
+}

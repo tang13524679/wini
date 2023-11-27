@@ -1,0 +1,53 @@
+{
+    "title": "Contact Us",
+    "description": "You have questions to answer or would like to give us advice. Don't hesitate to contact us at any time, every comment or suggestion from you is the source of motivation for us to improve further, in order to serve you better day by day. We support most forms of connection today.",
+    "tutorials": [
+        {
+            "icon": "/assets/contact/icon-tutorial-deposit.svg",
+            "title": "Deposit Tutorial",
+            "desc": "Deposits arrive quickly",
+            "link": "/tutorials/recharge"
+        },
+        {
+            "icon": "/assets/contact/icon-tutorial-withdrawal.svg",
+            "title": "Withdrawal Tutorial",
+            "desc": "Extremely fast withdrawal, fast arrival",
+            "link": "/tutorials/withdrawal"
+        },
+        {
+            "icon": "/assets/contact/icon-promotions.svg",
+            "title": "Promotions",
+            "desc": "Lots of activities are waiting for you",
+            "link": "/promo"
+        }
+    ],
+    "socialMedia": {
+        "facebook": {
+            "label": "Facebook",
+            "link": "https://facebook.com"
+        },
+        "messenger": {
+            "label": "Messenger",
+            "link": "https://facebook.com"
+        },
+        "email": {
+            "label": "Facebook",
+            "link": "mailto:help@gg8.com"
+        },
+        "instagram": {
+            "label": "Instagram",
+            "link": "https://instagram.com"
+        },
+        "twitter": {
+            "label": "Twitter",
+            "link": "https://twitter.com"
+        },
+        "zalo": {
+            "label": "Zalo",
+            "link": "https://facebook.com"
+        }
+    },
+    "downloadLabel": "Download the app and contact us anytime",
+    "downloadIosLink": "https://apps.apple.com/us/app/facebook/id284882215",
+    "downloadAndroidLink": "https://play.google.com/store/apps/details?id=com.facebook.katana&hl=en&gl=US"
+}

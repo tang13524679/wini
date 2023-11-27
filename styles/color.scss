@@ -1,0 +1,277 @@
+.hoverMainColor {
+    cursor: pointer;
+    &:hover {
+        color: var(--mainYellow);
+    }
+}
+.hoverMainBg {
+    cursor: pointer;
+    &:hover {
+        background-color: var(--hoverMainYellowBg);
+    }
+}
+.hoverSearch {
+    cursor: pointer;
+    &:hover {
+        background-color: var(--white6);
+    }
+}
+
+// active
+.main-active {
+    color: var(--mainYellow);
+    border: 1px solid var(--mainYellow);
+}
+.main-active-bg {
+    background-color: var(--hoverMainYellowBg);
+    border: 1px solid var(--hoverMainBorder);
+}
+.round-active {
+    color: var(--white);
+    background: var(--bgPage);
+}
+.round-active2 {
+    color: var(--mainYellow);
+    background: var(--mobileHeader);
+}
+.border-active {
+    color: var(--mainYellow);
+    border-bottom: 2px solid var(--mainYellow);
+    padding-bottom: 12px;
+}
+.active-main-bg:active {
+    background-color: var(--hoverMainYellowBg);
+    border: 1px solid var(--hoverMainBorder);
+}
+
+// color
+.clMainYellow {
+    color: var(--mainYellow);
+}
+.clMainBlue {
+    color: var(--mainBlue);
+}
+.clWhite {
+    color: #888;
+}
+.clWhite70 {
+    color: var(--white70);
+}
+.clWhite30 {
+    color: var(--white30);
+}
+
+// border
+.bdWhite30 {
+    border: 1px solid var(--white30);
+}
+.bdWhite20 {
+    border: 1px solid var(--white20);
+}
+.bdWhite10 {
+    border: 1px solid var(--white10);
+}
+.bdWhite6 {
+    border: 1px solid var(--white6);
+}
+
+.bdLine {
+    border-bottom: 1px solid var(--white6);
+}
+
+// background
+.bgMainYellow {
+    background-color: var(--mainYellow);
+}
+.bgPlaceholder {
+    background: var(--white10);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.bgPlaceholder2 {
+    background: var(--white10);
+    cursor: pointer;
+}
+
+.bgPage {
+    background: var(--bgPage);
+}
+.bgLoginPanel {
+    background: #252628;
+    @media (max-width: 1024px) {
+        border-radius: 1.5rem;
+        max-width: 90%;
+        margin: auto;
+    }
+}
+.bgInnerPage {
+    background: var(--bgInnerPage);
+    border-radius: 8px;
+    min-height: 85vh;
+    @media (max-width: 640px) {
+        background: transparent;
+        margin-top: 0;
+    }
+}
+.bgInnerPageC {
+    background: var(--bgInnerPage);
+}
+
+.bgModal {
+    color: var(--white);
+    background: var(--bgModal);
+    border: 1px solid var(--white20);
+}
+
+.bgWhite80 {
+    background: var(--white80);
+}
+.bgWhite70 {
+    background: var(--white70);
+}
+.bgWhite30 {
+    background: var(--white30);
+}
+.bgWhite20 {
+    background: var(--white20);
+}
+.bgWhite10 {
+    background: var(--white10);
+}
+.bgWhite6 {
+    background: var(--white6);
+}
+.bgWhite4 {
+    background: var(--white4);
+}
+.bgWhite2 {
+    background: var(--white2);
+}
+.bgOysterWhite {
+    background: var(--oysterWhite);
+}
+.colorMain {
+    color: var(--mainColor);
+}
+
+.bgBlack {
+    background: var(--black);
+}
+.bgBlack20 {
+    background: var(--black20);
+}
+.bgMask {
+    background: var(--black60);
+}
+
+.bgGradientYellow {
+    background: var(--gradientYellow);
+}
+.bgGradientYellowNew {
+    background: var(--gradientYellowNew);
+}
+.bgGradientBlue {
+    background: var(--gradientBlue);
+}
+.bgMobileHeader {
+    // background: var(--bgPage);
+    background: var(--mobileHeader);
+}
+.bgMobileNav {
+    // background: var(--mobileHeader);
+    // background: var(--mobileNav);
+    background: url('/assets/home/zuidi.png') no-repeat;;
+    background-size: cover;
+}
+
+.bgBalance {
+    background: var(--black20);
+    border: 1px solid var(--white10);
+}
+
+.bgColorFull-1 {
+    background: linear-gradient(95.46deg, #a24545 0%, #9f6e40 100%);
+    border-radius: 8px;
+}
+.bgColorFull-2 {
+    background: linear-gradient(95.46deg, #9a33be 0%, #734fbf 100%);
+    border-radius: 8px;
+}
+.bgColorFull-3 {
+    background: linear-gradient(95.46deg, #4468c4 0%, #35a1a8 100%);
+    border-radius: 8px;
+}
+.bgColorFull-4 {
+    background: linear-gradient(95.46deg, #b42fa6 0%, #c04361 100%);
+    border-radius: 8px;
+}
+.bgColorFull-5 {
+    background: linear-gradient(95.46deg, #1a9872 0%, #769447 100%);
+    border-radius: 8px;
+}
+.bgTips {
+    background: rgba(199, 153, 56, 0.1);
+}
+.bgVipLightBlue {
+    background-color: #23283c;
+}
+.bgVipPaginationGradient {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.2) 51.31%,
+        rgba(255, 255, 255, 0) 100%
+    );
+}
+
+// btn
+.btnYellow {
+    text-align: center;
+    color: rgba(255, 255, 255,1) !important;
+    cursor: pointer;
+    border: 1px solid rgb(162, 132, 228);
+    background: linear-gradient(91deg, rgb(110, 106, 245) 20.09%, rgb(127, 60, 227) 61%) 0% 0% / cover;
+}
+.btnYellowGhost {
+    text-align: center;
+    color: var(--mainYellow);
+    cursor: pointer;
+    border: 1px solid var(--mainYellow);
+}
+.btnBlue {
+    text-align: center;
+    color: var(--white);
+    cursor: pointer;
+    background: var(--gradientBlue);
+}
+.btnGray {
+    text-align: center;
+    color: var(--white);
+    cursor: pointer;
+    background: var(--white20);
+}
+.btnText {
+    cursor: pointer;
+    color: var(--mainBlue);
+    font-size: 14px;
+}
+// button,
+// [type='button'],
+// [type='reset'],
+// [type='submit'] {
+//     background: #1890ff;
+// }
+
+.headerShadow {
+    // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.app-download-btn {
+    min-width: 120px;
+    text-align: center;
+    background: #ffffff;
+    box-shadow: 0px 2px 4px rgba(175, 132, 41, 0.4),
+        inset 0px -2px 2px rgba(175, 132, 41, 0.2),
+        inset 0px 2px 2px rgba(175, 132, 41, 0.3);
+}

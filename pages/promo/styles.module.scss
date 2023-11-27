@@ -1,0 +1,40 @@
+.container {
+    padding-bottom: 16px;
+    :global {
+        .detail {
+            padding: 24px 16px;
+            h4 {
+                font-weight: 500;
+                line-height: 22px;
+                color: var(--white);
+            }
+            ul {
+                margin: 16px 0;
+                list-style-type: disc;
+                padding-left: 12px;
+                text-align: justify;
+            }
+            li {
+                font-size: 14px;
+                margin: 8px 0;
+                color: var(--white70);
+            }
+            .table-holder {
+                overflow: auto;
+            }
+            table {
+                width: 100%;
+                margin-bottom: 16px;
+                overflow: auto;
+                th {
+                    border: 1px solid var(--white20);
+                    text-align: center;
+                }
+                td {
+                    border: 1px solid var(--white20);
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

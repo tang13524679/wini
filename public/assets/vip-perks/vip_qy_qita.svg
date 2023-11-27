@@ -1,0 +1,21 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="24" cy="24" r="23" fill="white" fill-opacity="0.06"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M27.0294 28.7903C27.0294 32.2138 29.7097 34.9893 33.0147 34.9893C36.3196 34.9893 39 32.2138 39 28.7903C39 25.3667 36.3213 22.5912 33.0147 22.5912C29.7081 22.5912 27.0294 25.3667 27.0294 28.7903ZM15.1288 18.1923C15.1288 21.6122 17.7938 24.3842 21.0835 24.3842C24.3728 24.3842 27.038 21.614 27.038 18.1923C27.038 14.7705 24.3728 12 21.0835 12C17.7938 12 15.1288 14.7723 15.1288 18.1923ZM25.5296 28.7867C25.5296 28.1937 25.6115 27.622 25.7497 27.0732C24.0213 26.6113 22.5147 26.374 21.2181 26.3758C17.473 26.3758 10 28.3016 10 32.1253V35H28.8601C26.5636 33.9185 25.5296 31.5464 25.5296 28.7867ZM29.5303 28.1265C29.8232 27.8336 30.2981 27.8336 30.591 28.1265L32.5355 30.0711L35.8943 26.7123C36.1872 26.4194 36.6621 26.4194 36.955 26.7123C37.2478 27.0052 37.2478 27.4801 36.955 27.773L33.0659 31.6621C32.773 31.955 32.2981 31.955 32.0052 31.6621L29.5303 29.1872C29.2374 28.8943 29.2374 28.4194 29.5303 28.1265Z" fill="url(#paint0_linear_4460_15457)"/>
+<g opacity="0.3" filter="url(#filter0_f_4460_15457)">
+<ellipse cx="24" cy="38.5" rx="7" ry="3.5" fill="white"/>
+</g>
+<circle cx="39" cy="39" r="7.5" fill="#767676"/>
+<path d="M38 36.5385C38 35.9529 38.4596 35.5 39 35.5V34.5C37.8836 34.5 37 35.4247 37 36.5385H38ZM38 37V36.5385H37V37H38ZM40 36.5385V37H41V36.5385H40ZM39 35.5C39.5404 35.5 40 35.9529 40 36.5385H41C41 35.4247 40.1164 34.5 39 34.5V35.5Z" fill="white" fill-opacity="0.7"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M36 37C35.4477 37 35 37.4477 35 38V42C35 42.5523 35.4477 43 36 43H42C42.5523 43 43 42.5523 43 42V38C43 37.4477 42.5523 37 42 37H36ZM39 41C39.5523 41 40 40.5523 40 40C40 39.4477 39.5523 39 39 39C38.4477 39 38 39.4477 38 40C38 40.5523 38.4477 41 39 41Z" fill="white"/>
+<defs>
+<filter id="filter0_f_4460_15457" x="13" y="31" width="22" height="15" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="2" result="effect1_foregroundBlur_4460_15457"/>
+</filter>
+<linearGradient id="paint0_linear_4460_15457" x1="24.2422" y1="36.0734" x2="24.2422" y2="11.6794" gradientUnits="userSpaceOnUse">
+<stop stop-color="white" stop-opacity="0.2"/>
+<stop offset="1" stop-color="white" stop-opacity="0.5"/>
+</linearGradient>
+</defs>
+</svg>

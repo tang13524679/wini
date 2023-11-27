@@ -1,0 +1,50 @@
+{
+    "vipProgress": "Tiến độ VIP",
+    "currentFlowLabel": "Cược hợp lệ hiện tại",
+    "moreInfoLabel": "Thông tin thêm",
+    "vipLevelLabel": "Cấp bậc VIP",
+    "vipLevelDialogTitle": "Các cấp VIP",
+    "vipLevelDialogItems": [
+        "Sau khi cược đủ số tiền theo yêu cầu, hệ thống sẽ tự động cập nhật cấp bậc hội viên CLB VIP.",
+        "Doanh thu xét duyệt là doanh thu hợp lệ trong vòng 90 ngày sau khi người dùng nâng cấp. Nếu không vượt qua xét duyệt, cấp bậc hội viên sẽ tự động giáng xuống cấp độ kế đó cho đến khi bị trục xuất khỏi CLB VIP.",
+        "Cấp bậc hội viên CLB VIP không được chuyển nhượng cho người khác.",
+        "Ban tổ chức có quyền điều chỉnh cấp bậc VIP tương ứng cho từng hội viên, và mỗi cấp bậc VIP khác nhau sẽ được hưởng những đặc quyền khác nhau phù hợp với cấp bậc tương ứng.",
+        "Tất cả thông tin chi tiết và mô tả VIP, quyền giải thích cuối cùng thuộc về Ban tổ chức."
+    ],
+    "vipCardCurrentLevel": "cấp bậc hiện tại",
+    "vipCardUpgrade": "Cược hợp lệ thăng cấp: ",
+    "vipCardRelegation": "Cược hợp lệ duy trì VIP: ",
+    "rebatesLabel": "Hoàn trả ngày",
+    "rebatesDialogTitle": "Hướng dẫn hoàn tiền VIP",
+    "rebatesDialogItems": [
+        "Để giữ được cấp bậc VIP của hội viên , tất cả các chương trình khuyến mãi sẽ giúp hội viên đạt đến ngưỡng nạp cược tích lũy.",
+        "Ưu đãi Đặc biệt cho VIP được dựa trên số tiền cá cược hợp lệ tích lũy của tháng để đảm bảo rằng các thành viên VIP vẫn giữ được danh hiệu của họ.",
+        "Đối với tất cả các chương trình khuyến mãi trên, hội viên cần phải đáp ứng số vòng cược yêu cầu trước khi rút tiền.",
+        "Ban tổ chức có quyền chỉnh sửa, thực hiện, mở rộng quy mô và hủy bỏ một số nội dung ưu đãi."
+    ],
+    "gameTypeLabel": "Loại trò chơi",
+    "rebatesGameTypes": {
+        "TY": "Thể thao",
+        "SX": "Casino",
+        "CP": "Xổ số",
+        "DZ": "3D GAME",
+        "BY": "Bắn cá",
+        "QP": "Game bài",
+        "SLOT": "Slots",
+        "DJ": "Thể thao điện tử",
+        "SB": "Sicbo",
+        "SD": "Xóc Đĩa"
+    },
+    "specialBonusLabel": "Tiền thưởng đặc biệt",
+    "bonusProportion": "Phần trăm tiền thưởng",
+    "bonusMaxLimit": "Hạn mức tiền thưởng",
+    "conditionsHeading": "Các điều khoản và điều kiện",
+    "conditions": [
+        "Ưu Đãi VIP và Siêu Ưu Đãi chỉ có giá trị khi nhận được ưu đãi trước đó và không cộng dồn.",
+        "Hội viên sử dụng các điều khoản và đặc quyền VIP, cố tình sử dụng ưu đãi của hội viên trong điều khoản, hoặc sử dụng đặc quyền để gây ảnh hưởng đến người chơi khác, ban tổ chức  có quyền thu hồi các đặc quyền đó ngay lập tức.",
+        "Ban tổ chức có quyền thay đổi nội dung của sự kiện bất cứ lúc nào, cũng như mở rộng, hủy bỏ hoặc chấm dứt một số hoặc tất cả sự kiện mà không cần thông báo trước cho hội viên. Trong trường hợp này, chuyên viên tư vấn sẽ gửi giải trình cho thành viên trong thời gian sớm nhất.",
+        "Các ưu đãi đặc biệt dành cho VIP sẽ được thông báo trên trang sự kiện bất cứ khi nào, hội viên cần chú ý theo dõi trang sự kiện để nhận khuyến mãi sớm nhất.",
+        "Bộ phận CSKH dành riêng cho hội viên VIP sẽ thông báo những ưu đãi mới nhất dành qua số điện thoại hoặc email của hội viên. Vì vậy, vui lòng đảm bảo rằng tất cả thông tin bạn cung cấp cho chúng tôi là chính xác để bạn không bỏ lỡ bất kỳ ưu đãi nào.",
+        "Các chi tiết và mô tả về VIP, quyền giải thích cuối cùng thuộc về ban tổ chức."
+    ]
+}

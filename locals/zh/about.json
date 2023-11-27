@@ -1,0 +1,35 @@
+{
+    "title": "关于我们",
+    "title1": "GG8-Golden Gate 在越南社区受欢迎",
+    "section1": "GG8-Golden Gate是越南最诚实的网络游戏公司。所有游戏公平透明，客户资金安全有保障，秉持公平、负责任的游戏原则。 GG8的信誉和可靠性得到了越南大量客户的认可。",
+    "section2": "截至目前，GG8每月吸引数十万访问者，注册会员数十万，而且这个数字呈指数级增长。",
+    "section3": "注册GG8会员非常简单，您只需访问提供的GG8链接并填写必要的信息即可拥有一个帐户并在游戏过程中得到专家团队的支持。然后，您按照网站上的说明进行存款，以便能够玩 WIN1网站上提供的游戏。",
+    "section4": "如果您在注册账户或存取款方面遇到困难，您可以通过网站上的实时聊天、电子邮件、zalo、Messenger 直接联系支持和客户服务部门. WIN1拥有 24/7 在线支持团队将为您提供帮助立即解决您的疑问。",
+    "section5": "在运营过程中，GG8-Golden Gate在2019年和2020年连续​​两年获得“亚洲年度网络游戏运营商”、“亚洲年度最佳赌场”等多项重要奖项，2020年被权威杂志eGaming Review投票评选。",
+    "description": "GG8是领先的在线游戏公司。GG8为客户提供最佳的在线娱乐场体验，种类繁多的娱乐场游戏可供选择，以及最具竞争力的现场体育博彩赔率。",
+    "featuredImage": "/assets/about/featured-image-en.jpeg",
+    "companyProfileTitle": "公司简介",
+    "companyProfileDesc": "集团孜孜不倦地追求技术创新，集团致力于通过个性化的用户体验、科技十足的前沿产品、强大的游戏运营能力、周到细致的客户服务品质、完善的技术保障和支持、安全高效的支付平台，创建了一个面向用户的综合性互动娱乐平台，在各方面均树立了良好的口碑，得到了业界和用户的一致认可。",
+    "customerService1Title": "客户服务",
+    "customerService1Desc": "集团将竭诚为您提供优质的服务，同时我们也欢迎您提出宝贵的建议，以便不断提升并完善我们的服务。若您有任何疑问或建议，可通过在线客服或站内信联系我们，我们将会在第一时间回复您。",
+    "customerService2Title": "安全可信",
+    "customerService2Desc": "在GG8，会员的隐私至关重要。严格的保密政策确保所有个人信息，在任何时候都是安全可靠的。GG8提供用户信息加密，以最大限度地提高信息安全性。集团受当地法规监督，符合业界规范。我们拥有稳定的财务背景，并使用等同于金融级别、高度安全的信息系统，会员的资金和权益将得到可靠的保障。",
+    "safeDWTitle": "存取款安全",
+    "safeDWDesc": "集团为会员提供最安全、最快速、最便捷的支付方式，请访问存提款页面查看更多的存、提款方式。",
+    "safeDWItems": [
+        {
+            "icon": "/assets/about/icon-secure.svg",
+            "label": "安全"
+        },
+        {
+            "icon": "/assets/about/icon-fast.svg",
+            "label": "快速"
+        },
+        {
+            "icon": "/assets/about/icon-convenient.svg",
+            "label": "省心"
+        }
+    ],
+    "outroTitle": "由亚洲和世界上最大的游戏软件提供支持",
+    "outroDesc": "G88在线游戏由Playtech、Evolution、CQ9、SBOBET、AE SEXY、AG、BBIN、DREAM GAMING、SA GAMING等亚洲和世界上最大的在线游戏软件供应商。"
+}

@@ -1,0 +1,18 @@
+.container {
+    :global {
+        .swiper-slide {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .pc-banner {
+            .swiper-slide-active {
+                width: 60% !important;
+            }
+            .swiper-slide-prev,
+            .swiper-slide-next {
+                width: 20% !important;
+                opacity: 0.3;
+            }
+        }
+    }
+}

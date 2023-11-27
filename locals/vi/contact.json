@@ -1,0 +1,53 @@
+{
+    "title": "Liên hệ",
+    "description": "Nếu có thắc mắc cần giải đáp hoặc cần chúng tôi tư vấn. Đừng ngần ngại liên hệ ngay với chúng tôi bất cứ lúc nào, mọi ý kiến đóng góp của bạn chính là nguồn động lực để chúng tôi hoàn thiện dịch vụ ngày một tốt hơn. Chúng tôi hỗ trợ hầu hết tất cả phương thức kết nối hiện hành.",
+    "tutorials": [
+        {
+            "icon": "/assets/contact/icon-tutorial-deposit.svg",
+            "title": "Hướng dẫn nạp tiền",
+            "desc": "Nhận tiền nhanh chóng",
+            "link": "/tutorials/recharge"
+        },
+        {
+            "icon": "/assets/contact/icon-tutorial-withdrawal.svg",
+            "title": "Hướng dẫn rút tiền",
+            "desc": "Rút siêu tốc, nhận siêu nhanh",
+            "link": "/tutorials/withdrawal"
+        },
+        {
+            "icon": "/assets/contact/icon-tutorial-deposit.svg",
+            "title": "Khuyến mãi",
+            "desc": "Còn nhiều hoạt động khác đang chờ bạn tham gia",
+            "link": "/promo"
+        }
+    ],
+    "socialMedia": {
+        "facebook": {
+            "label": "Facebook",
+            "link": "https://facebook.com"
+        },
+        "messenger": {
+            "label": "Messenger",
+            "link": "https://facebook.com"
+        },
+        "email": {
+            "label": "Facebook",
+            "link": "mailto:help@gg8.com"
+        },
+        "instagram": {
+            "label": "Instagram",
+            "link": "https://instagram.com"
+        },
+        "twitter": {
+            "label": "Twitter",
+            "link": "https://twitter.com"
+        },
+        "zalo": {
+            "label": "Zalo",
+            "link": "https://facebook.com"
+        }
+    },
+    "downloadLabel": "Tải ngay ứng dụng và liên hệ với chúng tôi bất cứ lúc nào",
+    "downloadIosLink": "https://apps.apple.com/us/app/facebook/id284882215",
+    "downloadAndroidLink": "https://play.google.com/store/apps/details?id=com.facebook.katana&hl=en&gl=US"
+}

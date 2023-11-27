@@ -1,0 +1,126 @@
+{
+    "recharge": {
+        "title": "Recharge Tutorial",
+        "tabs": [
+            {
+                "label": "Online Banking",
+                "steps": [
+                    {
+                        "title": "Step 1",
+                        "details": "Select the payment channel as \"Internet Banking Payment\", enter the amount, and click \"Submit\"",
+                        "image": "recharge/online-banking/step1.jpg"
+                    },
+                    {
+                        "title": "Step 2",
+                        "details": "Click \"Go to Pay\"",
+                        "image": "recharge/online-banking/step2.jpg"
+                    },
+                    {
+                        "title": "Step 3",
+                        "details": "Select a bank and click Next",
+                        "image": "recharge/online-banking/step3.jpg"
+                    },
+                    {
+                        "title": "Step 4",
+                        "details": "Fill in the personal information according to the prompt information on the bank interface and complete the recharge",
+                        "image": "recharge/online-banking/step4.jpg"
+                    }
+                ]
+            },
+            {
+                "label": "Bank Transfer",
+                "steps": [
+                    {
+                        "title": "Step 1",
+                        "details": "Select the payment channel as \"Internet Banking Payment\", enter the amount, and click \"Submit\"",
+                        "image": "recharge/bank-transfer/step1.jpg"
+                    },
+                    {
+                        "title": "Step 2",
+                        "details": "Click \"Go to Pay\"",
+                        "image": "recharge/bank-transfer/step2.jpg"
+                    },
+                    {
+                        "title": "Step 3",
+                        "details": "Select a bank and click Next",
+                        "image": "recharge/bank-transfer/step3.jpg"
+                    },
+                    {
+                        "title": "Step 4",
+                        "details": "Fill in the personal information according to the prompt information on the bank interface and complete the recharge",
+                        "image": "recharge/bank-transfer/step4.jpg"
+                    }
+                ]
+            },
+            {
+                "label": "Scan QR Code to Pay",
+                "steps": [
+                    {
+                        "title": "Step 1",
+                        "details": "Select the payment channel as \"Internet Banking Payment\", enter the amount, and click \"Submit\"",
+                        "image": "recharge/scan-qr-code/step1.jpg"
+                    },
+                    {
+                        "title": "Step 2",
+                        "details": "Click \"Go to Pay\"",
+                        "image": "recharge/scan-qr-code/step2.jpg"
+                    },
+                    {
+                        "title": "Step 3",
+                        "details": "Select a bank and click Next",
+                        "image": "recharge/scan-qr-code/step3.jpg"
+                    },
+                    {
+                        "title": "Step 4",
+                        "details": "Fill in the personal information according to the prompt information on the bank interface and complete the recharge",
+                        "image": "recharge/scan-qr-code/step4.jpg"
+                    }
+                ]
+            },
+            {
+                "label": "Momo Pay",
+                "steps": [
+                    {
+                        "title": "Step 1",
+                        "details": "Select the payment channel as \"Internet Banking Payment\", enter the amount, and click \"Submit\"",
+                        "image": "recharge/momo-pay/step1.jpg"
+                    },
+                    {
+                        "title": "Step 2",
+                        "details": "Click \"Go to Pay\"",
+                        "image": "recharge/momo-pay/step2.jpg"
+                    },
+                    {
+                        "title": "Step 3",
+                        "details": "Select a bank and click Next",
+                        "image": "recharge/momo-pay/step3.jpg"
+                    }
+                ]
+            }
+        ]
+    },
+    "withdrawal": {
+        "title": "Withdrawal Tutorial",
+        "tabs": [
+            {
+                "label": "default",
+                "steps": [
+                    {
+                        "title": "Step 1",
+                        "details": "Login with your WIN1account and click Withdraw."
+                    },
+                    {
+                        "title": "Step 2",
+                        "details": "Fill in the required fields shown on the page.<br>1. Bank Name: Select the bank where you want to withdraw your funds into.<br>2. Account Name: Enter your name as written in your bank card.<br>3. Account no.: Enter the number written in your bank card.<br>Finally, click Confirm.",
+                        "image": "withdrawal/default/step2-en.jpg"
+                    },
+                    {
+                        "title": "Step 3",
+                        "details": "Fill in the amount to withdraw.<br>1. My Bank Cards: Select the card where you want to withdraw your funds into.<br>2. Amount: Enter the amount youw want to withdraw.<br>3. Password: Enter your fund password.<br>Finally, click Submit",
+                        "image": "withdrawal/default/step3-en.jpg"
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,126 @@
+{
+    "recharge": {
+        "title": "Hướng dẫn nạp tiền",
+        "tabs": [
+            {
+                "label": "Online Banking",
+                "steps": [
+                    {
+                        "title": "Bước 1",
+                        "details": "Chọn hình thức thanh toán là \"Online Banking\", nhập số tiền và nhấp vào \"Gửi đi\"",
+                        "image": "recharge/online-banking/step1-vi.jpg"
+                    },
+                    {
+                        "title": "Bước 2",
+                        "details": "Nhấp “Chi trả”",
+                        "image": "recharge/online-banking/step2-vi.jpg"
+                    },
+                    {
+                        "title": "Bước 3",
+                        "details": "Chọn ngân hàng, nhấp vào bước tiếp theo",
+                        "image": "recharge/online-banking/step3.jpg"
+                    },
+                    {
+                        "title": "Bước 4",
+                        "details": "Điền đầy đủ thông tin cá nhân theo lời nhắc trên giao diện ngân hàng và hoàn tất việc nạp tiền",
+                        "image": "recharge/online-banking/step4.jpg"
+                    }
+                ]
+            },
+            {
+                "label": "CK ngân hàng",
+                "steps": [
+                    {
+                        "title": "Bước 1",
+                        "details": "Chọn hình thức thanh toán là \"CK ngân hàng\", nhập số tiền và nhấp vào \"Gửi đi\"",
+                        "image": "recharge/bank-transfer/step1-vi.jpg"
+                    },
+                    {
+                        "title": "Bước 2",
+                        "details": "Nhấp “Chi trả”",
+                        "image": "recharge/bank-transfer/step2-vi.jpg"
+                    },
+                    {
+                        "title": "Bước 3",
+                        "details": "Chọn ngân hàng và nhấp xác nhận",
+                        "image": "recharge/bank-transfer/step3.jpg"
+                    },
+                    {
+                        "title": "Bước 4",
+                        "details": "Làm theo lời nhắc trên giao diện ngân hàng, thực hiện thao tác chuyển khoản và hoàn tất việc nạp tiền",
+                        "image": "recharge/bank-transfer/step4.jpg"
+                    }
+                ]
+            },
+            {
+                "label": "Quét mã QR",
+                "steps": [
+                    {
+                        "title": "Bước 1",
+                        "details": "Chọn hình thức thanh toán là \"Quét mã QR\", nhập số tiền và nhấp vào \"Gửi đi\"",
+                        "image": "recharge/scan-qr-code/step1-vi.jpg"
+                    },
+                    {
+                        "title": "Bước 2",
+                        "details": "Nhấp “Chi trả”",
+                        "image": "recharge/scan-qr-code/step2-vi.jpg"
+                    },
+                    {
+                        "title": "Bước 3",
+                        "details": "Chọn ngân hàng và nhấp xác nhận",
+                        "image": "recharge/scan-qr-code/step3.jpg"
+                    },
+                    {
+                        "title": "Bước 4",
+                        "details": "Làm theo lời nhắc trên giao diện thanh toán, quét mã và hoàn tất việc nạp tiền",
+                        "image": "recharge/scan-qr-code/step4.jpg"
+                    }
+                ]
+            },
+            {
+                "label": "Momo pay",
+                "steps": [
+                    {
+                        "title": "Bước 1",
+                        "details": "Chọn hình thức thanh toán là \"Momo pay\", nhập số tiền và nhấp vào \"Gửi đi\"",
+                        "image": "recharge/momo-pay/step1-vi.jpg"
+                    },
+                    {
+                        "title": "Bước 2",
+                        "details": "Nhấp “Chi trả”",
+                        "image": "recharge/momo-pay/step2-vi.jpg"
+                    },
+                    {
+                        "title": "Bước 3",
+                        "details": "Làm theo lời nhắc trên giao diện thanh toán Momo, quét mã và hoàn tất việc nạp tiền ",
+                        "image": "recharge/momo-pay/step3.jpg"
+                    }
+                ]
+            }
+        ]
+    },
+    "withdrawal": {
+        "title": "Hướng dẫn rút tiền",
+        "tabs": [
+            {
+                "label": "default",
+                "steps": [
+                    {
+                        "title": "Bước 1",
+                        "details": "Sau khi đăng nhập, chọn “Rút tiền”"
+                    },
+                    {
+                        "title": "Bước 2",
+                        "details": "Điền thông tin rút tiền trên giao diện<br>1. Tên ngân hàng： Quý khách chọn nhân hàng nhận tiền<br>2. Tên TK：Tên trên thẻ ngân hàng<br>3. Số TK： Nhập vào số tài khoản ngân hàng nhận tiền<br>Sau đó, nhấp xác nhận",
+                        "image": "withdrawal/default/step2-vi.jpg"
+                    },
+                    {
+                        "title": "Bước 3",
+                        "details": "Nhập số tiền rút<br>1. Thẻ ngân hàng của tôi： Quý khách chọn nhân hàng nhận tiền <br>2. Số tiền： Điền số tiền bạn cần rút<br>3. Mật khẩu： Mật khẩu ví tiền<br>Sau đó, nhấp “Gửi",
+                        "image": "withdrawal/default/step3-vi.jpg"
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,907 @@
+@mixin icon-common {
+    background-size: 100% 100%;
+    cursor: pointer;
+}
+@mixin icon-common-contain {
+    background-size: contain;
+    background-position: center;
+    cursor: pointer;
+}
+@mixin icon-48 {
+    width: 48px;
+    height: 48px;
+}
+@mixin icon-32 {
+    width: 32px;
+    height: 32px;
+}
+@mixin icon-24 {
+    width: 24px;
+    height: 24px;
+}
+@mixin icon-22 {
+    width: 22px;
+    height: 22px;
+}
+@mixin icon-20 {
+    width: 20px;
+    height: 20px;
+}
+@mixin icon-16 {
+    width: 16px;
+    height: 16px;
+}
+
+.icon-text14 {
+    font-size: 14px;
+    line-height: 14px;
+}
+.icon-text16 {
+    font-size: 16px;
+    line-height: 16px;
+}
+.btn-icon-text {
+    cursor: pointer;
+    font-size: 0;
+    .icon {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .text {
+        vertical-align: middle;
+    }
+}
+
+.logo {
+    background: url('/assets/home/LOGO.png') no-repeat;
+    width: 77px;
+    height: 30px;
+    @include icon-common;
+}
+.logo_text {
+    background: url('/assets/home/LOGO.png') no-repeat;
+    width: 200px;
+    height: 30px;
+    padding: 0 10px;
+    @include icon-common;
+}
+.logo_shield {
+    background: url('/assets/logo_shield.png') no-repeat;
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    margin-top: 10px;
+    @include icon-common;
+}
+
+.icon-menu {
+    background: url('/assets/nav/menu_right.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+
+.icon-home {
+    background: url('/assets/nav/home.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-home-on {
+    background: url('/assets/nav/home_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-home-mobile {
+    background: url('/assets/nav/mobile/home.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-home-on-mobile {
+    background: url('/assets/nav/mobile/home_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-games {
+    background: url('/assets/nav/games.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-games-on {
+    background: url('/assets/nav/games_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-games-mobile {
+    background: url('/assets/nav/mobile/games.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-games-on-mobile {
+    background: url('/assets/nav/mobile/games_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-promo {
+    background: url('/assets/nav/promo.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-promo-on {
+    background: url('/assets/nav/promo_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-promo-mobile {
+    background: url('/assets/nav/mobile/promo.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-promo-on-mobile {
+    background: url('/assets/nav/mobile/promo_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-commission {
+    background: url('/assets/nav/task.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-commission-on {
+    background: url('/assets/nav/task_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-commission-mobile {
+    background: url('/assets/nav/mobile/trans.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-commission-on-mobile {
+    background: url('/assets/nav/mobile/trans_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-task {
+    background: url('/assets/nav/task_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-task-on {
+    background: url('/assets/nav/task_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-trans-mobile {
+    background: url('/assets/nav/mobile/trans.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-trans-on-mobile {
+    background: url('/assets/nav/mobile/trans_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-liveChat-mobile {
+    background: url('/assets/nav/mobile/chat.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-liveChat-on-mobile {
+    background: url('/assets/nav/mobile/chat_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-agent {
+    background: url('/assets/nav/agent.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-agencyCooperation {
+    background: url('/assets/nav/agent.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-close {
+    background: url('/assets/close.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-deposit {
+    background: url('/assets/deposit.png') no-repeat;
+    @include icon-16;
+    @include icon-common-contain;
+}
+.icon-withdraw {
+    background: url('/assets/withdraw.png') no-repeat;
+    @include icon-16;
+    @include icon-common-contain;
+}
+.icon-personal {
+    background: url('/assets/nav/personal.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-personal-on {
+    background: url('/assets/nav/personal_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-me {
+    background: url('/assets/nav/me.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-me-on {
+    background: url('/assets/nav/me_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-game-history {
+    background: url('/assets/nav/game_history.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-game-history-on {
+    background: url('/assets/nav/game_history_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-gameHistory {
+    background: url('/assets/nav/game_history.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-gameHistory-on {
+    background: url('/assets/nav/game_history_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-transaction {
+    background: url('/assets/nav/transaction.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-transaction-on {
+    background: url('/assets/nav/transaction_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-messages {
+    background: url('/assets/nav/messages.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-messages-on {
+    background: url('/assets/nav/messages_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-card {
+    background: url('/assets/card.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-bank-card {
+    background: url('/assets/nav/bank_card.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-bank-card-on {
+    background: url('/assets/nav/bank_card_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-bankCard {
+    background: url('/assets/nav/bank_card.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-bankCard-on {
+    background: url('/assets/nav/bank_card_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-bank-card-2 {
+    background: url('/assets/bank_card_2.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-kyc {
+    background: url('/assets/nav/kyc.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-kyc-on {
+    background: url('/assets/nav/kyc_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-password {
+    background: url('/assets/nav/password.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-password-on {
+    background: url('/assets/nav/password_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-wallet {
+    background: url('/assets/nav/wallet.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-wallet-on {
+    background: url('/assets/nav/wallet_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-email {
+    background: url('/assets/nav/email.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-email-on {
+    background: url('/assets/nav/email_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-phone {
+    background: url('/assets/nav/phone.png') no-repeat;
+    @include icon-16;
+    @include icon-common-contain;
+}
+.icon-phone-on {
+    background: url('/assets/nav/phone_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-search {
+    background: url('/assets/search.png') no-repeat;
+    @include icon-16;
+    @include icon-common;
+}
+.icon-dropdown {
+    background: url('/assets/dropdown.png') no-repeat;
+    @include icon-16;
+    @include icon-common;
+}
+.icon-zh {
+    background: url('/assets/lang/zh.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-en {
+    background: url('/assets/lang/en.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-vi {
+    background: url('/assets/lang/vi.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-ph {
+    background: url('/assets/lang/ph.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-notice {
+    background: url('/assets/notice.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-live {
+    background: url('/assets/game/live.png') no-repeat;
+    @include icon-common;
+}
+.icon-live-on {
+    background: url('/assets/game/live_on.png') no-repeat;
+    @include icon-common;
+}
+.icon-slot {
+    background: url('/assets/game/slot.png') no-repeat;
+    @include icon-common;
+}
+.icon-slot-on {
+    background: url('/assets/game/slot_on.png') no-repeat;
+    @include icon-common;
+}
+.icon-egame {
+    background: url('/assets/game/egame.png') no-repeat;
+    @include icon-common;
+}
+.icon-egame-on {
+    background: url('/assets/game/egame_on.png') no-repeat;
+    @include icon-common;
+}
+.icon-esports {
+    background: url('/assets/game/esports.png') no-repeat;
+    @include icon-common;
+}
+.icon-esports-on {
+    background: url('/assets/game/esports_on.png') no-repeat;
+    @include icon-common;
+}
+.icon-sports {
+    background: url('/assets/game/sports.png') no-repeat;
+    @include icon-common;
+}
+.icon-sports-on {
+    background: url('/assets/game/sports_on.png') no-repeat;
+    @include icon-common;
+}
+.icon-lottery {
+    background: url('/assets/game/lottery.png') no-repeat;
+    @include icon-common;
+}
+.icon-lottery-on {
+    background: url('/assets/game/lottery_on.png') no-repeat;
+    @include icon-common;
+}
+.icon-discjolt {
+    background: url('/assets/game/discjolt.png') no-repeat;
+    @include icon-common;
+}
+.icon-discjolt-on {
+    background: url('/assets/game/discjolt_on.png') no-repeat;
+    @include icon-common;
+}
+.icon-sicbo {
+    background: url('/assets/game/sicbo.png') no-repeat;
+    @include icon-common;
+}
+.icon-sicbo-on {
+    background: url('/assets/game/sicbo_on.png') no-repeat;
+    @include icon-common;
+}
+.icon-fishing {
+    background: url('/assets/game/fishing.png') no-repeat;
+    @include icon-common;
+}
+.icon-cock {
+    background: url('/assets/game/cock.png') no-repeat;
+    @include icon-common;
+}
+.icon-hot {
+    background: url('/assets/game/hot.png') no-repeat;
+    @include icon-common;
+}
+.icon-hot-on {
+    background: url('/assets/game/hot_on.png') no-repeat;
+    @include icon-common;
+}
+.icon-facebook {
+    background: url('/assets/social/facebook.png') no-repeat;
+    @include icon-32;
+    @include icon-common;
+}
+.icon-instagram {
+    background: url('/assets/social/instagram.png') no-repeat;
+    @include icon-32;
+    @include icon-common;
+}
+.icon-messenger {
+    background: url('/assets/social/messenger.png') no-repeat;
+    @include icon-32;
+    @include icon-common;
+}
+.icon-twitter {
+    background: url('/assets/social/twitter.png') no-repeat;
+    @include icon-32;
+    @include icon-common;
+}
+.icon-telegram {
+    background: url('/assets/social/telegram.png') no-repeat;
+    @include icon-32;
+    @include icon-common;
+}
+.icon-youbute {
+    background: url('/assets/social/youtube.png') no-repeat;
+    @include icon-32;
+    @include icon-common;
+}
+.icon-zalo {
+    background: url('/assets/social/zalo.png') no-repeat;
+    @include icon-32;
+    @include icon-common;
+}
+.icon-email-s {
+    background: url('/assets/social/email.png') no-repeat;
+    @include icon-32;
+    @include icon-common;
+}
+.icon-return {
+    background: url('/assets/return.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-logout {
+    background: url('/assets/logout.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-more {
+    background: url('/assets/nav/more.png') no-repeat;
+    @include icon-16;
+    @include icon-common;
+}
+.icon-more-on {
+    background: url('/assets/nav/more_on.png') no-repeat;
+    @include icon-16;
+    @include icon-common;
+}
+.icon-win {
+    background: url('/assets/win.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-lose {
+    background: url('/assets/lose.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-delete {
+    background: url('/assets/delete.png') no-repeat;
+    @include icon-16;
+    @include icon-common;
+}
+.icon-clean {
+    background: url('/assets/clean.png') no-repeat;
+    @include icon-16;
+    @include icon-common;
+}
+.icon-union {
+    background: url('/assets/bank/union.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-scan {
+    background: url('/assets/bank/scan.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-momo {
+    background: url('/assets/bank/momo.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-viettel {
+    background: url('/assets/bank/viettel.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-zalo-pay {
+    background: url('/assets/bank/zalo.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-online-bank {
+    background: url('/assets/bank/online_bank.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-upload-center {
+    background: url('/assets/upload_center.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-filter {
+    background: url('/assets/filter.png') no-repeat;
+    @include icon-16;
+    @include icon-common;
+}
+.icon-clock {
+    background: url('/assets/clock.png') no-repeat;
+    @include icon-16;
+    @include icon-common;
+}
+.icon-message {
+    background: url('/assets/message.png') no-repeat;
+    @include icon-32;
+    @include icon-common;
+}
+.anime-loading {
+    background: url('/assets/loading.gif') no-repeat;
+    width: 64px;
+    height: 64px;
+    @include icon-common;
+}
+.icon-eye-open {
+    background: url('/assets/eye_open.png') no-repeat;
+    @include icon-16;
+    @include icon-common;
+}
+.icon-eye-close {
+    background: url('/assets/eye_close.png') no-repeat;
+    @include icon-16;
+    @include icon-common;
+}
+.icon-down-more {
+    background: url('/assets/down_more.png') no-repeat;
+    @include icon-16;
+    @include icon-common;
+}
+.icon-apple {
+    background: url('/assets/apple.png') no-repeat;
+    width: 48px;
+    height: 48px;
+    @include icon-common;
+}
+.icon-ios {
+    background: url('/assets/apple.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-android {
+    background: url('/assets/android.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-play {
+    background: url('/assets/play.png') no-repeat;
+    @include icon-16;
+    @include icon-common;
+}
+.icon-star {
+    background: url('/assets/star.png') no-repeat;
+    @include icon-16;
+    @include icon-common;
+}
+.icon-star-on {
+    background: url('/assets/star_on.png') no-repeat;
+    @include icon-16;
+    @include icon-common;
+}
+.icon-favorites {
+    background: url('/assets/nav/favorites.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-favorites-on {
+    background: url('/assets/nav/favorites_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-search-history {
+    background: url('/assets/search_history.png') no-repeat;
+    @include icon-16;
+    @include icon-common;
+}
+.icon-sms {
+    background: url('/assets/icon-sms.svg') no-repeat;
+    @include icon-32;
+    @include icon-common;
+}
+.icon-call {
+    background: url('/assets/icon-call.svg') no-repeat;
+    @include icon-32;
+    @include icon-common;
+}
+.icon-vip-club {
+    background: url('/assets/nav/vip-club.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-vip-club-on {
+    background: url('/assets/nav/vip-club_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-vipClub {
+    background: url('/assets/nav/vip-club.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-vipClub-on {
+    background: url('/assets/nav/vip-club_on.png') no-repeat;
+    @include icon-24;
+    @include icon-common-contain;
+}
+.icon-question {
+    background: url('/assets/icon-question.svg') no-repeat;
+    @include icon-16;
+    @include icon-common;
+}
+
+/* vip perks icons */
+.icon-vip-cunqukuan-on {
+    background: url('/assets/vip-perks/vip_qy_cunqukuan_on.svg') no-repeat;
+    @include icon-48;
+    @include icon-common;
+}
+.icon-vip-huodong-on {
+    background: url('/assets/vip-perks/vip_qy_huodong_on.svg') no-repeat;
+    @include icon-48;
+    @include icon-common;
+}
+.icon-vip-youhui-on {
+    background: url('/assets/vip-perks/vip_qy_youhui_on.svg') no-repeat;
+    @include icon-48;
+    @include icon-common;
+}
+.icon-vip-youhui {
+    background: url('/assets/vip-perks/vip_qy_youhui.svg') no-repeat;
+    @include icon-48;
+    @include icon-common;
+}
+.icon-vip-24hour-on {
+    background: url('/assets/vip-perks/vip_qy_24Hour_on.svg') no-repeat;
+    @include icon-48;
+    @include icon-common;
+}
+.icon-vip-24hour {
+    background: url('/assets/vip-perks/vip_qy_24Hour.svg') no-repeat;
+    @include icon-48;
+    @include icon-common;
+}
+.icon-vip-jieri-on {
+    background: url('/assets/vip-perks/vip_qy_jieri_on.svg') no-repeat;
+    @include icon-48;
+    @include icon-common;
+}
+.icon-vip-jieri {
+    background: url('/assets/vip-perks/vip_qy_jieri.svg') no-repeat;
+    @include icon-48;
+    @include icon-common;
+}
+.icon-vip-fukuan-on {
+    background: url('/assets/vip-perks/vip_qy_fukuan_on.svg') no-repeat;
+    @include icon-48;
+    @include icon-common;
+}
+.icon-vip-fukuan {
+    background: url('/assets/vip-perks/vip_qy_fukuan.svg') no-repeat;
+    @include icon-48;
+    @include icon-common;
+}
+.icon-vip-dujiafukuan-on {
+    background: url('/assets/vip-perks/vip_qy_dujiafukuan_on.svg') no-repeat;
+    @include icon-48;
+    @include icon-common;
+}
+.icon-vip-dujiafukuan {
+    background: url('/assets/vip-perks/vip_qy_dujiafukuan.svg') no-repeat;
+    @include icon-48;
+    @include icon-common;
+}
+.icon-vip-guibin-on {
+    background: url('/assets/vip-perks/vip_qy_guibin_on.svg') no-repeat;
+    @include icon-48;
+    @include icon-common;
+}
+.icon-vip-guibin {
+    background: url('/assets/vip-perks/vip_qy_guibin.svg') no-repeat;
+    @include icon-48;
+    @include icon-common;
+}
+.icon-vip-yaoqing-on {
+    background: url('/assets/vip-perks/vip_qy_yaoqing_on.svg') no-repeat;
+    @include icon-48;
+    @include icon-common;
+}
+.icon-vip-yaoqing {
+    background: url('/assets/vip-perks/vip_qy_yaoqing.svg') no-repeat;
+    @include icon-48;
+    @include icon-common;
+}
+.icon-vip-qita-on {
+    background: url('/assets/vip-perks/vip_qy_qita_on.svg') no-repeat;
+    @include icon-48;
+    @include icon-common;
+}
+.icon-vip-qita {
+    background: url('/assets/vip-perks/vip_qy_qita.svg') no-repeat;
+    @include icon-48;
+    @include icon-common;
+}
+.icon-collapse {
+    background: url('/assets/collapse.png') no-repeat;
+    width: 40px;
+    height: 32px;
+    @include icon-common;
+}
+.icon-r-hot {
+    background: url('/assets/r-hot.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-r-live {
+    background: url('/assets/r-live.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-r-recent {
+    background: url('/assets/r-recent.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-r-game {
+    background: url('/assets/r-game.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-right {
+    background: url('/assets/right.png') no-repeat;
+    @include icon-16;
+    @include icon-common;
+}
+.icon-left {
+    background: url('/assets/left.png') no-repeat;
+    @include icon-16;
+    @include icon-common;
+}
+.icon-fold {
+    background: url('/assets/tools/fold.png') no-repeat;
+    width: 22px;
+    height: 52px;
+    background-size: cover;
+    cursor: pointer;
+}
+.icon-unfold {
+    background: url('/assets/tools/unfold.png') no-repeat;
+    width: 22px;
+    height: 52px;
+    background-size: cover;
+    cursor: pointer;
+}
+.icon-t-transaction {
+    background: url('/assets/tools/transaction.png') no-repeat;
+    @include icon-22;
+    @include icon-common;
+}
+.icon-t-tg {
+    background: url('/assets/tools/tg.png') no-repeat;
+    @include icon-22;
+    @include icon-common;
+}
+.icon-t-tel {
+    background: url('/assets/tools/tel.png') no-repeat;
+    @include icon-22;
+    @include icon-common;
+}
+.icon-t-app {
+    background: url('/assets/tools/app.png') no-repeat;
+    @include icon-22;
+    @include icon-common;
+}
+.icon-t-top {
+    background: url('/assets/tools/top.png') no-repeat;
+    @include icon-22;
+    @include icon-common;
+}
+.icon-t-chat {
+    background: url('/assets/tools/chat.png') no-repeat;
+    @include icon-22;
+    @include icon-common;
+}
+.icon-t-task {
+    background: url('/assets/tools/task.png') no-repeat;
+    @include icon-22;
+    @include icon-common;
+}
+.icon-t-lottery {
+    background: url('/assets/tools/lottery.png') no-repeat;
+    @include icon-22;
+    @include icon-common;
+}
+.icon-balance {
+    background: url('/assets/balance.png') no-repeat;
+    @include icon-16;
+    @include icon-common;
+}
+.icon-gift {
+    background: url('/assets/gift.png') no-repeat;
+    @include icon-32;
+    @include icon-common;
+}
+
+.icon-login-me {
+    background: url('/assets/login/me.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
+.icon-login-password {
+    background: url('/assets/login/password.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}

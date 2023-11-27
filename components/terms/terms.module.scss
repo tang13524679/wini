@@ -1,0 +1,43 @@
+.container {
+    text-align: justify;
+    color: var(--white70);
+    overflow: auto;
+    height: 80vh;
+    word-break: break-word;
+    padding: 0 16px;
+    :global {
+        .title {
+            background-color: var(--bgModal);
+            @apply sticky top-0 py-3;
+        }
+        h1 {
+            color: var(--white);
+            text-align: center;
+            font-size: 22px;
+        }
+        h2 {
+            color: var(--white70);
+            text-align: center;
+            font-size: 14px;
+        }
+        h3 {
+            color: var(--white);
+            font-size: 16px;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+        p {
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        ul {
+            padding-left: 14px;
+            li {
+                margin-bottom: 12px;
+            }
+        }
+        .ant-modal-confirm .ant-modal-body {
+            padding: 12px;
+        }
+    }
+}

@@ -1,0 +1,58 @@
+.container{
+  padding: 20px 20px 0;
+  :global{
+    .title{
+      color: #959EA8;
+      font-family: Inter;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      display: flex;
+      align-items: center;
+      padding-left: 22px;
+      margin-bottom: 11px;
+      &::before{
+        content: '';
+        width: 8.306px;
+        height: 8.306px;
+        background: #37FF00;
+        border-radius: 100%;
+        box-shadow: 0 0 5px #37FF00;
+        margin-right: 10px;
+      }
+    }
+    ul{
+      margin-bottom: 35px;
+      li{
+        border: 1.083px solid #384E37;
+        border-radius: 5px;
+        background: #2d303c;
+        margin-bottom: 10px;
+        overflow: hidden;
+        p{
+          color: #E49D37;
+          font-family: Inter;
+          font-size: 10.833px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          padding: 4.5px 15px;
+          background: #3e3f42;
+        }
+        .income{
+          color: #959EA8;
+          font-family: Inter;
+          font-size: 13px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          padding: 7px 15px;
+          span{
+            color: #FF5325;
+          }
+        }
+      }
+    }
+  }
+}
