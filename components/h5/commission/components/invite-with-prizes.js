@@ -195,9 +195,7 @@ const InviteWithPrizes = () => {
         onClose={() => {
           setVisible(false);
         }}
-      >
-        <div>asdas</div>
-      </Modal>
+      />
     </div>
   );
 };

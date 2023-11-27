@@ -6,14 +6,27 @@ const ShaeModal = (props) => {
   const [visible, setVisible] = useState(false);
   return (
     <>
-      <div
-        className={styles.shareBtn}
-        onClick={() => {
-          setVisible(true);
-        }}
-      >
-        {props.title}
-      </div>
+      {!props.isMore && (
+        <div
+          className={styles.shareBtn}
+          onClick={() => {
+            setVisible(true);
+          }}
+        >
+          {props.title}
+        </div>
+      )}
+      {props.isMore && (
+        <div
+          className={styles.more}
+          onClick={() => {
+            setVisible(true);
+          }}
+        >
+          <img src="/assets/commission/icon_more.png" />
+          <p>More</p>
+        </div>
+      )}
       <Popup
         visible={visible}
         onMaskClick={() => {
