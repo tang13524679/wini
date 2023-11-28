@@ -1,0 +1,107 @@
+.container{
+  padding: 20px 15px;
+  :global{
+    .tit{
+      text-align: center;
+      color: #959EA8;
+      font-family: Inter;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+    .detail-type-box{
+      margin: 10px -4px 0;
+      display: flex;
+      flex-wrap: wrap;
+      .box{
+        padding: 4px;
+        width: 25%;
+        .item{
+          color: #FFF;
+          font-family: Inter;
+          font-size: 12.406px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          padding: 7px 0;
+          text-align: center;
+          background: #2A2B30;
+          border-radius: 3px;
+          border: 0.723px solid #A4BF96;
+        }
+        .item.active{
+          color: #2F3030;
+          background: linear-gradient(90deg, #F1CC64 4.5%, #8ABC4C 95.5%);
+        }
+      }
+    }
+    .timelist{
+      margin-top: 24px;
+      display: flex;
+      border-bottom: 1px solid #242529;
+      .item{
+        width: 20%;
+        text-align: center;
+        color: #959EA8;
+        font-family: Inter;
+        font-size: 12.389px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-align: center;
+        padding-bottom: 11px;
+        position: relative;
+        &::after{
+          position: absolute;
+          width: 44.765px;
+          height: 1.5px;
+          background: #48B726;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: 0;
+        }
+      }
+      .item.active{
+        color: #48B726;
+        &::after{
+          content: "";
+        }
+      }
+    }
+    .list-title{
+      margin-top: 26px;
+      display: flex;
+      margin-bottom: 20px;
+      div{
+        color: #FEFEFE;
+        font-family: Inter;
+        font-size: 12.389px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-align: center;
+      }
+      div:nth-child(1){
+        width: 100px;
+      }
+      div:nth-child(2){
+        flex: 1;
+      }
+      div:nth-child(3){
+        width: 120px;
+      }
+    }
+    .list{
+      p{
+        color: #959EA8;
+        font-family: Inter;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-align: center;
+      }
+    }
+  }
+}

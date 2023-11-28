@@ -1,0 +1,30 @@
+.container{
+  padding: 50px 0 23px;
+  :global{
+    .invitation-nav{
+      margin-top: 1px;
+      background: #1F2329;
+      display: flex;
+      .item{
+        width: 33.33333%;
+        text-align: center;
+        .text{
+          padding: 11.5px 0;
+          display: inline-block;
+          color: #FFF;
+          font-family: Inter;
+          font-size: 12.438px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+      }
+      .item.active{
+        .text{
+          color: #48B726;
+          border-bottom: 1.4px solid #48B726;
+        }
+      }
+    }
+  }
+}

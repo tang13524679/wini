@@ -1,0 +1,103 @@
+.container{
+  padding: 15px 25px 25px;
+  :global{
+    .list-box{
+      border-radius: 6.509px;
+      border: 0.723px solid #A4BF96;
+      padding: 18px 10px;
+      .title{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img{
+          width: 25.562px;
+          height: 25.599px;   
+          margin-right: 10px;
+        }
+        span{
+          font-family: Black Han Sans;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          background: linear-gradient(95deg, #C0FC16 7.08%, #48C50F 94.07%);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+      .title-box{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 13px;
+        div{
+          color: #959EA8;
+          font-family: Inter;
+          font-size: 12.437px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          text-align: center;
+        }
+        div:nth-child(1){
+          width: 100px;
+        }
+        div:nth-child(2){
+          flex: 1;
+        }
+        div:nth-child(3){
+          width: 100px;
+        }
+      }
+      .list{
+        margin-top: 12px;
+        .item{
+          display: flex;
+          align-items: center;
+          border-bottom: 1px solid #242529;
+          justify-content: space-between;
+          margin-bottom: 6.5px;
+          height: 36.589px;
+          border-radius: 5px;
+          div{
+            color: #FFF;
+            font-family: Inter;
+            font-size: 12.914px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            text-align: center;
+          }
+          div:nth-child(1){
+            width: 100px;
+          }
+          div:nth-child(2){
+            flex: 1;
+          }
+          div:nth-child(3){
+            width: 100px;
+          }
+        }
+        .item:nth-child(1){
+          background: linear-gradient(90deg, #864DC9 4.5%, #4F68D8 95.5%);
+        }
+        .item:nth-child(2){
+          background: linear-gradient(90deg, #5a3683 4.5%, #2f3c77 95.5%);
+        }
+        .item:nth-child(3){
+          background: linear-gradient(90deg, #392550 4.5%, #242d53 95.5%);
+        }
+      }
+      .ranking-footer{
+        margin-top: 15.5px;
+        text-align: center;
+        color: #959EA8;
+        font-family: Inter;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+    }
+  }
+}

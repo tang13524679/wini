@@ -1,0 +1,127 @@
+.container{
+  padding: 15px 18px 20px;
+  :global{
+    .adm-search-bar{
+      border-radius: 42px;
+      background: rgba(82, 79, 79, 0.20);
+      height: 42px;
+      border: 0.723px solid #A4BF96;
+      .adm-search-bar-input-box{
+        background: none;
+        border: none;
+        .adm-input-element{
+          color: #fff;
+        }
+      }
+    }
+    .top-box{
+      text-align: center;
+      padding-bottom: 21px;
+      border-bottom: 1px solid #0F0E0C;
+      p{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 16px 0;
+        color: #959EA8;
+        font-family: Inter;
+        font-size: 10.376px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        span{
+          width: 8.818px;
+          height: 8.818px;
+          border-radius: 100%;
+          margin-right: 10px;
+          background: #45DA1E;
+          box-shadow: 0 0 5px #45DA1E;
+        }
+      }
+      .tabar{
+        display: flex;
+        justify-content: center;
+        .item{
+          width: 144.739px;
+          height: 40.071px;
+          line-height: 40px;
+          color: #FFF;
+          font-family: Inter;
+          font-size: 12.452px;
+          font-style: normal;
+          font-weight: 400;
+          background: #2A2B30;
+          margin: 0 7.2px;
+          border-radius: 3px;
+          border: 0.723px solid #A4BF96;
+        }
+        .item.active{
+          background: linear-gradient(91deg, #6E6AF5 20.09%, #7F3CE3 61%, #522F7F 96.35%);
+        }
+      }
+    }
+    .data-content{
+      padding: 20px 0;
+      .no-data{
+        color: #959EA8;
+        font-family: Inter;
+        font-size: 10.376px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-align: center;
+      }
+    }
+    .games-odds{
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -7px;
+      .item{
+        width: 76.71px;
+        height: 82.754px;
+        margin: 10px 7px;
+        border: 0.723px solid #A4BF96;
+        border-radius: 0 20px 0 0;
+        background: #2A2B30;
+        span{
+          display: inline-block;
+          width: 49.668px;
+          height: 19.543px;
+          text-align: center;
+          background: linear-gradient(90deg, #F1CC64 4.5%, #8ABC4C 95.5%);
+          color: #2F3030;
+          font-family: Inter;
+          font-size: 10.871px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 19.543px;
+          border-radius: 0 19px 19px 0;
+          margin-top: 10px;
+        }
+        p{
+          text-align: center;
+          color: #FFDB41;
+          font-family: Inter;
+          font-size: 15.654px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          margin-top: 15px;
+          margin-bottom: 0;
+        }
+      }
+    }
+    .member-footer{
+      color: #E49D37;
+      font-family: Inter;
+      font-size: 13.835px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      text-align: center;
+      padding: 14.68px 0;
+      background: url('/assets/commission/member-bg.png') no-repeat center center;
+      margin-top: 20px;
+    }
+  }
+}

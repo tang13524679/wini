@@ -177,7 +177,14 @@ const InviteWithPrizes = () => {
       </div>
       <ShaeModal title="立即推广" />
       <div className="invite-list">
-        <div className="btn">邀请收益</div>
+        <div
+          className="btn"
+          onClick={() => {
+            router.push("/commission/invitation-income");
+          }}
+        >
+          邀请收益
+        </div>
         <div
           className="btn"
           onClick={() => {
