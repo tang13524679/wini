@@ -1,0 +1,55 @@
+.container{
+  padding: 25px 15px;
+  display: flex;
+  :global{
+    .left{
+      width: 78.462px;
+      margin-right: 10px;
+    }
+    .right{
+      flex: 1;
+      .box-list{
+        .item{
+          margin-bottom: 10px;
+          background: #26272B;
+          border-radius: 5px;
+          padding: 7px 10px;
+          .box{
+            display: flex;
+            color: #959EA8;
+            font-family: Inter;
+            font-size: 10.925px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            margin-bottom: 5px;
+            .name{
+              width: 33.33333%;
+              display: flex;
+            }
+            .bet{
+              width: 33.33333%;
+              display: flex;
+              p{
+                color: #fff;
+              }
+              span{
+                color: #FFDB41;
+              }
+            }
+            .ratio{
+              width: 33.33333%;
+              display: flex;
+              p{
+                color: #fff;
+              }
+              span{
+                color: #FFDB41;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

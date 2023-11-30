@@ -29,14 +29,7 @@ const PromotionBtn = () => {
 
   return (
     <div className={styles.box}>
-      <div
-        className="btn"
-        onClick={() => {
-          router.push("/commission/marketing-platform");
-        }}
-      >
-        推广平台
-      </div>
+      <div className="btn">推广平台</div>
       <div
         className="btn"
         onClick={() => {
