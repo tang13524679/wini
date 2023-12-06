@@ -1,0 +1,158 @@
+.container{
+  padding: 15px;
+  :global{
+    .ant-form-item{
+      margin-bottom: 12px;
+      .ant-input-affix-wrapper{
+        background: rgba(82, 79, 79, 0.20);;
+        height: 54px;
+        border-radius: 54px;
+        color: #959EA8;
+        font-family: Inter;
+        font-size: 17.183px;
+        font-weight: 400;
+        border: 1px solid #6E7E63;
+        input{
+          color: #fff;
+          &::input-placeholder{
+            color: #959EA8;
+          }
+          &::-webkit-input-placeholder{	
+            color: #959EA8;
+          }
+          &::-moz-placeholder{		
+            color: #959EA8;
+          }
+          &::-moz-placeholder{		
+            color: #959EA8;
+          }
+          &::-ms-input-placeholder{	
+            color: #959EA8;
+          }
+        }
+        .ant-input-prefix{
+          font-size: 22px;
+          margin-left: 15px;
+          margin-right: 7.5px;
+        }
+        .ant-input-suffix{
+          svg{
+            color: #959EA8;
+          }
+        }
+      }
+      .ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper, .ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper:hover{
+        background: none;
+      }
+      .ant-form-item-explain-error{
+        margin-left: 20px;
+      }
+      .submit-button{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        .ant-btn-primary{
+          width: 315.578px;
+          height: 40.809px;
+          color: #FFF;
+          font-family: Inter;
+          font-size: 17.183px;
+          font-style: normal;
+          font-weight: 400;
+          border-radius: 20.974px;
+          border: 0.723px solid #A284E4;
+          background: linear-gradient(91deg, #6E6AF5 20.09%, #7F3CE3 61%, #522F7F 96.35%);
+          margin: 30px auto 0;
+        }
+      }
+    }
+    .promo-code{
+      .text-box{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #959EA8;
+        font-family: Inter;
+        font-size: 14.319px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin:0 15px 7px;
+      }
+    }
+    .remember{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: -10px;
+      .ant-form-item{
+        margin-bottom: 0;
+        .ant-col{
+          margin-left: 0;
+        }
+        .ant-form-item-control-input-content{
+          .ant-checkbox-wrapper{
+            font-size: 14.319px;
+            color: #fff;
+            .ant-checkbox-inner{
+              background-color: #0077FF;
+              border-color: #0077FF;
+            }
+          }
+        }
+      }
+      .forget{
+        color: #3D97FF;
+        font-family: Inter;
+        font-size: 14.319px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+    }
+    .privacy-text{
+      width: 100%;
+      text-align: center;
+      color: #E0E0E0;
+      font-family: Inter;
+      font-size: 12.887px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      span{
+        color: #3D97FF;
+      }
+      .ant-checkbox-wrapper{
+        font-size: 14.319px;
+        margin-right: 5px;
+        color: #fff;
+        .ant-checkbox-inner{
+          background: none;
+          border-color: #0077FF;
+        }
+      }
+    }
+    .customer{
+      margin: 13.5px auto 0;
+      width: 172.707px;
+      height: 41.825px;
+      text-align: center;
+      color: #FFF;
+      font-family: Inter;
+      font-size: 12.98px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 41.825px;
+      border-radius: 4.601px;
+      border: 1.15px solid #384E37;
+      background: rgba(82, 79, 79, 0.20);;
+      span{
+        margin-right: 5px;
+      }
+    }
+  }
+}

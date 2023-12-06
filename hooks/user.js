@@ -6,11 +6,11 @@ import useSWR from "swr";
 
 export function useAuth(from) {
   const router = useRouter();
-  // useEffect(() => {
-  //     if (!store.get('user')) {
-  //         router.push(`/sign-in?from=${encodeURIComponent(from)}`);
-  //     }
-  // }, []);
+  useEffect(() => {
+    if (!store.get("user")) {
+      router.push(`/sign-in?from=${encodeURIComponent(from)}`);
+    }
+  }, []);
 }
 
 export function useCollectedGames() {

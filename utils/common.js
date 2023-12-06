@@ -109,7 +109,6 @@ export async function requestApi(dispatch, request, success, fail) {
 
     if (success) success(rst);
   } catch (msg) {
-    alert(11);
     if (fail) {
       fail(msg);
     } else {

@@ -57,8 +57,8 @@ const MarketingPlatform = () => {
       {navState == 1 && <Sunmmary />}
       {navState == 2 && <Member />}
       {navState == 3 && <DetailedData />}
-      {/* {navState == 4 && <Record />}
-      {navState == 5 && <RankingList />} */}
+      {navState == 4 && <Record />}
+      {navState == 5 && <RankingList />}
     </div>
   );
 };
