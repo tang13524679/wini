@@ -1,6 +1,6 @@
 import react, { useEffect } from "react";
 import styles from "./index.module.scss";
-import NavBar from "@/components/h5/commission/components/nav-bar";
+import NavBar from "@/components/h5/components/nav-bar";
 import InviteWithPrizes from "@/components/h5/commission/components/invite-with-prizes";
 import RewardDescription from "./components/reward-description";
 import Income from "./components/income";

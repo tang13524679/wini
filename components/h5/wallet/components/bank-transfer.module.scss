@@ -1,0 +1,112 @@
+.container{
+  padding: 21px 15px 140px;
+  background: #1B1B1F;
+  :global{
+    .tit{
+      color: #EEE;
+      font-family: Inter;
+      font-size: 12.985px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      margin-bottom: 16px;
+    }
+    .money-box{
+      .ant-input-affix-wrapper{
+        width: 100%;
+        height: 44.004px;
+        border-radius: 44.004px;
+        background: rgba(82, 79, 79, 0.20);
+        border: 1.15px solid #384E37;
+        input{
+          color: #EEE;
+          font-family: Inter;
+          font-size: 12.985px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+      }
+      .amountList{
+        margin: 16px -4px 0;
+        display: flex;
+        flex-wrap: wrap;
+        .item-box{
+          width: 33.33333%;
+          .item{
+            margin: 4px;
+            height: 30.658px;
+            color: #FFF;
+            font-family: Inter;
+            font-size: 12.985px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 30.658px;
+            text-align: center;
+            background: rgba(82, 79, 79, 0.20);
+            border: 1.15px solid #384E37;
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+    .bank-select{
+      height: 36.069px;
+      width: 100%;
+      background: #131416;
+      border-radius: 5px;
+      margin-top: 10px;
+      padding: 0 10px;
+      .clWhite{
+        color: #FFFEFE;
+        font-family: Inter;
+        font-size: 12.985px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+      .please-select{
+        color: #959EA8;
+        font-family: Inter;
+        font-size: 12.985px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-right: 10px;
+      }
+      .anticon-down{
+        color: #329029;
+        font-size: 14px;
+      }
+    }
+    .confirm-box{
+      margin-top: 60px;
+      .confirm{
+        width: 317.866px;
+        height: 41.118px;
+        border-radius: 41.118px;
+        text-align: center;
+        line-height: 41.118px;
+        color: #FFF;
+        font-family: Inter;
+        font-size: 17.313px;
+        font-style: normal;
+        font-weight: 400;
+        background: linear-gradient(91deg, #6E6AF5 20.09%, #7F3CE3 61%, #522F7F 96.35%);
+        margin: 0 auto 10px;
+      }
+      .text{
+        color: #959EA8;
+        font-family: Inter;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-align: center;
+        span{
+          color: #FFDB41;
+        }
+      }
+    }
+  }
+}

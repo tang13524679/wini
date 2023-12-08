@@ -2,7 +2,7 @@ import react, { useState, useEffect } from "react";
 import styles from "./login-form.module.scss";
 import { Button, Checkbox, Form, Input } from "antd";
 import { UnlockOutline, UserOutline } from "antd-mobile-icons";
-import Loading from "@/components/h5/loading-mobile";
+import Loading from "@/components/h5/components/loading-mobile";
 import { userApi } from "@/requests/frontend";
 import { useGlobalState } from "@/hooks/global";
 import { uaInfo } from "@/utils/common";

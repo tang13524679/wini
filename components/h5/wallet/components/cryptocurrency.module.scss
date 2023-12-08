@@ -1,0 +1,224 @@
+.container{
+  padding: 21px 15px;
+  background: #1B1B1F;
+  :global{
+    .tit{
+      color: #EEE;
+      font-family: Inter;
+      font-size: 12.985px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      margin-bottom: 8px;
+    }
+    .currency-box{
+      .currency-list{
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 13.5px;
+        .item{
+          width: 86.819px;
+          height: 87.554px;
+          border-radius: 4px;
+          background: rgba(82, 79, 79, 0.2);
+          border: 1.15px solid #384E37;
+          text-align: center;
+          padding-top: 10px;
+          margin-right: 7.5px;
+          img{
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 6px;
+          }
+          p{
+            color: #EEE;
+            font-family: Inter;
+            font-size: 12.813px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+          }
+        }
+        .item.active{
+          background: url('/assets/wallet/currency-bg.png') no-repeat rgba(82, 79, 79, 0.2);
+          background-size: 100%;
+        }
+      }
+      .protocol-list{
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 17px;
+        .protocol{
+          width: 86.525px;
+          height: 30.921px;
+          text-align: center;
+          color: #FFF;
+          font-family: Inter;
+          font-size: 13.096px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 30.921px;
+          border-radius: 4px;
+          background: rgba(82, 79, 79, 0.2);
+          border: 1.15px solid #384E37;
+          margin-right: 8px;
+        }
+        .protocol.active{
+          color: #2F3030;
+          background: linear-gradient(90deg, #F1CC64 4.5%, #8ABC4C 95.5%);
+        }
+      }
+      .currency-details{
+        .details{
+          padding: 6.5px 10px;
+          background: #242529;
+          border-radius: 5px;
+          margin-bottom: 27px;
+          .address{
+            position: relative;
+            p{
+              color: #959EA8;
+              font-family: Inter;
+              font-size: 12.444px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+              margin-bottom: 6.3px;
+            }
+            input{
+              height: 34.566px;
+              width: 100%;
+              border-radius: 5px;
+              border: none;
+              background: #131416;
+              padding: 0 30px 0 12px;
+              color: #FFF;
+              font-family: Inter;
+              font-size: 12.444px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+            }
+            .copy{
+              position: absolute;
+              width: 19.018px;
+              height: 19.035px;
+              background: url('/assets/commission/copy.png') no-repeat;
+              background-size: 100%;
+              right: 8.2px;
+              bottom: 8.2px;
+            }
+          }
+          .details-text{
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            .left{
+              width: 40%;
+              img{
+                width: 82.56px;
+                height: 82.612px;
+                margin: 0 auto;
+              }
+            }
+            .right{
+              flex: 1;
+              .keep-btn{
+                width: 73.924px;
+                height: 18.32px;
+                color: #2F3030;
+                font-family: Inter;
+                font-size: 10.37px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 18.32px;
+                text-align: center;
+                border-radius: 18.32px;
+                background: linear-gradient(90deg, #F1CC64 4.5%, #8ABC4C 95.5%);
+                margin-bottom: 5px;
+              }
+              p{
+                color: #959EA8;
+                font-family: Inter;
+                font-size: 10.37px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 1.4;
+              }
+              .p1{
+                color: #fff;
+              }
+              .p2{
+                color: #E43737;
+              }
+            }
+          }
+        }
+      }
+    }
+    .confirm-box{
+      .confirm{
+        width: 317.866px;
+        height: 41.118px;
+        border-radius: 41.118px;
+        text-align: center;
+        line-height: 41.118px;
+        color: #FFF;
+        font-family: Inter;
+        font-size: 17.313px;
+        font-style: normal;
+        font-weight: 400;
+        background: linear-gradient(91deg, #6E6AF5 20.09%, #7F3CE3 61%, #522F7F 96.35%);
+        margin: 0 auto 10px;
+      }
+      .text{
+        color: #E43737;
+        font-family: Inter;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-align: center;
+        span{
+          color: #FFDB41;
+        }
+      }
+    }
+    .notice{
+      margin-top: 9px;
+      .notice-list{
+        padding-left: 0;
+        li{
+          display: flex;
+          margin-bottom: 8px;
+          .num{
+            margin-right: 8.2px;
+            width: 15.911px;
+            height: 15.911px;
+            flex-shrink: 0;
+            border-radius: 100%;
+            color: #FFF;
+            font-family: Inter;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 15.911px;
+            text-align: center;
+            background: linear-gradient(0deg, #4FBFF6 4.5%, #6D85FA 48.64%, #8B5EFF 95.5%);
+            margin-top: 2px;
+          }
+          p{
+            color: #959EA8;
+            font-family: Inter;
+            font-size: 10.366px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 0;
+            margin-top: 1px;
+          }
+        }
+      }
+    }
+  }
+}

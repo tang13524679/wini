@@ -13,6 +13,8 @@ import { useGlobalState } from "@/hooks/global";
 import { requestApi, uaInfo } from "@/utils/common";
 // import TermsBtns from '@/components/terms/btns';
 import * as checker from "@/utils/checker";
+import { getDomain } from "@/utils/common";
+import CryptoJS from "crypto-js";
 
 let initialParams = {
   loginaccount: "",
@@ -75,19 +77,38 @@ const LoginWithPhone = (props) => {
 const LoginWithAccount = (props) => {
   const { params, setParams, setType, ua } = props;
   const [, dispatch] = useGlobalState();
+  const getTieInfo = (val) => {
+    let queryValue = "";
+    for (let i in val) {
+      queryValue = queryValue + "&" + i + "=" + val[i];
+    }
+    return queryValue.substr(1);
+  };
   function login() {
     requestApi(
       dispatch,
       async () => {
         const { loginaccount, loginpassword } = params;
+        let requestParams = {
+          loginaccount: loginaccount,
+          loginpassword: loginpassword,
+          browserversion: ua.browser.name + ua.browser.version,
+          opratesystem: ua.os.name + ua.os.version,
+          enterprisecode: "EN001N",
+          domain: getDomain(),
+        };
+        // console.log(getTieInfo(requestParams), "sssss");
         if (!loginaccount || !loginpassword) throw t("required", "msg");
         return userApi.login({
           loginaccount,
           loginpassword,
           browserversion: ua.browser.name + ua.browser.version,
           opratesystem: ua.os.name + ua.os.version,
-          browserid: store.get("browserId"),
           enterprisecode: "EN001N",
+          params: getTieInfo(requestParams),
+          signature: CryptoJS.MD5(
+            getTieInfo(requestParams) + "3JSHcteXuC8U0IBN"
+          ),
         });
       },
       (rst) => {

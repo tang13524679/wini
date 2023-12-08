@@ -1,0 +1,77 @@
+.tabBarBox{
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: 62px;
+  bottom: 0;
+  left: 0;
+  background: #141313;
+  :global{
+    .link-list{
+      display: flex;
+      .box{
+        width: 20%;
+        text-align: center;
+        padding-top: 5px;
+        .img-box{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 25px;
+          height: 25px;
+          margin: 0px auto 5px;
+          img{
+            width: 100%;
+            height: auto;
+          }
+        }
+        .tit{
+          color: #959EA8;
+          font-family: Inter;
+          font-size: 11.572px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+        .tit.on{
+          color: #45DA1F;
+        }
+      }
+      .wallet-box{
+        position: relative;
+        z-index: 2;
+        &::after{
+          position: absolute;
+          content: '';
+          width: 64.368px;
+          height: 50.626px;
+          background: #141313;
+          border-radius: 100%;
+          top: -15px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: -2;
+        }
+        .img-box{
+          position: relative;
+          img{
+            margin-top: -10px;
+            margin-left: 4px;
+          }
+          &::after{
+            position: absolute;
+            content: '';
+            width: 40.139px;
+            height: 40.139px;
+            border-radius: 100%;
+            background: conic-gradient(from 180deg at 50% 50%, #622BCF 180deg, #804AF6 180.03600597381592deg);
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -3px;
+            z-index: -1;
+          }
+        }
+      }
+    }
+  }
+}

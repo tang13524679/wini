@@ -1,0 +1,113 @@
+.container{
+  min-height: 100vh;
+  background: #1F2329;
+  :global{
+    .user-info{
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      .avatar{
+        margin-right: 20px;
+        img{
+          width: 48px;
+          height: 48px;      
+        }
+      }
+      .info{
+        .name{
+          color: #FFF;
+          font-family: Inter;
+          font-size: 13.714px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          margin-bottom: 7px;
+          span{
+            color: #48B726;
+            margin-left: 5px;
+          }
+        }
+        .time{
+          color: #FFF;
+          font-family: Inter;
+          font-size: 13.714px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+      }
+    }
+    .wallet-box{
+      padding: 15px 20px;
+      background: #1C1E21;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .left{
+        .tit{
+          color: #FFF;
+          font-family: Inter;
+          font-size: 13.714px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          margin-bottom: 8px;
+        }
+        .num{
+          color: #FFF;
+          font-family: Inter;
+          font-size: 13.714px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+      }
+      .right{
+        display: flex;
+        .btn{
+          color: #FFF;
+          font-family: Inter;
+          font-size: 10.827px;
+          font-style: normal;
+          font-weight: 400;
+          width: 65.322px;
+          height: 26px;
+          text-align: center;
+          border-radius: 26px;
+          border: 1.15px solid #384E37;
+          background: #2A2B30;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-left: 10.5px;
+        }
+      }
+    }
+    .link-box{
+      padding: 0 10px;
+      .box{
+        padding: 0 10px;
+        border-bottom: 1px solid #282E37;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .tit{
+          display: flex;
+          align-items: center;
+          color: #959EA8;
+          font-family: Inter;
+          font-size: 12.992px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          img{
+            width: 15.513px;
+            height: auto;
+            margin-right: 8px;
+          }
+        }
+      }
+    }
+  }
+}

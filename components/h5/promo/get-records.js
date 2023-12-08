@@ -1,6 +1,6 @@
 import react from "react";
 import styles from "./get-records.module.scss";
-import NavBar from "../commission/components/nav-bar";
+import NavBar from "../components/nav-bar";
 
 const GetRecords = () => {
   return (

@@ -1,6 +1,6 @@
 import react, { useState } from "react";
 import styles from "./marketingPlatform.module.scss";
-import NavBar from "@/components/h5/commission/components/nav-bar";
+import NavBar from "@/components/h5/components/nav-bar";
 import Head from "next/head";
 import MarketingContent from "./components/marketing-content";
 

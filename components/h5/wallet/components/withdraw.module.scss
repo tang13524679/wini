@@ -1,0 +1,48 @@
+.container{
+  padding: 22px 15px;
+  :global{
+    .wallet-balance{
+      color: #EEE;
+      font-family: Inter;
+      font-size: 13.414px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      margin-bottom: 13px;
+    }
+    .tabBar-list{
+      display: flex;
+      margin: 0 0 10px;
+      .tab{
+        width: 50%;
+        height: 43.706px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #959ea8;
+        font-family: Inter;
+        font-size: 13.802px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        background: #1B1B1F;
+        img{
+          margin-right: 6px;
+        }
+        .img1{
+          width: 16.112px;
+          height: 11.818px;
+        }
+        .img2{
+          width: 17px;
+          height: 17px;
+        }
+      }
+      .tab.active{
+        background: linear-gradient(180deg, #2C2F34 0%, #2C3532 61.98%, #2C4130 100%);
+        color: #fff;
+        border-bottom: 2px solid #00FF18;
+      }
+    }
+  }
+}

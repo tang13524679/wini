@@ -1,6 +1,6 @@
 import react, { useRef } from "react";
 import styles from "./uniqueOffer.module.scss";
-import NavBar from "@/components/h5/commission/components/nav-bar";
+import NavBar from "@/components/h5/components/nav-bar";
 import Head from "next/head";
 import copy from "copy-to-clipboard";
 import { Toast } from "antd-mobile";

@@ -1,0 +1,170 @@
+.container{
+  padding-top: 60px;
+  :global{
+    .confirm{
+      width: 317.866px;
+      height: 41.118px;
+      border-radius: 41.118px;
+      text-align: center;
+      line-height: 41.118px;
+      color: #FFF;
+      font-family: Inter;
+      font-size: 17.313px;
+      font-style: normal;
+      font-weight: 400;
+      background: linear-gradient(91deg, #6E6AF5 20.09%, #7F3CE3 61%, #522F7F 96.35%);
+      margin: 24px auto 0;
+    }
+    .wallet-select{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 15px;
+      height: 46.155px;
+      background: #1F2329;
+      color: #FFF;
+      font-family: Inter;
+      font-size: 12.981px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      .right{
+        display: flex;
+        align-items: center;
+        color: #48B726;
+        .wallet-type{
+          display: flex;
+          align-items: center;
+        }
+        img{
+          width: 21.62px;
+          height: 21.62px;  
+          margin-right: 7.5px; 
+        }
+        .anticon-right{
+          font-size: 18px;
+          margin-left: 5px;
+        }
+      }
+    }
+    .form-box{
+      margin-top: 10px;
+      .adm-form{
+        --border-top: none;
+        --border-bottom: none;
+        --border-inner: solid 1px #282E37;
+        .adm-list{
+          color: #FFF;
+          font-family: Inter;
+          --font-size: 12.981px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          .adm-list-body{
+            background: none;
+            color: #FFF;
+            font-family: Inter;
+            font-size: 12.981px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            .adm-list-body-inner{
+              .adm-list-item{
+                background: #1F2329;
+              }
+              .adm-input{
+                font-family: Inter;
+                --font-size: 12.981px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                --placeholder-color: #959EA8;
+                .adm-input-element{
+                  color: #FFF;
+                }
+              }
+              .adm-form-item-label{
+                color: #FFF;
+              }
+              .adm-list-item-content-extra{
+                a{
+                  color: #48B726;
+                }
+              }
+              .notice{
+                background: none;
+                color: #E43737;
+                font-family: Inter;
+                font-size: 10.818px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                text-align: center;
+                padding: 9px 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.walletPicker{
+  background: #000;
+  :global{
+    .adm-picker{
+      height: 250px;
+      border-radius: 10px 10px 0 0;
+    }
+    .adm-picker-header{
+      border-bottom: none;
+      background: rgba(41, 42, 46, 0.95);
+      a{
+        color: #959EA8;
+      }
+      .adm-picker-header-title{
+        color: #FFF;
+      }
+    }
+    .adm-popup-body{
+      background: none;
+      .adm-picker-view{
+        background: rgba(41, 42, 46, 0.95);
+        .adm-picker-view-column-item{
+          
+        }
+        .adm-picker-view-column{
+          z-index: 10001;
+        }
+        .adm-picker-view-mask{
+          .adm-picker-view-mask-top{
+            opacity: 0;
+          }
+          .adm-picker-view-mask-middle{
+            background: #1C1E21;
+            border: none;
+          }
+          .adm-picker-view-mask-bottom{
+            opacity: 0;
+          }
+        }
+      }
+    }
+    .wallet-type{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFF;
+      font-family: Inter;
+      font-size: 13.007px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      img{
+        width: 21.62px;
+        height: 21.62px;  
+        margin-right: 7.5px; 
+      }
+    }
+  }
+}

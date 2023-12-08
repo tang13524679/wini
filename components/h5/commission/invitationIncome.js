@@ -1,6 +1,6 @@
 import react, { useState } from "react";
 import styles from "./invitationIncome.module.scss";
-import NavBar from "@/components/h5/commission/components/nav-bar";
+import NavBar from "@/components/h5/components/nav-bar";
 import Head from "next/head";
 import Sunmmary from "./components/summary";
 import Member from "./components/member";
