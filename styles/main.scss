@@ -23,8 +23,8 @@
 
 html,
 body {
-    --mainYellow: #F6CD95;
-    --mainBlue: #3549fa;
+    --mainYellow: linear-gradient(96deg, #F1CC64 7.88%, #B6C357 57.14%, #8ABC4A 93.08%);;
+    --mainBlue: #00FF18;
     --mainColor: #1F2239;
 
     --bgPage: #1D1E21;
@@ -602,7 +602,6 @@ body {
 
 // swipter
 .swiper {
-    padding-bottom: 20px;
     box-sizing: content-box;
 }
 .swiper-pagination-bullet {

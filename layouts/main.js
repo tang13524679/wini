@@ -2,6 +2,7 @@ import MobileHeader from "@/components/mobile-header";
 import MobileNav from "@/components/mobile-nav";
 import SideNav from "@/components/SideNav";
 import Header from "@/components/header";
+import TabBar from "@/components/h5/components/tab-bar";
 
 export default function MainLayout({ children }) {
   return (
@@ -25,7 +26,7 @@ export default function MainLayout({ children }) {
           </div>
         </div>
       </div>
-      <MobileNav />
+      <TabBar />
     </>
   );
 }

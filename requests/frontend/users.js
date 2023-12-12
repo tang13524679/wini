@@ -1,13 +1,27 @@
 import request from "@/utils/fetcher-frontend";
 import { ENTERPRISE_CODE, BRAND_CODE } from "@/utils/const";
 import { getDomain } from "@/utils/common";
+import { encryptECB, encryptMD5 } from "@/utils/encrypt";
 
 // 注册
-export function register(params) {
-  return request(`/api/v1/User/register`, {
+export function register(param) {
+  return request(`/ecrm-api/User/register`, {
     brandcode: BRAND_CODE,
-    domain: getDomain(),
-    ...params,
+    domain: "www.level311.com",
+    enterprisecode: ENTERPRISE_CODE,
+    ...param,
+    params: encryptECB({
+      ...param,
+      domain: "www.level311.com",
+      brandcode: BRAND_CODE,
+      enterprisecode: ENTERPRISE_CODE,
+    }),
+    signature: encryptMD5({
+      ...param,
+      domain: "www.level311.com",
+      brandcode: BRAND_CODE,
+      enterprisecode: ENTERPRISE_CODE,
+    }),
   });
 }
 // 重置密码

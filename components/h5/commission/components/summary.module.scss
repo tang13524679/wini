@@ -96,6 +96,7 @@
       }
     }
     .collapse{
+      visibility: visible;
       .adm-collapse{
         margin-bottom: 12px;
         .adm-list{
@@ -112,7 +113,7 @@
               margin-top: 0;
               .adm-collapse-panel-content-inner{
                 .adm-list-item-content-main{
-                  padding: 8px 0 0 0;
+                  padding: 0 0 10px;
                   font-size: 14.002px;
                 }
               }
@@ -124,6 +125,10 @@
                 .adm-list-item-content-arrow{
                   color: #959EA8;
                   font-size: 13.002px;
+                  .total{
+                    display: flex;
+                    align-items: center;
+                  }
                   svg{
                     color: #48B726;
                     margin-left: 5px;

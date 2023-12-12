@@ -8,10 +8,19 @@ export function useAuth(from) {
   const router = useRouter();
   useEffect(() => {
     if (!store.get("user")) {
-      router.push(`/sign-in?from=${encodeURIComponent(from)}`);
+      router.push("/login");
     }
   }, []);
 }
+
+// export function useAuth(from) {
+//   const router = useRouter();
+//   useEffect(() => {
+//     if (!store.get("user")) {
+//       router.push(`/sign-in?from=${encodeURIComponent(from)}`);
+//     }
+//   }, []);
+// }
 
 export function useCollectedGames() {
   const [{ user }] = useGlobalState();

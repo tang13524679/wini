@@ -6,11 +6,16 @@ import { useGlobalState } from "@/hooks/global";
 import { LoginModal } from "../pages/sign-in";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import { useRouter } from "next/router";
+
 export default function MobileHeader() {
   const [{ user, badge }] = useGlobalState();
 
   const [isOpen, toggleOpen] = useState(false);
   const [loginActive, setLoginActive] = useState("login");
+  const router = useRouter();
+
+  console.log(router);
 
   const loginAction = useCallback((key) => {
     setLoginActive(key);
@@ -65,7 +70,10 @@ export default function MobileHeader() {
                   fontSize: 16,
                   marginRight: 20,
                 }}
-                onClick={() => loginAction("login")}
+                // onClick={() => loginAction("login")}
+                onClick={() => {
+                  router.push("/login?type=login");
+                }}
               >
                 登陆
               </span>
@@ -83,7 +91,10 @@ export default function MobileHeader() {
                     "linear-gradient(96deg, #F1CC64 7.88%, #B6C357 57.14%, #8ABC4A 93.08%)",
                 }}
                 size="small"
-                onClick={() => loginAction("join")}
+                // onClick={() => loginAction("join")}
+                onClick={() => {
+                  router.push("/login?type=register");
+                }}
               >
                 立即注册
               </Button>

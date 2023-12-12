@@ -1,6 +1,6 @@
 import react, { useState, useEffect } from "react";
 import styles from "./register.module.scss";
-import { Button, Checkbox, Form, Input, Tooltip } from "antd";
+import { Button, Form, Input, Tooltip } from "antd";
 import { UnlockOutline, UserOutline } from "antd-mobile-icons";
 import {
   BarcodeOutlined,
@@ -16,6 +16,7 @@ import { uaInfo } from "@/utils/common";
 import RegisterVerify from "./register-verify";
 import store from "store";
 import { color } from "@mui/system";
+import { Toast, Checkbox } from "antd-mobile";
 
 const Register = () => {
   const [userName, setUserName] = useState("");
@@ -32,15 +33,14 @@ const Register = () => {
     setUa(result);
   }, []);
 
-  const onFinish = async () => {
-    setIsNextStep(true);
-    try {
-      setIsLoading(true);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsLoading(false);
+  const onFinish = () => {
+    if (password != isPassword) {
+      Toast.show({
+        content: "两次输入的密码不匹配",
+      });
+      return;
     }
+    setIsNextStep(true);
   };
   return (
     <div className={styles.container}>
@@ -58,7 +58,7 @@ const Register = () => {
             rules={[
               {
                 required: true,
-                message: "请输入6-12位英文和数字的组合",
+                message: "请输入用户名",
               },
             ]}
           >
@@ -78,8 +78,10 @@ const Register = () => {
             rules={[
               {
                 required: true,
-                message: "密码至少8位",
+                message: "请输入6-12位的密码",
               },
+              { min: 6, message: "最低6位字符" },
+              { max: 12, message: "最多12位字符" },
             ]}
           >
             <Input.Password
@@ -98,8 +100,10 @@ const Register = () => {
             rules={[
               {
                 required: true,
-                message: "两次输入的密码不匹配",
+                message: "请输入6-12位的密码",
               },
+              { min: 6, message: "最低6位字符" },
+              { max: 12, message: "最多12位字符" },
             ]}
           >
             <Input.Password
@@ -149,9 +153,15 @@ const Register = () => {
           </Form.Item>
         </Form>
       )}
-      {isNextStep && <RegisterVerify />}
+      {isNextStep && (
+        <RegisterVerify
+          userName={userName}
+          password={password}
+          setIsNextStep={setIsNextStep}
+        />
+      )}
       <div className="privacy-text">
-        <Checkbox />
+        <Checkbox defaultChecked />
         我已阅读并同意相关的<span>条款和隐私政策</span>
       </div>
       <div className="customer">

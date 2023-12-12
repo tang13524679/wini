@@ -1,0 +1,203 @@
+.container{
+  padding-top: 50px;
+  padding-bottom: 70px;
+  min-height: 100vh;
+  background: #1F242A;
+  :global{
+    .home-banner{
+      position: relative;
+      img{
+        width: 100%;
+      }
+      .register{
+        position: absolute;
+        width: 313.821px;
+        height: 41.232px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #FFF;
+        font-family: Inter;
+        font-size: 17.361px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        border-radius: 41.232px;
+        border: 0.767px solid #A284E4;
+        background: linear-gradient(91deg, #6E6AF5 20.09%, #7F3CE3 61%, #522F7F 96.35%);
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    .title{
+      color: #FFF;
+      font-family: Inter;
+      font-size: 17.361px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 0.8;
+      padding-left: 9px;
+      border-left: 1.5px solid #3CC116;
+    }
+    .tasks-list{
+      margin-top: 50px;
+      .swiper{
+        padding-bottom: 25px;
+        .swiper-slide{
+          border-radius: 10px;
+          overflow: hidden;
+        }
+        .swiper-pagination{
+          bottom: 0;
+          span{
+            width: 8px;
+            height: 8px;
+            border-radius: 100%;
+            background: #434448;
+            opacity: 1;
+          }
+          span.swiper-pagination-bullet-active{
+            width: 28px;
+            border-radius: 8px;
+            background: #329029;
+          }
+        }
+      }
+    }
+    .recently{
+      padding: 20px 12px 0;
+      .swiper{
+        margin-top: 18px;
+        .swiper-slide{
+          .box{
+            background: #1B1B1F;
+            border-radius: 5px;
+            overflow: hidden;
+            padding-bottom: 9px;
+            img{
+              width: 100%;
+              border-radius: 5px;
+            }
+            .text-box{
+              .name{
+                padding: 9.5px 9px;
+                color: #F7F7F8;
+                font-family: Inter;
+                font-size: 14.467px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+              }
+              .hk{
+                text-align: center;
+                padding: 3px 5px;
+                background: rgba(56, 172, 22, 0.20);
+                color: #3ACC14;
+                font-family: Inter;
+                font-size: 11.574px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+              }
+            }
+          }
+        }
+      }
+    }
+    .partner-list{
+      padding: 18px 12px 0;
+      .swiper{
+        margin-top: 18px;
+        .swiper-slide{
+          img{
+            width: 100%;
+          }
+        }
+      }
+    }
+    .license-box{
+      padding: 18px 12px 0;
+      .license{
+        margin-top: 13px;
+        display: flex;
+        align-items: center;
+        .left{
+          display: flex;
+          .item{
+            width: 60.04px;
+            height: 66.912px;
+            background: url('/assets/home/hot/license-bg.png') no-repeat;
+            background-size: 100%;
+            text-align: center;
+            padding-top: 9px;
+            margin-right: 15px;
+            img{
+              margin: 0 auto;
+            }
+          }
+        }
+        .right{
+          flex: 1;
+          p{
+            color: #929296;
+            font-family: Inter;
+            font-size: 13.744px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.5;
+          }
+        }
+      }
+      .swiper{
+        margin-top: 13px;
+      }
+    }
+    .follow-us{
+      padding: 18px 12px 0;
+      .title-box{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .tit-left{
+          width: 50%;
+        }
+        .tit-right{
+          width: 50%;
+          display: flex;
+          align-items: center;
+          img{
+            margin-left: 10px;
+            width: 82.465px;
+          }
+        }
+      }
+      .follow-list{
+        margin-top: 10px;
+        display: flex;
+        .list{
+          width: 50%;
+          display: flex;
+          img{
+            margin-right: 15px;
+            width: 35px;
+          }
+        }
+      }
+    }
+    .add{
+      margin: 15px auto 25px;
+      width: 151.547px;
+      height: 41.594px;
+      background: linear-gradient(91deg, #6E6AF5 20.09%, #7F3CE3 61%, #522F7F 96.35%);
+      color: #FFF;
+      font-family: Inter;
+      font-size: 13.021px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 41.594px;
+      text-align: center;
+      border-radius: 3px;
+    }
+  }
+}

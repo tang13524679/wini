@@ -1,21 +1,30 @@
-import react, { useState } from "react";
+import react, { useState, useEffect } from "react";
 import styles from "./index.module.scss";
 import { LeftOutlined } from "@ant-design/icons";
 import { Select } from "antd";
-import { useRouter } from "next/router";
 import LoginForm from "./components/login-form";
 import Register from "./components/register";
+import { useRouter } from "next/router";
 
 const LoginModal = () => {
   const router = useRouter();
   const [loginState, setLoginState] = useState("login");
+  console.log(router);
+  useEffect(() => {
+    if (router.query.type) {
+      setLoginState(router.query.type);
+    } else {
+      setLoginState("login");
+    }
+  }, []);
+
   return (
     <div className={styles.loginBox}>
       <div className="login-tabBar">
         <LeftOutlined
           style={{ color: "#329029", fontSize: "18px" }}
           onClick={() => {
-            router.back();
+            router.push("/home");
           }}
         />
         <Select

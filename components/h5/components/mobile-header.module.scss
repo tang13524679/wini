@@ -1,0 +1,78 @@
+.headerBox{
+  height: 50px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: #1F2329;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  z-index: 100;
+  :global{
+    .left{
+      img{
+        width: 77px;
+        height: 30px;
+      }
+    }
+    .right{
+      .box{
+        display: flex;
+        align-items: center;
+        .login{
+          color: #FFF;
+          font-family: Inter;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          margin-right: 20px;
+        }
+        .register{
+          background: url('/assets/home/register-bg.png');
+          background-size: 100%;
+          background-position: center;
+          color: #2F3030;
+          font-size: 13.021px;
+          width: 74.624px;
+          height: 27.224px;
+          color: #FFF;
+          font-family: Inter;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .info{
+          color: #F7D2A0;
+          background: #343962;
+          border-radius: 20px;
+          font-size: 14px;
+          display: flex;
+          align-items: center;
+          padding: 5px 8px;
+          .icon{
+            background: url('/assets/balance.png') no-repeat;
+            width: 16px;
+            height: 16px;
+            background-size: 100% 100%;
+            margin: 0 3px;
+          }
+        }
+        .icon-messages{
+          background: url('/assets/nav/messages.png') no-repeat;
+          width: 24px;
+          height: 24px;
+          background-size: contain;
+          background-position: center;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}

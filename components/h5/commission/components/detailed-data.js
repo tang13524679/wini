@@ -1,30 +1,33 @@
-import react, { useState } from "react";
+import react, { useState, useEffect } from "react";
 import styles from "./detailed-data.module.scss";
+import { commissionApi } from "@/requests/frontend";
+import Loading from "@/components/h5/components/loading-mobile";
 
 const DetailedData = () => {
-  const [detType, setDetType] = useState("deposit");
+  const [detType, setDetType] = useState("DEPOSIT_RETUR");
   const [timeState, setTimeState] = useState("all");
+  const [isLoading, setIsLoading] = useState(false);
 
   const detTypeList = [
     {
       text: "存款",
-      type: "deposit",
+      type: "DEPOSIT_RETUR",
     },
     {
       text: "投注",
-      type: "bet",
+      type: "GAME_RETURN",
     },
     {
       text: "开客奖",
-      type: "open",
+      type: "INVITE_NEW_PLAYER",
     },
     {
       text: "下线代理分成",
-      type: "acting",
+      type: "SHARE_RETURN",
     },
     {
       text: "提现",
-      type: "withdraw",
+      type: "WITHDRAW_RETURN",
     },
   ];
   const timeList = [
@@ -49,6 +52,30 @@ const DetailedData = () => {
       value: "month",
     },
   ];
+
+  const fetchData = async () => {
+    try {
+      setIsLoading(true);
+      const res = await commissionApi.commissionKind({
+        activityenName: detType,
+        timeRange: timeState,
+      });
+      if (res.code == "1") {
+      }
+    } catch (error) {
+      Toast.show({
+        content: error,
+      });
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [detType, timeState]);
+
   return (
     <div className={styles.container}>
       <div className="tit">数据有延时，请于次日15:00更新为准</div>
@@ -91,6 +118,7 @@ const DetailedData = () => {
       <div className="list">
         <p>暂无数据</p>
       </div>
+      {isLoading && <Loading />}
     </div>
   );
 };

@@ -2,8 +2,15 @@ import react, { useEffect } from "react";
 import Link from "next/link";
 import styles from "./index.module.scss";
 import { RightOutlined } from "@ant-design/icons";
+import { cleanUserStore } from "@/utils/common";
+import { Modal } from "antd";
+import { useRouter } from "next/router";
+import { useGlobalState } from "@/hooks/global";
 
 const MinePage = () => {
+  const [{ user }, dispatch] = useGlobalState();
+  const router = useRouter();
+
   return (
     <div className={styles.container}>
       <div className="user-info">
@@ -28,7 +35,7 @@ const MinePage = () => {
         </div>
       </div>
       <div className="link-box">
-        <Link href="" passHref>
+        <Link href="/user/vip-club" passHref>
           <div className="box">
             <div className="tit">
               <img src="/assets/mine/icon1.png" />
@@ -46,7 +53,7 @@ const MinePage = () => {
             <RightOutlined />
           </div>
         </Link>
-        <Link href="" passHref>
+        <Link href="/user/task" passHref>
           <div className="box">
             <div className="tit">
               <img src="/assets/mine/icon3.png" />
@@ -55,7 +62,7 @@ const MinePage = () => {
             <RightOutlined />
           </div>
         </Link>
-        <Link href="" passHref>
+        <Link href="/user/personal" passHref>
           <div className="box">
             <div className="tit">
               <img src="/assets/mine/icon4.png" />
@@ -64,7 +71,7 @@ const MinePage = () => {
             <RightOutlined />
           </div>
         </Link>
-        <Link href="" passHref>
+        <Link href="/user/bank-card" passHref>
           <div className="box">
             <div className="tit">
               <img src="/assets/mine/icon5.png" />
@@ -73,7 +80,7 @@ const MinePage = () => {
             <RightOutlined />
           </div>
         </Link>
-        <Link href="" passHref>
+        <Link href="/user/game-history" passHref>
           <div className="box">
             <div className="tit">
               <img src="/assets/mine/icon6.png" />
@@ -82,7 +89,7 @@ const MinePage = () => {
             <RightOutlined />
           </div>
         </Link>
-        <Link href="" passHref>
+        <Link href="/user/transaction" passHref>
           <div className="box">
             <div className="tit">
               <img src="/assets/mine/icon7.png" />
@@ -91,7 +98,7 @@ const MinePage = () => {
             <RightOutlined />
           </div>
         </Link>
-        <Link href="" passHref>
+        <Link href="/user/favorites" passHref>
           <div className="box">
             <div className="tit">
               <img src="/assets/mine/icon8.png" />
@@ -100,7 +107,26 @@ const MinePage = () => {
             <RightOutlined />
           </div>
         </Link>
-        <div className="box">
+        <div
+          className="box"
+          onClick={() => {
+            Modal.confirm({
+              centered: true,
+              title: "提示",
+              content: "确定要退出当前登录状态吗?",
+              okText: "确定",
+              cancelText: "取消",
+              onOk: () => {
+                cleanUserStore();
+                dispatch({
+                  type: "set_user",
+                  payload: null,
+                });
+                router.push("/home");
+              },
+            });
+          }}
+        >
           <div className="tit">
             <img src="/assets/mine/icon9.png" />
             登出

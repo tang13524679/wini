@@ -7,6 +7,10 @@ import { userApi } from "@/requests/frontend";
 import { useGlobalState } from "@/hooks/global";
 import { uaInfo } from "@/utils/common";
 import store from "store";
+import { getDomain } from "@/utils/common";
+import { useRouter } from "next/router";
+import { encryptECB, encryptMD5 } from "@/utils/encrypt";
+import { Toast } from "antd-mobile";
 
 const LoginForm = () => {
   const [userName, setUserName] = useState("");
@@ -14,6 +18,7 @@ const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [, dispatch] = useGlobalState();
   const [ua, setUa] = useState({});
+  const router = useRouter();
 
   useEffect(() => {
     let result = uaInfo();
@@ -21,18 +26,37 @@ const LoginForm = () => {
   }, []);
 
   const onFinish = async () => {
+    let requestParams = {
+      loginaccount: userName,
+      loginpassword: password,
+      browserversion: ua.browser.name + ua.browser.version,
+      opratesystem: ua.os.name + ua.os.version,
+      enterprisecode: "EN001N",
+      domain: getDomain(),
+    };
     try {
       setIsLoading(true);
       const res = await userApi.login({
-        loginaccount: userName,
-        loginpassword: password,
-        browserversion: ua.browser.name + ua.browser.version,
-        opratesystem: ua.os.name + ua.os.version,
-        browserid: store.get("browserId"),
-        enterprisecode: "EN001N",
+        ...requestParams,
+        params: encryptECB(requestParams),
+        signature: encryptMD5(requestParams),
       });
-      console.log(res);
+      if (res.info) {
+        Toast.show({
+          content: "登录成功",
+        });
+        store.set("user", res.info);
+        store.set("token", res.info.token);
+        dispatch({
+          type: "set_user",
+          payload: res.info,
+        });
+        router.push("/home");
+      }
     } catch (error) {
+      Toast.show({
+        content: error,
+      });
       console.error(error);
     } finally {
       setIsLoading(false);
@@ -75,6 +99,8 @@ const LoginForm = () => {
               required: true,
               message: "请输入6-12位的密码",
             },
+            { min: 6, message: "最低6位字符" },
+            { max: 12, message: "最多12位字符" },
           ]}
         >
           <Input.Password

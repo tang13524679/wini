@@ -15,6 +15,7 @@ import { requestApi, uaInfo } from "@/utils/common";
 import * as checker from "@/utils/checker";
 import { getDomain } from "@/utils/common";
 import CryptoJS from "crypto-js";
+import md5 from "js-md5";
 
 let initialParams = {
   loginaccount: "",
@@ -84,6 +85,17 @@ const LoginWithAccount = (props) => {
     }
     return queryValue.substr(1);
   };
+
+  // 加密
+  const Encrypt = (word) => {
+    let key = CryptoJS.enc.Utf8.parse("FO92712eVGwk0IG4"); //16位数作为密钥
+    let srcs = CryptoJS.enc.Utf8.parse(word);
+    let encrypted = CryptoJS.AES.encrypt(srcs, key, {
+      mode: CryptoJS.mode.ECB,
+      padding: CryptoJS.pad.Pkcs7,
+    });
+    return encrypted.toString();
+  };
   function login() {
     requestApi(
       dispatch,
@@ -97,7 +109,18 @@ const LoginWithAccount = (props) => {
           enterprisecode: "EN001N",
           domain: getDomain(),
         };
-        // console.log(getTieInfo(requestParams), "sssss");
+        console.log({
+          loginaccount,
+          loginpassword,
+          browserversion: ua.browser.name + ua.browser.version,
+          opratesystem: ua.os.name + ua.os.version,
+          enterprisecode: "EN001N",
+          params:
+            "nvw9Uqjf94axUcCtzAOj9FIDmcE%2B6L7JiBQ4sHxP02zA3LemRWXFIVoQBhJF6YKEyI9txjSqfeT2a57kgxk5RBCsQ5kxOP5TsThzruVmG%2FuOkmhxJ6cEz%2BFKaBIMpAxMKLTK2oY44DrwnqxCqVLVINALipNaYDZwE%2BapR7OwWhk%3D",
+          signature: CryptoJS.MD5(
+            getTieInfo(requestParams) + "3JSHcteXuC8U0IBN"
+          ),
+        });
         if (!loginaccount || !loginpassword) throw t("required", "msg");
         return userApi.login({
           loginaccount,
@@ -105,10 +128,10 @@ const LoginWithAccount = (props) => {
           browserversion: ua.browser.name + ua.browser.version,
           opratesystem: ua.os.name + ua.os.version,
           enterprisecode: "EN001N",
-          params: getTieInfo(requestParams),
+          params: Encrypt(getTieInfo(requestParams)),
           signature: CryptoJS.MD5(
             getTieInfo(requestParams) + "3JSHcteXuC8U0IBN"
-          ),
+          ).toString(),
         });
       },
       (rst) => {
