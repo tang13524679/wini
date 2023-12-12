@@ -1,5 +1,47 @@
 .container{
+  padding-top: 50px;
   :global{
-    
+    .records-box{
+      padding: 15px;
+      .records-tit{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        .btn-icon-text{
+          padding: 0;
+          .box{
+            width: 92.693px;
+            height: 33.131px;
+            display: flex;   
+            align-items: center;
+            justify-content: center;
+            padding: 0 10px;
+            border-radius: 33.131px;
+            background: #2A2B30;
+            border: 1.15px solid #384E37;
+            .text{
+              color: #FFF;
+              font-family: Inter;
+              font-size: 13.401px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+            }
+          }
+        }
+        .amount{
+          color: #FFF;
+          font-family: Inter;
+          font-size: 13px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          span{
+            color: #FFDB41;
+          }
+        }
+      }
+    }
   }
 }
