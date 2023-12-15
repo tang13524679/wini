@@ -46,6 +46,8 @@
           overflow: hidden;
           .img-box{
             border: 1px solid #3CC116;
+            width: 100%;
+            min-height: 116px;
           }
           &::after{
             position: absolute;
@@ -58,6 +60,9 @@
             background: #1F242A;
             transform: rotate(45deg);
           }
+        }
+        .swiper-slide:nth-child(3){
+          margin-top: 0 !important;
         }
       }
     }

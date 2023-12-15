@@ -24,7 +24,7 @@ export function useAuth(from) {
 
 export function useCollectedGames() {
   const [{ user }] = useGlobalState();
-  const { data } = useSWR(user && "/api/v1/Post/postUserGameList");
+  const { data } = useSWR(user && "/ecrm-api/Post/postUserGameList");
   useEffect(() => {
     if (data?.info) store.set("collectedGames", data?.info);
   }, [data]);

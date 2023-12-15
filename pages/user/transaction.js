@@ -58,7 +58,7 @@ export default function TransactionPage() {
 
   function loadMore() {
     start++;
-    // fetchData();
+    fetchData();
   }
 
   function reload() {
@@ -118,7 +118,7 @@ export default function TransactionPage() {
   };
 
   useEffect(() => {
-    // fetchData();
+    fetchData();
     return () => {
       resetFilter();
     };

@@ -6,28 +6,49 @@ import { cleanUserStore } from "@/utils/common";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { useGlobalState } from "@/hooks/global";
+import useSWR from "swr";
+import qs from "query-string";
+import { formatOrdinal, getAvatarIndex } from "@/utils/common";
+import { encryptECB, encryptMD5 } from "@/utils/encrypt";
+import { ENTERPRISE_CODE } from "@/utils/const";
+import { useBalance } from "@/hooks/fund";
 
 const MinePage = () => {
   const [{ user }, dispatch] = useGlobalState();
   const router = useRouter();
+  const avatarIndex = getAvatarIndex(user?.employeecode);
+  const balance = useBalance();
+
+  const { data } = useSWR(
+    user && [
+      "/ecrm-api/vipController/getUserVip",
+      qs.stringify({
+        enterprisecode: ENTERPRISE_CODE,
+        params: encryptECB({ enterprisecode: ENTERPRISE_CODE }),
+        signature: encryptMD5({ enterprisecode: ENTERPRISE_CODE }),
+      }),
+    ]
+  );
+
+  console.log(data);
 
   return (
     <div className={styles.container}>
       <div className="user-info">
         <div className="avatar">
-          <img src="/assets/mine/avatar.png" />
+          <img src={`/assets/avatar/${avatarIndex}.jpg`} />
         </div>
         <div className="info">
           <div className="name">
-            宏图大志 <span>LV.2</span>
+            {user?.loginaccount} <span>{data?.info.currentLevelName}</span>
           </div>
-          <div className="time">第88天加入WIN8</div>
+          <div className="time">第{user?.registerDays}天加入WIN8</div>
         </div>
       </div>
       <div className="wallet-box">
         <div className="left">
           <div className="tit">钱包中心（HKD）</div>
-          <div className="num">0.00</div>
+          <div className="num">{balance}</div>
         </div>
         <div className="right">
           <div className="btn">充值</div>

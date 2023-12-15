@@ -6,7 +6,10 @@ import { useRouter } from "next/router";
 const NavBar = (props) => {
   const router = useRouter();
   return (
-    <div className={styles.navBarBox}>
+    <div
+      className={styles.navBarBox}
+      style={{ maxWidth: "430px", left: "50%", transform: "translateX(-50%)" }}
+    >
       <div
         className="nav-bar-left"
         onClick={() => {

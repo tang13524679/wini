@@ -48,6 +48,24 @@ export function commissionRecor(param) {
     signature: encryptMD5({ ...props }),
   });
 }
+// 佣金派发记录
+export function commissionAuditRecord(param) {
+  const props = { ...param, enterprisecode: ENTERPRISE_CODE };
+  return request(`/ecrm-api/Promo/commissionAuditRecord`, {
+    ...props,
+    params: encryptECB({ ...props }),
+    signature: encryptMD5({ ...props }),
+  });
+}
+// 佣金领取记录
+export function commissionRecord(param) {
+  const props = { ...param, enterprisecode: ENTERPRISE_CODE };
+  return request(`/ecrm-api/Promo/commissionRecord`, {
+    ...props,
+    params: encryptECB({ ...props }),
+    signature: encryptMD5({ ...props }),
+  });
+}
 // 佣金排行榜
 export function commissionRank(param) {
   const props = { ...param, enterprisecode: ENTERPRISE_CODE };

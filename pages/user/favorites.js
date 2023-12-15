@@ -81,7 +81,7 @@ export default function FavoritesPage() {
                             });
                           },
                           async () => {
-                            await mutate("/api/v1/Post/postUserGameList");
+                            await mutate("/ecrm-api/Post/postUserGameList");
                             message.error(t("success"));
                           }
                         );

@@ -24,9 +24,9 @@ export default function InnerPageLayout({ children }) {
           <div
             id="scrollableDiv"
             className="overflow-auto"
-            style={{ height: "calc(100vh - 50px)" }}
+            // style={{ height: "calc(100vh - 50px)" }}
           >
-            <div className="h-4"></div>
+            {/* <div className="h-4"></div> */}
             <div className="container mx-auto" style={{ padding: "50px 15px" }}>
               <>{children}</>
             </div>

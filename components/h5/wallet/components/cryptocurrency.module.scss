@@ -51,6 +51,9 @@
         .protocol{
           width: 86.525px;
           height: 30.921px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
           text-align: center;
           color: #FFF;
           font-family: Inter;
@@ -70,7 +73,7 @@
       }
       .currency-details{
         .details{
-          padding: 6.5px 10px;
+          padding: 6.5px 10px 15px;
           background: #242529;
           border-radius: 5px;
           margin-bottom: 27px;
@@ -115,9 +118,15 @@
             margin-top: 10px;
             .left{
               width: 40%;
+              canvas{
+                width: 82.56px !important;
+                height: 82.612px !important;
+                margin: 0 auto;
+                border: 2px solid #fff;
+              }
               img{
-                width: 82.56px;
-                height: 82.612px;
+                width: 82.56px !important;
+                height: 82.612px !important;
                 margin: 0 auto;
               }
             }
@@ -150,6 +159,40 @@
               }
               .p2{
                 color: #E43737;
+              }
+            }
+          }
+          .amount-box{
+            margin-top: 15px;
+            p{
+              color: #959EA8;
+              font-family: Inter;
+              font-size: 12.444px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+              margin-bottom: 6.3px;
+            }
+            .ant-input-affix-wrapper{
+              height: 34.566px;
+              width: 100%;
+              border-radius: 5px;
+              border: none;
+              background: #131416;
+              padding: 0 10px 0 12px;
+              color: #FFF;
+              font-family: Inter;
+              font-size: 12.444px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+              input{
+                color: #EEE;
+                font-family: Inter;
+                font-size: 12.985px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
               }
             }
           }

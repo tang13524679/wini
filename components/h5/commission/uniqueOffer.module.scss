@@ -17,9 +17,13 @@
           text-align: center;
           width: 82.56px;
           margin-right: 20px;
+          canvas{
+            width: 82.56px !important;
+            height: 82.63px !important;
+            border: 2px solid #fff;
+          }
           img{
-            width: 82.56px;
-            height: 82.63px;
+            
           }
           p{
             color: #959EA8;

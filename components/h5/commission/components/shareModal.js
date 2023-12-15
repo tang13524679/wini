@@ -1,9 +1,21 @@
 import react, { useState } from "react";
 import styles from "./shareModal.module.scss";
 import { Popup } from "antd-mobile";
+import copy from "copy-to-clipboard";
+import { Toast } from "antd-mobile";
+import { getDomain } from "@/utils/common";
+import { useGlobalState } from "@/hooks/global";
 
 const ShaeModal = (props) => {
+  const [{ user }] = useGlobalState();
   const [visible, setVisible] = useState(false);
+  const copyCot = (value) => {
+    copy(value);
+    Toast.show({
+      content: "复制成功",
+    });
+  };
+  console.log(user);
   return (
     <>
       {!props.isMore && (
@@ -60,7 +72,16 @@ const ShaeModal = (props) => {
               <img src="/assets/commission/icon_gxh.png" />
               <p>个性化</p>
             </div>
-            <div className="icon">
+            <div
+              className="icon"
+              onClick={() => {
+                copyCot(
+                  `${getDomain()}/login?agentCode=${
+                    user.employeecode
+                  }&source=FB`
+                );
+              }}
+            >
               <img src="/assets/commission/icon_fz.png" />
               <p>复制链接</p>
             </div>

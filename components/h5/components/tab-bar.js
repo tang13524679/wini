@@ -7,7 +7,10 @@ const TabBar = () => {
   const router = useRouter();
   const { pathname } = router;
   return (
-    <div className={styles.tabBarBox}>
+    <div
+      className={styles.tabBarBox}
+      style={{ maxWidth: "430px", left: "50%", transform: "translateX(-50%)" }}
+    >
       <div className="link-list">
         <Link href="/home" passHref>
           <div className="box">

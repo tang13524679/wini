@@ -1,8 +1,12 @@
-import react, { useState } from "react";
+import react, { useState, useEffect } from "react";
 import styles from "./cryptocurrency.module.scss";
 import copy from "copy-to-clipboard";
 import { Toast } from "antd-mobile";
 import { ExclamationCircleFilled } from "@ant-design/icons";
+import { walletApi } from "@/requests/frontend";
+import QRCode from "qrcode.react";
+import Loading from "../../components/loading-mobile";
+import { Input } from "antd";
 
 const Cryptocurrency = () => {
   const currencyTypeList = [
@@ -71,12 +75,69 @@ const Cryptocurrency = () => {
   const [currencyType, setCurrencyType] = useState("USDT");
   const [currencyTypeIndex, setCurrencyTypeIndex] = useState(0);
   const [protocolType, setProtocolType] = useState("");
+  const [usdtInfo, setUsdtInfo] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [depositNum, setDepositNum] = useState(0);
 
   const copyCot = (value) => {
     copy(value);
     Toast.show({
       content: "复制成功",
     });
+  };
+
+  const fetchData = async () => {
+    try {
+      setIsLoading(true);
+      const res = await walletApi.getRechargeUsdInfo({
+        usdtype: currencyType,
+        protocol: protocolType,
+      });
+      if (res.code == "1") {
+        setUsdtInfo(res.info);
+      }
+    } catch (error) {
+      Toast.show({
+        content: error,
+      });
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (protocolType) {
+      fetchData();
+    }
+  }, [protocolType]);
+
+  const confirmHandle = async () => {
+    if (!depositNum) {
+      Toast.show({
+        content: "请输入金额",
+      });
+      return;
+    }
+    try {
+      setIsLoading(true);
+      const res = await walletApi.doTrans({
+        depositNum,
+        usdtype: currencyType,
+      });
+      if (res.code == "1") {
+        Toast.show({
+          content: res.info + "," + "等待客服确认",
+        });
+      }
+    } catch (error) {
+      Toast.show({
+        content: error,
+      });
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -92,6 +153,8 @@ const Cryptocurrency = () => {
                 onClick={() => {
                   setCurrencyType(item.name);
                   setCurrencyTypeIndex(index);
+                  setProtocolType("");
+                  setDepositNum(0);
                 }}
               >
                 <img src={item.img} />
@@ -110,6 +173,7 @@ const Cryptocurrency = () => {
                 } protocol`}
                 onClick={() => {
                   setProtocolType(item.name);
+                  setDepositNum(0);
                 }}
               >
                 {item.name}
@@ -118,7 +182,55 @@ const Cryptocurrency = () => {
           })}
         </div>
         <div className="currency-details">
-          {currencyTypeList[currencyTypeIndex].protocol.map((item) => {
+          {protocolType && (
+            <div className="details">
+              <div className="address">
+                <p>地址：</p>
+                <input type="text" readOnly value={usdtInfo.waddress} />
+                <div
+                  className="copy"
+                  onClick={() => {
+                    copyCot(usdtInfo.waddress);
+                  }}
+                ></div>
+              </div>
+              <div className="details-text">
+                <div className="left">
+                  <QRCode value={usdtInfo.waddress} />
+                  {/* <img src={item.QRcode} /> */}
+                </div>
+                <div className="right">
+                  <div className="keep-btn">保存二维码</div>
+                  <p>最低存款=10{currencyType}</p>
+                  <p>当前参考汇率</p>
+                  <p className="p1">
+                    1 {currencyType}=HKD {usdtInfo.echrate}
+                  </p>
+                  <p className="p2">
+                    注意：使用您 {currencyType} 钱包扫码此二维码
+                  </p>
+                  <p>
+                    <ExclamationCircleFilled /> 此二维码仅允许扫码一次
+                  </p>
+                  <p></p>
+                </div>
+              </div>
+              <div className="amount-box">
+                <p>输入金额</p>
+                <Input
+                  value={depositNum}
+                  placeholder="请输入金额"
+                  className="lineInput"
+                  type="number"
+                  suffix="HKD"
+                  onChange={(e) => {
+                    setDepositNum(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
+          )}
+          {/* {currencyTypeList[currencyTypeIndex].protocol.map((item) => {
             return (
               protocolType == item.name && (
                 <div className="details">
@@ -155,11 +267,13 @@ const Cryptocurrency = () => {
                 </div>
               )
             );
-          })}
+          })} */}
         </div>
       </div>
       <div className="confirm-box">
-        <div className="confirm">完成交易</div>
+        <div className="confirm" onClick={confirmHandle}>
+          完成交易
+        </div>
         <div className="text">
           重要：如果您需要任何帮助，请联系 <span>线上客服</span>
         </div>
@@ -204,6 +318,7 @@ const Cryptocurrency = () => {
           </li>
         </ul>
       </div>
+      {isLoading && <Loading />}
     </div>
   );
 };

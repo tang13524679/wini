@@ -3,12 +3,17 @@ import styles from "./mobile-header.module.scss";
 import Link from "next/link";
 import { useGlobalState } from "@/hooks/global";
 import { useRouter } from "next/router";
+import { useBalance } from "@/hooks/fund";
 
 export default function MobileHeader() {
   const [{ user }] = useGlobalState();
   const router = useRouter();
+  const balance = useBalance();
   return (
-    <div className={styles.headerBox}>
+    <div
+      className={styles.headerBox}
+      style={{ maxWidth: "430px", left: "50%", transform: "translateX(-50%)" }}
+    >
       <div className="left">
         <Link href="/home">
           <img src="/assets/home/LOGO.png" />
@@ -45,7 +50,7 @@ export default function MobileHeader() {
             >
               <div>{user?.loginaccount}</div>
               <div className="icon"></div>
-              <div>0</div>
+              <div>{balance || 0}</div>
             </div>
             <Link href="/user/messages" passHref>
               <div className="icon-messages"></div>

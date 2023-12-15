@@ -1,8 +1,64 @@
-import react, { useState } from "react";
+import react, { useState, useEffect } from "react";
 import styles from "./record.module.scss";
+import Loading from "@/components/h5/components/loading-mobile";
+import { Toast } from "antd-mobile";
+import { commissionApi } from "@/requests/frontend";
+import { Empty } from "antd-mobile";
 
 const Record = () => {
   const [gradeState, setGradeState] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [amount, setAmount] = useState(0);
+  const [record, setRecord] = useState([]);
+
+  const fetchDataAuditRecord = async () => {
+    try {
+      setIsLoading(true);
+      const res = await commissionApi.commissionAuditRecord({
+        timeRange: "week",
+      });
+      if (res.code == "1") {
+        setAmount(res?.info?.amount);
+        setRecord(res?.info?.record);
+      }
+    } catch (error) {
+      Toast.show({
+        content: error,
+      });
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const fetchDataRecord = async () => {
+    try {
+      setIsLoading(true);
+      const res = await commissionApi.commissionRecord({
+        timeRange: "week",
+      });
+      if (res.code == "1") {
+        setAmount(res?.info?.amount);
+        setRecord(res?.info?.record);
+      }
+    } catch (error) {
+      Toast.show({
+        content: error,
+      });
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (gradeState == 1) {
+      fetchDataAuditRecord();
+    } else {
+      fetchDataRecord();
+    }
+  }, [gradeState]);
+
   return (
     <div className={styles.container}>
       <div className="top-box">
@@ -29,13 +85,13 @@ const Record = () => {
         </p>
         {gradeState == 1 && (
           <div className="input-box">
-            <input value="0" readOnly />
+            <input value={amount} readOnly />
             <span>合计总发放佣金（HKD）:</span>
           </div>
         )}
         {gradeState == 2 && (
           <div className="input-box">
-            <input value="0" readOnly />
+            <input value={amount} readOnly />
             <span>合计总提现佣金（HKD）:</span>
           </div>
         )}
@@ -46,7 +102,7 @@ const Record = () => {
         <div>查询明细</div>
       </div>
       <div className="list">
-        <p>暂无数据</p>
+        {record.length == 0 && <Empty description="暂无数据" />}
       </div>
       <div className="notice-box">
         <div className="item">
@@ -79,6 +135,7 @@ const Record = () => {
           <p>WIN1合营部保留随时更改备金比例、 取消、 暂停或 终止的 权利。</p>
         </div>
       </div>
+      {isLoading && <Loading />}
     </div>
   );
 };

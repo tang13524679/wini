@@ -10,7 +10,8 @@ import { PROVIDERS, GAME_TYPES } from "@/utils/const";
 export async function play(game, dispatch) {
   // authority check
   const user = store.get("user");
-  if (!user) return (location.href = "/sign-in");
+  if (!user) return (location.href = "/login");
+  // if (!user) return (location.href = "/sign-in");
 
   // const lang = store.get('lang');
   // const balance = store.get('balance');

@@ -14,21 +14,26 @@ import { formatMoney } from "@/utils/common";
 import { ENTERPRISE_CODE } from "@/utils/const";
 import { t } from "@/utils/translate";
 import NavBar from "@/components/h5/components/nav-bar";
+import { encryptECB, encryptMD5 } from "@/utils/encrypt";
 
 export default function VipClubPage() {
   const [{ user }] = useGlobalState();
   const { data: userVip } = useSWR(
     user && [
-      "/api/v1/vipController/getUserVip",
+      "/ecrm-api/vipController/getUserVip",
       qs.stringify({
         enterprisecode: ENTERPRISE_CODE,
+        params: encryptECB({ enterprisecode: ENTERPRISE_CODE }),
+        signature: encryptMD5({ enterprisecode: ENTERPRISE_CODE }),
       }),
     ]
   );
   const { data: vipInfos } = useSWR([
-    "/api/v1/vipController/getVipInfo",
+    "/ecrm-api/vipController/getVipInfo",
     qs.stringify({
       enterprisecode: ENTERPRISE_CODE,
+      params: encryptECB({ enterprisecode: ENTERPRISE_CODE }),
+      signature: encryptMD5({ enterprisecode: ENTERPRISE_CODE }),
     }),
   ]);
 

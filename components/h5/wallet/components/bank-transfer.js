@@ -4,6 +4,8 @@ import { Input, Dropdown, Menu } from "antd";
 import { t } from "@/utils/translate";
 import { useReceiveBanks } from "@/hooks/fund";
 import { DownOutlined } from "@ant-design/icons";
+import { Toast } from "antd-mobile";
+import { useRouter } from "next/router";
 
 const BankTransfer = () => {
   const amountList = [
@@ -35,6 +37,28 @@ const BankTransfer = () => {
   const [amount, setAmount] = useState("");
   const receiveBanks = useReceiveBanks();
   const [receiveBank, setReceiveBank] = useState({});
+  const router = useRouter();
+
+  const confirmHandler = () => {
+    if (!amount) {
+      Toast.show({
+        content: "金钱数额不能为空",
+      });
+    } else if (JSON.stringify(receiveBank) == "{}") {
+      Toast.show({
+        content: "WIN1收款账号不能为空",
+      });
+    } else {
+      router.push({
+        pathname: "/fund/payment-info",
+        query: {
+          ...receiveBank,
+          orderamount: amount,
+        },
+      });
+    }
+  };
+  console.log(receiveBank);
 
   return (
     <div className={styles.container}>
@@ -93,7 +117,9 @@ const BankTransfer = () => {
         </div>
       </Dropdown>
       <div className="confirm-box">
-        <div className="confirm">确认</div>
+        <div className="confirm" onClick={confirmHandler}>
+          确认
+        </div>
         <div className="text">
           存款遇到问题？请联系 <span>线上客服</span> 进行解决
         </div>

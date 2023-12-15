@@ -324,20 +324,22 @@ export default function HomePage() {
   ]);
 
   const { data: notice } = useSWR([
-    "/api/v1/Notic/Notic",
+    "/ecrm-api/Notic/Notic",
     qs.stringify({
       brandcode: BRAND_CODE,
       enterprisecode: ENTERPRISE_CODE,
     }),
   ]);
   // const { data: hotMatches } = useSWR(
-  //     '/api/v1/gameItemGameTypeEnterprise/popularGames'
+  //     '/ecrm-api/gameItemGameTypeEnterprise/popularGames'
   // );
-  const { data: recentGames } = useSWR(user && "/api/v1/Game/recentGamesList");
-  const { data: isRedEnvelope } = useSWR(
-    "/api/v1/ActivityNationalDay/promotionStatus"
+  const { data: recentGames } = useSWR(
+    user && "/ecrm-api/Game/recentGamesList"
   );
-  // const { data: recentWin } = useSWR('/api/v1/hotGameRanking/recentWin');
+  const { data: isRedEnvelope } = useSWR(
+    "/ecrm-api/ActivityNationalDay/promotionStatus"
+  );
+  // const { data: recentWin } = useSWR('/ecrm-api/hotGameRanking/recentWin');
   useEffect(() => {
     if (!isMobile()) {
       setSlidesPerView(4);

@@ -5,8 +5,13 @@ import Head from "next/head";
 import copy from "copy-to-clipboard";
 import { Toast } from "antd-mobile";
 import ShaeModal from "./components/shareModal";
+import { getDomain } from "@/utils/common";
+import { useGlobalState } from "@/hooks/global";
+import QRCode from "qrcode.react";
 
 const UniqueOffer = () => {
+  const [{ user }] = useGlobalState();
+  const invitationLink = `${getDomain()}/login?agentCode=${user.employeecode}`;
   const copyCot = (value) => {
     copy(value);
     Toast.show({
@@ -23,7 +28,7 @@ const UniqueOffer = () => {
       <div className="content-box">
         <div className="code-box">
           <div className="qr">
-            <img src="/assets/commission/qr.png" />
+            <QRCode value={invitationLink} />
             <p>您的邀请码</p>
           </div>
           <div className="text">
@@ -34,7 +39,7 @@ const UniqueOffer = () => {
         <div className="copy-box">
           <div className="item">
             <p>专属邀请码</p>
-            <input type="text" readOnly value="64C935E0F10A1" />
+            <input type="text" readOnly value={user.employeecode} />
             <div
               className="copy"
               onClick={() => {
@@ -44,15 +49,11 @@ const UniqueOffer = () => {
           </div>
           <div className="item">
             <p>邀请链接</p>
-            <input
-              type="text"
-              readOnly
-              value="Https://m.win8.com/?u_code=64C954R3saA1"
-            />
+            <input type="text" readOnly value={invitationLink} />
             <div
               className="copy"
               onClick={() => {
-                copyCot("Https://m.win8.com/?u_code=64C954R3saA1");
+                copyCot(invitationLink);
               }}
             ></div>
           </div>

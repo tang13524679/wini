@@ -1,4 +1,4 @@
-import react from "react";
+import react, { useState, useEffect } from "react";
 import styles from "./index.module.scss";
 import MobileHeader from "../components/mobile-header";
 import { useGlobalState } from "@/hooks/global";
@@ -6,13 +6,54 @@ import { useRouter } from "next/router";
 import HotGameList from "./components/hot-game-list";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Grid, Pagination, Navigation } from "swiper";
-// import "swiper/css/pagination";
+import { homeApi } from "@/requests/frontend";
+import { Toast } from "antd-mobile";
+import { play } from "@/utils/common";
 
 SwiperCore.use([Grid, Pagination]);
 
 const HomePage = () => {
-  const [{ user }] = useGlobalState();
+  const [{ user }, dispatch] = useGlobalState();
   const router = useRouter();
+  const [bannerList, setBannerList] = useState([]);
+  const [recentGamesList, setRecentGamesList] = useState([]);
+
+  const fetchDataTasksList = async () => {
+    try {
+      const res = await homeApi.bannerList({});
+      if (res.code == "1") {
+        setBannerList(res.info);
+      }
+    } catch (error) {
+      Toast.show({
+        content: error,
+      });
+      console.error(error);
+    } finally {
+    }
+  };
+
+  const fetchDataRecentGamesList = async () => {
+    try {
+      const res = await homeApi.recentGamesList({});
+      if (res.code == "1") {
+        setRecentGamesList(res.info);
+      }
+    } catch (error) {
+      Toast.show({
+        content: error,
+      });
+      console.error(error);
+    } finally {
+    }
+  };
+
+  useEffect(() => {
+    fetchDataTasksList();
+    user && fetchDataRecentGamesList();
+  }, []);
+
+  console.log(user);
 
   return (
     <div className={styles.container}>
@@ -41,49 +82,46 @@ const HomePage = () => {
             clickable: true,
           }}
         >
+          {bannerList?.map((item) => {
+            return (
+              <SwiperSlide key={item.lsh}>
+                <img src={item.imgpath} />
+              </SwiperSlide>
+            );
+          })}
           <SwiperSlide>
-            <img src="assets/home/hot/tasks1.png" />
+            <img src="/assets/home/hot/tasks1.png" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="assets/home/hot/tasks2.png" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="assets/home/hot/tasks3.png" />
-          </SwiperSlide>
-        </Swiper>
-      </div>
-      <div className="recently">
-        <div className="title">最近的重大胜利</div>
-        <Swiper slidesPerView={2.4} spaceBetween={12}>
-          <SwiperSlide>
-            <div className="box">
-              <img src="assets/home/hot/re_1.png" />
-              <div className="text-box">
-                <div className="name">隐</div>
-                <div className="hk">HK 360,514.89</div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="box">
-              <img src="assets/home/hot/re_2.png" />
-              <div className="text-box">
-                <div className="name">朱克拉克斯德</div>
-                <div className="hk">HK 360,514.89</div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="box">
-              <img src="assets/home/hot/re_3.png" />
-              <div className="text-box">
-                <div className="name">USDT 卖家</div>
-                <div className="hk">HK 360,514.89</div>
-              </div>
-            </div>
+            <img src="/assets/home/hot/tasks2.png" />
           </SwiperSlide>
         </Swiper>
       </div>
+      {user && (
+        <div className="recently">
+          <div className="title">最近的重大胜利</div>
+          <Swiper slidesPerView={2.4} spaceBetween={12}>
+            {recentGamesList?.map((item) => {
+              return (
+                <SwiperSlide key={item.gameId}>
+                  <div
+                    className="box"
+                    onClick={() => {
+                      play(item, dispatch);
+                    }}
+                  >
+                    <img src={item.imagename} />
+                    <div className="text-box">
+                      <div className="name">{item.cnname}</div>
+                      <div className="hk">HK 360,514.89</div>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
+      )}
       <div className="partner-list">
         <div className="title">合作伙伴</div>
         <Swiper

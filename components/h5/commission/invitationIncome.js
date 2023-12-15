@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import react, { useState, useEffect } from "react";
 import styles from "./invitationIncome.module.scss";
 import NavBar from "@/components/h5/components/nav-bar";
 import Head from "next/head";
@@ -7,9 +7,13 @@ import Member from "./components/member";
 import DetailedData from "./components/detailed-data";
 import Record from "./components/record";
 import RankingList from "./components/ranking-list";
+import { useGlobalState } from "@/hooks/global";
+import { useRouter } from "next/router";
 
 const MarketingPlatform = () => {
   const [navState, setNavState] = useState(1);
+  const [{ user }] = useGlobalState();
+  const router = useRouter();
   const navList = [
     {
       text: "汇总",
@@ -32,6 +36,12 @@ const MarketingPlatform = () => {
       value: 5,
     },
   ];
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/login");
+    }
+  }, []);
 
   return (
     <div className={styles.container}>
