@@ -13,6 +13,7 @@ import PageLoading from "@/components/page-loading";
 import EmptyPage from "@/components/empty-page";
 import Loading from "@/components/loading";
 import classNames from "classnames";
+import styles from "./transaction.module.scss";
 import LoadingNoMore from "@/components/loading-nomore";
 import NavBar from "@/components/h5/components/nav-bar";
 
@@ -64,7 +65,7 @@ export default function TransactionPage() {
   function reload() {
     start = 0;
     setList([]);
-    // fetchData();
+    fetchData();
   }
 
   function reset() {
@@ -77,7 +78,7 @@ export default function TransactionPage() {
       label: t("all"),
       value: "",
     });
-    // fetchData();
+    fetchData();
   }
 
   function resetFilter() {
@@ -132,162 +133,164 @@ export default function TransactionPage() {
         <div className="bgInnerPage">
           <NavBar title="交易记录" />
           {/* <InnerPageTitle title={t('transaction', 'nav')} /> */}
-          <div className="mt-5 flex flex-wrap gap-4 lg:gap-5">
-            {orderTypes.map((item, index) => (
-              <div
-                key={item}
-                className={classNames(
-                  "px-4 py-1 rounded-full transition cursor-pointer",
-                  orderType === index + 1 ? "bgMainYellow" : "bgWhite6"
-                )}
-                onClick={() => {
-                  const ot = index + 1;
-                  setOrderType(ot);
-                  setOrderStatus({
-                    label: t("all"),
-                    value: "",
-                  });
-                  if (ot === 3 || ot === 4 || ot === 5) {
-                    setStatus(false);
-                  } else {
-                    setStatus(true);
-                  }
-                  // 充值 1 提现 2 优惠 3 返水 4 冲正 5
-                  filter.ordertype = index + 1;
-                  filter.orderstatus = "";
+          <div className={styles.container}>
+            <div className="mt-5 flex flex-wrap lg:gap-5 nav-list">
+              {orderTypes.map((item, index) => (
+                <div
+                  key={item}
+                  className={classNames(
+                    "item px-4 py-1 rounded-full transition cursor-pointer",
+                    orderType === index + 1 ? "active" : ""
+                  )}
+                  onClick={() => {
+                    const ot = index + 1;
+                    setOrderType(ot);
+                    setOrderStatus({
+                      label: t("all"),
+                      value: "",
+                    });
+                    if (ot === 3 || ot === 4 || ot === 5) {
+                      setStatus(false);
+                    } else {
+                      setStatus(true);
+                    }
+                    // 充值 1 提现 2 优惠 3 返水 4 冲正 5
+                    filter.ordertype = index + 1;
+                    filter.orderstatus = "";
+                    reload();
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+            <div className="clWhite30 mt-3 text">{t("last30")}</div>
+            <div className="flex items-center my-3">
+              <DatePicker
+                placeholder={t("startDate", "field")}
+                inputReadOnly={true}
+                allowClear={false}
+                value={startDate}
+                onChange={(date, dateString) => {
+                  setStartDate(date);
+                  filter.orderdate_begin = dateString;
                   reload();
                 }}
-              >
-                {item}
+              />
+              <div className="mx-2">—</div>
+              <DatePicker
+                placeholder={t("endDate", "field")}
+                inputReadOnly={true}
+                allowClear={false}
+                value={endDate}
+                onChange={(date, dateString) => {
+                  setEndDate(date);
+                  filter.orderdate_end = dateString;
+                  reload();
+                }}
+              />
+              <div className="ml-4 btnText" onClick={() => reset()}>
+                {t("default")}
               </div>
-            ))}
-          </div>
-          <div className="clWhite30 mt-3">{t("last30")}</div>
-          <div className="flex items-center my-3">
-            <DatePicker
-              placeholder={t("startDate", "field")}
-              inputReadOnly={true}
-              allowClear={false}
-              value={startDate}
-              onChange={(date, dateString) => {
-                setStartDate(date);
-                filter.orderdate_begin = dateString;
-                reload();
-              }}
-            />
-            <div className="mx-2">—</div>
-            <DatePicker
-              placeholder={t("endDate", "field")}
-              inputReadOnly={true}
-              allowClear={false}
-              value={endDate}
-              onChange={(date, dateString) => {
-                setEndDate(date);
-                filter.orderdate_end = dateString;
-                reload();
-              }}
-            />
-            <div className="ml-4 btnText" onClick={() => reset()}>
-              {t("default")}
             </div>
-          </div>
-          <div className="flex flex-wrap items-center">
-            {isStatus && (
-              <Dropdown
-                trigger="click"
-                placement="topLeft"
-                overlay={
-                  <Menu>
-                    <Menu.Item
-                      key="0"
-                      onClick={() => {
-                        setOrderStatus({
-                          label: t("all"),
-                          value: "",
-                        });
-                        filter.orderstatus = "";
-                        reload();
-                      }}
-                    >
-                      <div>{t("all")}</div>
-                    </Menu.Item>
-                    {orderStatus1.map((item, index) => (
+            <div className="flex flex-wrap items-center">
+              {isStatus && (
+                <Dropdown
+                  trigger="click"
+                  placement="topLeft"
+                  overlay={
+                    <Menu>
                       <Menu.Item
-                        key={item}
+                        key="0"
                         onClick={() => {
                           setOrderStatus({
-                            label: item,
-                            value: index + 1,
+                            label: t("all"),
+                            value: "",
                           });
-                          // 成功 1 进行中 2  失败 3
-                          filter.orderstatus = index + 1;
+                          filter.orderstatus = "";
                           reload();
                         }}
                       >
-                        {item}
+                        <div>{t("all")}</div>
                       </Menu.Item>
-                    ))}
-                  </Menu>
-                }
-              >
-                <div className="cursor-pointer ml-2">
-                  <div className="flex items-center">
-                    <div className="mx-1">{orderStatus.label}</div>
-                    <div className="icon-dropdown"></div>
-                  </div>
-                </div>
-              </Dropdown>
-            )}
-            <div className="mx-4 my-2">
-              {t("total")}: {renderMoneyStatus(total.sumamount)}
-            </div>
-          </div>
-          {init && <PageLoading />}
-          {!init && list.length === 0 && <EmptyPage />}
-          {!init && list.length > 0 && (
-            <InfiniteScroll
-              scrollableTarget="scrollableDiv"
-              dataLength={list.length}
-              next={loadMore}
-              hasMore={hasMore}
-              loader={<Loading />}
-              endMessage={<LoadingNoMore />}
-            >
-              {list.map((item) => (
-                <div
-                  key={item.ordernumber}
-                  className="flex justify-between items-center bdLine py-4"
+                      {orderStatus1.map((item, index) => (
+                        <Menu.Item
+                          key={item}
+                          onClick={() => {
+                            setOrderStatus({
+                              label: item,
+                              value: index + 1,
+                            });
+                            // 成功 1 进行中 2  失败 3
+                            filter.orderstatus = index + 1;
+                            reload();
+                          }}
+                        >
+                          {item}
+                        </Menu.Item>
+                      ))}
+                    </Menu>
+                  }
                 >
-                  {item.ordertype === 1 ? (
-                    <div className="bgGradientYellow p-3 rounded-full mr-3">
-                      <div className="icon-deposit"></div>
+                  <div className="cursor-pointer ml-2">
+                    <div className="flex items-center">
+                      <div className="mx-1">{orderStatus.label}</div>
+                      <div className="icon-dropdown"></div>
                     </div>
-                  ) : (
-                    <div className="bgGradientBlue p-3 rounded-full mr-3">
-                      <div className="icon-withdraw"></div>
-                    </div>
-                  )}
-                  <div className="flex-auto sm:basis-1/3">
-                    <div className="clWhite">
-                      {orderTypes[item.ordertype - 1]}
-                    </div>
-                    <div className="clWhite70 text-xs">{item.orderdate}</div>
                   </div>
-                  <div className="sm:basis-1/3 clWhite hidden sm:block text-right font-din-medium">
-                    {formatMoney(item.orderamount)}
-                  </div>
-                  <div className="sm:basis-1/3">
-                    <div className="clWhite sm:hidden text-right font-din-medium">
+                </Dropdown>
+              )}
+              <div className="mx-4 my-2">
+                {t("total")}: {renderMoneyStatus(total.sumamount)}
+              </div>
+            </div>
+            {init && <PageLoading />}
+            {!init && list.length === 0 && <EmptyPage />}
+            {!init && list.length > 0 && (
+              <InfiniteScroll
+                scrollableTarget="scrollableDiv"
+                dataLength={list.length}
+                next={loadMore}
+                hasMore={hasMore}
+                loader={<Loading />}
+                endMessage={<LoadingNoMore />}
+              >
+                {list.map((item) => (
+                  <div
+                    key={item.ordernumber}
+                    className="flex justify-between items-center bdLine py-4"
+                  >
+                    {item.ordertype === 1 ? (
+                      <div className="bgGradientYellow p-3 rounded-full mr-3">
+                        <div className="icon-deposit"></div>
+                      </div>
+                    ) : (
+                      <div className="bgGradientBlue p-3 rounded-full mr-3">
+                        <div className="icon-withdraw"></div>
+                      </div>
+                    )}
+                    <div className="flex-auto sm:basis-1/3">
+                      <div className="clWhite">
+                        {orderTypes[item.ordertype - 1]}
+                      </div>
+                      <div className="clWhite70 text-xs">{item.orderdate}</div>
+                    </div>
+                    <div className="sm:basis-1/3 clWhite hidden sm:block text-right font-din-medium">
                       {formatMoney(item.orderamount)}
                     </div>
-                    <div className="text-xs text-right">
-                      <Status status={item.orderstatus} />
+                    <div className="sm:basis-1/3">
+                      <div className="clWhite sm:hidden text-right font-din-medium">
+                        {formatMoney(item.orderamount)}
+                      </div>
+                      <div className="text-xs text-right">
+                        <Status status={item.orderstatus} />
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </InfiniteScroll>
-          )}
+                ))}
+              </InfiniteScroll>
+            )}
+          </div>
         </div>
       </div>
     </InnerPageLayout>

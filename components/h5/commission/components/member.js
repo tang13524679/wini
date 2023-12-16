@@ -69,6 +69,9 @@ const Member = () => {
             二级
           </div>
         </div>
+        <div className="record-list">
+          <div className="item"></div>
+        </div>
       </div>
       <div className="data-content">
         <div className="no-data">暂无数据</div>

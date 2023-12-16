@@ -352,5 +352,5 @@ export function renderMoneyStatus(amount) {
 }
 
 export function getDomain() {
-  return location.host;
+  return window.location.host;
 }

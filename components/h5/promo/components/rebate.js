@@ -56,7 +56,7 @@ const Rebate = () => {
           setActiveState={setActiveState}
           activeState={activeState}
           record="返水记录"
-          href="/promo/rebate"
+          href="/user/transaction"
         />
       </div>
       <div className="right">
