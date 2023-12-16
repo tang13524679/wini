@@ -88,7 +88,15 @@ export function messageCount(params) {
 }
 // 消息列表
 export function sysMessage(params) {
-  return request(`/ecrm-api/UserMessage/SysMessage`, params);
+  const param = {
+    ...params,
+    enterprisecode: ENTERPRISE_CODE,
+  };
+  return request(`/ecrm-api/UserMessage/SysMessage`, {
+    ...param,
+    params: encryptECB({ ...param }),
+    signature: encryptMD5({ ...param }),
+  });
 }
 // 阅读消息
 export function updateSysMessage(params) {

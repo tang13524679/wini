@@ -101,7 +101,12 @@ const HotGameList = () => {
         >
           {providerMap[slide].map((item, index) => {
             return (
-              <SwiperSlide key={index}>
+              <SwiperSlide
+                key={index}
+                className={
+                  providerMap[slide].length < 7 ? "swiperSlide-on" : ""
+                }
+              >
                 <div
                   className="img-box"
                   onClick={() => {
@@ -121,7 +126,7 @@ const HotGameList = () => {
   return (
     <div className={styles.hotContainer}>
       <div className="tabbar-swiper">
-        <Swiper slidesPerView={3.3} spaceBetween={10}>
+        <Swiper slidesPerView={3.5} spaceBetween={5}>
           <SwiperSlide
             className={`${slide == "HOT" ? "active" : ""}`}
             onClick={() => {

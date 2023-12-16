@@ -31,11 +31,14 @@ export default function App({ Component, pageProps }) {
   });
   useEffect(() => {
     // default store
+    store.set("lang", "zh");
     const lang = store.get("lang");
+    console.log(lang, "1111");
     const remind = store.get("remind");
     const isShowMoney = store.get("isShowMoney");
     const searchHistory = store.get("searchHistory");
-    if (!lang) store.set("lang", "vi");
+    if (!lang) store.set("lang", "zh");
+    console.log(lang, "2222");
     if (!remind) store.set("remind", 0);
     if (typeof isShowMoney === "undefined") store.set("isShowMoney", true);
     if (!searchHistory) store.set("searchHistory", []);

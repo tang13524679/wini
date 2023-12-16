@@ -20,9 +20,9 @@ export default function Layout({ children }) {
 
   const locale = useMemo(() => {
     switch (lang) {
-      case "vi":
-        moment.locale("vi");
-        return viVN;
+      case "zh":
+        moment.locale("zh");
+        return zhCN;
 
       case "en":
         moment.locale("en");

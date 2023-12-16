@@ -47,7 +47,10 @@
           .img-box{
             border: 1px solid #3CC116;
             width: 100%;
-            min-height: 116px;
+            min-height: 126px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
           }
           &::after{
             position: absolute;
@@ -61,7 +64,7 @@
             transform: rotate(45deg);
           }
         }
-        .swiper-slide:nth-child(3){
+        .swiperSlide-on:nth-child(3){
           margin-top: 0 !important;
         }
       }

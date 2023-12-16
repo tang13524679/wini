@@ -116,7 +116,7 @@ export const providerMap = {
   // HOT: ['FB', 'WM', 'SEXY', 'AG', 'GW'],
   SX: ["WM", "AG", "SEXY", "DG", "SBO", "BBIN", "SA", "PT", "EVO"],
   TY: ["SABA", "CMD", "SBO", "FB"],
-  CP: ["GW", "GPI", "TCG", "ON"],
+  CP: ["GW", "GPI"],
   BY: ["CQ9", "PT"],
   CF: ["FA", "WGB"],
   DZ: ["AE", "V8", "KM", "SBO", "PT", "CQ9"],
@@ -127,10 +127,18 @@ export const providerMap = {
 export const GAME_TYPES = (lang = "zh") => {
   return [
     {
-      label: t("cock", null, lang),
-      value: "CF",
-      iconValue: "cock",
-      icon: "icon-cock",
+      label: t("sports", null, lang),
+      value: "TY",
+      iconValue: "sports",
+      icon: "icon-sports",
+      iconOn: "icon-sports-on",
+    },
+    {
+      label: t("esports", null, lang),
+      value: "DJ",
+      iconValue: "esports",
+      icon: "icon-esports",
+      iconOn: "icon-esports-on",
     },
     {
       label: t("live", null, lang),
@@ -140,37 +148,25 @@ export const GAME_TYPES = (lang = "zh") => {
       iconOn: "icon-live-on",
     },
     {
-      label: t("sports", null, lang),
-      value: "TY",
-      iconValue: "sports",
-      icon: "icon-sports",
-      iconOn: "icon-sports-on",
+      label: t("slot", null, lang),
+      value: "SLOT",
+      iconValue: "slot",
+      icon: "icon-slot",
+      iconOn: "icon-slot-on",
     },
+    {
+      label: t("cock", null, lang),
+      value: "CF",
+      iconValue: "cock",
+      icon: "icon-cock",
+    },
+
     {
       label: t("lottery", null, lang),
       value: "CP",
       iconValue: "lottery",
       icon: "icon-lottery",
       iconOn: "icon-lottery-on",
-    },
-    // {
-    //     label: t('sicbo', null, lang),
-    //     value: 'SB',
-    //     icon: 'icon-sicbo',
-    //     iconOn: 'icon-sicbo-on',
-    // },
-    // {
-    //     label: t('discJolt', null, lang),
-    //     value: 'SD',
-    //     icon: 'icon-discjolt',
-    //     iconOn: 'icon-discjolt-on',
-    // },
-    {
-      label: t("fishing", null, lang),
-      value: "BY",
-      iconValue: "fishing",
-      icon: "icon-fishing",
-      iconOn: "icon-fishing-on",
     },
     {
       label: t("egame", null, lang),
@@ -179,20 +175,26 @@ export const GAME_TYPES = (lang = "zh") => {
       icon: "icon-egame",
       iconOn: "icon-egame-on",
     },
-
+    // {
+    //   label: t("sicbo", null, lang),
+    //   value: "SB",
+    //   iconValue: "sicbo",
+    //   icon: "icon-sicbo",
+    //   iconOn: "icon-sicbo-on",
+    // },
+    // {
+    //   label: t("discJolt", null, lang),
+    //   value: "SD",
+    //   iconValue: "discJolt",
+    //   icon: "icon-discjolt",
+    //   iconOn: "icon-discjolt-on",
+    // },
     {
-      label: t("slot", null, lang),
-      value: "SLOT",
-      iconValue: "slot",
-      icon: "icon-slot",
-      iconOn: "icon-slot-on",
-    },
-    {
-      label: t("esports", null, lang),
-      value: "DJ",
-      iconValue: "esports",
-      icon: "icon-esports",
-      iconOn: "icon-esports-on",
+      label: t("fishing", null, lang),
+      value: "BY",
+      iconValue: "fishing",
+      icon: "icon-fishing",
+      iconOn: "icon-fishing-on",
     },
   ];
 };

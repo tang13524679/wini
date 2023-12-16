@@ -51,10 +51,10 @@ const HomePage = () => {
 
   useEffect(() => {
     fetchDataTasksList();
-    user && fetchDataRecentGamesList();
-  }, []);
-
-  console.log(user);
+    if (user) {
+      fetchDataRecentGamesList();
+    }
+  }, [user]);
 
   return (
     <div className={styles.container}>

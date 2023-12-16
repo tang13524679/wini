@@ -124,11 +124,11 @@ const Sunmmary = () => {
         </div>
       </div>
       <div className="timelist">
-        {timeList.map((item) => {
+        {timeList.map((item, index) => {
           return (
             <div
               className={`${timeState == item.value ? "active" : ""} item`}
-              key={item.text}
+              key={index}
               onClick={() => {
                 setTimeState(item.value);
               }}
