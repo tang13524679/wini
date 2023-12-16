@@ -1,7 +1,93 @@
 .container{
-  padding: 290px 15px 170px;
-  background: #1B1B1F;
+  
   :global{
+    .title{
+      color: #EEE;
+      font-family: Inter;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      margin-bottom: 13px;
+      span{
+        color: #3549fa;
+        margin-left: 15px;
+      }
+    }
+    .card-box{
+      padding: 15px;
+      background: #1B1B1F;
+      margin-bottom: 15px;
+      .card-list{
+        .item{
+          margin-bottom: 15px;
+          padding: 12px;
+          border-radius: 8px;
+          background: linear-gradient(95.46deg, #a24545 0%, #9f6e40 100%);
+          display: flex;
+          position: relative;
+          .icon{
+            background: url('/assets/bank_card_2.png') no-repeat;
+            width: 24px;
+            height: 24px;
+            background-size: contain;
+            background-position: center;
+            cursor: pointer;
+            margin-right: 10px;
+          }
+          .content{
+            flex: 1;
+            p{
+              color: #EEE;
+              font-family: Inter;
+              font-size: 13.414px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+              margin-bottom: 13px;
+              margin-bottom: 10px;
+            }
+          }
+          .delete{
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: url('/assets/delete.png') no-repeat;
+            width: 16px;
+            height: 16px;
+            background-size: 100% 100%;
+            cursor: pointer;
+          }
+        }
+        .item.active{
+          border: 1px solid #48B726;
+        }
+        .add-card{
+          background: #2A2B30;
+          padding: 10px;
+          text-align: center;
+          color: #EEE;
+          font-family: Inter;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          border-radius: 8px;
+          border: 1px dashed #4a4c52;
+        }
+      }
+    }
+    .sbmit-box{
+      padding: 15px;
+      background: #1B1B1F;
+      .input-box{
+        .lineInput{
+          padding: 12px 0;
+          border-bottom: 1px solid #44464f;
+          margin-bottom: 10px;
+        }
+      }
+    }
     .confirm{
       width: 317.866px;
       height: 41.118px;
@@ -14,7 +100,7 @@
       font-style: normal;
       font-weight: 400;
       background: linear-gradient(91deg, #6E6AF5 20.09%, #7F3CE3 61%, #522F7F 96.35%);
-      margin: 0 auto;
+      margin: 30px auto 20px;
     }
   }
 }

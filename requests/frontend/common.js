@@ -1,5 +1,6 @@
 import request from "@/utils/fetcher-frontend";
 import { BRAND_CODE, ENTERPRISE_CODE } from "@/utils/const";
+import { encryptECB, encryptMD5 } from "@/utils/encrypt";
 
 // 获取品牌Banner图
 export function banner(params) {
@@ -14,19 +15,37 @@ export function notice(params) {
   });
 }
 // 活动列表
-export function promos(params) {
+export function promos(param) {
+  const props = { ...param, enterprisecode: ENTERPRISE_CODE };
   return request(`/ecrm-api/ActivityInfo/ListActivityData`, {
-    enterprisecode: ENTERPRISE_CODE,
-    ...params,
+    ...props,
+    params: encryptECB({ ...props }),
+    signature: encryptMD5({ ...props }),
   });
 }
+// export function promos(params) {
+//   return request(`/ecrm-api/ActivityInfo/ListActivityData`, {
+//     enterprisecode: ENTERPRISE_CODE,
+//     ...params,
+//   });
+// }
 // 活动详情
 export function promoInfo(params) {
-  return request(`/ecrm-api/ActivityInfo/info`, params);
+  const props = { ...params, enterprisecode: ENTERPRISE_CODE };
+  return request(`/ecrm-api/ActivityInfo/info`, {
+    ...props,
+    params: encryptECB({ ...props }),
+    signature: encryptMD5({ ...props }),
+  });
 }
 // 参与活动
 export function promoInfoEnrollIn(params) {
-  return request(`/ecrm-api/activity/applyBonus`, params);
+  const props = { ...params, enterprisecode: ENTERPRISE_CODE };
+  return request(`/ecrm-api/activity/applyBonus`, {
+    ...props,
+    params: encryptECB({ ...props }),
+    signature: encryptMD5({ ...props }),
+  });
 }
 // APP下载地址
 export function appLink(params) {

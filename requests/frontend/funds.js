@@ -21,8 +21,17 @@ export function taking(params) {
   return request(`/ecrm-api/Funds/Taking`, {
     brandcode: BRAND_CODE,
     ...params,
-    params: encryptECB({ brandcode: BRAND_CODE, ...params }),
-    signature: encryptMD5({ brandcode: BRAND_CODE, ...params }),
+    enterprisecode: ENTERPRISE_CODE,
+    params: encryptECB({
+      brandcode: BRAND_CODE,
+      enterprisecode: ENTERPRISE_CODE,
+      ...params,
+    }),
+    signature: encryptMD5({
+      brandcode: BRAND_CODE,
+      enterprisecode: ENTERPRISE_CODE,
+      ...params,
+    }),
   });
 }
 // 存&取款记录

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import react, { useState, useEffect } from "react";
 import Head from "next/head";
 import MainLayout from "@/layouts/main";
 import { PROMO_TYPES } from "@/utils/const";
@@ -9,17 +9,29 @@ import { t } from "@/utils/translate";
 import classNames from "classnames";
 import { useGlobalState } from "@/hooks/global";
 import EmptyPage from "@/components/empty-page";
-import { commonApi } from "@/requests/frontend";
+import { commonApi, promoApi } from "@/requests/frontend";
 
 export default function PromoPage() {
   const [{ lang }] = useGlobalState();
   const [promoType, setPromoType] = useState(PROMO_TYPES[0]);
   const [data, setData] = useState([]);
 
-  async function getPromos(type) {
-    let rst = await commonApi.promos({ activity_type: type });
-    setData(rst.info);
-  }
+  const getPromos = async (type) => {
+    try {
+      const res = await promoApi.listActivityData({ activity_type: type });
+      if (res.code == "1") {
+        setData([]);
+      }
+    } catch (error) {
+      Toast.show({
+        content: error,
+      });
+      console.error(error);
+    } finally {
+    }
+    // let rst = await commonApi.promos({ activity_type: type });
+    // setData(rst?.info);
+  };
 
   function renderTags(activity_type) {
     let tags = PROMO_TYPES.filter((item) => activity_type.includes(item.value));
@@ -42,22 +54,20 @@ export default function PromoPage() {
       </Head>
       <>
         <div className="p-4 grid grid-cols-3 sm:grid-cols-6 items-center gap-2 lg:gap-4 sticky top-0 z-10 bgPage">
-          {/* {PROMO_TYPES.map((item, index) => (
-                        <div
-                            key={item}
-                            className={classNames(
-                                'px-4 py-1 rounded-full transition cursor-pointer capitalize text-center',
-                                promoType.name_en === item.name_en
-                                    ? 'bgMainYellow'
-                                    : 'bgWhite6'
-                            )}
-                            onClick={() => {
-                                setPromoType(PROMO_TYPES[index]);
-                            }}
-                        >
-                            {item[`name_${lang}`]}
-                        </div>
-                    ))} */}
+          {PROMO_TYPES.map((item, index) => (
+            <div
+              key={item}
+              className={classNames(
+                "px-4 py-1 rounded-full transition cursor-pointer capitalize text-center",
+                promoType.name_en === item.name_en ? "bgMainYellow" : "bgWhite6"
+              )}
+              onClick={() => {
+                setPromoType(PROMO_TYPES[index]);
+              }}
+            >
+              {item[`name_${lang}`]}
+            </div>
+          ))}
         </div>
         {data.length === 0 && <EmptyPage />}
         {data.length > 0 && (

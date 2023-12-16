@@ -64,6 +64,9 @@
       .box{
         .item{
           margin-bottom: 10px;
+          img{
+            border-radius: 8px;
+          }
         }
         .hot-box{
           display: flex;

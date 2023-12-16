@@ -6,23 +6,24 @@ import { useRouter } from "next/router";
 import HotGameList from "./components/hot-game-list";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Grid, Pagination, Navigation } from "swiper";
-import { homeApi } from "@/requests/frontend";
+import { homeApi, promoApi } from "@/requests/frontend";
 import { Toast } from "antd-mobile";
 import { play } from "@/utils/common";
+import Link from "next/link";
 
 SwiperCore.use([Grid, Pagination]);
 
 const HomePage = () => {
   const [{ user }, dispatch] = useGlobalState();
   const router = useRouter();
-  const [bannerList, setBannerList] = useState([]);
+  const [activityList, setActivityList] = useState([]);
   const [recentGamesList, setRecentGamesList] = useState([]);
 
   const fetchDataTasksList = async () => {
     try {
-      const res = await homeApi.bannerList({});
+      const res = await promoApi.listActivityData({ activity_type: "" });
       if (res.code == "1") {
-        setBannerList(res.info);
+        setActivityList(res.info);
       }
     } catch (error) {
       Toast.show({
@@ -82,19 +83,15 @@ const HomePage = () => {
             clickable: true,
           }}
         >
-          {bannerList?.map((item) => {
+          {activityList?.map((item, index) => {
             return (
-              <SwiperSlide key={item.lsh}>
-                <img src={item.imgpath} />
+              <SwiperSlide key={index}>
+                <Link href={`/promo/${item.ecactivitycode}`} passHref>
+                  <img src={item.activityimagehfive} />
+                </Link>
               </SwiperSlide>
             );
           })}
-          <SwiperSlide>
-            <img src="/assets/home/hot/tasks1.png" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="/assets/home/hot/tasks2.png" />
-          </SwiperSlide>
         </Swiper>
       </div>
       {user && (

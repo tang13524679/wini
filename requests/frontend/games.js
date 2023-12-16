@@ -30,8 +30,14 @@ export function allMoney(params) {
 }
 // 游戏纪录
 export function recordsAll(params) {
-  return request(`/ecrm-api/GRecords/RecordsAll`, {
+  const param = {
     ...params,
+    enterprisecode: ENTERPRISE_CODE,
+  };
+  return request(`/ecrm-api/GRecords/RecordsAll`, {
+    ...param,
+    params: encryptECB({ ...param }),
+    signature: encryptMD5({ ...param }),
   });
 }
 // 可用游戏类型

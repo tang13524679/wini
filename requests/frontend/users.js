@@ -72,7 +72,15 @@ export function deleteUBankCard(params) {
 }
 // 查询用户银行卡
 export function uBankCards(params) {
-  return request(`/ecrm-api/User/UBankCards`, params);
+  const param = {
+    ...params,
+    enterprisecode: ENTERPRISE_CODE,
+  };
+  return request(`/ecrm-api/User/UBankCards`, {
+    ...param,
+    params: encryptECB({ ...param }),
+    signature: encryptMD5({ ...param }),
+  });
 }
 // 用户未读消息数量
 export function messageCount(params) {
@@ -100,7 +108,15 @@ export function unCollectGame(params) {
 }
 // 获取任务列表
 export function getTasks(params) {
-  return request(`/ecrm-api/ActivityTask/getActivityTaskList`, params);
+  const param = {
+    ...params,
+    enterprisecode: ENTERPRISE_CODE,
+  };
+  return request(`/ecrm-api/ActivityTask/getActivityTaskList`, {
+    ...param,
+    params: encryptECB({ ...param }),
+    signature: encryptMD5({ ...param }),
+  });
 }
 // 领取任务奖励
 export function getTaskReward(params) {

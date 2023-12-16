@@ -50,7 +50,14 @@ export function useReceiveBanks() {
 
 export function useUserBanks() {
   const [{ user }] = useGlobalState();
-  const { data } = useSWR(user && "/ecrm-api/User/UBankCards");
+  const { data } = useSWR([
+    user && "/ecrm-api/User/UBankCards",
+    qs.stringify({
+      enterprisecode: ENTERPRISE_CODE,
+      params: encryptECB({ enterprisecode: ENTERPRISE_CODE }),
+      signature: encryptMD5({ enterprisecode: ENTERPRISE_CODE }),
+    }),
+  ]);
   return data?.info;
 }
 

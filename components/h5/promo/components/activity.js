@@ -1,75 +1,90 @@
-import react, { useState } from "react";
+import react, { useState, useEffect } from "react";
 import styles from "./activity.module.scss";
-import PromoNav from "./promoNav";
+import { PROMO_TYPES } from "@/utils/const";
+import { useRouter } from "next/router";
+import { useGlobalState } from "@/hooks/global";
+import Loading from "../../components/loading-mobile";
+import { promoApi } from "@/requests/frontend";
+import Link from "next/link";
 
 const Activity = () => {
-  const [activeState, setActiveState] = useState(1);
-  const list = [
-    {
-      id: 1,
-      activity: "综合",
-      activityIcon: "/assets/promo/icon1.png",
-      activityList: ["/assets/promo/active1.png", "/assets/promo/active2.png"],
-    },
-    {
-      id: 2,
-      activity: "体育",
-      activityIcon: "/assets/promo/icon2.png",
-      activityList: ["/assets/promo/active1.png"],
-    },
-    {
-      id: 3,
-      activity: "真人",
-      activityIcon: "/assets/promo/icon3.png",
-      activityList: ["/assets/promo/active2.png"],
-    },
-    {
-      id: 4,
-      activity: "棋牌",
-      activityIcon: "/assets/promo/icon4.png",
-      activityList: [],
-    },
-    {
-      id: 5,
-      activity: "动物",
-      activityIcon: "/assets/promo/icon5.png",
-      activityList: [],
-    },
-    {
-      id: 6,
-      activity: "电竞",
-      activityIcon: "/assets/promo/icon6.png",
-      activityList: [],
-    },
-    {
-      id: 7,
-      activity: "电子",
-      activityIcon: "/assets/promo/icon7.png",
-      activityList: [],
-    },
-  ];
+  const router = useRouter();
+  const [{ user }, dispatch] = useGlobalState();
+  const [activeType, setActiveType] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [list, setList] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      setIsLoading(true);
+      const res = await promoApi.listActivityData({
+        activity_type: activeType,
+      });
+      if (res.code == "1") {
+        setList(res.info);
+      }
+    } catch (error) {
+      Toast.show({
+        content: error,
+      });
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [activeType]);
   return (
     <div className={styles.container}>
       <div className="left">
-        <PromoNav
-          list={list}
-          setActiveState={setActiveState}
-          activeState={activeState}
-          record="领取记录"
-          href="/promo/activity"
-        />
+        <div className="navlist">
+          {PROMO_TYPES.map((item, index) => {
+            return (
+              <div
+                className={`${activeType == item.value ? "active" : ""} item`}
+                key={index}
+                onClick={() => {
+                  setActiveType(item.value);
+                }}
+              >
+                {/* <img src={item.activityIcon} /> */}
+                <p>{item.name_zh}</p>
+              </div>
+            );
+          })}
+          <div
+            className="record-btn"
+            onClick={async () => {
+              if (user) {
+                router.push("/promo/activity");
+              } else {
+                await Toast.show({
+                  content: "未登录，请先登录",
+                });
+                router.push("/login");
+              }
+            }}
+          >
+            领取记录
+          </div>
+        </div>
       </div>
       <div className="right">
         <div className="box">
-          {list[activeState - 1].activityList.map((item, index) => {
+          {list?.map((item, index) => {
             return (
               <div className="item" key={index}>
-                <img src={item} />
+                <Link href={`/promo/${item.ecactivitycode}`} passHref>
+                  <img src={item.activityimagehfive} />
+                </Link>
               </div>
             );
           })}
         </div>
       </div>
+      {isLoading && <Loading />}
     </div>
   );
 };
