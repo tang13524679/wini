@@ -201,6 +201,14 @@ const HomePage = () => {
         </div>
       </div>
       <div className="add">添加到主屏幕</div>
+      <div
+        className="messages"
+        onClick={() => {
+          router.push("/user/messages");
+        }}
+      >
+        <img src="/assets/nav/messages.png" />
+      </div>
     </div>
   );
 };

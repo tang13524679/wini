@@ -206,5 +206,22 @@
       bottom: 60px;
       z-index: 10;
     }
+    .messages{
+      position: fixed;
+      bottom: 85px;
+      right: 15px;
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      background: linear-gradient(91deg, #6E6AF5 20.09%, #7F3CE3 61%, #522F7F 96.35%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+      img{
+        width: 20px;
+        height: 20px;
+      }
+    }
   }
 }

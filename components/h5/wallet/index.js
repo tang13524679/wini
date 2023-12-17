@@ -1,17 +1,29 @@
-import react, { useState } from "react";
+import react, { useState, useEffect } from "react";
 import styles from "./index.module.scss";
 import Recharge from "./components/recharge";
 import Withdraw from "./components/withdraw";
+import { useRouter } from "next/router";
 
 const WalletPage = () => {
+  const router = useRouter();
   const [pageType, setPageType] = useState("recharge");
+
+  useEffect(() => {
+    if (JSON.stringify(router?.query?.tab) == "{}" || !router?.query?.tab) {
+      setPageType("recharge");
+    } else {
+      setPageType(router?.query?.tab);
+    }
+  }, [router?.query?.tab]);
+
   return (
     <div className={styles.container}>
       <div className="navbar">
         <div
           className={`${pageType == "recharge" ? "active" : ""} item`}
           onClick={() => {
-            setPageType("recharge");
+            // setPageType("recharge");
+            router.push("/wallet?tab=recharge");
           }}
         >
           <span>充值</span>
@@ -19,7 +31,8 @@ const WalletPage = () => {
         <div
           className={`${pageType == "withdraw" ? "active" : ""} item`}
           onClick={() => {
-            setPageType("withdraw");
+            // setPageType("withdraw");
+            router.push("/wallet?tab=withdraw");
           }}
         >
           <span>提款</span>

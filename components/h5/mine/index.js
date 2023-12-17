@@ -51,8 +51,22 @@ const MinePage = () => {
           <div className="num">{balance}</div>
         </div>
         <div className="right">
-          <div className="btn">充值</div>
-          <div className="btn">提款</div>
+          <div
+            className="btn"
+            onClick={() => {
+              router.push("/wallet?tab=recharge");
+            }}
+          >
+            充值
+          </div>
+          <div
+            className="btn"
+            onClick={() => {
+              router.push("/wallet?tab=withdraw");
+            }}
+          >
+            提款
+          </div>
         </div>
       </div>
       <div className="link-box">

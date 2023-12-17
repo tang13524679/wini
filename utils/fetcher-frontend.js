@@ -10,7 +10,6 @@ export default function fetchFrontend(
   method = "GET",
   headers = {}
 ) {
-  //   const router = useRouter();
   let body = "";
   let options = {
     method: method.toUpperCase(),
@@ -48,7 +47,6 @@ export default function fetchFrontend(
           if (json.code === "401") {
             cleanUserStore();
             message.info(json.info);
-            useRouter().push("/login");
           } else {
             throw Error(json.info);
           }
