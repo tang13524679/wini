@@ -112,33 +112,26 @@ export const PROVIDERS = [
 ];
 
 export const providerMap = {
-  HOT: [],
-  // HOT: ['FB', 'WM', 'SEXY', 'AG', 'GW'],
-  SX: ["WM", "AG", "SEXY", "DG", "SBO", "BBIN", "SA", "PT", "EVO"],
-  TY: ["SABA", "CMD", "SBO", "FB"],
-  CP: ["GW", "GPI"],
-  BY: ["CQ9", "PT"],
-  CF: ["FA", "WGB"],
-  DZ: ["AE", "V8", "KM", "SBO", "PT", "CQ9"],
-  SLOT: ["CQ9", "PT"],
-  DJ: ["E1", "TF"],
+  HOT: ["EVO", "SEXY", "CMD", "CQ9", "JDB", "VR", "NW", "E1", "YL"], // 热门 1
+  SX: ["IBA", "SEXY", "WM", "DG", "OG", "EVO"], // 真人 1
+  TY: ["CMD", "M8"], // 体育 1
+  CP: ["VR", "BBIN"], // 彩票 1
+  BY: ["CQ9", "JDB", "SG", "BBIN", "YL"], // 捕鱼 1
+  CF: ["RCB988"], // 赛马 1
+  DZ: ["YGR", "AMEBA", "CQ9", "JDB", "SG", "JOKER", "BBIN", "VG"], // 电子 1
+  // SLOT: ["CQ9", "PT"], // 老虎机
+  DJ: ["E1"], // 电竞 1
+  QP: ["NW", "JDB", "LEG", "VG"], // 棋牌 1
 };
 
 export const GAME_TYPES = (lang = "zh") => {
   return [
     {
-      label: t("sports", null, lang),
-      value: "TY",
-      iconValue: "sports",
-      icon: "icon-sports",
-      iconOn: "icon-sports-on",
-    },
-    {
-      label: t("esports", null, lang),
-      value: "DJ",
-      iconValue: "esports",
-      icon: "icon-esports",
-      iconOn: "icon-esports-on",
+      label: t("hot", null, lang),
+      value: "HOT",
+      iconValue: "hot",
+      icon: "icon-hot",
+      iconOn: "icon-hot-on",
     },
     {
       label: t("live", null, lang),
@@ -148,25 +141,11 @@ export const GAME_TYPES = (lang = "zh") => {
       iconOn: "icon-live-on",
     },
     {
-      label: t("slot", null, lang),
-      value: "SLOT",
-      iconValue: "slot",
-      icon: "icon-slot",
-      iconOn: "icon-slot-on",
-    },
-    {
-      label: t("cock", null, lang),
-      value: "CF",
-      iconValue: "cock",
-      icon: "icon-cock",
-    },
-
-    {
-      label: t("lottery", null, lang),
-      value: "CP",
-      iconValue: "lottery",
-      icon: "icon-lottery",
-      iconOn: "icon-lottery-on",
+      label: t("sports", null, lang),
+      value: "TY",
+      iconValue: "sports",
+      icon: "icon-sports",
+      iconOn: "icon-sports-on",
     },
     {
       label: t("egame", null, lang),
@@ -175,6 +154,42 @@ export const GAME_TYPES = (lang = "zh") => {
       icon: "icon-egame",
       iconOn: "icon-egame-on",
     },
+    {
+      label: t("chess", null, lang),
+      value: "QP",
+      iconValue: "chess",
+      icon: "icon-chess",
+      iconOn: "icon-chess-on",
+    },
+    {
+      label: t("lottery", null, lang),
+      value: "CP",
+      iconValue: "lottery",
+      icon: "icon-lottery",
+      iconOn: "icon-lottery-on",
+    },
+    {
+      label: t("esports", null, lang),
+      value: "DJ",
+      iconValue: "esports",
+      icon: "icon-esports",
+      iconOn: "icon-esports-on",
+    },
+
+    // {
+    //   label: t("slot", null, lang),
+    //   value: "SLOT",
+    //   iconValue: "slot",
+    //   icon: "icon-slot",
+    //   iconOn: "icon-slot-on",
+    // },
+    {
+      label: t("cock", null, lang),
+      value: "CF",
+      iconValue: "cock",
+      icon: "icon-cock",
+    },
+
     // {
     //   label: t("sicbo", null, lang),
     //   value: "SB",
@@ -238,6 +253,8 @@ export const PROMO_TYPES = [
   },
 ];
 
+export const GAME_LOBBY = [];
+
 export const GAME_ENTRIES = [
   // TY
   {
@@ -253,6 +270,7 @@ export const GAME_ENTRIES = [
     gamecode: "CMDGame",
     enname: "CMD sports",
     provider: "CMD",
+    isHot: true,
   },
   {
     biggametype: "TY",
@@ -296,6 +314,17 @@ export const GAME_ENTRIES = [
     gamecode: "FB0001",
     enname: "FB sports",
     provider: "FB",
+    isHot: true,
+  },
+  {
+    biggametype: "TY",
+    gameid: "M8Game",
+    stype: "SPORTS",
+    cnname: "M8 体育",
+    gametype: "M8Game",
+    id: 1,
+    gamecode: "M8Game",
+    provider: "M8",
     isHot: true,
   },
   // CP
@@ -354,6 +383,17 @@ export const GAME_ENTRIES = [
     id: 4713,
     category: "OTHER",
     gamecode: "ONGame",
+  },
+  {
+    biggametype: "CP",
+    gameid: "VRGame",
+    stype: "SPORTS",
+    cnname: "VR 彩票",
+    gametype: "VRGame",
+    id: 1,
+    gamecode: "VRGame",
+    provider: "VR",
+    isHot: true,
   },
   // SX
   {
@@ -456,6 +496,7 @@ export const GAME_ENTRIES = [
     gamecode: "top_games",
     enname: "EVO Live Lobby",
     provider: "EVO",
+    isHot: true,
   },
   {
     biggametype: "SX",
@@ -741,6 +782,23 @@ export const GAME_ENTRIES = [
     gamecode: "61",
     enname: "Mr. Bean",
     provider: "CQ9",
+    isHot: true,
+  },
+  // new
+  {
+    biggametype: "DZ",
+    gameid: "",
+    stype: "",
+    cnname: "JDB电子",
+    gametype: "JDBGame",
+    viname: "",
+    playtimes: "",
+    id: "",
+    category: "",
+    gamecode: "",
+    enname: "",
+    provider: "JDB",
+    isHot: true,
   },
   // DJ
   {
@@ -756,6 +814,7 @@ export const GAME_ENTRIES = [
     gamecode: "AWC_E1SPORTGame",
     enname: "E1SPORT esports",
     provider: "E1",
+    isHot: true,
   },
   {
     biggametype: "DJ",
@@ -770,5 +829,17 @@ export const GAME_ENTRIES = [
     gamecode: "1",
     enname: "TF esports",
     provider: "TF",
+  },
+
+  {
+    biggametype: "BY",
+    gameid: "YLGame",
+    stype: "SPORTS",
+    cnname: "YL 捕鱼",
+    gametype: "YLGame",
+    id: 1,
+    gamecode: "",
+    provider: "YL",
+    isHot: true,
   },
 ];

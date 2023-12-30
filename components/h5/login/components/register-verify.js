@@ -17,8 +17,7 @@ import { useGlobalState } from "@/hooks/global";
 import store from "store";
 
 const countryCode = [
-  { label: "+ 84", value: "84", icon: "icon-vi" },
-  { label: "+ 86", value: "86", icon: "icon-zh" },
+  { label: "+ 852", value: "852", icon: "icon-zh" },
   { label: "+ 63", value: "63", icon: "icon-ph" },
 ];
 
@@ -29,8 +28,8 @@ const RegisterVerify = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [, dispatch] = useGlobalState();
   const [phonePrefixes, setPhonePrefixes] = useState({
-    icon: "icon-vi",
-    prefix: "84",
+    icon: "icon-zh",
+    prefix: "852",
     phoneno: "",
     verifycode: "",
   });

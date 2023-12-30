@@ -5,11 +5,12 @@ import { useGlobalState } from "@/hooks/global";
 import { useRouter } from "next/router";
 import HotGameList from "./components/hot-game-list";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Grid, Pagination, Navigation } from "swiper";
+import SwiperCore, { Grid, Pagination, Autoplay } from "swiper";
 import { homeApi, promoApi } from "@/requests/frontend";
 import { Toast } from "antd-mobile";
 import { play } from "@/utils/common";
 import Link from "next/link";
+import Image from "next/image";
 
 SwiperCore.use([Grid, Pagination]);
 
@@ -18,6 +19,7 @@ const HomePage = () => {
   const router = useRouter();
   const [activityList, setActivityList] = useState([]);
   const [recentGamesList, setRecentGamesList] = useState([]);
+  const [pwaEvent, setPwaEvent] = useState(null);
 
   const fetchDataTasksList = async () => {
     try {
@@ -56,11 +58,18 @@ const HomePage = () => {
     }
   }, [user]);
 
+  useEffect(() => {
+    window.addEventListener("beforeinstallprompt", (e) => {
+      setPwaEvent(e);
+    });
+  }, []);
+
   return (
     <div className={styles.container}>
       <MobileHeader />
       <div className="home-banner">
-        <img src="/assets/home/bj.png" />
+        <Image src="/assets/home/bj.png" width="430" height="438" />
+        {/* <img src="/assets/home/bj.png" /> */}
         {!user && (
           <div
             className="register"
@@ -74,25 +83,36 @@ const HomePage = () => {
       </div>
       <HotGameList />
       <div className="tasks-list">
-        <Swiper
-          slidesPerView={1.3}
-          spaceBetween={15}
-          centeredSlides={true}
-          loop={true}
-          pagination={{
-            clickable: true,
-          }}
-        >
-          {activityList?.map((item, index) => {
-            return (
-              <SwiperSlide key={index}>
-                <Link href={`/promo/${item.ecactivitycode}`} passHref>
-                  <img src={item.activityimagehfive} />
-                </Link>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
+        {activityList.length > 0 && (
+          <Swiper
+            modules={[Autoplay]}
+            slidesPerView={1.3}
+            spaceBetween={15}
+            centeredSlides={true}
+            loop={true}
+            autoplay={{
+              delay: 3000,
+            }}
+            pagination={{
+              clickable: true,
+            }}
+          >
+            {activityList?.map((item, index) => {
+              return (
+                <SwiperSlide key={index}>
+                  <Link href={`/promo/${item.ecactivitycode}`} passHref>
+                    {/* <Image
+                      src={item.activityimagehfive}
+                      width="297"
+                      height="128"
+                    /> */}
+                    <img src={item.activityimagehfive} />
+                  </Link>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        )}
       </div>
       {user && (
         <div className="recently">
@@ -107,7 +127,17 @@ const HomePage = () => {
                       play(item, dispatch);
                     }}
                   >
-                    <img src={item.imagename} />
+                    <div className="img-box">
+                      {item.imagename ? (
+                        <img src={item.imagename} />
+                      ) : (
+                        <Image
+                          src="/assets/home/LOGO.png"
+                          width={77}
+                          height={30}
+                        />
+                      )}
+                    </div>
                     <div className="text-box">
                       <div className="name">{item.cnname}</div>
                       <div className="hk">HK 360,514.89</div>
@@ -128,16 +158,32 @@ const HomePage = () => {
           grid={{ fill: "row", rows: 2 }}
         >
           <SwiperSlide>
-            <img src="assets/home/hot/partner1.png" />
+            <Image
+              src="/assets/home/hot/partner1.png"
+              width="264"
+              height="99"
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="assets/home/hot/partner2.png" />
+            <Image
+              src="/assets/home/hot/partner2.png"
+              width="264"
+              height="99"
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="assets/home/hot/partner3.png" />
+            <Image
+              src="/assets/home/hot/partner3.png"
+              width="264"
+              height="99"
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="assets/home/hot/partner4.png" />
+            <Image
+              src="/assets/home/hot/partner4.png"
+              width="264"
+              height="99"
+            />
           </SwiperSlide>
         </Swiper>
       </div>
@@ -200,7 +246,14 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div className="add">添加到主屏幕</div>
+      <div
+        className="add"
+        onClick={() => {
+          pwaEvent.prompt();
+        }}
+      >
+        添加到主屏幕
+      </div>
       <div
         className="messages"
         onClick={() => {

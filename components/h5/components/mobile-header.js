@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useGlobalState } from "@/hooks/global";
 import { useRouter } from "next/router";
 import { useBalance } from "@/hooks/fund";
+import Image from "next/image";
 
 export default function MobileHeader() {
   const [{ user }] = useGlobalState();
@@ -16,7 +17,7 @@ export default function MobileHeader() {
     >
       <div className="left">
         <Link href="/home">
-          <img src="/assets/home/LOGO.png" />
+          <Image src="/assets/home/LOGO.png" width={77} height={30} />
         </Link>
       </div>
       <div className="right">

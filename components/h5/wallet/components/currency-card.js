@@ -1,41 +1,106 @@
-import react, { useState } from "react";
+import react, { useState, useEffect, useMemo } from "react";
 import styles from "./currency-card.module.scss";
 import { Input } from "antd";
 import { useRouter } from "next/router";
+import { walletApi } from "@/requests/frontend";
+import Loading from "@/components/h5/components/loading-mobile";
+import { Toast } from "antd-mobile";
 
 const CurrencyCard = () => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const [walletList, setWalletList] = useState([]);
+  const [orderamount, setOrderamount] = useState("");
+  const [echrate, setEchrate] = useState(7.8);
+  const [walletInfo, setWalletInfo] = useState({});
+
+  const amountComput = useMemo(() => {
+    return (orderamount / echrate).toFixed(2);
+  }, [orderamount]);
+
+  const fetchData = async () => {
+    try {
+      setIsLoading(true);
+      const res = await walletApi.UWalletAddress();
+      if (res.code == "1") {
+        setWalletList(res.info.record);
+        setWalletInfo(res?.info?.record[0]);
+        setEchrate(res.info.echrate);
+      }
+    } catch (error) {
+      Toast.show({
+        content: error,
+      });
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const confirmHandle = async () => {
+    console.log(amountComput);
+    if (!Number(amountComput)) {
+      Toast.show({
+        content: "金额不能为空",
+      });
+      return;
+    } else {
+      try {
+        setIsLoading(true);
+        const res = await walletApi.DoTrans({
+          depositNum: amountComput,
+          usdtype: walletInfo.openningbank,
+        });
+        if (res.code == "1") {
+          Toast.show({
+            content: "充值取款信息已提交，等待客服确认！",
+          });
+        }
+      } catch (error) {
+        Toast.show({
+          content: error,
+        });
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className="card-box">
         <div className="title">选择要提款的加密货币钱包</div>
         <div className="card-list">
-          <div className="item active">
-            <div className="name">钱包地址：</div>
-            <div className="content">
-              <p>TC3GRdgsoTFzDa4qzdw8yhMcctCfbaCoJX</p>
-              <p>协议: USDT-TRC20 bitpie</p>
-            </div>
-          </div>
-          {/* {bankCardList.map((item, index) => {
-            return (
-              <div
-                className={`${bankType == index ? "active" : ""} item`}
-                key={index}
-                onClick={() => {
-                  setBankType(index);
-                  setBankInfo(item);
-                }}
-              >
-                <div className="icon"></div>
-                <div className="content">
-                  <p>{item.bankname}</p>
-                  <p>{item.paymentaccount}</p>
+          {walletList.length > 0 &&
+            walletList.map((item, index) => {
+              return (
+                <div
+                  className={`${
+                    walletInfo.paymentaccount ==
+                    walletList[index].paymentaccount
+                      ? "active"
+                      : ""
+                  } item`}
+                  key={index}
+                  onClick={() => {
+                    setWalletInfo(item);
+                  }}
+                >
+                  <div className="name">钱包地址：</div>
+                  <div className="content">
+                    <p>{item.paymentaccount}</p>
+                    <p>
+                      协议: {item.openningbank}-{item.accountname} bitpie
+                    </p>
+                  </div>
                 </div>
-                <div className="delete"></div>
-              </div>
-            );
-          })} */}
+              );
+            })}
           <div
             className="add-card"
             onClick={() => {
@@ -46,22 +111,24 @@ const CurrencyCard = () => {
           </div>
         </div>
         <Input
-          // value={orderamount}
+          value={orderamount}
           placeholder="请输入金额"
           className="lineInput"
           type="number"
           suffix="HKD"
-          // onChange={(e) => {
-          //   setOrderamount(e.target.value);
-          // }}
+          onChange={(e) => {
+            setOrderamount(e.target.value);
+          }}
         />
         <div className="tit">
-          当前参考汇率 <span>1 USDT=4.67 HKD</span>
+          当前参考汇率 <span>1 USDT={echrate} HKD</span>
         </div>
         <div className="tit">
-          最终取款 <div className="num">USDT 0.00个</div>
+          最终取款 <div className="num">USDT {amountComput}个</div>
         </div>
-        <div className="confirm">确认取款</div>
+        <div className="confirm" onClick={confirmHandle}>
+          确认取款
+        </div>
         <div className="notice">
           <ul className="notice-list">
             <li>
@@ -93,6 +160,7 @@ const CurrencyCard = () => {
           </ul>
         </div>
       </div>
+      {isLoading && <Loading />}
     </div>
   );
 };

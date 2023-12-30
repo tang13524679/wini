@@ -3,6 +3,7 @@
   padding-bottom: 150px;
   min-height: 100vh;
   background: #1F242A;
+  position: relative;
   :global{
     .home-banner{
       position: relative;
@@ -66,7 +67,7 @@
       }
     }
     .recently{
-      padding: 20px 12px 0;
+      padding: 35px 12px 0;
       .swiper{
         margin-top: 18px;
         .swiper-slide{
@@ -75,10 +76,13 @@
             border-radius: 5px;
             overflow: hidden;
             padding-bottom: 9px;
-            img{
+            .img-box{
               width: 100%;
               min-height: 145.5px;
-              background: rgba(255,255,255,0.4);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: #2A2B30;
               border-radius: 5px;
             }
             .text-box{
@@ -108,7 +112,7 @@
       }
     }
     .partner-list{
-      padding: 18px 12px 0;
+      padding: 35px 12px 0;
       .swiper{
         margin-top: 18px;
         .swiper-slide{
@@ -119,7 +123,7 @@
       }
     }
     .license-box{
-      padding: 18px 12px 0;
+      padding: 35px 12px 0;
       .license{
         margin-top: 13px;
         display: flex;
@@ -156,7 +160,7 @@
       }
     }
     .follow-us{
-      padding: 18px 12px 0;
+      padding: 35px 12px 0;
       .title-box{
         display: flex;
         justify-content: space-between;

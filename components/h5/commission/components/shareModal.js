@@ -15,7 +15,6 @@ const ShaeModal = (props) => {
       content: "复制成功",
     });
   };
-  console.log(user);
   return (
     <>
       {!props.isMore && (

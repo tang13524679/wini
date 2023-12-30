@@ -1,4 +1,4 @@
-import react, { useRef } from "react";
+import react, { useState, useEffect } from "react";
 import styles from "./uniqueOffer.module.scss";
 import NavBar from "@/components/h5/components/nav-bar";
 import Head from "next/head";
@@ -11,13 +11,19 @@ import QRCode from "qrcode.react";
 
 const UniqueOffer = () => {
   const [{ user }] = useGlobalState();
-  const invitationLink = `${getDomain()}/login?agentCode=${user.employeecode}`;
+  const [invitationLink, setInvitationLink] = useState("");
   const copyCot = (value) => {
     copy(value);
     Toast.show({
       content: "复制成功",
     });
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setInvitationLink(`${getDomain()}/login?agentCode=${user?.employeecode}`);
+    });
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -39,7 +45,7 @@ const UniqueOffer = () => {
         <div className="copy-box">
           <div className="item">
             <p>专属邀请码</p>
-            <input type="text" readOnly value={user.employeecode} />
+            <input type="text" readOnly value={user?.employeecode} />
             <div
               className="copy"
               onClick={() => {

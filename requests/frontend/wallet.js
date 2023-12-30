@@ -20,3 +20,42 @@ export function doTrans(param) {
     signature: encryptMD5({ ...props }),
   });
 }
+// 添加钱包币种地址
+export function AddUWallet(param) {
+  const props = {
+    ...param,
+    opreateType: 6,
+    enterprisecode: ENTERPRISE_CODE,
+    bankcode: "B000",
+  };
+  return request(`/ecrm-api/Promo/AddUWallet`, {
+    ...props,
+    params: encryptECB({ ...props }),
+    signature: encryptMD5({ ...props }),
+  });
+}
+// 获取加密货币收币地址
+export function UWalletAddress(param) {
+  const props = {
+    ...param,
+    enterprisecode: ENTERPRISE_CODE,
+  };
+  return request(`/ecrm-api/Promo/UWalletAddress`, {
+    ...props,
+    params: encryptECB({ ...props }),
+    signature: encryptMD5({ ...props }),
+  });
+}
+// 加密货币取款确认
+export function DoTrans(param) {
+  const props = {
+    ...param,
+    opreateType: 7,
+    employeecode: EMPLOYEE_CODE,
+  };
+  return request(`/ecrm-api/AgentNew/DoTrans`, {
+    ...props,
+    params: encryptECB({ ...props }),
+    signature: encryptMD5({ ...props }),
+  });
+}

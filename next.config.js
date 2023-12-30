@@ -2,12 +2,9 @@ module.exports = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  // images: {
-  //     domains: [
-  //         'firebasestorage.googleapis.com',
-  //         '103.164.81.205:7078'
-  //     ],
-  // },
+  images: {
+    domains: ["103.164.81.47"],
+  },
 };
 
 const withImages = require("next-images");
@@ -21,7 +18,15 @@ module.exports = withImages({
 
 const withTM = require("next-transpile-modules")(["antd-mobile"]);
 
-module.exports = withTM({
+const withPWA = require("next-pwa")({
+  dest: "public",
+});
+const nextConfig = withTM({
   // 你项目中其他的 Next.js 配置
   output: "standalone",
+  images: {
+    domains: ["http://localhost:3000"],
+  },
 });
+
+module.exports = withPWA(nextConfig);

@@ -6,6 +6,7 @@ import { useGlobalState } from "@/hooks/global";
 import Loading from "../../components/loading-mobile";
 import { promoApi } from "@/requests/frontend";
 import Link from "next/link";
+import { Toast } from "antd-mobile";
 
 const Activity = () => {
   const router = useRouter();

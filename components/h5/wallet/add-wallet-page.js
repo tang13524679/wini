@@ -3,6 +3,10 @@ import styles from "./add-wallet-page.module.scss";
 import NavBar from "../components/nav-bar";
 import { RightOutlined } from "@ant-design/icons";
 import { Form, Input, Picker } from "antd-mobile";
+import { walletApi } from "@/requests/frontend";
+import Loading from "@/components/h5/components/loading-mobile";
+import { Toast } from "antd-mobile";
+import { useRouter } from "next/router";
 
 const AddWalletPage = () => {
   const walletColumns = [
@@ -14,7 +18,7 @@ const AddWalletPage = () => {
             USDT ERC20
           </div>
         ),
-        value: "USDT ERC20",
+        value: { bankType: "USDT", accountType: "ERC20" },
       },
       {
         label: (
@@ -23,7 +27,7 @@ const AddWalletPage = () => {
             USDT TRC20
           </div>
         ),
-        value: "USDT TRC20",
+        value: { bankType: "USDT", accountType: "TRC20" },
       },
       {
         label: (
@@ -32,7 +36,7 @@ const AddWalletPage = () => {
             ETH ERC20
           </div>
         ),
-        value: "ETH ERC20",
+        value: { bankType: "ETH", accountType: "ERC20" },
       },
       {
         label: (
@@ -41,15 +45,48 @@ const AddWalletPage = () => {
             BTC ERC20
           </div>
         ),
-        value: "BTC ERC20",
+        value: { bankType: "BTC", accountType: "ERC20" },
       },
     ],
   ];
 
+  const [isLoading, setIsLoading] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [walletName, setWalletName] = useState("");
+  const [paymentaccount, setPaymentaccount] = useState("");
+  const [isPaymentaccount, setIsPaymentaccount] = useState("");
+  const [openningbank, setOpenningbank] = useState("USDT");
+  const [accountname, setAccountname] = useState("ERC20");
+  const [email, setEmail] = useState("");
+  const router = useRouter();
 
   const onConfirm = (val) => {
-    console.log(val);
+    setOpenningbank(val[0].bankType);
+    setAccountname(val[0].accountType);
+  };
+
+  const confirmHandle = async () => {
+    try {
+      setIsLoading(true);
+      const res = await walletApi.AddUWallet({
+        accountname,
+        paymentaccount,
+        openningbank,
+      });
+      if (res.code == "1") {
+        Toast.show({
+          content: "钱包添加成功",
+        });
+        router.push("/wallet?tab=withdraw");
+      }
+    } catch (error) {
+      Toast.show({
+        content: error,
+      });
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -71,28 +108,56 @@ const AddWalletPage = () => {
         </div>
       </div>
       <div className="form-box">
-        <Form layout="horizontal">
-          <Form.Item label="钱包名称：" name="username">
-            <Input placeholder="请输入3-10位中文、英文、数字" clearable />
+        <Form
+          layout="horizontal"
+          initialValues={{
+            remember: true,
+          }}
+          onFinish={confirmHandle}
+          autoComplete="off"
+        >
+          <Form.Item label="钱包名称：" name="walletName">
+            <Input
+              value={walletName}
+              placeholder="请输入3-10位中文、英文、数字"
+              onChange={(value) => {
+                setWalletName(value);
+              }}
+            />
           </Form.Item>
-          <Form.Item label="钱包地址：" name="password">
-            <Input placeholder="请输入42位USDT钱包地址" clearable />
+          <Form.Item label="钱包地址：" name="paymentaccount">
+            <Input
+              value={paymentaccount}
+              placeholder="请输入42位USDT钱包地址"
+              onChange={(value) => {
+                setPaymentaccount(value);
+              }}
+            />
           </Form.Item>
-          <Form.Item label="确认地址：" name="password">
-            <Input placeholder="请再次确认42位USDT钱包地址" clearable />
+          <Form.Item label="确认地址：" name="isPaymentaccount">
+            <Input
+              value={isPaymentaccount}
+              placeholder="请再次确认42位USDT钱包地址"
+              onChange={(value) => {
+                setIsPaymentaccount(value);
+              }}
+            />
           </Form.Item>
           <div className="notice">
             重要：请确认42位 USDT钱包地址正确无误，否则资金将不可找回
           </div>
-          <Form.Item label="邮箱" extra={<a>验证码</a>}>
-            <Input placeholder="2407***q.com" />
+          <Form.Item label="邮箱" extra={<a>验证码</a>} name="E-mail">
+            <Input value={email} placeholder="2407***q.com" />
           </Form.Item>
-          <Form.Item label="验证码" name="password">
-            <Input placeholder="请输入验证码" clearable />
+          <Form.Item label="验证码" name="verificationCode">
+            <Input value="" placeholder="请输入验证码" />
           </Form.Item>
+          <div className="confirm" onClick={confirmHandle}>
+            确认保存
+          </div>
         </Form>
       </div>
-      <div className="confirm">确认保存</div>
+
       <Picker
         popupClassName={styles.walletPicker}
         title="请选择货币类型"
@@ -107,6 +172,7 @@ const AddWalletPage = () => {
           setVisible(false);
         }}
       />
+      {isLoading && <Loading />}
     </div>
   );
 };

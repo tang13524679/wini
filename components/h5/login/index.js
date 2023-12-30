@@ -5,6 +5,7 @@ import { Select } from "antd";
 import LoginForm from "./components/login-form";
 import Register from "./components/register";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const LoginModal = () => {
   const router = useRouter();
@@ -20,7 +21,7 @@ const LoginModal = () => {
 
   return (
     <div className={styles.loginBox}>
-      <div className="login-tabBar">
+      <div className="login-tabBar" style={{ maxWidth: "430px" }}>
         <LeftOutlined
           style={{ color: "#329029", fontSize: "18px" }}
           onClick={() => {
@@ -47,7 +48,7 @@ const LoginModal = () => {
         />
       </div>
       <div className="login-top">
-        <img src="/assets/login/login-img.png" />
+        <Image src="/assets/login/login-img.png" width={430} height={323} />
         <div className="tab-bar">
           <div
             className={`${loginState == "login" ? "active" : ""} item`}

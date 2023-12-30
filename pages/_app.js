@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import { logEvent } from "@/utils/firebase";
 import { message, Modal } from "antd";
 import { t } from "@/utils/translate";
+import { isMobile } from "@/utils/common";
 
 import "swiper/css/bundle";
 import "antd/dist/antd.min.css";
@@ -106,7 +107,7 @@ export default function App({ Component, pageProps }) {
           sizes="16x16"
           href="/favicon-16x16.png"
         />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="manifest" href="/manifest.json" />
       </Head>
 
       <Script

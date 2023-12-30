@@ -275,19 +275,19 @@ export function getGameImg(game) {
 
   // PT
   if (game.gametype === "PTGame") {
-    path = `assets/third/pt/${encodeURIComponent(`${game.enname}`)}.jpg`;
+    path = `/assets/third/pt/${encodeURIComponent(`${game.enname}`)}.jpg`;
   } else if (game.gametype === "CQ9Game") {
     // CQ9
-    path = `assets/third/cq9/${encodeURIComponent(`${game.gamecode}`)}.png`;
+    path = `/assets/third/cq9/${encodeURIComponent(`${game.gamecode}`)}.png`;
   } else {
     if (game.gamelsh) {
-      path = `assets/third/game-icon/${game.gamelsh}.png`;
+      path = `/assets/third/game-icon/${game.gamelsh}.png`;
     } else if (game.gameId) {
-      path = `assets/third/game-icon/${game.gameId}.png`;
+      path = `/assets/third/game-icon/${game.gameId}.png`;
     } else if (game.id) {
-      path = `assets/third/game-icon/${game.id}.png`;
+      path = `/assets/third/game-icon/${game.id}.png`;
     } else {
-      path = `assets/third/404.jpg`;
+      path = `/assets/third/404.jpg`;
     }
   }
 
