@@ -1,0 +1,27 @@
+.pcLayout{
+  :global{
+    .layoutContent{
+      display: flex;
+      max-width: 100%;
+      .nav-list{
+        width: 300px;
+        height: calc(100vh - 87px);
+        overflow: auto;
+        @media (max-width: 1440px) {
+          height: calc(100vh - 60px);
+          width: 240px;
+        }
+      }
+      .content{
+        flex: 1;
+        width: calc(100% - 300px);
+        height: calc(100vh - 87px);
+        overflow: auto;
+        @media (max-width: 1440px) {
+          width: calc(100% - 240px);
+          height: calc(100vh - 60px);
+        }
+      }
+    }
+  }
+}

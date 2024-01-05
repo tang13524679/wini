@@ -11,13 +11,14 @@ import { useRouter } from "next/router";
 import { logEvent } from "@/utils/firebase";
 import { message, Modal } from "antd";
 import { t } from "@/utils/translate";
-import { isMobile } from "@/utils/common";
+import useWindowSize from "@/hooks/useWindowSize";
 
 import "swiper/css/bundle";
 import "antd/dist/antd.min.css";
 import "../styles/main.scss";
 import { createTheme, ThemeProvider, Tabs, Tab } from "@mui/material";
 export default function App({ Component, pageProps }) {
+  const isMobile = useWindowSize();
   const router = useRouter();
   const theme = createTheme({
     components: {
@@ -84,6 +85,8 @@ export default function App({ Component, pageProps }) {
           name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
+        <meta HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE" />
+        <meta HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.20/ua-parser.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.1.5/fingerprint2.min.js"></script>
@@ -123,15 +126,26 @@ export default function App({ Component, pageProps }) {
       >
         <StateProvider>
           <Layout>
-            <div
-              className="main-container"
-              style={{
-                maxWidth: "430px",
-                margin: "0 auto",
-              }}
-            >
-              <Component {...pageProps} />
-            </div>
+            {isMobile == "desktop" && (
+              <div
+                style={{
+                  maxWidth: "1920px",
+                  margin: "0 auto",
+                }}
+              >
+                <Component {...pageProps} />
+              </div>
+            )}
+            {isMobile == "mobile" && (
+              <div
+                style={{
+                  maxWidth: "430px",
+                  margin: "0 auto",
+                }}
+              >
+                <Component {...pageProps} />
+              </div>
+            )}
           </Layout>
         </StateProvider>
       </SWRConfig>

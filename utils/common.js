@@ -52,7 +52,9 @@ export async function playGame(game, dispatch) {
       let rst = await gameApi.play({
         id: game.gameId || game.id,
         gametype: game.gametype,
-        playtype: game.gamecode,
+        playtype: game.playtype,
+        gamecode: game.gamecode,
+        gameid: game.gameId,
         homeurl,
         lobbyurl,
         device: isMobile() ? "h5" : "web",
@@ -146,9 +148,10 @@ export function openWindowIframe(url) {
     window.location.href = url;
   }
   if (open) {
-    setTimeout(() => {
-      open.location = url;
-    }, 300);
+    open.location.replace(url);
+    // setTimeout(() => {
+
+    // }, 300);
   }
 }
 export function openWindowBlank(url) {

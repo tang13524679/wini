@@ -1,0 +1,272 @@
+.pcNav{
+  padding: 10px;
+  :global{
+    .link-box{
+      .box{
+        width: 100%;
+        height: 80px;
+        background: #1F2329;
+        display: flex;
+        align-items: center;
+        padding: 5px 20px;
+        transition: .5s;
+        -o-transition: .5s;
+        -ms-transition: .5s;
+        -moz-transition: .5s;
+        -webkit-transition: .5s;
+        margin-bottom: 5px;
+        @media (max-width: 1440px) {
+          height: 60px;
+        }
+        &:hover{
+          cursor: pointer;
+          .tit{
+            color: #45DA1F;
+          }
+          .icon1{
+            background: url('/assets/pcimg/icon1-on.png') no-repeat;
+            background-size: 100%;
+          }
+          .icon2{
+            background: url('/assets/pcimg/icon2-on.png') no-repeat;
+            background-size: 100%;
+          }
+          .icon3{
+            background: url('/assets/pcimg/icon3-on.png') no-repeat;
+            background-size: 100%;
+          }
+          .icon4{
+            background: url('/assets/pcimg/icon4-on.png') no-repeat;
+            background-size: 100%;
+          }
+          .icon5{
+            background: url('/assets/pcimg/icon5-on.png') no-repeat;
+            background-size: 100%;
+          }
+          .icon6{
+            background: url('/assets/pcimg/icon6-on.png') no-repeat;
+            background-size: 100%;
+          }
+          .icon7{
+            background: url('/assets/pcimg/icon7-on.png') no-repeat;
+            background-size: 100%;
+          }
+          .icon8{
+            background: url('/assets/pcimg/icon8-on.png') no-repeat;
+            background-size: 100%;
+          }
+        }
+        .icon{
+          width: 27px;
+          height: 27px;
+          transition: .5s;
+          -o-transition: .5s;
+          -ms-transition: .5s;
+          -moz-transition: .5s;
+          -webkit-transition: .5s;
+          @media (max-width: 1440px) {
+            width: 20px;
+            height: 20px;
+          }
+        }
+        .tit{
+          color: #9EA6B1;
+          font-family: Inter;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          margin-left: 32px;
+          transition: .5s;
+          -o-transition: .5s;
+          -ms-transition: .5s;
+          -moz-transition: .5s;
+          -webkit-transition: .5s;
+          @media (max-width: 1440px) {
+            font-size: 16px;
+            margin-left: 24px;
+          }
+        }
+        .tit.tit-on{
+          color: #45DA1F;
+        }
+        .icon1{
+          background: url('/assets/pcimg/icon1.png') no-repeat;
+          background-size: 100%;
+        }
+        .icon2{
+          background: url('/assets/pcimg/icon2.png') no-repeat;
+          background-size: 100%;
+        }
+        .icon3{
+          background: url('/assets/pcimg/icon3.png') no-repeat;
+          background-size: 100%;
+        }
+        .icon4{
+          background: url('/assets/pcimg/icon4.png') no-repeat;
+          background-size: 100%;
+        }
+        .icon5{
+          background: url('/assets/pcimg/icon5.png') no-repeat;
+          background-size: 100%;
+        }
+        .icon6{
+          background: url('/assets/pcimg/icon6.png') no-repeat;
+          background-size: 100%;
+        }
+        .icon7{
+          background: url('/assets/pcimg/icon7.png') no-repeat;
+          background-size: 100%;
+        }
+        .icon8{
+          background: url('/assets/pcimg/icon8.png') no-repeat;
+          background-size: 100%;
+        }
+        .icon1-on{
+          background: url('/assets/pcimg/icon1-on.png') no-repeat;
+          background-size: 100%;
+        }
+        .icon2-on{
+          background: url('/assets/pcimg/icon2-on.png') no-repeat;
+          background-size: 100%;
+        }
+        .icon3-on{
+          background: url('/assets/pcimg/icon3-on.png') no-repeat;
+          background-size: 100%;
+        }
+        .icon4-on{
+          background: url('/assets/pcimg/icon4-on.png') no-repeat;
+          background-size: 100%;
+        }
+        .icon5-on{
+          background: url('/assets/pcimg/icon5-on.png') no-repeat;
+          background-size: 100%;
+        }
+        .icon6-on{
+          background: url('/assets/pcimg/icon6-on.png') no-repeat;
+          background-size: 100%;
+        }
+        .icon7-on{
+          background: url('/assets/pcimg/icon7-on.png') no-repeat;
+          background-size: 100%;
+        }
+        .icon8-on{
+          background: url('/assets/pcimg/icon8-on.png') no-repeat;
+          background-size: 100%;
+        }
+      }
+      .t-box1{
+        background: linear-gradient(94deg, #62154F 1.65%, #262329 99.99%);
+      }
+      .t-box2{
+        background: linear-gradient(94deg, #33255D 1.65%, #221E31 99.99%);
+      }
+      .t-box3{
+        background: linear-gradient(94deg, #9A46F4 1.65%, #5F1CAF 99.99%);
+      }
+      .t-box{
+        width: 100%;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        padding: 0px 10px;
+        transition: .5s;
+        -o-transition: .5s;
+        -ms-transition: .5s;
+        -moz-transition: .5s;
+        -webkit-transition: .5s;
+        margin-bottom: 5px;
+        @media (max-width: 1440px) {
+          height: 60px;
+        }
+        &:hover{
+          cursor: pointer;
+          padding: 0 5px;
+          .t-icon{
+            width: 60px;
+            height: 60px;
+            @media (max-width: 1440px) {
+              width: 40px;
+              height: 40px;
+            }
+          }
+          .t-icon1{
+            background-size: 60px auto;
+            @media (max-width: 1440px) {
+              background-size: 40px auto;
+            }
+          }
+          .t-icon2{
+            background-size: 60px auto;
+            @media (max-width: 1440px) {
+              background-size: 40px auto;
+            }
+          }
+          .t-icon3{
+            background-size: 60px auto;
+            @media (max-width: 1440px) {
+              background-size: 40px auto;
+            }
+          }
+          .tit{
+            margin-left: 17px;
+            @media (max-width: 1440px) {
+              margin-left: 15px;
+            }
+          }
+        }
+        .tit{
+          color: #fff;
+          font-family: Inter;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          margin-left: 24px;
+          transition: .5s;
+          -o-transition: .5s;
+          -ms-transition: .5s;
+          -moz-transition: .5s;
+          -webkit-transition: .5s;
+          @media (max-width: 1440px) {
+            font-size: 16px;
+          }
+        }
+        .t-icon{
+          width: 48px;
+          height: 48px;
+          transition: .5s;
+          -o-transition: .5s;
+          -ms-transition: .5s;
+          -moz-transition: .5s;
+          -webkit-transition: .5s;
+          @media (max-width: 1440px) {
+            width: 30px;
+            height: 30px;
+          }
+        }
+        .t-icon1{
+          background: url('/assets/pcimg/t-icon1.png') no-repeat center center;
+          background-size: 42px auto;
+          @media (max-width: 1440px) {
+            background-size: 30px auto;
+          }
+        }
+        .t-icon2{
+          background: url('/assets/pcimg/t-icon2.png') no-repeat center center;
+          background-size: 42px auto;
+          @media (max-width: 1440px) {
+            background-size: 30px auto;
+          }
+        }
+        .t-icon3{
+          background: url('/assets/pcimg/t-icon3.png') no-repeat center center;
+          background-size: 42px auto;
+          @media (max-width: 1440px) {
+            background-size: 30px auto;
+          }
+        }
+      }
+    }
+  }
+}

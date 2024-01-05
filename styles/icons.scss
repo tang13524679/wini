@@ -365,6 +365,11 @@
     @include icon-16;
     @include icon-common;
 }
+.icon-hk {
+    background: url('/assets/lang/hk.png') no-repeat;
+    @include icon-24;
+    @include icon-common;
+}
 .icon-zh {
     background: url('/assets/lang/zh.png') no-repeat;
     @include icon-24;

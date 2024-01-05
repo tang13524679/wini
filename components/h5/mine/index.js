@@ -1,4 +1,4 @@
-import react, { useEffect } from "react";
+import react, { useState, useEffect } from "react";
 import Link from "next/link";
 import styles from "./index.module.scss";
 import { RightOutlined } from "@ant-design/icons";
@@ -12,9 +12,12 @@ import { formatOrdinal, getAvatarIndex } from "@/utils/common";
 import { encryptECB, encryptMD5 } from "@/utils/encrypt";
 import { ENTERPRISE_CODE } from "@/utils/const";
 import { useBalance } from "@/hooks/fund";
+import { setOnline } from "@/requests/frontend/users";
+import { Toast } from "antd-mobile";
 
 const MinePage = () => {
   const [{ user }, dispatch] = useGlobalState();
+  const [confirmLoading, setconfirmLoading] = useState(false);
   const router = useRouter();
   const avatarIndex = getAvatarIndex(user?.employeecode);
   const balance = useBalance();
@@ -79,16 +82,7 @@ const MinePage = () => {
             <RightOutlined />
           </div>
         </Link>
-        <Link href="" passHref>
-          <div className="box">
-            <div className="tit">
-              <img src="/assets/mine/icon2.png" />
-              代理合作
-            </div>
-            <RightOutlined />
-          </div>
-        </Link>
-        <Link href="/user/task" passHref>
+        <Link href="/promo" passHref>
           <div className="box">
             <div className="tit">
               <img src="/assets/mine/icon3.png" />
@@ -151,13 +145,27 @@ const MinePage = () => {
               content: "确定要退出当前登录状态吗?",
               okText: "确定",
               cancelText: "取消",
-              onOk: () => {
-                cleanUserStore();
-                dispatch({
-                  type: "set_user",
-                  payload: null,
-                });
-                router.push("/home");
+              confirmLoading: confirmLoading,
+              onOk: async () => {
+                try {
+                  setconfirmLoading(true);
+                  const res = await setOnline();
+                  if (res.code == "1") {
+                    cleanUserStore();
+                    dispatch({
+                      type: "set_user",
+                      payload: null,
+                    });
+                    router.push("/home");
+                  }
+                } catch (error) {
+                  Toast.show({
+                    content: error,
+                  });
+                  console.error(error);
+                } finally {
+                  setconfirmLoading(false);
+                }
               },
             });
           }}
