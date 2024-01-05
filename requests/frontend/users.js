@@ -1,7 +1,8 @@
 import request from "@/utils/fetcher-frontend";
-import { ENTERPRISE_CODE, BRAND_CODE } from "@/utils/const";
+import { ENTERPRISE_CODE, BRAND_CODE, EMPLOYEE_CODE } from "@/utils/const";
 import { getDomain } from "@/utils/common";
 import { encryptECB, encryptMD5 } from "@/utils/encrypt";
+import store from "store";
 
 // 注册
 export function register(param) {
@@ -35,6 +36,15 @@ export function resetPassword(params) {
 export function login(params) {
   return request(`/ecrm-api/User/login`, {
     domain: getDomain(),
+    ...params,
+  });
+}
+const userStore = store.get("user");
+// 退出登录
+export function setOnline(params) {
+  return request(`/ecrm-api/User/setOnline`, {
+    enterprisecode: ENTERPRISE_CODE,
+    employeecode: userStore?.employeecode || EMPLOYEE_CODE,
     ...params,
   });
 }
