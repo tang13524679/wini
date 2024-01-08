@@ -1,5 +1,5 @@
 import request from "@/utils/fetcher-frontend";
-import { ENTERPRISE_CODE, BRAND_CODE } from "@/utils/const";
+import { ENTERPRISE_CODE, BRAND_CODE, E0001QZC } from "@/utils/const";
 import { encryptECB, encryptMD5 } from "@/utils/encrypt";
 import store from "store";
 
@@ -29,6 +29,18 @@ export function bannerList(param) {
 export function recentGamesList(param) {
   const props = { ...param, enterprisecode: ENTERPRISE_CODE };
   return request(`/ecrm-api/Game/recentGamesList`, {
+    ...props,
+    params: encryptECB({ ...props }),
+    signature: encryptMD5({ ...props }),
+  });
+}
+// 获取游戏列表
+export function getGameList(param) {
+  const props = {
+    ...param,
+    enterprisecode: ENTERPRISE_CODE,
+  };
+  return request(`/ecrm-api/gameItemGameTypeEnterprise/gameList`, {
     ...props,
     params: encryptECB({ ...props }),
     signature: encryptMD5({ ...props }),

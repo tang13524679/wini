@@ -4,6 +4,7 @@ import qs from "query-string";
 import { useGlobalState } from "@/hooks/global";
 import { ENTERPRISE_CODE } from "@/utils/const";
 import store from "store";
+import { useRouter } from "next/router";
 import { encryptECB, encryptMD5 } from "@/utils/encrypt";
 
 export function useBalance() {
@@ -58,7 +59,12 @@ export function useUserBanks() {
       signature: encryptMD5({ enterprisecode: ENTERPRISE_CODE }),
     }),
   ]);
-  return data?.info;
+  if (data?.code != "1") {
+    alert(11);
+    useRouter().push("/login");
+  } else {
+    return data?.info || [];
+  }
 }
 
 export function useEThirdParty() {

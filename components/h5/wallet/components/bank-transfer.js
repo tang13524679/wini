@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import react, { useState, useEffect } from "react";
 import styles from "./bank-transfer.module.scss";
 import { Input, Dropdown, Menu } from "antd";
 import { t } from "@/utils/translate";
@@ -6,6 +6,7 @@ import { useReceiveBanks } from "@/hooks/fund";
 import { DownOutlined } from "@ant-design/icons";
 import { Toast } from "antd-mobile";
 import { useRouter } from "next/router";
+import { EThirdpartys, ESaving } from "@/requests/frontend/wallet";
 
 const BankTransfer = () => {
   const amountList = [
@@ -36,10 +37,15 @@ const BankTransfer = () => {
   ];
   const [amount, setAmount] = useState("");
   const receiveBanks = useReceiveBanks();
+  console.log(receiveBanks, "11");
   const [receiveBank, setReceiveBank] = useState({});
   const router = useRouter();
 
-  const confirmHandler = () => {
+  useEffect(() => {
+    EThirdpartys();
+  }, []);
+
+  const confirmHandler = async () => {
     if (!amount) {
       Toast.show({
         content: "金钱数额不能为空",
@@ -49,16 +55,20 @@ const BankTransfer = () => {
         content: "WIN1收款账号不能为空",
       });
     } else {
-      router.push({
-        pathname: "/fund/payment-info",
-        query: {
-          ...receiveBank,
-          orderamount: amount,
-        },
+      const res = await ESaving({
+        orderamount: amount,
+        channelId: 6,
       });
+      console.log(res, "11");
+      // router.push({
+      //   pathname: "/fund/payment-info",
+      //   query: {
+      //     ...receiveBank,
+      //     orderamount: amount,
+      //   },
+      // });
     }
   };
-  console.log(receiveBank);
 
   return (
     <div className={styles.container}>
@@ -91,31 +101,36 @@ const BankTransfer = () => {
           })}
         </div>
       </div>
-      <Dropdown
-        trigger="click"
-        overlay={
-          <Menu>
-            {receiveBanks?.map((item, index) => (
-              <Menu.Item
-                key={index}
-                onClick={() => {
-                  setReceiveBank(item);
-                }}
-              >
-                {item.bankname}
-              </Menu.Item>
-            ))}
-          </Menu>
-        }
-      >
-        <div className="flex justify-between items-center cursor-pointer bank-select">
-          <div className="clWhite">{`WIN1${t("receiveAccount", "field")}`}</div>
-          <div className="flex-auto clWhite30 text-right please-select">
-            {receiveBank.bankname || t("pleaseSelect")}
+      {receiveBanks != undefined && (
+        <Dropdown
+          trigger="click"
+          overlay={
+            <Menu>
+              {receiveBanks?.map((item, index) => (
+                <Menu.Item
+                  key={index}
+                  onClick={() => {
+                    setReceiveBank(item);
+                  }}
+                >
+                  {item.bankname}
+                </Menu.Item>
+              ))}
+            </Menu>
+          }
+        >
+          <div className="flex justify-between items-center cursor-pointer bank-select">
+            <div className="clWhite">{`WIN1${t(
+              "receiveAccount",
+              "field"
+            )}`}</div>
+            <div className="flex-auto clWhite30 text-right please-select">
+              {receiveBank.bankname || t("pleaseSelect")}
+            </div>
+            <DownOutlined />
           </div>
-          <DownOutlined />
-        </div>
-      </Dropdown>
+        </Dropdown>
+      )}
       <div className="confirm-box">
         <div className="confirm" onClick={confirmHandler}>
           确认

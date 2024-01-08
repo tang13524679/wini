@@ -112,7 +112,7 @@ export const PROVIDERS = [
 ];
 
 export const providerMap = {
-  HOT: ["EVO", "SEXY", "M8", "CQ9", "JDB", "VR", "NW", "YL"], // 热门 1
+  HOT: ["EVO", "SEXY", "M8", "CQ9", "JDB", "VR", "NW", "IM", "YL"], // 热门 1
   SX: ["IBA", "SEXY", "WM", "OG", "EVO", "BG"], // 真人 1
   TY: ["M8", "DB", "POLY"], // 体育 1
   CP: ["VR", "BBIN"], // 彩票 1
@@ -120,7 +120,7 @@ export const providerMap = {
   CF: ["RCB988"], // 赛马 1
   DZ: ["YGR", "AMEBA", "CQ9", "JDB", "SG", "JOKER", "BBIN", "VG"], // 电子 1
   // SLOT: ["CQ9", "PT"], // 老虎机
-  DJ: [], // 电竞 1
+  DJ: ["IM"], // 电竞 1
   QP: ["NW", "JDB", "LEG", "VG", "KY"], // 棋牌 1
 };
 

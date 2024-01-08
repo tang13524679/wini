@@ -1,0 +1,117 @@
+.dzGameBox{
+  :global{
+    .top{
+      .ant-input-affix-wrapper{
+        background: #131416;
+        border: 1px solid #131416;
+        &:hover{
+          border-color: #131416;
+        }
+        input{
+          height: 30px;
+          background: #131416;
+          color: #fff;
+        }
+      }
+    }
+    .list-box{
+      margin-top: 15px;
+      display: flex;
+      .left{
+        width: 70px;
+        height: 400px;
+        overflow: hidden;
+        margin-right: 10px;
+        position: relative;
+        .next{
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: 5px;
+          span{
+            transform: rotate(-90deg);
+          }
+        }
+        .adm-swiper{
+          .adm-swiper-track{
+            .adm-swiper-slide{
+              width: 100%;
+              padding-bottom: 12px;
+              .content{
+                height: 100%;
+                border-radius: 8px;
+                background-color: #1B1B1F;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .text{
+                  font-size: 12px;
+                  color: #fff;
+                }
+              }
+              .content.active{
+                background: linear-gradient(0deg,#4fbff6 4.5%,#6d85fa 48.64%,#8b5eff 95.5%);
+              }
+            }
+          }
+        }
+      }
+      .right{
+        flex: 1;
+        .options{
+          display: flex;
+          .item{
+            padding: 6px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #959EA8;
+            margin-right: 12px;
+            background: #1B1B1F;
+            border-radius: 30px;
+          }
+          .item.active{
+            color: #fff;
+            background: linear-gradient(91deg, #6E6AF5 20.09%, #7F3CE3 61%, #522F7F 96.35%);
+          }
+        }
+        .gameList{
+          margin-top: 15px;
+          width: 100%;
+          height: 320px;
+          overflow: auto;
+          ul{
+            margin: 0 -5px;
+            display: flex;
+            flex-wrap: wrap;
+            li{
+              padding: 5px;
+              width: 33.33333%;
+              .box{
+                text-align: center;
+                color: #fff;
+                p{
+                  font-size: 13px;
+                  white-space: nowrap; /* 不换行 */
+                  overflow: hidden;    /* 超出部分隐藏 */
+                  text-overflow: ellipsis; /* 显示省略号 */
+                  margin: 3px 0;
+                }
+                .text{
+                  padding: 4px 5px;
+                  border-radius: 4px;
+                  background-color: #1B1B1F;
+                  font-size: 12px;
+                  white-space: nowrap; /* 不换行 */
+                  overflow: hidden;    /* 超出部分隐藏 */
+                  text-overflow: ellipsis; /* 显示省略号 */
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

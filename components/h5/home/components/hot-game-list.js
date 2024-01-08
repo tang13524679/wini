@@ -1,8 +1,8 @@
-import react, { useState, useEffect, useRef } from "react";
+import react, { useState, useEffect, useRef, useMemo } from "react";
 import styles from "./hot-game-list.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Grid, Pagination } from "swiper";
-import { homeApi, gameApi } from "@/requests/frontend";
+import { homeApi } from "@/requests/frontend";
 import { Toast } from "antd-mobile";
 import { useGlobalState } from "@/hooks/global";
 import { play, getGameImg } from "@/utils/common";
@@ -15,33 +15,102 @@ import {
 } from "@/utils/const";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { t } from "@/utils/translate";
+import DZgame from "./dz-game";
 
 SwiperCore.use([Grid, Pagination]);
 
 const HotGameList = () => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
   const [hotGameList, setHotGameList] = useState([]);
   const [{ user, lang }, dispatch] = useGlobalState();
   const [scrollType, setScrollType] = useState(false);
   const [scrollValue, setScrollValue] = useState(0);
   const pageView = useRef(null);
+  const [pageIndex, setPageIndex] = useState(1);
+  const [pageSize, setPageSize] = useState(50);
+  const [ismain, setIsmain] = useState(0);
+  const [biggametype, setBiggametype] = useState("HOT");
+  const [minCategory, setmMinCategory] = useState([]);
+  const [gamesList, setGamesList] = useState([]);
 
-  // const fetchData = async () => {
-  //   try {
-  //     const res = await homeApi.hotGameRanList({});
-  //     if (res.code == "1") {
-  //       setHotGameList(res.info);
-  //     }
-  //   } catch (error) {
-  //     Toast.show({
-  //       content: error,
-  //     });
-  //     console.error(error);
-  //   } finally {
-  //   }
-  // };
+  const fetchData = async () => {
+    try {
+      const res = await homeApi.hotGameRanList({});
+      if (res.code == "1") {
+        setHotGameList(res.info);
+      }
+    } catch (error) {
+      Toast.show({
+        content: error,
+      });
+      console.error(error);
+    } finally {
+    }
+  };
 
-  useEffect(() => {
+  const fetchGameList = async () => {
+    try {
+      const res = await homeApi.getGameList({
+        ismain,
+        pageIndex,
+        pageSize,
+      });
+      if (res.code == "1") {
+        setmMinCategory(res.info?.rows);
+      }
+    } catch (error) {
+      Toast.show({
+        content: error,
+      });
+      console.error(error);
+    } finally {
+    }
+  };
+
+  useEffect(async () => {
+    if (biggametype == "HOT") {
+      fetchGameList();
+    } else {
+      try {
+        const res = await homeApi.getGameList({
+          ismain,
+          biggametype,
+          pageIndex,
+          pageSize,
+        });
+        if (res.code == "1") {
+          setGamesList(res.info?.rows);
+        }
+      } catch (error) {
+        Toast.show({
+          content: error,
+        });
+        console.error(error);
+      } finally {
+      }
+    }
+  }, [biggametype]);
+
+  const getCategry = useMemo(() => {
+    const result = minCategory.reduce((pre, cur) => {
+      var exists = pre.find(
+        (item) =>
+          JSON.stringify(item.biggametype) === JSON.stringify(cur.biggametype)
+      );
+      if (!exists) {
+        pre.push(cur.biggametype);
+      }
+      return pre;
+    }, []);
+
+    const newArr = [...new Set(result)];
+    console.log(newArr);
+    return newArr || [];
+  }, [minCategory]);
+
+  useEffect(async () => {
     window.addEventListener("scroll", function (e) {
       // 滚动条滚动高度
       const scrollTop = document.documentElement.scrollTop;
@@ -64,10 +133,7 @@ const HotGameList = () => {
         setScrollType(false);
       }
     });
-    // fetchData();
   }, []);
-
-  const [slide, setSlide] = useState("HOT");
 
   const getEntry = (type, provider) => {
     let arr = GAME_ENTRIES.filter((item) => {
@@ -92,85 +158,17 @@ const HotGameList = () => {
     }
   };
 
-  // const getProviderList = () => {
-  //   if (slide == "HOT") {
-  //     return (
-  //       hotGameList.length > 0 && (
-  //         <Swiper
-  //           slidesPerView={3}
-  //           spaceBetween={10}
-  //           slidesPerGroup={2}
-  //           // loop={true}
-  //           grid={{ fill: "row", rows: 3 }}
-  //         >
-  //           {hotGameList?.map((item, index) => {
-  //             return (
-  //               <SwiperSlide key={index}>
-  //                 <div
-  //                   className="img-box"
-  //                   onClick={() => {
-  //                     if (item.gameId) {
-  //                       play(item, dispatch);
-  //                     } else {
-  //                       router.push(item.link);
-  //                     }
-  //                   }}
-  //                 >
-  //                   {/* <img src="/assets/horse.png" /> */}
-  //                   {/* <Image src={getGameImg(item)} width={115} height={151} /> */}
-  //                   <img src={getGameImg(item)} />
-  //                 </div>
-  //               </SwiperSlide>
-  //             );
-  //           })}
-  //         </Swiper>
-  //       )
-  //     );
-  //   } else {
-  //     return (
-  //       <Swiper
-  //         slidesPerView={3}
-  //         spaceBetween={10}
-  //         slidesPerGroup={2}
-  //         grid={{ fill: "row", rows: 3 }}
-  //       >
-  //         {providerMap[slide].map((item, index) => {
-  //           return (
-  //             <SwiperSlide
-  //               key={index}
-  //               className={
-  //                 providerMap[slide].length < 7 ? "swiperSlide-on" : ""
-  //               }
-  //             >
-  //               <div
-  //                 className="img-box"
-  //                 onClick={() => {
-  //                   onClickHandle(item);
-  //                 }}
-  //               >
-  //                 {/* <Image
-  //                   src={`/assets/third/games/${slide}/${item}.png`}
-  //                   width={115}
-  //                   height={151}
-  //                 /> */}
-  //                 <img src={`/assets/third/games/${slide}/${item}.png`} />
-  //               </div>
-  //             </SwiperSlide>
-  //           );
-  //         })}
-  //       </Swiper>
-  //     );
-  //   }
-  // };
-
   return (
     <div className={styles.hotContainer} ref={pageView}>
       <div className={`${scrollType ? "tabbar-active" : ""} tabbar-swiper`}>
         <Swiper slidesPerView={3.5} spaceBetween={5}>
-          {/* <SwiperSlide
-            className={`${slide == "HOT" ? "active" : ""}`}
+          <SwiperSlide
+            className={`${biggametype == "HOT" ? "active" : ""}`}
             onClick={() => {
-              setSlide("HOT");
+              if (scrollType) {
+                document.documentElement.scrollTop = scrollValue;
+              }
+              setBiggametype("HOT");
             }}
           >
             <div className="box">
@@ -181,30 +179,31 @@ const HotGameList = () => {
                   height={14}
                 />
               </div>
-              <div className="text">热门游戏</div>
+              <div className="text">热门</div>
             </div>
-          </SwiperSlide> */}
-          {GAME_TYPES(lang).map((item, index) => {
+          </SwiperSlide>
+          {getCategry.map((item, index) => {
             return (
               <SwiperSlide
                 key={index}
-                className={`${slide == item.value ? "active" : ""}`}
+                className={`${biggametype == item ? "active" : ""}`}
                 onClick={() => {
                   if (scrollType) {
                     document.documentElement.scrollTop = scrollValue;
                   }
-                  setSlide(item.value);
+                  setBiggametype(item);
                 }}
               >
                 <div className="box">
                   <div className="icon">
                     <Image
-                      src={`/assets/game/${item.iconValue}.png`}
+                      src={`/assets/game/${item}.png`}
                       width={14}
                       height={14}
                     />
+                    {/* <img src={`/assets/game/${item}.png`} /> */}
                   </div>
-                  <div className="text">{item.label}</div>
+                  <div className="text">{t(item, null, lang)}</div>
                 </div>
               </SwiperSlide>
             );
@@ -212,38 +211,75 @@ const HotGameList = () => {
         </Swiper>
       </div>
       <div className="game-list">
-        {/* {getProviderList()} */}
-        <Swiper
-          slidesPerView={3}
-          spaceBetween={10}
-          slidesPerGroup={2}
-          grid={{ fill: "row", rows: 3 }}
-        >
-          {providerMap[slide].map((item, index) => {
-            return (
-              <SwiperSlide
-                key={index}
-                className={
-                  providerMap[slide].length < 7 ? "swiperSlide-on" : ""
-                }
-              >
-                <div
-                  className="img-box"
-                  onClick={() => {
-                    onClickHandle(item);
-                  }}
+        {biggametype == "HOT" && (
+          <Swiper
+            slidesPerView={3}
+            spaceBetween={10}
+            slidesPerGroup={2}
+            grid={{ fill: "row", rows: 3 }}
+          >
+            {minCategory.map((item, index) => {
+              return (
+                item.ishot == "1" && (
+                  <SwiperSlide
+                    key={item.id}
+                    className={item.ishot ? "swiperSlide-on" : ""}
+                  >
+                    <div
+                      className="img-box"
+                      // onClick={() => {
+                      //   onClickHandle(item);
+                      // }}
+                    >
+                      <Image
+                        src={`/assets/home/games/${biggametype}/${item.cnname}.png`}
+                        width={200}
+                        height={280}
+                      />
+                      {/* <img
+                        src={`/assets/home/games/${biggametype}/${item.cnname}.png`}
+                      /> */}
+                    </div>
+                  </SwiperSlide>
+                )
+              );
+            })}
+          </Swiper>
+        )}
+        {biggametype != "HOT" && biggametype != "DZ" && (
+          <Swiper
+            slidesPerView={3}
+            spaceBetween={10}
+            slidesPerGroup={2}
+            grid={{ fill: "row", rows: 3 }}
+          >
+            {gamesList.map((item, index) => {
+              return (
+                <SwiperSlide
+                  key={index}
+                  className={gamesList.length < 7 ? "swiperSlide-on" : ""}
                 >
-                  <Image
-                    src={`/assets/home/games/${slide}/${item}.png`}
-                    width={200}
-                    height={280}
-                  />
-                  {/* <img src={`/assets/home/games/${slide}/${item}.png`} /> */}
-                </div>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
+                  <div
+                    className="img-box"
+                    // onClick={() => {
+                    //   onClickHandle(item);
+                    // }}
+                  >
+                    {/* <Image
+                      src={`/assets/home/games/${biggametype}/${item.cnname}.png`}
+                      width={200}
+                      height={280}
+                    /> */}
+                    <img
+                      src={`/assets/home/games/${biggametype}/${item.cnname}.png`}
+                    />
+                  </div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        )}
+        {biggametype == "DZ" && <DZgame />}
       </div>
     </div>
   );

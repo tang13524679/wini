@@ -59,3 +59,19 @@ export function DoTrans(param) {
     signature: encryptMD5({ ...props }),
   });
 }
+// 获取第三方支付通道
+export function EThirdpartys() {
+  return request(`/ecrm-api/TPayment/EThirdpartys`);
+}
+// 第三方实时存款-支付
+export function ESaving(param) {
+  const props = {
+    ...param,
+    enterprisecode: ENTERPRISE_CODE,
+  };
+  return request(`/ecrm-api/TPayment/ESaving`, {
+    ...props,
+    params: encryptECB({ ...props }),
+    signature: encryptMD5({ ...props }),
+  });
+}
