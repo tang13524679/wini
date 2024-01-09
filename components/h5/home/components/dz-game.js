@@ -8,6 +8,7 @@ import debounce from "@/utils/debounce";
 import { InfiniteScroll } from "antd-mobile";
 import { play } from "@/utils/common";
 import { useGlobalState } from "@/hooks/global";
+import Image from "next/image";
 
 const DZgame = () => {
   const ref = useRef(null);
@@ -299,7 +300,7 @@ const DZgame = () => {
                         onClickHandle(item);
                       }}
                     >
-                      <img
+                      <Image
                         src={`/assets/home/DZgame/${item.gametype.replace(
                           "Game",
                           ""
@@ -310,6 +311,8 @@ const DZgame = () => {
                             ? "_zhCN.png"
                             : ".png"
                         }`}
+                        width={200}
+                        height={200}
                       />
                       <p>{item.cnname}</p>
                       <div className="text">回报率{item.RTP}</div>
