@@ -6,9 +6,12 @@ import { Input } from "antd";
 import { SearchOutlined, DoubleLeftOutlined } from "@ant-design/icons";
 import debounce from "@/utils/debounce";
 import { InfiniteScroll } from "antd-mobile";
+import { play } from "@/utils/common";
+import { useGlobalState } from "@/hooks/global";
 
 const DZgame = () => {
   const ref = useRef(null);
+  const [{ user, lang }, dispatch] = useGlobalState();
   const [pageIndex, setPageIndex] = useState(1);
   const [pageSize, setPageSize] = useState(30);
   const [ismain, setIsmain] = useState(1);
@@ -144,6 +147,15 @@ const DZgame = () => {
     }
   };
 
+  const onClickHandle = (item) => {
+    if (item) {
+      play(item, dispatch);
+    } else {
+      message.info("游戏维护中。。。。");
+      return;
+    }
+  };
+
   return (
     <div className={styles.dzGameBox}>
       <div className="top">
@@ -265,7 +277,12 @@ const DZgame = () => {
               {gamelist.map((item) => {
                 return (
                   <li key={item.id}>
-                    <div className="box">
+                    <div
+                      className="box"
+                      onClick={() => {
+                        onClickHandle(item);
+                      }}
+                    >
                       <img src="" />
                       <p>{item.cnname}</p>
                       <div className="text">回报率{item.RTP}</div>
