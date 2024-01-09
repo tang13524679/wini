@@ -14,6 +14,7 @@ const DZgame = () => {
   const [{ user, lang }, dispatch] = useGlobalState();
   const [pageIndex, setPageIndex] = useState(1);
   const [pageSize, setPageSize] = useState(30);
+  const [leftPageSize, setleftPageSize] = useState(300);
   const [ismain, setIsmain] = useState(1);
   const [gamelist, setGamelist] = useState([]);
   const [gameTotal, setGameTotal] = useState([]);
@@ -23,9 +24,14 @@ const DZgame = () => {
   const [hasMore, setHasMore] = useState(true);
 
   const fetchData = async (val) => {
-    setPageIndex(1);
     try {
-      const res = await getGameList({ ...val });
+      const res = await getGameList({
+        ...val,
+        ismain,
+        biggametype: "DZ",
+        pageIndex,
+        pageSize,
+      });
       if (res.code == "1") {
         setGamelist(res.info?.rows);
       }
@@ -40,13 +46,13 @@ const DZgame = () => {
   useEffect(async () => {
     try {
       const res = await getGameList({
+        ismain,
         biggametype: "DZ",
         pageIndex,
-        pageSize,
+        pageSize: leftPageSize,
       });
       if (res.code == "1") {
         setGameTotal(res.info?.rows);
-        setGamelist(res.info?.rows);
       }
     } catch (error) {
       Toast.show({
@@ -55,37 +61,6 @@ const DZgame = () => {
       console.error(error);
     }
   }, []);
-
-  const selectionHandle = (val) => {
-    setPageIndex(1);
-    if (gameType == "all") {
-      fetchData({
-        biggametype: "DZ",
-        gametype: val,
-        cnname: inputValue,
-        pageIndex,
-        pageSize,
-      });
-    } else if (gameType == "hot") {
-      fetchData({
-        biggametype: "DZ",
-        gametype: val,
-        cnname: inputValue,
-        ishot: 1,
-        pageIndex,
-        pageSize,
-      });
-    } else {
-      fetchData({
-        biggametype: "DZ",
-        gametype: val,
-        cnname: inputValue,
-        isnew: 1,
-        pageIndex,
-        pageSize,
-      });
-    }
-  };
 
   const gameTypeList = useMemo(() => {
     const newMap = new Map();
@@ -101,14 +76,53 @@ const DZgame = () => {
       setPageIndex(1);
       if (gameType == "all") {
         fetchData({
+          cnname: inputValue,
+          gametype: gameCategory,
+        });
+      } else if (gameType == "hot") {
+        fetchData({
+          cnname: inputValue,
+          gametype: gameCategory,
+          ishot: 1,
+        });
+      } else {
+        fetchData({
+          cnname: inputValue,
+          gametype: gameCategory,
+          isnew: 1,
+        });
+      }
+    },
+    2000,
+    seInputValue
+  );
+
+  const loadMore = async () => {
+    if (gameType == "all") {
+      try {
+        const res = await getGameList({
+          ismain,
           biggametype: "DZ",
           cnname: inputValue,
           gametype: gameCategory,
           pageIndex,
           pageSize,
         });
-      } else if (gameType == "hot") {
-        fetchData({
+        if (res.code == "1") {
+          setGamelist((val) => [...val, ...res.info?.rows]);
+          setHasMore(res.info?.rows.length > 0);
+          setPageIndex(pageIndex + 1);
+        }
+      } catch (error) {
+        Toast.show({
+          content: error,
+        });
+        console.error(error);
+      }
+    } else if (gameType == "hot") {
+      try {
+        const res = await getGameList({
+          ismain,
           biggametype: "DZ",
           cnname: inputValue,
           gametype: gameCategory,
@@ -116,8 +130,21 @@ const DZgame = () => {
           pageIndex,
           pageSize,
         });
-      } else {
-        fetchData({
+        if (res.code == "1") {
+          setGamelist((val) => [...val, ...res.info?.rows]);
+          setHasMore(res.info?.rows.length > 0);
+          setPageIndex(pageIndex + 1);
+        }
+      } catch (error) {
+        Toast.show({
+          content: error,
+        });
+        console.error(error);
+      }
+    } else {
+      try {
+        const res = await getGameList({
+          ismain,
           biggametype: "DZ",
           cnname: inputValue,
           gametype: gameCategory,
@@ -125,25 +152,17 @@ const DZgame = () => {
           pageIndex,
           pageSize,
         });
+        if (res.code == "1") {
+          setGamelist((val) => [...val, ...res.info?.rows]);
+          setHasMore(res.info?.rows.length > 0);
+          setPageIndex(pageIndex + 1);
+        }
+      } catch (error) {
+        Toast.show({
+          content: error,
+        });
+        console.error(error);
       }
-    },
-    1000,
-    seInputValue
-  );
-
-  const loadMore = async () => {
-    const res = await getGameList({
-      biggametype: "DZ",
-      cnname: inputValue,
-      gametype: gameCategory,
-      isnew: 1,
-      pageIndex: pageIndex,
-      pageSize,
-    });
-    if (res.code == "1") {
-      setGamelist((val) => [...val, ...res.info?.rows]);
-      setHasMore(res.info?.rows.length > 0);
-      setPageIndex(pageIndex + 1);
     }
   };
 
@@ -189,7 +208,10 @@ const DZgame = () => {
                     } content`}
                     onClick={() => {
                       setGameCategory(item.gametype);
-                      selectionHandle(item.gametype);
+                      setGameType("all");
+                      setPageIndex(1);
+                      seInputValue("");
+                      fetchData({ gametype: item.gametype });
                     }}
                   >
                     <div className="box">
@@ -228,12 +250,10 @@ const DZgame = () => {
               className={`${gameType == "all" ? "active" : ""} item`}
               onClick={() => {
                 setGameType("all");
+                seInputValue("");
+                setPageIndex(1);
                 fetchData({
-                  biggametype: "DZ",
                   gametype: gameCategory,
-                  cnname: inputValue,
-                  pageIndex,
-                  pageSize,
                 });
               }}
             >
@@ -243,13 +263,11 @@ const DZgame = () => {
               className={`${gameType == "hot" ? "active" : ""} item`}
               onClick={() => {
                 setGameType("hot");
+                seInputValue("");
+                setPageIndex(1);
                 fetchData({
-                  biggametype: "DZ",
                   ishot: 1,
                   gametype: gameCategory,
-                  cnname: inputValue,
-                  pageIndex,
-                  pageSize,
                 });
               }}
             >
@@ -259,13 +277,11 @@ const DZgame = () => {
               className={`${gameType == "new" ? "active" : ""} item`}
               onClick={() => {
                 setGameType("new");
+                seInputValue("");
+                setPageIndex(1);
                 fetchData({
-                  biggametype: "DZ",
                   isnew: 1,
                   gametype: gameCategory,
-                  cnname: inputValue,
-                  pageIndex,
-                  pageSize,
                 });
               }}
             >
@@ -283,7 +299,18 @@ const DZgame = () => {
                         onClickHandle(item);
                       }}
                     >
-                      <img src="" />
+                      <img
+                        src={`/assets/home/DZgame/${item.gametype.replace(
+                          "Game",
+                          ""
+                        )}/${item.gameid}${
+                          item.gametype == "YGRGame"
+                            ? "_200x200_01_cn.png"
+                            : item.gametype == "AMEBAGame"
+                            ? "_zhCN.png"
+                            : ".png"
+                        }`}
+                      />
                       <p>{item.cnname}</p>
                       <div className="text">回报率{item.RTP}</div>
                     </div>

@@ -72,6 +72,8 @@ const HotGameList = () => {
   useEffect(async () => {
     if (biggametype == "HOT") {
       fetchGameList();
+    } else if (biggametype == "DZ") {
+      return;
     } else {
       try {
         const res = await homeApi.getGameList({

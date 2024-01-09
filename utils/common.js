@@ -50,11 +50,11 @@ export async function playGame(game, dispatch) {
       dispatch({ type: "set_loading", payload: true });
       if (notAllowPC(game)) throw t("onlyMobile", "msg");
       let rst = await gameApi.play({
-        id: game.gameId || game.id,
+        id: game.id,
         gametype: game.gametype,
-        playtype: game.playtype,
-        gamecode: game.gametype,
-        gameid: game.gameId,
+        biggametype: game.biggametype,
+        gamecode: game.gameid,
+        gameid: game.gameid,
         homeurl,
         lobbyurl,
         device: isMobile() ? "h5" : "web",
