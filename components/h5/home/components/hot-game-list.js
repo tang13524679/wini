@@ -17,6 +17,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { t } from "@/utils/translate";
 import DZgame from "./dz-game";
+import { SpinLoading } from "antd-mobile";
 
 SwiperCore.use([Grid, Pagination]);
 
@@ -51,6 +52,7 @@ const HotGameList = () => {
   };
 
   const fetchGameList = async () => {
+    setIsLoading(true);
     try {
       const res = await homeApi.getGameList({
         ismain,
@@ -66,6 +68,7 @@ const HotGameList = () => {
       });
       console.error(error);
     } finally {
+      setIsLoading(false);
     }
   };
 
@@ -75,6 +78,7 @@ const HotGameList = () => {
     } else if (biggametype == "DZ") {
       return;
     } else {
+      setIsLoading(true);
       try {
         const res = await homeApi.getGameList({
           ismain,
@@ -91,6 +95,7 @@ const HotGameList = () => {
         });
         console.error(error);
       } finally {
+        setIsLoading(false);
       }
     }
   }, [biggametype]);
@@ -274,6 +279,11 @@ const HotGameList = () => {
           </Swiper>
         )}
         {biggametype == "DZ" && <DZgame />}
+        {isLoading && (
+          <div className="loading">
+            <SpinLoading color="primary" style={{ "--size": "38px" }} />
+          </div>
+        )}
       </div>
     </div>
   );

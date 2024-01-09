@@ -9,13 +9,15 @@ import { InfiniteScroll } from "antd-mobile";
 import { play } from "@/utils/common";
 import { useGlobalState } from "@/hooks/global";
 import Image from "next/image";
+import { SpinLoading } from "antd-mobile";
 
 const DZgame = () => {
   const ref = useRef(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [{ user, lang }, dispatch] = useGlobalState();
   const [pageIndex, setPageIndex] = useState(1);
   const [pageSize, setPageSize] = useState(30);
-  const [leftPageSize, setleftPageSize] = useState(300);
+  const [leftPageSize, setleftPageSize] = useState(30);
   const [ismain, setIsmain] = useState(1);
   const [gamelist, setGamelist] = useState([]);
   const [gameTotal, setGameTotal] = useState([]);
@@ -25,6 +27,7 @@ const DZgame = () => {
   const [hasMore, setHasMore] = useState(true);
 
   const fetchData = async (val) => {
+    setIsLoading(true);
     try {
       const res = await getGameList({
         ...val,
@@ -41,10 +44,13 @@ const DZgame = () => {
         content: error,
       });
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   useEffect(async () => {
+    setIsLoading(true);
     try {
       const res = await getGameList({
         ismain,
@@ -60,6 +66,8 @@ const DZgame = () => {
         content: error,
       });
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   }, []);
 
@@ -99,6 +107,7 @@ const DZgame = () => {
   );
 
   const loadMore = async () => {
+    setIsLoading(true);
     if (gameType == "all") {
       try {
         const res = await getGameList({
@@ -119,6 +128,8 @@ const DZgame = () => {
           content: error,
         });
         console.error(error);
+      } finally {
+        setIsLoading(false);
       }
     } else if (gameType == "hot") {
       try {
@@ -141,6 +152,8 @@ const DZgame = () => {
           content: error,
         });
         console.error(error);
+      } finally {
+        setIsLoading(false);
       }
     } else {
       try {
@@ -163,6 +176,8 @@ const DZgame = () => {
           content: error,
         });
         console.error(error);
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -324,6 +339,11 @@ const DZgame = () => {
             <InfiniteScroll loadMore={loadMore} hasMore={hasMore} />
           </div>
         </div>
+        {isLoading && (
+          <div className="loading">
+            <SpinLoading color="primary" style={{ "--size": "38px" }} />
+          </div>
+        )}
       </div>
     </div>
   );
