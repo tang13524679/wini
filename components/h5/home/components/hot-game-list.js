@@ -147,11 +147,9 @@ const HotGameList = () => {
     return arr[0];
   };
 
-  const onClickHandle = (provider) => {
-    let entry = getEntry(slide, provider);
-    console.log(entry, "222");
-    if (entry) {
-      play(entry, dispatch);
+  const onClickHandle = (item) => {
+    if (item) {
+      play(item, dispatch);
     } else {
       message.info("游戏维护中。。。。");
       return;
@@ -227,18 +225,15 @@ const HotGameList = () => {
                   >
                     <div
                       className="img-box"
-                      // onClick={() => {
-                      //   onClickHandle(item);
-                      // }}
+                      onClick={() => {
+                        onClickHandle(item);
+                      }}
                     >
                       <Image
                         src={`/assets/home/games/${biggametype}/${item.cnname}.png`}
                         width={200}
                         height={280}
                       />
-                      {/* <img
-                        src={`/assets/home/games/${biggametype}/${item.cnname}.png`}
-                      /> */}
                     </div>
                   </SwiperSlide>
                 )
@@ -261,17 +256,14 @@ const HotGameList = () => {
                 >
                   <div
                     className="img-box"
-                    // onClick={() => {
-                    //   onClickHandle(item);
-                    // }}
+                    onClick={() => {
+                      onClickHandle(item);
+                    }}
                   >
-                    {/* <Image
+                    <Image
                       src={`/assets/home/games/${biggametype}/${item.cnname}.png`}
                       width={200}
                       height={280}
-                    /> */}
-                    <img
-                      src={`/assets/home/games/${biggametype}/${item.cnname}.png`}
                     />
                   </div>
                 </SwiperSlide>

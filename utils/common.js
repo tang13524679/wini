@@ -53,7 +53,7 @@ export async function playGame(game, dispatch) {
         id: game.gameId || game.id,
         gametype: game.gametype,
         playtype: game.playtype,
-        gamecode: game.gamecode,
+        gamecode: game.gametype,
         gameid: game.gameId,
         homeurl,
         lobbyurl,

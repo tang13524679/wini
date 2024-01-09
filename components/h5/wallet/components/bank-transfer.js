@@ -1,6 +1,6 @@
 import react, { useState, useEffect } from "react";
 import styles from "./bank-transfer.module.scss";
-import { Input, Dropdown, Menu } from "antd";
+import { Input, Dropdown, Menu, Modal } from "antd";
 import { t } from "@/utils/translate";
 import { useReceiveBanks } from "@/hooks/fund";
 import { DownOutlined } from "@ant-design/icons";
@@ -36,13 +36,24 @@ const BankTransfer = () => {
     },
   ];
   const [amount, setAmount] = useState("");
-  const receiveBanks = useReceiveBanks();
-  console.log(receiveBanks, "11");
   const [receiveBank, setReceiveBank] = useState({});
+  const [tripartiteList, setTripartiteList] = useState([]);
+  const [isIframe, setIsIframe] = useState(false);
+  const [iframeurl, setIframeurl] = useState("");
   const router = useRouter();
 
-  useEffect(() => {
-    EThirdpartys();
+  useEffect(async () => {
+    try {
+      const res = await EThirdpartys();
+      if (res.code == "1") {
+        setTripartiteList(res.info);
+      }
+    } catch (error) {
+      Toast.show({
+        content: error,
+      });
+      console.error(error);
+    }
   }, []);
 
   const confirmHandler = async () => {
@@ -57,9 +68,12 @@ const BankTransfer = () => {
     } else {
       const res = await ESaving({
         orderamount: amount,
-        channelId: 6,
+        channelId: receiveBank.channelId,
       });
-      console.log(res, "11");
+      if (res.code == "1") {
+        setIframeurl(res.info);
+        setIsIframe(true);
+      }
       // router.push({
       //   pathname: "/fund/payment-info",
       //   query: {
@@ -101,36 +115,31 @@ const BankTransfer = () => {
           })}
         </div>
       </div>
-      {receiveBanks != undefined && (
-        <Dropdown
-          trigger="click"
-          overlay={
-            <Menu>
-              {receiveBanks?.map((item, index) => (
-                <Menu.Item
-                  key={index}
-                  onClick={() => {
-                    setReceiveBank(item);
-                  }}
-                >
-                  {item.bankname}
-                </Menu.Item>
-              ))}
-            </Menu>
-          }
-        >
-          <div className="flex justify-between items-center cursor-pointer bank-select">
-            <div className="clWhite">{`WIN1${t(
-              "receiveAccount",
-              "field"
-            )}`}</div>
-            <div className="flex-auto clWhite30 text-right please-select">
-              {receiveBank.bankname || t("pleaseSelect")}
-            </div>
-            <DownOutlined />
+      <Dropdown
+        trigger="click"
+        overlay={
+          <Menu>
+            {tripartiteList?.map((item, index) => (
+              <Menu.Item
+                key={index}
+                onClick={() => {
+                  setReceiveBank(item);
+                }}
+              >
+                {item.name}
+              </Menu.Item>
+            ))}
+          </Menu>
+        }
+      >
+        <div className="flex justify-between items-center cursor-pointer bank-select">
+          <div className="clWhite">{`WIN1${t("receiveAccount", "field")}`}</div>
+          <div className="flex-auto clWhite30 text-right please-select">
+            {receiveBank.name || t("pleaseSelect")}
           </div>
-        </Dropdown>
-      )}
+          <DownOutlined />
+        </div>
+      </Dropdown>
       <div className="confirm-box">
         <div className="confirm" onClick={confirmHandler}>
           确认
@@ -139,6 +148,22 @@ const BankTransfer = () => {
           存款遇到问题？请联系 <span>线上客服</span> 进行解决
         </div>
       </div>
+      {isIframe && (
+        <Modal
+          width="100%"
+          open={isIframe}
+          centered={true}
+          footer={null}
+          onCancel={() => {
+            setIsIframe(false);
+          }}
+          bodyStyle={{ height: "calc(100vh - 40px)" }}
+        >
+          <div className="rounded-md overflow-hidden h-full relative">
+            <iframe src={iframeurl} name="_iframe" width="100%" height="100%" />
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };
