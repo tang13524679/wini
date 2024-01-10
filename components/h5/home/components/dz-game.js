@@ -207,58 +207,98 @@ const DZgame = () => {
       </div>
       <div className="list-box">
         <div className="left">
-          <Swiper
-            direction="vertical"
-            trackOffset={0}
-            slideSize={20}
-            indicator={() => false}
-            ref={ref}
-            style={{ "--height": "400px" }}
-          >
-            {gameTypeList.map((item) => {
-              return (
-                <Swiper.Item key={item.id}>
-                  <div
-                    className={`${
-                      gameCategory == item.gametype ? "active" : ""
-                    } content`}
-                    onClick={() => {
-                      setGameCategory(item.gametype);
-                      setGameType("all");
-                      setPageIndex(1);
-                      seInputValue("");
-                      fetchData({ gametype: item.gametype });
-                    }}
-                  >
-                    <div className="box">
-                      <img
-                        src={`/assets/home/gametype/${item.gametype.replace(
-                          "Game",
-                          ""
-                        )}.png`}
-                      />
-                      <div className="text">
-                        {item.gametype.replace("Game", "")}
+          {gameTypeList.length < 5 && (
+            <div className="catList">
+              {gameTypeList.map((item) => {
+                return (
+                  <div className="item">
+                    <div
+                      className={`${
+                        gameCategory == item.gametype ? "active" : ""
+                      } content`}
+                      onClick={() => {
+                        setGameCategory(item.gametype);
+                        setGameType("all");
+                        setPageIndex(1);
+                        seInputValue("");
+                        fetchData({ gametype: item.gametype });
+                      }}
+                    >
+                      <div className="box">
+                        <img
+                          src={`/assets/home/gametype/${item.gametype.replace(
+                            "Game",
+                            ""
+                          )}.png`}
+                        />
+                        <div className="text">
+                          {item.gametype.replace("Game", "")}
+                        </div>
                       </div>
                     </div>
                   </div>
+                );
+              })}
+            </div>
+          )}
+          {gameTypeList.length > 5 && (
+            <div>
+              <Swiper
+                direction="vertical"
+                trackOffset={0}
+                slideSize={20}
+                indicator={() => false}
+                ref={ref}
+                style={{ "--height": "400px" }}
+              >
+                {gameTypeList.map((item) => {
+                  return (
+                    <Swiper.Item key={item.id}>
+                      <div
+                        className={`${
+                          gameCategory == item.gametype ? "active" : ""
+                        } content`}
+                        onClick={() => {
+                          setGameCategory(item.gametype);
+                          setGameType("all");
+                          setPageIndex(1);
+                          seInputValue("");
+                          fetchData({ gametype: item.gametype });
+                        }}
+                      >
+                        <div className="box">
+                          <img
+                            src={`/assets/home/gametype/${item.gametype.replace(
+                              "Game",
+                              ""
+                            )}.png`}
+                          />
+                          <div className="text">
+                            {item.gametype.replace("Game", "")}
+                          </div>
+                        </div>
+                      </div>
+                    </Swiper.Item>
+                  );
+                })}
+                <Swiper.Item>
+                  <div className="content">
+                    <div className="box"></div>
+                  </div>
                 </Swiper.Item>
-              );
-            })}
-            <Swiper.Item>
-              <div className="content">
-                <div className="box"></div>
+              </Swiper>
+              <div
+                className="next"
+                onClick={() => {
+                  ref.current?.swipeNext();
+                }}
+              >
+                <DoubleLeftOutlined
+                  style={{ color: "#fff", fontSize: "18px" }}
+                />
               </div>
-            </Swiper.Item>
-          </Swiper>
-          <div
-            className="next"
-            onClick={() => {
-              ref.current?.swipeNext();
-            }}
-          >
-            <DoubleLeftOutlined style={{ color: "#fff", fontSize: "18px" }} />
-          </div>
+            </div>
+          )}
         </div>
         <div className="right">
           <div className="options">

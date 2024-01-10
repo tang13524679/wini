@@ -23,6 +23,7 @@ const countryCode = [
 
 const RegisterVerify = (props) => {
   const router = useRouter();
+  console.log(router, "ss");
   const [ua, setUa] = useState({});
   const [verifyType, setVerifyType] = useState("phone");
   const [isLoading, setIsLoading] = useState(false);
@@ -45,6 +46,7 @@ const RegisterVerify = (props) => {
       const res = await userApi.register({
         loginaccount: props.userName,
         loginpassword: props.password,
+        agentCode: router.query?.agentCode || "",
       });
       if (res.code == "1") {
         Toast.show({
