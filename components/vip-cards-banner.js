@@ -50,11 +50,11 @@ export default function VipCardsBanner({ className, level, vipInfos }) {
   const _vipPerks = useMemo(
     () =>
       vipInfos &&
-      vipInfos.info.prerogativeInfos.map(({ id, levelCodes, name }) => {
+      vipInfos.info.prerogativeInfos.map(({ id, levelCodes, name, index }) => {
         const isOn = levelCodes
           .split(",")
           .includes(vipInfos.info.vipInfos[active].vipCode);
-
+        console.log(isOn, "index");
         return (
           <div key={id} className="flex items-center space-x-2">
             <div
@@ -97,7 +97,7 @@ export default function VipCardsBanner({ className, level, vipInfos }) {
         modules={[Autoplay]}
         autoplay={false}
         spaceBetween={12}
-        slidesPerView={1.2}
+        slidesPerView={1.25}
         slideToClickedSlide={true}
         grabCursor={true}
         centeredSlides={true}
@@ -109,7 +109,11 @@ export default function VipCardsBanner({ className, level, vipInfos }) {
         {/* {slides} */}
         {vipInfos?.info.vipInfos?.map((item, index) => {
           return (
-            <SwiperSlide key={index} className="max-w-sm aspect-vip">
+            <SwiperSlide
+              key={index}
+              className="max-w-sm aspect-vip"
+              style={{ textAlign: "center" }}
+            >
               <Image
                 src={`/assets/vip-levels/vip${index + 1}.png`}
                 width={256}

@@ -1,4 +1,4 @@
-import react, { useState, useEffect } from "react";
+import react, { useState, useEffect, useRef } from "react";
 import styles from "./register-verify.module.scss";
 import { Dropdown, Menu, Form, Input, Button } from "antd";
 import {
@@ -23,11 +23,17 @@ const countryCode = [
 
 const RegisterVerify = (props) => {
   const router = useRouter();
-  console.log(router, "ss");
   const [ua, setUa] = useState({});
   const [verifyType, setVerifyType] = useState("phone");
   const [isLoading, setIsLoading] = useState(false);
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [verifycode, setVerifycode] = useState("");
+  const [btnLoading, setBtnLoading] = useState(false);
   const [, dispatch] = useGlobalState();
+  const [isNote, setIsNote] = useState(false);
+  const [time, setTime] = useState(null);
+  const timeRef = useRef();
   const [phonePrefixes, setPhonePrefixes] = useState({
     icon: "icon-hk",
     prefix: "852",
@@ -41,11 +47,14 @@ const RegisterVerify = (props) => {
   }, []);
 
   const onFinish = async () => {
+    const param = verifyType == "phone" ? { phoneno: phone } : { email };
     try {
       setIsLoading(true);
       const res = await userApi.register({
+        ...param,
         loginaccount: props.userName,
         loginpassword: props.password,
+        verifycode,
         agentCode: router.query?.agentCode || "",
       });
       if (res.code == "1") {
@@ -87,6 +96,62 @@ const RegisterVerify = (props) => {
       setIsLoading(false);
     }
   };
+
+  const verifyHandle = async () => {
+    try {
+      setBtnLoading(true);
+      if (verifyType == "phone") {
+        const res = await userApi.checkUserPhoneno({
+          phoneno: phonePrefixes.prefix + phone,
+        });
+        if (res.code == "1") {
+          setTime(60);
+          setIsNote(true);
+          const rts = await userApi.getVerifycode({
+            phoneno: phonePrefixes.prefix + phone,
+          });
+          if (rts.code == "1") {
+            Toast.show({
+              content: rts.info,
+            });
+          }
+        }
+      } else {
+        const res = await userApi.checkUserEmail({
+          email,
+        });
+        if (res.code == "1") {
+          setTime(60);
+          setIsNote(true);
+          const rts = await userApi.getVerifycode({
+            email,
+          });
+          if (rts.code == "1") {
+            Toast.show({
+              content: rts.info,
+            });
+          }
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setBtnLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (time && time != 0) {
+      timeRef.current = setTimeout(() => {
+        setTime((time) => time - 1);
+      }, 1000);
+    } else {
+      setIsNote(false);
+    }
+    return () => {
+      clearInterval(timeRef.current);
+    };
+  }, [time]);
 
   return (
     <div className={styles.container}>
@@ -161,8 +226,12 @@ const RegisterVerify = (props) => {
             >
               <Input
                 size="large"
+                value={phone}
                 placeholder="手机号码"
                 prefix={<MobileOutlined />}
+                onChange={(e) => {
+                  setPhone(e.target.value);
+                }}
               />
             </Form.Item>
           </div>
@@ -170,13 +239,17 @@ const RegisterVerify = (props) => {
         {verifyType == "e-mail" && (
           <Form.Item
             name="email"
-            rules={[
-              { required: true },
-              { type: "string", min: 6 },
-              { type: "email", warningOnly: true },
-            ]}
+            rules={[{ required: true }, { type: "email", warningOnly: true }]}
           >
-            <Input size="large" placeholder="邮箱" prefix={<MailOutlined />} />
+            <Input
+              value={email}
+              size="large"
+              placeholder="邮箱"
+              prefix={<MailOutlined />}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
           </Form.Item>
         )}
         <div className="verify-code">
@@ -194,10 +267,26 @@ const RegisterVerify = (props) => {
               size="large"
               placeholder="验证码"
               type="number"
+              value={verifycode}
               prefix={<SafetyCertificateOutlined />}
+              onChange={(e) => {
+                setVerifycode(e.target.value);
+              }}
             />
           </Form.Item>
-          <div className="get-code">获取验证码</div>
+          {isNote ? (
+            <Button className="get-code" loading={btnLoading}>
+              {time}s
+            </Button>
+          ) : (
+            <Button
+              className="get-code"
+              loading={btnLoading}
+              onClick={verifyHandle}
+            >
+              获取验证码
+            </Button>
+          )}
         </div>
         <Form.Item>
           <div className="submit-button">

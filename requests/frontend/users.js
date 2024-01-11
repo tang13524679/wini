@@ -48,9 +48,57 @@ export function setOnline(params) {
     ...params,
   });
 }
-// 获取验证码
+// 检查手机号是否已经注册
+export function checkUserPhoneno(params) {
+  const param = {
+    ...params,
+    enterprisecode: ENTERPRISE_CODE,
+  };
+  return request(`/ecrm-api/User/checkUserPhoneno`, {
+    ...param,
+    params: encryptECB({ ...param }),
+    signature: encryptMD5({ ...param }),
+  });
+}
+// 发送手机验证码
 export function getVerifycode(params) {
-  return request(`/ecrm-api/User/getVerifycodeH5`, params);
+  const param = {
+    ...params,
+    enterprisecode: ENTERPRISE_CODE,
+  };
+  return request(`/ecrm-api/User/getVerifycode`, {
+    ...param,
+    params: encryptECB({ ...param }),
+    signature: encryptMD5({ ...param }),
+  });
+}
+// 获取验证码
+// export function getVerifycode(params) {
+//   return request(`/ecrm-api/User/getVerifycodeH5`, params);
+// }
+// 检查邮箱是否已经注册
+export function checkUserEmail(params) {
+  const param = {
+    ...params,
+    enterprisecode: ENTERPRISE_CODE,
+  };
+  return request(`/ecrm-api/User/checkUserEmail`, {
+    ...param,
+    params: encryptECB({ ...param }),
+    signature: encryptMD5({ ...param }),
+  });
+}
+// 发送邮箱验证码
+export function getEmailcode(params) {
+  const param = {
+    ...params,
+    enterprisecode: ENTERPRISE_CODE,
+  };
+  return request(`/ecrm-api/User/getEmailcode`, {
+    ...param,
+    params: encryptECB({ ...param }),
+    signature: encryptMD5({ ...param }),
+  });
 }
 // 修改登录密码
 export function updatepwd(params) {
