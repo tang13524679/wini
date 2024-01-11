@@ -709,8 +709,18 @@
 }
 
 /* vip perks icons */
+.icon-vip-cunqukuan {
+    background: url('/assets/vip-perks/vip_qy_cunqukuan.svg') no-repeat;
+    @include icon-48;
+    @include icon-common;
+}
 .icon-vip-cunqukuan-on {
     background: url('/assets/vip-perks/vip_qy_cunqukuan_on.svg') no-repeat;
+    @include icon-48;
+    @include icon-common;
+}
+.icon-vip-huodong {
+    background: url('/assets/vip-perks/vip_qy_huodong.svg') no-repeat;
     @include icon-48;
     @include icon-common;
 }

@@ -86,7 +86,7 @@ const MinePage = () => {
           <div className="box">
             <div className="tit">
               <img src="/assets/mine/icon3.png" />
-              使命
+              优惠
             </div>
             <RightOutlined />
           </div>
