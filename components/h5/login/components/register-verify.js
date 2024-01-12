@@ -15,6 +15,7 @@ import Loading from "@/components/h5/components/loading-mobile";
 import { encryptECB, encryptMD5 } from "@/utils/encrypt";
 import { useGlobalState } from "@/hooks/global";
 import store from "store";
+import { getClientIp } from "@/utils/common";
 
 const countryCode = [
   { label: "+ 852", value: "852", icon: "icon-hk" },

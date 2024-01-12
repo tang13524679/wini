@@ -1,0 +1,22 @@
+{
+  "login": "登录",
+  "join": "注册",
+  "username": "用户名",
+  "password": "密码",
+  "rememberPassword": "记住密码",
+  "forgetThePassword": "忘记密码",
+  "logInImmediately": "立即登录",
+  "loginSuccessful": "登录成功",
+  "pleaseContact": "遇到登录问题，请联系",
+  "onlineService": "在线客服",
+  "pleaseEnterUserName": "请输入用户名",
+  "passwordsNotMatch": "两次输入的密码不匹配",
+  "loginPassword": "登录密码",
+  "confirmPassword": "确认密码",
+  "promoCode": "优惠码",
+  "promoCodeOptional": "优惠码（可选）",
+  "nextStep": "下一步",
+  "readAndAgreeToTheRelevant": "我已阅读并同意相关的",
+  "policy": "条款和隐私政策",
+  "hourlyOnlineCustomerService": "小时在线客服"
+}

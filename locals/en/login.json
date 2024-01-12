@@ -1,0 +1,13 @@
+{
+  "login": "Login",
+  "join": "Join",
+  "username": "UserName",
+  "password": "Password",
+  "rememberPassword": "Remember Password",
+  "forgetThePassword": "Forget The Password",
+  "logInImmediately": "LogIn Immediately",
+  "loginSuccessful": "Login Successful",
+  "pleaseContact": "If you encounter login problems, please contact",
+  "onlineService": "Online service",
+  "pleaseEnterUserName": "Please enter user name"
+}

@@ -13,7 +13,6 @@ export async function transferToGoldenApi(req) {
   )}?enterprisecode=${ENTERPRISE_CODE}`;
   let params = JSON.parse(JSON.stringify(req.query));
   let ip = getClientIp(req);
-
   delete params.slug;
   delete params.noCrypto;
 

@@ -17,6 +17,7 @@ import RegisterVerify from "./register-verify";
 import store from "store";
 import { color } from "@mui/system";
 import { Toast, Checkbox } from "antd-mobile";
+import { t } from "@/utils/translate";
 
 const Register = () => {
   const [userName, setUserName] = useState("");
@@ -36,7 +37,7 @@ const Register = () => {
   const onFinish = () => {
     if (password != isPassword) {
       Toast.show({
-        content: "两次输入的密码不匹配",
+        content: t("passwordsNotMatch", "login"),
       });
       return;
     }
@@ -58,13 +59,13 @@ const Register = () => {
             rules={[
               {
                 required: true,
-                message: "请输入用户名",
+                message: t("pleaseEnterUserName", "login"),
               },
             ]}
           >
             <Input
               size="large"
-              placeholder="用户名"
+              placeholder={t("username", "login")}
               prefix={<UserOutline />}
               value={userName}
               onChange={(e) => {
@@ -86,7 +87,7 @@ const Register = () => {
           >
             <Input.Password
               size="large"
-              placeholder="登录密码"
+              placeholder={t("loginPassword", "login")}
               prefix={<UnlockOutline />}
               value={password}
               onChange={(e) => {
@@ -108,7 +109,7 @@ const Register = () => {
           >
             <Input.Password
               size="large"
-              placeholder="确认密码"
+              placeholder={t("confirmPassword", "login")}
               prefix={<UnlockOutline />}
               value={isPassword}
               onChange={(e) => {
@@ -124,7 +125,9 @@ const Register = () => {
                 setPromoCode(!promoCode);
               }}
             >
-              <span style={{ color: "#3D97FF" }}>优惠码</span>
+              <span style={{ color: "#3D97FF" }}>
+                {t("promoCode", "login")}
+              </span>
               {!promoCode && <DownOutlined />}
               {promoCode && <UpOutlined />}
             </div>
@@ -132,10 +135,10 @@ const Register = () => {
               <Form.Item>
                 <Input
                   size="large"
-                  placeholder="优惠码（可选）"
+                  placeholder={t("promoCodeOptional", "login")}
                   prefix={<BarcodeOutlined />}
                   suffix={
-                    <Tooltip title="优惠码（可选）">
+                    <Tooltip title={t("promoCodeOptional", "login")}>
                       <InfoCircleOutlined />
                     </Tooltip>
                   }
@@ -147,7 +150,7 @@ const Register = () => {
           <Form.Item>
             <div className="submit-button">
               <Button type="primary" htmlType="submit">
-                下一步
+                {t("nextStep", "login")}
               </Button>
             </div>
           </Form.Item>
@@ -162,11 +165,12 @@ const Register = () => {
       )}
       <div className="privacy-text">
         <Checkbox defaultChecked />
-        我已阅读并同意相关的<span>条款和隐私政策</span>
+        {t("readAndAgreeToTheRelevant", "login")}
+        <span>{t("policy", "login")}</span>
       </div>
       <div className="customer">
         <CustomerServiceFilled />
-        7X24小时在线客服
+        7X24{t("hourlyOnlineCustomerService", "login")}
       </div>
       {isLoading && <Loading />}
     </div>

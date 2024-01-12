@@ -65,7 +65,6 @@ export default function Layout({ children }) {
         payload: true,
       });
   }, [dispatch]);
-  console.log(isIframe, "isIframe");
 
   return (
     <Spin spinning={isLoading} delay={800} indicator={<PageLoading />}>

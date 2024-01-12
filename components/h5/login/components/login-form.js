@@ -11,6 +11,7 @@ import { getDomain } from "@/utils/common";
 import { useRouter } from "next/router";
 import { encryptECB, encryptMD5 } from "@/utils/encrypt";
 import { Toast } from "antd-mobile";
+import { t } from "@/utils/translate";
 
 const LoginForm = () => {
   const [userName, setUserName] = useState("");
@@ -43,7 +44,7 @@ const LoginForm = () => {
       });
       if (res.info) {
         Toast.show({
-          content: "登录成功",
+          content: t("loginSuccessful", "login"),
         });
         store.set("user", res.info);
         store.set("token", res.info.token);
@@ -77,13 +78,13 @@ const LoginForm = () => {
           rules={[
             {
               required: true,
-              message: "请输入用户名",
+              message: t("pleaseEnterUserName", "login"),
             },
           ]}
         >
           <Input
             size="large"
-            placeholder="用户名"
+            placeholder={t("username", "login")}
             prefix={<UserOutline />}
             value={userName}
             onChange={(e) => {
@@ -105,7 +106,7 @@ const LoginForm = () => {
         >
           <Input.Password
             size="large"
-            placeholder="密码"
+            placeholder={t("password", "login")}
             prefix={<UnlockOutline />}
             value={password}
             onChange={(e) => {
@@ -116,18 +117,19 @@ const LoginForm = () => {
 
         <div className="remember">
           <Form.Item name="remember" valuePropName="checked">
-            <Checkbox>记住密码</Checkbox>
+            <Checkbox>{t("rememberPassword", "login")}</Checkbox>
           </Form.Item>
-          <div className="forget">忘记密码</div>
+          <div className="forget">{t("forgetThePassword", "login")}</div>
         </div>
 
         <Form.Item>
           <div className="submit-button">
             <Button type="primary" htmlType="submit">
-              立即登录
+              {t("logInImmediately", "login")}
             </Button>
             <div className="footer-text">
-              遇到登录问题，请联系<span>在线客服</span>
+              {t("pleaseContact", "login")}
+              <span> {t("onlineService", "login")}</span>
             </div>
           </div>
         </Form.Item>
