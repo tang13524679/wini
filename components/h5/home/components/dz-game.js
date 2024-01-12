@@ -108,6 +108,21 @@ const DZgame = () => {
 
   const loadMore = async () => {
     setIsLoading(true);
+    const res = await getGameList({
+      ismain,
+      biggametype: "DZ",
+      cnname: inputValue,
+      gametype: gameCategory,
+      pageIndex,
+      pageSize,
+    });
+    if (res.code == "1") {
+      setGamelist((val) => [...val, ...res.info?.rows]);
+      setHasMore(res.info?.rows.length > 0);
+      setPageIndex(pageIndex + 1);
+      setIsLoading(false);
+    }
+    return;
     if (gameType == "all") {
       try {
         const res = await getGameList({
@@ -375,8 +390,8 @@ const DZgame = () => {
                   </li>
                 );
               })}
+              <InfiniteScroll loadMore={loadMore} hasMore={hasMore} />
             </ul>
-            <InfiniteScroll loadMore={loadMore} hasMore={hasMore} />
           </div>
         </div>
         {isLoading && (
