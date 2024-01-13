@@ -184,7 +184,7 @@ const HotGameList = () => {
                   height={14}
                 />
               </div>
-              <div className="text">热门</div>
+              <div className="text">{t("HOT")}</div>
             </div>
           </SwiperSlide>
           {getCategry.map((item, index) => {

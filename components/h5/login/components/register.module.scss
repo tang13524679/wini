@@ -140,6 +140,9 @@
         }
       }
     }
+    .en-privacy-text{
+      display: block;
+    }
     .customer{
       margin: 13.5px auto 0;
       width: 172.707px;
@@ -157,6 +160,9 @@
       span{
         margin-right: 5px;
       }
+    }
+    .en-customer{
+      width: 260px;
     }
   }
 }

@@ -10,6 +10,7 @@ import { play } from "@/utils/common";
 import { useGlobalState } from "@/hooks/global";
 import Image from "next/image";
 import { SpinLoading } from "antd-mobile";
+import { t } from "@/utils/translate";
 
 const DZgame = () => {
   const ref = useRef(null);
@@ -95,81 +96,6 @@ const DZgame = () => {
     } finally {
       setIsLoading(false);
     }
-    // if (gameType == "all") {
-    //   try {
-    //     const res = await getGameList({
-    //       ...param,
-    //       ismain,
-    //       biggametype: "DZ",
-    //       cnname: inputValue,
-    //       gametype: gameCategory,
-    //       pageIndex,
-    //       pageSize,
-    //     });
-    //     if (res.code == "1") {
-    //       setGamelist((val) => [...val, ...res.info?.rows]);
-    //       setHasMore(res.info?.rows.length > 0);
-    //       setPageIndex(pageIndex + 1);
-    //     }
-    //   } catch (error) {
-    //     Toast.show({
-    //       content: error,
-    //     });
-    //     console.error(error);
-    //   } finally {
-    //     setIsLoading(false);
-    //   }
-    // } else if (gameType == "hot") {
-    //   try {
-    //     const res = await getGameList({
-    //       ...param,
-    //       ismain,
-    //       biggametype: "DZ",
-    //       cnname: inputValue,
-    //       gametype: gameCategory,
-    //       ishot: 1,
-    //       pageIndex,
-    //       pageSize,
-    //     });
-    //     if (res.code == "1") {
-    //       setGamelist((val) => [...val, ...res.info?.rows]);
-    //       setHasMore(res.info?.rows.length > 0);
-    //       setPageIndex(pageIndex + 1);
-    //     }
-    //   } catch (error) {
-    //     Toast.show({
-    //       content: error,
-    //     });
-    //     console.error(error);
-    //   } finally {
-    //     setIsLoading(false);
-    //   }
-    // } else {
-    //   try {
-    //     const res = await getGameList({
-    //       ...param,
-    //       ismain,
-    //       biggametype: "DZ",
-    //       cnname: inputValue,
-    //       gametype: gameCategory,
-    //       isnew: 1,
-    //       pageIndex,
-    //       pageSize,
-    //     });
-    //     if (res.code == "1") {
-    //       setGamelist((val) => [...val, ...res.info?.rows]);
-    //       setHasMore(res.info?.rows.length > 0);
-    //       setPageIndex(pageIndex + 1);
-    //     }
-    //   } catch (error) {
-    //     Toast.show({
-    //       content: error,
-    //     });
-    //     console.error(error);
-    //   } finally {
-    //     setIsLoading(false);
-    //   }
-    // }
   };
 
   const onClickHandle = (item) => {
@@ -185,7 +111,7 @@ const DZgame = () => {
     <div className={styles.dzGameBox}>
       <div className="top">
         <Input
-          placeholder="搜索游戏"
+          placeholder={t("searchGames")}
           suffix={
             <SearchOutlined
               style={{ fontSize: "18px", color: "rgb(50, 144, 41)" }}
@@ -309,7 +235,7 @@ const DZgame = () => {
                 setGamelist([]);
               }}
             >
-              全部
+              {t("all")}
             </div>
             <div
               className={`${gameType == "hot" ? "active" : ""} item`}
@@ -322,7 +248,7 @@ const DZgame = () => {
                 setGamelist([]);
               }}
             >
-              热门
+              {t("HOT")}
             </div>
             <div
               className={`${gameType == "new" ? "active" : ""} item`}
@@ -335,7 +261,7 @@ const DZgame = () => {
                 setGamelist([]);
               }}
             >
-              最新
+              {t("upToDate")}
             </div>
           </div>
           <div className="gameList">
@@ -355,16 +281,31 @@ const DZgame = () => {
                           ""
                         )}/${item.gameid}${
                           item.gametype == "YGRGame"
-                            ? "_200x200_01_cn.png"
+                            ? `_200x200_01_${lang == "en" ? "en" : "cn"}.png`
                             : item.gametype == "AMEBAGame"
-                            ? "_zhCN.png"
+                            ? `${lang == "en" ? "_enUS" : "_zhCN"}.png`
                             : ".png"
                         }`}
                         width={200}
                         height={200}
                       />
-                      <p>{item.cnname}</p>
-                      <div className="text">回报率{item.RTP}</div>
+                      {/* <img
+                        src={`/assets/home/DZgame/${item.gametype.replace(
+                          "Game",
+                          ""
+                        )}/${item.gameid}${
+                          item.gametype == "YGRGame"
+                            ? `_200x200_01_${lang == "en" ? "en" : "cn"}.png`
+                            : item.gametype == "AMEBAGame"
+                            ? `${lang == "en" ? "_enUS" : "_zhCN"}.png`
+                            : ".png"
+                        }`}
+                      /> */}
+                      <p>{lang == "en" ? item.enname : item.cnname}</p>
+                      <div className="text">
+                        {t("responseRate")}
+                        {item.RTP}
+                      </div>
                     </div>
                   </li>
                 );

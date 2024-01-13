@@ -25,7 +25,7 @@ const Register = () => {
   const [isPassword, setIsPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [promoCode, setPromoCode] = useState(false);
-  const [, dispatch] = useGlobalState();
+  const [{ lang }, dispatch] = useGlobalState();
   const [ua, setUa] = useState({});
   const [isNextStep, setIsNextStep] = useState(false);
 
@@ -163,12 +163,12 @@ const Register = () => {
           setIsNextStep={setIsNextStep}
         />
       )}
-      <div className="privacy-text">
+      <div className={`${lang == "en" ? "en-privacy-text" : ""} privacy-text`}>
         <Checkbox defaultChecked />
         {t("readAndAgreeToTheRelevant", "login")}
         <span>{t("policy", "login")}</span>
       </div>
-      <div className="customer">
+      <div className={`${lang == "en" ? "en-customer" : ""} customer`}>
         <CustomerServiceFilled />
         7X24{t("hourlyOnlineCustomerService", "login")}
       </div>

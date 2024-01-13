@@ -5,9 +5,10 @@ import { useGlobalState } from "@/hooks/global";
 import { useRouter } from "next/router";
 import { useBalance } from "@/hooks/fund";
 import Image from "next/image";
+import { t } from "@/utils/translate";
 
 export default function MobileHeader() {
-  const [{ user }] = useGlobalState();
+  const [{ user, lang }] = useGlobalState();
   const router = useRouter();
   const balance = useBalance();
   return (
@@ -29,15 +30,15 @@ export default function MobileHeader() {
                 router.push("/login?type=login");
               }}
             >
-              登录
+              {t("login")}
             </div>
             <div
-              className="register"
+              className={`${lang == "en" ? "en-register" : ""} register`}
               onClick={() => {
                 router.push("/login?type=register");
               }}
             >
-              立即注册
+              {t("SignUpNow")}
             </div>
           </div>
         )}

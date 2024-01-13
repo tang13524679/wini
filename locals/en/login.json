@@ -9,5 +9,19 @@
   "loginSuccessful": "Login Successful",
   "pleaseContact": "If you encounter login problems, please contact",
   "onlineService": "Online service",
-  "pleaseEnterUserName": "Please enter user name"
+  "pleaseEnterUserName": "Please enter user name",
+  "passwordsNotMatch": "The passwords entered twice do not match",
+  "loginPassword": "Login password",
+  "confirmPassword": "Confirm password",
+  "promoCode": "Promo Code",
+  "promoCodeOptional": "Discount code (optional)",
+  "nextStep": "Next step",
+  "readAndAgreeToTheRelevant": "I have read and agree to the relevant",
+  "policy": " Terms and Privacy Policy",
+  "hourlyOnlineCustomerService": "Hourly online customer service",
+  "registrationSuccess": "Registration Success",
+  "phoneNumber": "Phone number",
+  "Mail": "Mail",
+  "VerificationCode": "Verification code",
+  "getVerificationCode": "GetVerificationCode"
 }

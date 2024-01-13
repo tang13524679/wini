@@ -18,5 +18,10 @@
   "nextStep": "下一步",
   "readAndAgreeToTheRelevant": "我已阅读并同意相关的",
   "policy": "条款和隐私政策",
-  "hourlyOnlineCustomerService": "小时在线客服"
+  "hourlyOnlineCustomerService": "小时在线客服",
+  "registrationSuccess": "注册成功",
+  "phoneNumber": "手机号",
+  "Mail": "邮箱",
+  "VerificationCode": "验证码",
+  "getVerificationCode": "获取验证码"
 }

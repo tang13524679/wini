@@ -43,7 +43,8 @@ export default function fetchFrontend(
     fetch(url, options)
       .then(async (res) => {
         let json = await res.json();
-        if (json.code !== "1") {
+        console.log(json, "json");
+        if (json.code !== "1" && json.code !== "10000") {
           if (json.code === "401") {
             cleanUserStore();
             message.info(json.info);

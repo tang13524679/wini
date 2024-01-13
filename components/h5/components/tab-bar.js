@@ -2,6 +2,7 @@ import react from "react";
 import styles from "./tab-bar.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { t } from "@/utils/translate";
 
 const TabBar = () => {
   const router = useRouter();
@@ -23,7 +24,9 @@ const TabBar = () => {
                 }`}
               />
             </div>
-            <div className={`${pathname == "/home" ? "on" : ""} tit`}>首页</div>
+            <div className={`${pathname == "/home" ? "on" : ""} tit`}>
+              {t("home", "nav")}
+            </div>
           </div>
         </Link>
         <Link href="/commission" passHref>
@@ -38,7 +41,7 @@ const TabBar = () => {
               />
             </div>
             <div className={`${pathname == "/commission" ? "on" : ""} tit`}>
-              佣金
+              {t("commission", "nav")}
             </div>
           </div>
         </Link>
@@ -54,7 +57,7 @@ const TabBar = () => {
               />
             </div>
             <div className={`${pathname == "/wallet" ? "on" : ""} tit`}>
-              钱包
+              {t("wallet", "nav")}
             </div>
           </div>
         </Link>
@@ -70,7 +73,7 @@ const TabBar = () => {
               />
             </div>
             <div className={`${pathname == "/promo" ? "on" : ""} tit`}>
-              优惠
+              {t("promo", "nav")}
             </div>
           </div>
         </Link>
@@ -85,7 +88,9 @@ const TabBar = () => {
                 }`}
               />
             </div>
-            <div className={`${pathname == "/mine" ? "on" : ""} tit`}>我的</div>
+            <div className={`${pathname == "/mine" ? "on" : ""} tit`}>
+              {t("mine", "nav")}
+            </div>
           </div>
         </Link>
       </div>

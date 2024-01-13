@@ -2,6 +2,7 @@
     "expandTips": "点击展开",
     "signIn": "登录/注册",
     "login": "登录",
+    "SignUpNow": "立即注册",
     "join": "注册",
     "loginViaPhone": "通过手机验证码登录",
     "loginViaAccount": "通过账户密码登录",
@@ -14,7 +15,16 @@
     "otpByCall": "通过电话方式接收",
     "readUserTerms": "我已阅读并且同意本平台相关的用户协议",
     "send": "发送",
-    "recentGames": "近期游戏",
+    "recentGames": "最近的重大胜利",
+    "partner": "合作伙伴",
+    "gameLicense": "游戏许可证",
+    "win1brand": "WIN1品牌，由库拉索政府所发放 牌照并由库拉索博彩委员会监管（牌照号事：N.V#1168/JAZ）",
+    "license": "牌照",
+    "followUs": "关注我们",
+    "responsibleGambling": "责任博彩",
+    "addToScreen": "添加到主屏幕",
+    "responseRate": "回报率",
+    "upToDate": "最新",
     "HOT": "热门",
     "SX": "真人",
     "slot": "老虎机",
@@ -121,5 +131,6 @@
     "sideApp": "下载APP",
     "sideContact": "联系我们",
     "sidePhone": "客服电话",
-    "sideTop": "回到顶部"
+    "sideTop": "回到顶部",
+    "searchGames": "搜索游戏"
 }

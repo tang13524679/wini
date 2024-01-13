@@ -16,6 +16,7 @@ import { encryptECB, encryptMD5 } from "@/utils/encrypt";
 import { useGlobalState } from "@/hooks/global";
 import store from "store";
 import { getClientIp } from "@/utils/common";
+import { t } from "@/utils/translate";
 
 const countryCode = [
   { label: "+ 852", value: "852", icon: "icon-hk" },
@@ -60,7 +61,7 @@ const RegisterVerify = (props) => {
       });
       if (res.code == "1") {
         Toast.show({
-          content: "注册成功",
+          content: t("registrationSuccess", "login"),
         });
         let requestParams = {
           loginaccount: props.userName,
@@ -77,7 +78,7 @@ const RegisterVerify = (props) => {
         });
         if (rst.info) {
           Toast.show({
-            content: "登录成功",
+            content: t("loginSuccessful", "login"),
           });
           store.set("user", rst.info);
           store.set("token", rst.info.token);
@@ -105,7 +106,7 @@ const RegisterVerify = (props) => {
         const res = await userApi.checkUserPhoneno({
           phoneno: phonePrefixes.prefix + phone,
         });
-        if (res.code == "1") {
+        if (res.code == "10000") {
           setTime(60);
           setIsNote(true);
           const rts = await userApi.getVerifycode({
@@ -121,7 +122,7 @@ const RegisterVerify = (props) => {
         const res = await userApi.checkUserEmail({
           email,
         });
-        if (res.code == "1") {
+        if (res.code == "10000") {
           setTime(60);
           setIsNote(true);
           const rts = await userApi.getVerifycode({
@@ -163,7 +164,7 @@ const RegisterVerify = (props) => {
             setVerifyType("phone");
           }}
         >
-          手机号
+          {t("phoneNumber", "login")}
         </div>
         <div
           className={`${verifyType == "e-mail" ? "active" : ""} item`}
@@ -171,7 +172,7 @@ const RegisterVerify = (props) => {
             setVerifyType("e-mail");
           }}
         >
-          邮箱
+          {t("Mail", "login")}
         </div>
       </div>
       <Form
@@ -228,7 +229,7 @@ const RegisterVerify = (props) => {
               <Input
                 size="large"
                 value={phone}
-                placeholder="手机号码"
+                placeholder={t("phoneNumber", "login")}
                 prefix={<MobileOutlined />}
                 onChange={(e) => {
                   setPhone(e.target.value);
@@ -245,7 +246,7 @@ const RegisterVerify = (props) => {
             <Input
               value={email}
               size="large"
-              placeholder="邮箱"
+              placeholder={t("Mail", "login")}
               prefix={<MailOutlined />}
               onChange={(e) => {
                 setEmail(e.target.value);
@@ -266,7 +267,7 @@ const RegisterVerify = (props) => {
           >
             <Input
               size="large"
-              placeholder="验证码"
+              placeholder={t("VerificationCode", "login")}
               type="number"
               value={verifycode}
               prefix={<SafetyCertificateOutlined />}
@@ -285,7 +286,7 @@ const RegisterVerify = (props) => {
               loading={btnLoading}
               onClick={verifyHandle}
             >
-              获取验证码
+              {t("getVerificationCode", "login")}
             </Button>
           )}
         </div>
@@ -300,7 +301,7 @@ const RegisterVerify = (props) => {
               <ArrowLeftOutlined />
             </div>
             <Button type="primary" htmlType="submit">
-              注册
+              {t("join", "login")}
             </Button>
           </div>
         </Form.Item>
