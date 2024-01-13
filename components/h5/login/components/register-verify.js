@@ -125,7 +125,7 @@ const RegisterVerify = (props) => {
         if (res.code == "10000") {
           setTime(60);
           setIsNote(true);
-          const rts = await userApi.getVerifycode({
+          const rts = await userApi.getEmailcode({
             email,
           });
           if (rts.code == "1") {
@@ -136,7 +136,12 @@ const RegisterVerify = (props) => {
         }
       }
     } catch (error) {
+      setTime(null);
+      setIsNote(false);
       console.error(error);
+      Toast.show({
+        content: error,
+      });
     } finally {
       setBtnLoading(false);
     }
