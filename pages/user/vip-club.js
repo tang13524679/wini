@@ -46,11 +46,11 @@ export default function VipClubPage() {
         // add placeholder values for each game types
         keys
           .filter((key) => !Object.prototype.hasOwnProperty.call(a, key))
-          .forEach((key) => (a[key] = Array(5).fill("-")));
+          .forEach((key) => (a[key] = Array(12).fill("-")));
 
         // replace placeholder values with actual values
         keys.forEach((key) => (a[key][i] = bonus[key]));
-
+        console.log(a, "ss");
         return a;
       }, {}),
     [vipInfos?.info.bonusInfos]
@@ -145,46 +145,97 @@ export default function VipClubPage() {
                     <th>
                       <Image
                         className="translate-y-1"
-                        src="/assets/vip-levels/vip_sz_01_on.svg"
-                        alt="level 1"
-                        width="34"
-                        height="34"
+                        src="/assets/vip-levels/1.png"
+                        width="62"
+                        height="41"
                       />
                     </th>
                     <th>
                       <Image
                         className="translate-y-1"
-                        src="/assets/vip-levels/vip_sz_02_on.svg"
-                        alt="level 2"
-                        width="34"
-                        height="34"
+                        src="/assets/vip-levels/2.png"
+                        width="62"
+                        height="41"
                       />
                     </th>
                     <th>
                       <Image
                         className="translate-y-1"
-                        src="/assets/vip-levels/vip_sz_03_on.svg"
-                        alt="level 3"
-                        width="34"
-                        height="34"
+                        src="/assets/vip-levels/3.png"
+                        width="62"
+                        height="41"
                       />
                     </th>
                     <th>
                       <Image
                         className="translate-y-1"
-                        src="/assets/vip-levels/vip_sz_04_on.svg"
-                        alt="level 4"
-                        width="34"
-                        height="34"
+                        src="/assets/vip-levels/5.png"
+                        width="62"
+                        height="41"
                       />
                     </th>
                     <th>
                       <Image
                         className="translate-y-1"
-                        src="/assets/vip-levels/vip_sz_05_on.svg"
-                        alt="level 5"
-                        width="34"
-                        height="34"
+                        src="/assets/vip-levels/5.png"
+                        width="62"
+                        height="41"
+                      />
+                    </th>
+                    <th>
+                      <Image
+                        className="translate-y-1"
+                        src="/assets/vip-levels/6.png"
+                        width="62"
+                        height="41"
+                      />
+                    </th>
+                    <th>
+                      <Image
+                        className="translate-y-1"
+                        src="/assets/vip-levels/7.png"
+                        width="62"
+                        height="41"
+                      />
+                    </th>
+                    <th>
+                      <Image
+                        className="translate-y-1"
+                        src="/assets/vip-levels/8.png"
+                        width="62"
+                        height="41"
+                      />
+                    </th>
+                    <th>
+                      <Image
+                        className="translate-y-1"
+                        src="/assets/vip-levels/9.png"
+                        width="62"
+                        height="41"
+                      />
+                    </th>
+                    <th>
+                      <Image
+                        className="translate-y-1"
+                        src="/assets/vip-levels/10.png"
+                        width="62"
+                        height="41"
+                      />
+                    </th>
+                    <th>
+                      <Image
+                        className="translate-y-1"
+                        src="/assets/vip-levels/11.png"
+                        width="62"
+                        height="41"
+                      />
+                    </th>
+                    <th>
+                      <Image
+                        className="translate-y-1"
+                        src="/assets/vip-levels/12.png"
+                        width="62"
+                        height="41"
                       />
                     </th>
                   </tr>
@@ -194,7 +245,7 @@ export default function VipClubPage() {
                     Object.keys(rebatesData).map((key) => (
                       <tr key={key}>
                         <th>{t("rebatesGameTypes", "vip")[key]}</th>
-                        {rebatesData[key].map((v, i) => (
+                        {rebatesData[key].reverse().map((v, i) => (
                           <td key={i}>{v}</td>
                         ))}
                       </tr>
@@ -238,7 +289,7 @@ export default function VipClubPage() {
 function VipSpecialRewardsTable({ vipInfos }) {
   // collect vip codes for each vip level
   const vipCodes = vipInfos?.info.vipInfos
-    .filter(({ vipLevel }) => vipLevel >= 1 && vipLevel <= 5)
+    .filter(({ vipLevel }) => vipLevel >= 1 && vipLevel <= 12)
     .map(({ vipCode }) => vipCode);
   const specialRewards = vipInfos?.info.specialBonusInfos
     .filter(({ vipCode }) => vipCodes.includes(vipCode))
@@ -258,46 +309,97 @@ function VipSpecialRewardsTable({ vipInfos }) {
           <th>
             <Image
               className="translate-y-1"
-              src="/assets/vip-levels/vip_sz_01_on.svg"
-              alt="level 1"
-              width="34"
-              height="34"
+              src="/assets/vip-levels/1.png"
+              width="62"
+              height="41"
             />
           </th>
           <th>
             <Image
               className="translate-y-1"
-              src="/assets/vip-levels/vip_sz_02_on.svg"
-              alt="level 2"
-              width="34"
-              height="34"
+              src="/assets/vip-levels/2.png"
+              width="62"
+              height="41"
             />
           </th>
           <th>
             <Image
               className="translate-y-1"
-              src="/assets/vip-levels/vip_sz_03_on.svg"
-              alt="level 3"
-              width="34"
-              height="34"
+              src="/assets/vip-levels/3.png"
+              width="62"
+              height="41"
             />
           </th>
           <th>
             <Image
               className="translate-y-1"
-              src="/assets/vip-levels/vip_sz_04_on.svg"
-              alt="level 4"
-              width="34"
-              height="34"
+              src="/assets/vip-levels/5.png"
+              width="62"
+              height="41"
             />
           </th>
           <th>
             <Image
               className="translate-y-1"
-              src="/assets/vip-levels/vip_sz_05_on.svg"
-              alt="level 5"
-              width="34"
-              height="34"
+              src="/assets/vip-levels/5.png"
+              width="62"
+              height="41"
+            />
+          </th>
+          <th>
+            <Image
+              className="translate-y-1"
+              src="/assets/vip-levels/6.png"
+              width="62"
+              height="41"
+            />
+          </th>
+          <th>
+            <Image
+              className="translate-y-1"
+              src="/assets/vip-levels/7.png"
+              width="62"
+              height="41"
+            />
+          </th>
+          <th>
+            <Image
+              className="translate-y-1"
+              src="/assets/vip-levels/8.png"
+              width="62"
+              height="41"
+            />
+          </th>
+          <th>
+            <Image
+              className="translate-y-1"
+              src="/assets/vip-levels/9.png"
+              width="62"
+              height="41"
+            />
+          </th>
+          <th>
+            <Image
+              className="translate-y-1"
+              src="/assets/vip-levels/10.png"
+              width="62"
+              height="41"
+            />
+          </th>
+          <th>
+            <Image
+              className="translate-y-1"
+              src="/assets/vip-levels/11.png"
+              width="62"
+              height="41"
+            />
+          </th>
+          <th>
+            <Image
+              className="translate-y-1"
+              src="/assets/vip-levels/12.png"
+              width="62"
+              height="41"
             />
           </th>
         </tr>
@@ -307,8 +409,10 @@ function VipSpecialRewardsTable({ vipInfos }) {
           <>
             <tr>
               <th>{t("bonusProportion", "vip")}</th>
-              {vipCodes.map((code) => (
-                <td key={code}>{specialRewards[code]?.bonus ?? "-"}</td>
+              {vipCodes.reverse().map((code) => (
+                <td style={{ minWidth: "68px" }} key={code}>
+                  {specialRewards[code]?.bonus ?? "-"}
+                </td>
               ))}
             </tr>
             <tr>

@@ -33,7 +33,8 @@
         "SLOT": "Slots",
         "DJ": "E-sports",
         "SB": "Sicbo",
-        "SD": "DiscJolt"
+        "SD": "DiscJolt",
+        "RH": "race"
     },
     "specialBonusLabel": "Special Reward",
     "bonusProportion": "Rewards Proportion",

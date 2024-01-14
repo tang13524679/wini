@@ -163,14 +163,14 @@ export default function GameHistoryPage() {
                   {GAME_TYPES(lang).map((item) => (
                     <Menu.Item
                       key={item.value}
-                      icon={<div className={`${item.icon} w-5 h-5`}></div>}
+                      // icon={<div className={`${item.icon} w-5 h-5`}></div>}
                       onClick={() => {
                         setGameType(item);
                         filter.biggametype = item.value;
                         reload();
                       }}
                     >
-                      {item.label}
+                      {t(item.value)}
                     </Menu.Item>
                   ))}
                 </Menu>

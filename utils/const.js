@@ -185,7 +185,7 @@ export const GAME_TYPES = (lang = "zh") => {
     // },
     {
       label: t("cock", null, lang),
-      value: "CF",
+      value: "RH",
       iconValue: "cock",
       icon: "icon-cock",
     },

@@ -66,13 +66,20 @@ const BankTransfer = () => {
         content: "WIN1收款账号不能为空",
       });
     } else {
-      const res = await ESaving({
-        orderamount: amount,
-        channelId: receiveBank.channelId,
-      });
-      if (res.code == "1") {
-        setIframeurl(res.info);
-        setIsIframe(true);
+      try {
+        const res = await ESaving({
+          orderamount: amount,
+          channelId: receiveBank.channelId,
+        });
+        if (res.code == "1") {
+          setIframeurl(res.info);
+          setIsIframe(true);
+        }
+      } catch (error) {
+        console.error(error);
+        Toast.show({
+          content: error,
+        });
       }
       // router.push({
       //   pathname: "/fund/payment-info",
@@ -115,7 +122,43 @@ const BankTransfer = () => {
           })}
         </div>
       </div>
-      <Dropdown
+      <div className="tit">支付方式</div>
+      <div className="method-list">
+        <div className="box">
+          <div
+            className={`${receiveBank.channelId == 2 ? "active" : ""} item`}
+            onClick={() => {
+              setReceiveBank({
+                channelId: 2,
+                channelType: "ONLINEBANK",
+                name: "转钱快",
+              });
+            }}
+          >
+            <p>转钱快</p>
+          </div>
+        </div>
+        {tripartiteList?.map((item, index) => {
+          return (
+            <div
+              className="box"
+              key={index}
+              onClick={() => {
+                setReceiveBank(item);
+              }}
+            >
+              <div
+                className={`${
+                  receiveBank.channelId == item.channelId ? "active" : ""
+                } item`}
+              >
+                <p>{item.name}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      {/* <Dropdown
         trigger="click"
         overlay={
           <Menu>
@@ -139,7 +182,7 @@ const BankTransfer = () => {
           </div>
           <DownOutlined />
         </div>
-      </Dropdown>
+      </Dropdown> */}
       <div className="confirm-box">
         <div className="confirm" onClick={confirmHandler}>
           确认
