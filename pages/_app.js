@@ -59,6 +59,18 @@ export default function App({ Component, pageProps }) {
         centered: true,
       });
     }
+    const handleBeforeUnload = () => {
+      // 取消默认行为，确保不会显示提示信息
+      alert(111);
+      return null;
+    };
+
+    const handlePageHide = () => {
+      alert(222);
+      console.log("页面正在关闭");
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    window.addEventListener("pagehide", handlePageHide);
   }, []);
 
   useEffect(() => {

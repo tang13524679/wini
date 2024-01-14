@@ -1,7 +1,9 @@
 import request from "@/utils/fetcher-frontend";
 import { ENTERPRISE_CODE, EMPLOYEE_CODE } from "@/utils/const";
 import { encryptECB, encryptMD5 } from "@/utils/encrypt";
+import store from "store";
 
+const userStore = store.get("user");
 // 获取加密货币地址
 export function getRechargeUsdInfo(param) {
   const props = { ...param, enterprisecode: ENTERPRISE_CODE };
@@ -13,7 +15,11 @@ export function getRechargeUsdInfo(param) {
 }
 // 提交加密货币金额
 export function doTrans(param) {
-  const props = { ...param, opreateType: 6, employeecode: EMPLOYEE_CODE };
+  const props = {
+    ...param,
+    opreateType: 6,
+    employeecode: userStore?.employeecode,
+  };
   return request(`/ecrm-api/AgentNew/DoTrans`, {
     ...props,
     params: encryptECB({ ...props }),
