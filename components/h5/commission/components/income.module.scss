@@ -29,16 +29,18 @@
       ul{
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        margin: 0 -5px;
         margin-top: 17.5px;
         li{
-          width: 103.592px;
-          height: 92.212px;
-          border-radius: 6.509px;
-          border: 0.723px solid #A4BF96;
-          background: #2A2B30;
-          margin-bottom: 9px;
-          overflow: hidden;
+          width: 33.33333%;
+          padding: 5px;
+          .boxs{
+            height: 92.212px;
+            border-radius: 6.509px;
+            border: 0.723px solid #A4BF96;
+            background: #2A2B30;
+            overflow: hidden;
+          }
           span{
             margin-top: 10px;
             width: 68.244px;

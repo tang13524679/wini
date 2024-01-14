@@ -126,10 +126,10 @@ const BankTransfer = () => {
       <div className="method-list">
         <div className="box">
           <div
-            className={`${receiveBank.channelId == 2 ? "active" : ""} item`}
+            className={`${receiveBank.channelId == 1 ? "active" : ""} item`}
             onClick={() => {
               setReceiveBank({
-                channelId: 2,
+                channelId: 1,
                 channelType: "ONLINEBANK",
                 name: "转钱快",
               });

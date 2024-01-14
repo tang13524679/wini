@@ -118,7 +118,15 @@ export function takeEmployee(params) {
 }
 // 添加用户银行卡
 export function addUBankCard(params) {
-  return request(`/ecrm-api/User/AddUBankCard`, params);
+  const param = {
+    ...params,
+    enterprisecode: ENTERPRISE_CODE,
+  };
+  return request(`/ecrm-api/User/AddUBankCard`, {
+    ...param,
+    params: encryptECB({ ...param }),
+    signature: encryptMD5({ ...param }),
+  });
 }
 // 编辑用户银行卡
 export function editUBankCard(params) {

@@ -2,6 +2,7 @@ import react, { useState } from "react";
 import styles from "./reward-description.module.scss";
 import PromotionList from "./promotion-list";
 import PromotionBtn from "./promotion-btn";
+import { t } from "@/utils/translate";
 
 const RewardDescription = () => {
   const [tabState, setTabState] = useState(true);
@@ -46,8 +47,9 @@ const RewardDescription = () => {
                   <li>
                     <div className="num">1</div>
                     <p>
-                      您的朋友存款启动后，您将共有 <span>1</span> 次获得朋友
-                      的存款额外奖励，每次获得最高 <span>500</span> 元奖励。
+                      您的朋友存款启动后，您将共有<span>1</span>
+                      次获得朋友的 存款额外奖励，每次获得最高 <span>500</span>
+                      元奖励。
                     </p>
                   </li>
                   <li>

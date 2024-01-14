@@ -73,16 +73,36 @@ const DZgame = () => {
   const loadMore = async (param) => {
     try {
       setIsLoading(true);
-      const res = await getGameList({
-        ismain,
-        biggametype: "DZ",
-        cnname: inputValue,
-        gametype: gameCategory,
-        ishot,
-        isnew,
-        pageIndex,
-        pageSize,
-      });
+      const res = await getGameList(
+        gameType == "all"
+          ? {
+              ismain,
+              biggametype: "DZ",
+              cnname: inputValue,
+              gametype: gameCategory,
+              pageIndex,
+              pageSize,
+            }
+          : gameType == "hot"
+          ? {
+              ismain,
+              biggametype: "DZ",
+              cnname: inputValue,
+              gametype: gameCategory,
+              ishot,
+              pageIndex,
+              pageSize,
+            }
+          : {
+              ismain,
+              biggametype: "DZ",
+              cnname: inputValue,
+              gametype: gameCategory,
+              isnew,
+              pageIndex,
+              pageSize,
+            }
+      );
       if (res.code == "1") {
         setGamelist((val) => [...val, ...res.info?.rows]);
         setHasMore(res.info?.rows.length > 0);
