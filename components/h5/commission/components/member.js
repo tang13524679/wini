@@ -77,9 +77,54 @@ const Member = () => {
             二级
           </div>
         </div>
-        <div className="record-list">
-          <div className="item"></div>
-        </div>
+        {gradeState == 1 && levelOneList.length > 0 && (
+          <div className="record-list">
+            {levelOneList.map((item, index) => {
+              return (
+                <div className="item" key={index}>
+                  <div className="name">{item.loginaccount}</div>
+                  <div className="type">
+                    <div className="state">
+                      状态：
+                      <span>
+                        {item.employeestatus == 1 ? "已激活" : "未激活"}
+                      </span>
+                    </div>
+                    <p>带来收益</p>
+                  </div>
+                  <div className="time">
+                    <p>注册时间：{item.logindatetime}</p>
+                    <p>{item.lose_win_amount}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+        {gradeState == 2 && levelTwoList.length > 0 && (
+          <div className="record-list">
+            {levelTwoList.map((item, index) => {
+              return (
+                <div className="item" key={index}>
+                  <div className="name">{item.loginaccount}</div>
+                  <div className="type">
+                    <div className="state">
+                      状态：
+                      <span>
+                        {item.employeestatus == 1 ? "已激活" : "未激活"}
+                      </span>
+                    </div>
+                    <p>带来收益</p>
+                  </div>
+                  <div className="time">
+                    <p>注册时间：{item.logindatetime}</p>
+                    <p>{item.lose_win_amount}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
       {gradeState == 1 && levelOneList.length == 0 && (
         <div className="data-content">

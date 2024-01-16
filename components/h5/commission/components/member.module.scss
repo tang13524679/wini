@@ -60,6 +60,45 @@
           background: linear-gradient(91deg, #6E6AF5 20.09%, #7F3CE3 61%, #522F7F 96.35%);
         }
       }
+      .record-list{
+        .item{
+          margin-top: 20px;
+          .name{
+            font-size: 13px;
+            color: #fff;
+            text-align: left;
+            margin-bottom: 10px;
+          }
+          .type{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            .state{
+              color: #bbbbbb;
+              span{
+                color: #48B726;
+              }
+            }
+            p{
+              margin: 0;
+              color: #bbbbbb;
+              font-size: 13px;
+            }
+          }
+          .time{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            p{
+              margin: 0;
+              color: #bbbbbb;
+              font-size: 13px;
+            }
+          }
+        }
+      }
     }
     .data-content{
       padding: 0 0 20px;
