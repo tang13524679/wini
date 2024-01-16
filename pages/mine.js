@@ -1,7 +1,8 @@
 import react, { useEffect } from "react";
-import TabBar from "@/components/h5/components/tab-bar";
-import MinePage from "@/components/h5/mine";
 import { useAuth } from "@/hooks/user";
+import dynamic from "next/dynamic";
+const TabBar = dynamic(() => import("@/components/h5/components/tab-bar"));
+const MinePage = dynamic(() => import("@/components/h5/mine"));
 
 const Mine = () => {
   useAuth("/mine");

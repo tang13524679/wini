@@ -1,17 +1,18 @@
 import react, { useState, useEffect } from "react";
 import styles from "./index.module.scss";
-import MobileHeader from "../components/mobile-header";
 import { useGlobalState } from "@/hooks/global";
 import { useRouter } from "next/router";
-import HotGameList from "./components/hot-game-list";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Grid, Pagination, Autoplay } from "swiper";
 import { homeApi, promoApi } from "@/requests/frontend";
 import { Toast } from "antd-mobile";
 import { play } from "@/utils/common";
-import Link from "next/link";
-import Image from "next/image";
 import { t } from "@/utils/translate";
+import dynamic from "next/dynamic";
+const MobileHeader = dynamic(() => import("../components/mobile-header"));
+const HotGameList = dynamic(() => import("./components/hot-game-list"));
+const Image = dynamic(() => import("next/image"));
+const Link = dynamic(() => import("next/link"));
 
 SwiperCore.use([Grid, Pagination]);
 

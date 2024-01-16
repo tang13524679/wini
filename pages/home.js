@@ -1,9 +1,10 @@
 import react, { useState, useEffect } from "react";
-import TabBar from "@/components/h5/components/tab-bar";
-import HomePage from "@/components/h5/home";
+import dynamic from "next/dynamic";
 import useWindowSize from "@/hooks/useWindowSize";
-import PcLayout from "@/layouts/pc-layouts";
-import PcHomePage from "@/components/web/home";
+const TabBar = dynamic(() => import("@/components/h5/components/tab-bar"));
+const HomePage = dynamic(() => import("@/components/h5/home"));
+const PcLayout = dynamic(() => import("@/layouts/pc-layouts"));
+const PcHomePage = dynamic(() => import("@/components/web/home"));
 
 const Home = () => {
   const isMobile = useWindowSize();

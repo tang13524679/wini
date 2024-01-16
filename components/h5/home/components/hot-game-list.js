@@ -14,10 +14,11 @@ import {
   providerMap,
 } from "@/utils/const";
 import { useRouter } from "next/router";
-import Image from "next/image";
 import { t } from "@/utils/translate";
-import DZgame from "./dz-game";
 import { SpinLoading } from "antd-mobile";
+import dynamic from "next/dynamic";
+const DZgame = dynamic(() => import("./dz-game"));
+const Image = dynamic(() => import("next/image"));
 
 SwiperCore.use([Grid, Pagination]);
 

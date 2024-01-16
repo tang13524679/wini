@@ -3,12 +3,13 @@ import styles from "./index.module.scss";
 import { LeftOutlined } from "@ant-design/icons";
 import { Select } from "antd";
 import store from "store";
-import LoginForm from "./components/login-form";
-import Register from "./components/register";
 import { useRouter } from "next/router";
-import Image from "next/image";
 import { useGlobalState } from "@/hooks/global";
 import { t } from "@/utils/translate";
+import dynamic from "next/dynamic";
+const LoginForm = dynamic(() => import("./components/login-form"));
+const Register = dynamic(() => import("./components/register"));
+const Image = dynamic(() => import("next/image"));
 
 const LoginModal = () => {
   const router = useRouter();

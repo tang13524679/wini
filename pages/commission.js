@@ -1,7 +1,7 @@
 import react, { useEffect } from "react";
-import CommissionH5 from "@/components/h5/commission";
-import MobileNav from "@/components/mobile-nav";
-import TabBar from "@/components/h5/components/tab-bar";
+import dynamic from "next/dynamic";
+const CommissionH5 = dynamic(() => import("@/components/h5/commission"));
+const TabBar = dynamic(() => import("@/components/h5/components/tab-bar"));
 
 const Commission = () => {
   return (

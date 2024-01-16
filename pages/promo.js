@@ -1,6 +1,7 @@
 import react, { useEffect } from "react";
-import PromoPage from "@/components/h5/promo/promo-page";
-import TabBar from "@/components/h5/components/tab-bar";
+import dynamic from "next/dynamic";
+const PromoPage = dynamic(() => import("@/components/h5/promo/promo-page"));
+const TabBar = dynamic(() => import("@/components/h5/components/tab-bar"));
 
 const Promo = () => {
   return (

@@ -1,8 +1,5 @@
 import { useEffect } from "react";
 import { SWRConfig } from "swr";
-import Head from "next/head";
-import Script from "next/script";
-import Layout from "@/layouts/index";
 import fetcher from "@/utils/fetcher-frontend";
 import { StateProvider } from "@/hooks/global";
 import store from "store";
@@ -12,6 +9,10 @@ import { logEvent } from "@/utils/firebase";
 import { message, Modal } from "antd";
 import { t } from "@/utils/translate";
 import useWindowSize from "@/hooks/useWindowSize";
+import dynamic from "next/dynamic";
+const Head = dynamic(() => import("next/head"));
+const Script = dynamic(() => import("next/script"));
+const Layout = dynamic(() => import("@/layouts/index"));
 
 import "swiper/css/bundle";
 import "antd/dist/antd.min.css";
@@ -59,18 +60,6 @@ export default function App({ Component, pageProps }) {
         centered: true,
       });
     }
-    const handleBeforeUnload = () => {
-      // 取消默认行为，确保不会显示提示信息
-      alert(111);
-      return null;
-    };
-
-    const handlePageHide = () => {
-      alert(222);
-      console.log("页面正在关闭");
-    };
-    window.addEventListener("beforeunload", handleBeforeUnload);
-    window.addEventListener("pagehide", handlePageHide);
   }, []);
 
   useEffect(() => {
@@ -96,9 +85,18 @@ export default function App({ Component, pageProps }) {
         <meta HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE" />
         <meta HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.20/ua-parser.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.1.5/fingerprint2.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+        <Script
+          strategy="lazyOnload"
+          src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"
+        ></Script>
+        <Script
+          strategy="lazyOnload"
+          src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.1.5/fingerprint2.min.js"
+        ></Script>
+        <Script
+          strategy="lazyOnload"
+          src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"
+        ></Script>
 
         {/* favicon stuff */}
         <link

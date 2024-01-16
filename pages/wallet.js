@@ -1,7 +1,8 @@
 import react, { useEffect } from "react";
-import WalletPage from "@/components/h5/wallet/index";
-import TabBar from "@/components/h5/components/tab-bar";
 import { useAuth } from "@/hooks/user";
+import dynamic from "next/dynamic";
+const WalletPage = dynamic(() => import("@/components/h5/wallet/index"));
+const TabBar = dynamic(() => import("@/components/h5/components/tab-bar"));
 
 const Wallet = () => {
   useAuth("/wallet");

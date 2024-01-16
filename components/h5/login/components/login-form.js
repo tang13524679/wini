@@ -2,7 +2,6 @@ import react, { useState, useEffect } from "react";
 import styles from "./login-form.module.scss";
 import { Button, Checkbox, Form, Input } from "antd";
 import { UnlockOutline, UserOutline } from "antd-mobile-icons";
-import Loading from "@/components/h5/components/loading-mobile";
 import { userApi } from "@/requests/frontend";
 import { useGlobalState } from "@/hooks/global";
 import { uaInfo } from "@/utils/common";
@@ -12,6 +11,10 @@ import { useRouter } from "next/router";
 import { encryptECB, encryptMD5 } from "@/utils/encrypt";
 import { Toast } from "antd-mobile";
 import { t } from "@/utils/translate";
+import dynamic from "next/dynamic";
+const Loading = dynamic(() =>
+  import("@/components/h5/components/loading-mobile")
+);
 
 const LoginForm = () => {
   const [userName, setUserName] = useState("");

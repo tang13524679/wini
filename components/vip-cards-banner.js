@@ -93,11 +93,12 @@ export default function VipCardsBanner({ className, level, vipInfos }) {
   return (
     <div className={className}>
       <Swiper
+        style={{ padding: "0 15px" }}
         className="h-full"
         modules={[Autoplay]}
         autoplay={false}
         spaceBetween={12}
-        slidesPerView={1.25}
+        slidesPerView={1.3}
         slideToClickedSlide={true}
         grabCursor={true}
         centeredSlides={true}

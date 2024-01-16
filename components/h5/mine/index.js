@@ -1,22 +1,18 @@
 import react, { useState, useEffect } from "react";
-import Link from "next/link";
 import styles from "./index.module.scss";
 import { RightOutlined } from "@ant-design/icons";
 import { cleanUserStore } from "@/utils/common";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { useGlobalState } from "@/hooks/global";
-import useSWR from "swr";
-import qs from "query-string";
-import { formatOrdinal, getAvatarIndex } from "@/utils/common";
-import { encryptECB, encryptMD5 } from "@/utils/encrypt";
-import { ENTERPRISE_CODE } from "@/utils/const";
-import { useBalance } from "@/hooks/fund";
+import { getAvatarIndex } from "@/utils/common";
 import { setOnline } from "@/requests/frontend/users";
 import { Toast } from "antd-mobile";
 import { useAuth } from "@/hooks/user";
 import store from "store";
 import { userApi, gameApi } from "@/requests/frontend";
+import dynamic from "next/dynamic";
+const Link = dynamic(() => import("next/link"));
 
 const MinePage = () => {
   useAuth("/mine");

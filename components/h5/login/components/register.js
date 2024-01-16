@@ -9,15 +9,18 @@ import {
   UpOutlined,
   CustomerServiceFilled,
 } from "@ant-design/icons";
-import Loading from "@/components/h5/components/loading-mobile";
 import { userApi } from "@/requests/frontend";
 import { useGlobalState } from "@/hooks/global";
 import { uaInfo } from "@/utils/common";
-import RegisterVerify from "./register-verify";
 import store from "store";
 import { color } from "@mui/system";
 import { Toast, Checkbox } from "antd-mobile";
 import { t } from "@/utils/translate";
+import dynamic from "next/dynamic";
+const Loading = dynamic(() =>
+  import("@/components/h5/components/loading-mobile")
+);
+const RegisterVerify = dynamic(() => import("./register-verify"));
 
 const Register = () => {
   const [userName, setUserName] = useState("");
