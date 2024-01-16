@@ -8,7 +8,7 @@ import { Toast } from "antd-mobile";
 import { useRouter } from "next/router";
 import { EThirdpartys, ESaving } from "@/requests/frontend/wallet";
 
-const BankTransfer = () => {
+const QuicklyTransfer = () => {
   const amountList = [
     {
       label: "100",
@@ -211,4 +211,4 @@ const BankTransfer = () => {
   );
 };
 
-export default BankTransfer;
+export default QuicklyTransfer;

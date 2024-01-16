@@ -32,7 +32,12 @@ export default function BankCardPage() {
             <PageLoading />
           ) : (
             <>
-              <div className="my-4 clWhite30">{t("addCardsLimit", "msg")}</div>
+              <div
+                style={{ color: "rgb(203 202 202)" }}
+                className="my-4 clWhite30"
+              >
+                {t("addCardsLimit", "msg")}
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 pb-10">
                 {myBanks.map((item, index) => (
                   <div
@@ -76,7 +81,17 @@ export default function BankCardPage() {
 
                 {myBanks.length < 5 && (
                   <Link href="/user/add-bank-card" passHref>
-                    <div className="grid place-items-center bgWhite6 bdWhite10 rounded-md cursor-pointer p-8">
+                    <div
+                      style={{
+                        background: "#2a2b30",
+                        padding: "10px",
+                        border: "1px dashed #4a4c52",
+                        fontSize: "14px",
+                        color: "#eee",
+                        borderRadius: "8px",
+                      }}
+                      className="grid place-items-center bgWhite6 bdWhite10 rounded-md cursor-pointer p-8"
+                    >
                       <div>+ {t("addCard")}</div>
                     </div>
                   </Link>

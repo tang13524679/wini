@@ -1,8 +1,9 @@
 import react, { useState, useEffect } from "react";
 import styles from "./index.module.scss";
-import Recharge from "./components/recharge";
-import Withdraw from "./components/withdraw";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
+const Recharge = dynamic(() => import("./components/recharge"));
+const Withdraw = dynamic(() => import("./components/withdraw"));
 
 const WalletPage = () => {
   const router = useRouter();
