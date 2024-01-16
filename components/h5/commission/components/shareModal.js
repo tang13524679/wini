@@ -5,10 +5,12 @@ import copy from "copy-to-clipboard";
 import { Toast } from "antd-mobile";
 import { getDomain } from "@/utils/common";
 import { useGlobalState } from "@/hooks/global";
+import store from "store";
 
 const ShaeModal = (props) => {
   const [{ user }] = useGlobalState();
   const [visible, setVisible] = useState(false);
+  const userStore = store.get("user");
   const copyCot = (value) => {
     copy(value);
     Toast.show({
@@ -21,7 +23,13 @@ const ShaeModal = (props) => {
         <div
           className={styles.shareBtn}
           onClick={() => {
-            setVisible(true);
+            if (userStore) {
+              setVisible(true);
+            } else {
+              Toast.show({
+                content: "请先登录",
+              });
+            }
           }}
         >
           {props.title}
@@ -31,7 +39,13 @@ const ShaeModal = (props) => {
         <div
           className={styles.more}
           onClick={() => {
-            setVisible(true);
+            if (userStore) {
+              setVisible(true);
+            } else {
+              Toast.show({
+                content: "请先登录",
+              });
+            }
           }}
         >
           <img src="/assets/commission/icon_more.png" />

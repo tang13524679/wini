@@ -2,7 +2,7 @@ import react, { useState, useEffect } from "react";
 import styles from "./get-records.module.scss";
 import NavBar from "../components/nav-bar";
 import { Dropdown, Menu } from "antd";
-import { Empty } from "antd-mobile";
+import { Modal, Empty } from "antd-mobile";
 import { promoApi } from "@/requests/frontend";
 import { useGlobalState } from "@/hooks/global";
 import Loading from "@/components/h5/components/loading-mobile";
@@ -10,8 +10,11 @@ import Loading from "@/components/h5/components/loading-mobile";
 const GetRecords = () => {
   const [time, setTime] = useState({ label: "全部", value: "all" });
   const [recordsList, setRecordsList] = useState([]);
+  const [sumamount, setSumamount] = useState(0);
   const [{ user }, dispatch] = useGlobalState();
   const [isLoading, setIsLoading] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [infoModal, setInfoModal] = useState({});
 
   const timeList = [
     { label: "全部", value: "all" },
@@ -29,7 +32,8 @@ const GetRecords = () => {
         timeRange: time.value,
       });
       if (res.code == "1") {
-        // setSumamount(res.info.sumamount);
+        setSumamount(res.info.sumamount);
+        setRecordsList(res.info.record);
       }
     } catch (error) {
       Toast.show({
@@ -44,6 +48,43 @@ const GetRecords = () => {
   useEffect(() => {
     fetchData();
   }, [time]);
+
+  const content = () => {
+    return (
+      <div className="modal-box">
+        <div className="modal-title">
+          <div className="tit">明细</div>
+        </div>
+        <div className="content-box">
+          <div className="item">
+            <p className="l">名字</p>
+            <p className="r">{infoModal.loginaccount}</p>
+          </div>
+          <div className="item">
+            <p className="l">类型</p>
+            <p className="r">{infoModal.moneychangetypename}</p>
+          </div>
+          <div className="item">
+            <p className="l">金额</p>
+            <p className="r">{infoModal.moneychangeamount}</p>
+          </div>
+          <div className="item">
+            <p className="l">首存金额(HKD)</p>
+            <p className="r">{infoModal.settlementamount}</p>
+          </div>
+        </div>
+        <div
+          className="modal-btn"
+          onClick={() => {
+            setVisible(false);
+          }}
+        >
+          我已知晓
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className={styles.container}>
       <NavBar title="领取记录" />
@@ -76,13 +117,49 @@ const GetRecords = () => {
             </div>
           </Dropdown>
           <div className="amount">
-            领取总额：<span>0</span>
+            领取总额：<span>{sumamount}</span>
           </div>
         </div>
-        {recordsList.length > 0 && <div className="records-list"></div>}
+        {recordsList.length > 0 && (
+          <div className="records-list">
+            <div className="title-box">
+              <div className="tit tit1">提现日期</div>
+              <div className="tit tit2">提现金额(HKD)</div>
+              <div className="tit tit3">查询明细</div>
+            </div>
+            <div className="content-list">
+              {recordsList.map((item, index) => {
+                return (
+                  <div className="item" key={index}>
+                    <div className="it it1">{item.moneychangedate}</div>
+                    <div className="it">{item.afteramount}</div>
+                    <div
+                      className="it text"
+                      onClick={() => {
+                        setInfoModal(item);
+                        setVisible(true);
+                      }}
+                    >
+                      明细
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
         {recordsList.length == 0 && <Empty description="暂无数据" />}
       </div>
       {isLoading && <Loading />}
+      <Modal
+        visible={visible}
+        closeOnAction
+        showCloseButton
+        content={content()}
+        onClose={() => {
+          setVisible(false);
+        }}
+      />
     </div>
   );
 };

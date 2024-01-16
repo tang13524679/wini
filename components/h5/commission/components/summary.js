@@ -1,4 +1,4 @@
-import react, { useState, useEffect } from "react";
+import react, { useState, useEffect, useMemo } from "react";
 import styles from "./summary.module.scss";
 import { Collapse } from "antd-mobile";
 import { UpOutline, DownOutline } from "antd-mobile-icons";
@@ -7,11 +7,13 @@ import { commissionApi } from "@/requests/frontend";
 import { useGlobalState } from "@/hooks/global";
 import Loading from "@/components/h5/components/loading-mobile";
 import { Toast } from "antd-mobile";
+import { Modal } from "antd";
 
 const Sunmmary = () => {
   const [timeState, setTimeState] = useState("all");
-  const [sumamount, setSumamount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [sumInfo, setSumInfo] = useState({});
+  const [confirmLoading, setConfirmLoading] = useState(false);
   const timeList = [
     {
       text: "全部",
@@ -34,56 +36,58 @@ const Sunmmary = () => {
       value: "month",
     },
   ];
-  const bonusList = [
-    {
-      id: 1,
-      title: "总佣金（HKD）",
-      directly: "直属佣金",
-      under: "下级佣金",
-      directlyTotal: 0,
-      underTotal: 0,
-    },
-    {
-      id: 2,
-      title: "总团队成员数",
-      directly: "直属成员",
-      under: "下级成员",
-      directlyTotal: 0,
-      underTotal: 0,
-    },
-    {
-      id: 3,
-      title: "总邀请奖金",
-      directly: "直属邀请奖金",
-      under: "下级邀请奖金",
-      directlyTotal: 0,
-      underTotal: 0,
-    },
-    {
-      id: 4,
-      title: "总打码量奖金",
-      directly: "直属打码量奖金",
-      under: "下级打码量奖金",
-      directlyTotal: 0,
-      underTotal: 0,
-    },
-    {
-      id: 5,
-      title: "总存款奖金",
-      directly: "直属存款奖金",
-      under: "下级存款奖金",
-      directlyTotal: 0,
-      underTotal: 0,
-    },
-    {
-      id: 6,
-      title: "总提款奖金",
-      directly: "直属提款奖金",
-      under: "下级提款奖金",
-      directlyTotal: 0,
-      underTotal: 0,
-    },
-  ];
+  const bonusList = useMemo(() => {
+    return [
+      {
+        id: 1,
+        title: "总佣金（HKD）",
+        directly: "直属佣金",
+        under: "下级佣金",
+        directlyTotal: sumInfo.directCommission || 0,
+        underTotal: sumInfo.lowCommission || 0,
+      },
+      {
+        id: 2,
+        title: "总团队成员数",
+        directly: "直属成员",
+        under: "下级成员",
+        directlyTotal: sumInfo.direcMember || 0,
+        underTotal: sumInfo.lowMember || 0,
+      },
+      {
+        id: 3,
+        title: "总邀请奖金",
+        directly: "直属邀请奖金",
+        under: "下级邀请奖金",
+        directlyTotal: sumInfo.directInvite || 0,
+        underTotal: sumInfo.lowInvite || 0,
+      },
+      {
+        id: 4,
+        title: "总打码量奖金",
+        directly: "直属打码量奖金",
+        under: "下级打码量奖金",
+        directlyTotal: sumInfo.directBet || 0,
+        underTotal: sumInfo.lowBet || 0,
+      },
+      {
+        id: 5,
+        title: "总存款奖金",
+        directly: "直属存款奖金",
+        under: "下级存款奖金",
+        directlyTotal: sumInfo.directDeposit || 0,
+        underTotal: sumInfo.lowDeposit || 0,
+      },
+      {
+        id: 6,
+        title: "总提款奖金",
+        directly: "直属提款奖金",
+        under: "下级提款奖金",
+        directlyTotal: sumInfo.directWithdraw || 0,
+        underTotal: sumInfo.lowWithdraw || 0,
+      },
+    ];
+  }, [sumInfo]);
 
   const [{ user }, dispatch] = useGlobalState();
 
@@ -95,7 +99,7 @@ const Sunmmary = () => {
         timeRange: timeState,
       });
       if (res.code == "1") {
-        setSumamount(res.info.sumamount);
+        setSumInfo(res.info);
       }
     } catch (error) {
       Toast.show({
@@ -110,13 +114,47 @@ const Sunmmary = () => {
   useEffect(() => {
     fetchData();
   }, [timeState]);
+
   return (
     <div className={styles.container}>
       <div className="balance-box">
         <div className="top">
           <div className="text">分享佣金余额（HKD）：</div>
-          <div className="num">{sumamount}</div>
-          <div className="extract">提取</div>
+          <div className="num">{sumInfo.sumCommission || 0}</div>
+          <div
+            className="extract"
+            onClick={() => {
+              Modal.confirm({
+                centered: true,
+                title: "温馨提示",
+                content: "确定要提取佣金余额吗?",
+                okText: "确定",
+                cancelText: "取消",
+                confirmLoading: confirmLoading,
+                onOk: async () => {
+                  try {
+                    setConfirmLoading(true);
+                    const res = await commissionApi.takeCommission();
+                    if (res.code == "1") {
+                      Toast.show({
+                        content: res.info,
+                      });
+                      fetchData();
+                    }
+                  } catch (error) {
+                    Toast.show({
+                      content: error,
+                    });
+                    console.error(error);
+                  } finally {
+                    setConfirmLoading(false);
+                  }
+                },
+              });
+            }}
+          >
+            提取
+          </div>
         </div>
         <div className="bottom">
           <p>数据有延时，请于次日15:00更新为准</p>

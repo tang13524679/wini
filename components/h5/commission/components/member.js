@@ -10,6 +10,8 @@ const Member = () => {
   const [gradeState, setGradeState] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [search, setSearch] = useState("");
+  const [levelOneList, setLevelOneList] = useState([]);
+  const [levelTwoList, setLevelTwoList] = useState([]);
   const searchRef = useRef(null);
 
   const fetchData = async () => {
@@ -19,10 +21,16 @@ const Member = () => {
         const res = await commissionApi.levelOne({
           loginaccount: search,
         });
+        if (res.code == "1") {
+          setLevelOneList(res.info.record);
+        }
       } else {
         const res = await commissionApi.levelTwo({
           loginaccount: search,
         });
+        if (res.code == "1") {
+          setLevelTwoList(res.info.record);
+        }
       }
     } catch (error) {
       Toast.show({
@@ -73,9 +81,16 @@ const Member = () => {
           <div className="item"></div>
         </div>
       </div>
-      <div className="data-content">
-        <div className="no-data">暂无数据</div>
-      </div>
+      {gradeState == 1 && levelOneList.length == 0 && (
+        <div className="data-content">
+          <div className="no-data">暂无数据</div>
+        </div>
+      )}
+      {gradeState == 2 && levelTwoList.length == 0 && (
+        <div className="data-content">
+          <div className="no-data">暂无数据</div>
+        </div>
+      )}
       <div className="games-odds">
         <div className="item">
           <span>体育</span>

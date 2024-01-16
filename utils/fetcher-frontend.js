@@ -2,7 +2,6 @@ import qs from "query-string";
 import { toBigLanguage, cleanUserStore } from "@/utils/common";
 import store from "store";
 import { message } from "antd";
-import { useRouter } from "next/router";
 
 export default function fetchFrontend(
   url,
@@ -47,6 +46,7 @@ export default function fetchFrontend(
           if (json.code === "401") {
             cleanUserStore();
             message.info(json.info);
+            location.href = "/login";
           } else {
             throw Error(json.info);
           }

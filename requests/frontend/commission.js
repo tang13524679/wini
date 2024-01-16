@@ -12,6 +12,15 @@ export function sumCommissions(param) {
     signature: encryptMD5({ ...props }),
   });
 }
+// 提取佣金
+export function takeCommission(param) {
+  const props = { ...param, enterprisecode: ENTERPRISE_CODE };
+  return request(`/ecrm-api/Promo/takeCommission`, {
+    ...props,
+    params: encryptECB({ ...props }),
+    signature: encryptMD5({ ...props }),
+  });
+}
 // 一级会员
 export function levelOne(param) {
   const props = { ...param, enterprisecode: ENTERPRISE_CODE };

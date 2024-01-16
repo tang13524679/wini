@@ -3,12 +3,14 @@ import styles from "./invite-with-prizes.module.scss";
 import { Modal } from "antd-mobile";
 import ShaeModal from "./shareModal";
 import { useRouter } from "next/router";
+import store from "store";
 
 const InviteWithPrizes = () => {
   const [visible, setVisible] = useState(false);
   const [isWithdraw, setIsWithdraw] = useState(true);
   const [isShare, setIsShare] = useState(false);
   const router = useRouter();
+  const userStore = store.get("user");
 
   const withdraw = () => {
     return (
@@ -180,7 +182,11 @@ const InviteWithPrizes = () => {
         <div
           className="btn"
           onClick={() => {
-            router.push("/commission/invitation-income");
+            if (userStore) {
+              router.push("/commission/invitation-income");
+            } else {
+              router.push("/login");
+            }
           }}
         >
           邀请收益
@@ -188,7 +194,11 @@ const InviteWithPrizes = () => {
         <div
           className="btn"
           onClick={() => {
-            router.push("/commission/unique-offer");
+            if (userStore) {
+              router.push("/commission/unique-offer");
+            } else {
+              router.push("/login");
+            }
           }}
         >
           独特优惠

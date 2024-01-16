@@ -60,7 +60,6 @@ export function useUserBanks() {
     }),
   ]);
   if (data?.code != "1") {
-    alert(11);
     useRouter().push("/login");
   } else {
     return data?.info || [];

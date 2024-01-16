@@ -22,7 +22,15 @@ export function tryPlay(params) {
 }
 // 玩家余额總數
 export function balances(params) {
-  return request(`/ecrm-api/Game/balances`, params);
+  const param = {
+    ...params,
+    enterprisecode: ENTERPRISE_CODE,
+  };
+  return request(`/ecrm-api/Game/balances`, {
+    ...param,
+    params: encryptECB({ ...param }),
+    signature: encryptMD5({ ...param }),
+  });
 }
 // 查询会员时间段内的存取款、优惠等数据統計
 export function allMoney(params) {

@@ -14,26 +14,42 @@ import { ENTERPRISE_CODE } from "@/utils/const";
 import { useBalance } from "@/hooks/fund";
 import { setOnline } from "@/requests/frontend/users";
 import { Toast } from "antd-mobile";
+import { useAuth } from "@/hooks/user";
+import store from "store";
+import { userApi, gameApi } from "@/requests/frontend";
 
 const MinePage = () => {
+  useAuth("/mine");
   const [{ user }, dispatch] = useGlobalState();
   const [confirmLoading, setconfirmLoading] = useState(false);
   const router = useRouter();
   const avatarIndex = getAvatarIndex(user?.employeecode);
-  const balance = useBalance();
+  const [balance, setBalance] = useState("");
+  const [data, setData] = useState({});
 
-  const { data } = useSWR(
-    user && [
-      "/ecrm-api/vipController/getUserVip",
-      qs.stringify({
-        enterprisecode: ENTERPRISE_CODE,
-        params: encryptECB({ enterprisecode: ENTERPRISE_CODE }),
-        signature: encryptMD5({ enterprisecode: ENTERPRISE_CODE }),
-      }),
-    ]
-  );
+  const getUserVipHandle = async () => {
+    const res = await userApi.getUserVip();
+    if (res.code == "1") {
+      setData(res);
+    }
+  };
 
-  console.log(data);
+  const getBalance = async () => {
+    try {
+      const res = await gameApi.balances();
+      if (res.code == "1") {
+        store.set("balance", res?.info);
+        setBalance(res?.info);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getUserVipHandle();
+    getBalance();
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -43,7 +59,7 @@ const MinePage = () => {
         </div>
         <div className="info">
           <div className="name">
-            {user?.loginaccount} <span>{data?.info.currentLevelName}</span>
+            {user?.loginaccount} <span>{data?.info?.currentLevelName}</span>
           </div>
           <div className="time">第{user?.registerDays}天加入WIN8</div>
         </div>
@@ -51,7 +67,7 @@ const MinePage = () => {
       <div className="wallet-box">
         <div className="left">
           <div className="tit">钱包中心（HKD）</div>
-          <div className="num">{balance}</div>
+          <div className="num">{balance || store.get("balance")}</div>
         </div>
         <div className="right">
           <div

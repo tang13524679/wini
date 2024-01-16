@@ -119,7 +119,14 @@ const LoginForm = () => {
           <Form.Item name="remember" valuePropName="checked">
             <Checkbox>{t("rememberPassword", "login")}</Checkbox>
           </Form.Item>
-          <div className="forget">{t("forgetThePassword", "login")}</div>
+          <div
+            className="forget"
+            onClick={() => {
+              router.push("/resetPassword");
+            }}
+          >
+            {t("forgetThePassword", "login")}
+          </div>
         </div>
 
         <Form.Item>

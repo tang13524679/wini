@@ -27,9 +27,14 @@ export function register(param) {
 }
 // 重置密码
 export function resetPassword(params) {
-  return request(`/ecrm-api/User/resetLoginPassword`, {
-    enterprisecode: ENTERPRISE_CODE,
+  const param = {
     ...params,
+    enterprisecode: ENTERPRISE_CODE,
+  };
+  return request(`/ecrm-api/User/resetLoginPassword`, {
+    ...param,
+    params: encryptECB({ ...param }),
+    signature: encryptMD5({ ...param }),
   });
 }
 // 登录
@@ -102,19 +107,52 @@ export function getEmailcode(params) {
 }
 // 修改登录密码
 export function updatepwd(params) {
-  return request(`/ecrm-api/User/updatepwd`, params);
+  const param = {
+    ...params,
+    enterprisecode: ENTERPRISE_CODE,
+  };
+  return request(`/ecrm-api/User/updatepwd`, {
+    ...param,
+    params: encryptECB({ ...param }),
+    signature: encryptMD5({ ...param }),
+  });
 }
 // 修改资金密码
 export function updatefpwd(params) {
-  return request(`/ecrm-api/User/updatefpwd`, params);
+  const param = {
+    ...params,
+    enterprisecode: ENTERPRISE_CODE,
+  };
+  return request(`/ecrm-api/User/updatefpwd`, {
+    ...param,
+    params: encryptECB({ ...param }),
+    signature: encryptMD5({ ...param }),
+  });
 }
 // 更新用户信息
 export function updateInfo(params) {
-  return request(`/ecrm-api/User/updateInfo`, params);
+  const param = {
+    ...params,
+    employeecode: userStore?.employeecode,
+    enterprisecode: ENTERPRISE_CODE,
+  };
+  return request(`/ecrm-api/User/updateInfo`, {
+    ...param,
+    params: encryptECB({ ...param }),
+    signature: encryptMD5({ ...param }),
+  });
 }
 // 根据用户编号获取用户信息
 export function takeEmployee(params) {
-  return request(`/ecrm-api/User/takeEmployee`, params);
+  const param = {
+    ...params,
+    enterprisecode: ENTERPRISE_CODE,
+  };
+  return request(`/ecrm-api/User/takeEmployee`, {
+    ...param,
+    params: encryptECB({ ...param }),
+    signature: encryptMD5({ ...param }),
+  });
 }
 // 添加用户银行卡
 export function addUBankCard(params) {
@@ -195,4 +233,16 @@ export function getTasks(params) {
 // 领取任务奖励
 export function getTaskReward(params) {
   return request(`/ecrm-api/ActivityTask/apply`, params);
+}
+// 获取vip用户信息
+export function getUserVip(params) {
+  const param = {
+    ...params,
+    enterprisecode: ENTERPRISE_CODE,
+  };
+  return request(`/ecrm-api/vipController/getUserVip`, {
+    ...param,
+    params: encryptECB({ ...param }),
+    signature: encryptMD5({ ...param }),
+  });
 }

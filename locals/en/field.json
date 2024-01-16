@@ -18,6 +18,7 @@
     "endDate": "End Date",
     "bankName": "Bank Name",
     "accountName": "Account Name",
+    "identificationNumber": "Identification Number",
     "accountNo": "Account No.",
     "transferType": "Transfer Type",
     "amount": "Amount",

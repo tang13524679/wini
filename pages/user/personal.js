@@ -91,21 +91,15 @@ export default function PersonalPage() {
           )}
           {/* email */}
           {user.email ? (
-            <Link href="/user/set-email" passHref>
-              <div className="flex justify-between items-center bdLine py-4 cursor-pointer">
-                <div className="sm:basis-1/3">
-                  <div>{t("email", "field")}</div>
-                  <div className="clWhite sm:hidden">{user.email}</div>
-                </div>
-                <div className="flex-auto clWhite hidden sm:block">
-                  {user.email}
-                </div>
-                <div className="flex items-center">
-                  <div className="clWhite30 text-xs">{t("toChange")}</div>
-                  <div className="icon-more"></div>
-                </div>
+            <div className="flex justify-between items-center bdLine py-4 cursor-pointer">
+              <div className="sm:basis-1/3">
+                <div>{t("email", "field")}</div>
+                <div className="clWhite sm:hidden">{user.email}</div>
               </div>
-            </Link>
+              <div className="flex-auto clWhite hidden sm:block">
+                {user.email}
+              </div>
+            </div>
           ) : (
             <UnSet
               title={t("email", "field")}
@@ -116,24 +110,45 @@ export default function PersonalPage() {
           )}
           {/* phone */}
           {/* <Link href="/user/verify-phone" passHref> */}
-          <div className="flex justify-between items-center bdLine py-4 cursor-pointer">
-            <div className="sm:basis-1/3">
-              <div>{t("phone", "field")}</div>
-              <div className="clWhite sm:hidden">{user.phoneno}</div>
+          {user.phoneno ? (
+            <div className="flex justify-between items-center bdLine py-4 cursor-pointer">
+              <div className="sm:basis-1/3">
+                <div>{t("phone", "field")}</div>
+                <div className="clWhite sm:hidden">{user.phoneno}</div>
+              </div>
+              <div className="flex-auto clWhite hidden sm:block">
+                {user.phoneno}
+              </div>
             </div>
-            <div className="flex-auto clWhite hidden sm:block">
-              {user.phoneno}
-            </div>
-            {/* <div className="flex items-center">
-                                <div className="clWhite30 text-xs">
-                                    {t('toChange')}
-                                </div>
-                                <div className="icon-more"></div>
-                            </div> */}
-          </div>
+          ) : (
+            <UnSet
+              title={t("phone", "field")}
+              to="/user/set-phone"
+              status={t("unset")}
+              btn={t("toSet")}
+            />
+          )}
           {/* </Link> */}
           {/* authentication */}
-          <div className="flex justify-between items-center bdLine py-4 cursor-pointer">
+          {user.realname ? (
+            <div className="flex justify-between items-center bdLine py-4 cursor-pointer">
+              <div className="sm:basis-1/3">
+                <div>{t("authentication", "field")}</div>
+                <div className="clWhite sm:hidden">{user.realname}</div>
+              </div>
+              <div className="flex-auto clWhite hidden sm:block">
+                {user.realname}
+              </div>
+            </div>
+          ) : (
+            <UnSet
+              title={t("authentication", "field")}
+              to="/user/set-realname"
+              status={t("unauthorized")}
+              btn={t("toSet")}
+            />
+          )}
+          {/* <div className="flex justify-between items-center bdLine py-4 cursor-pointer">
             <div className="sm:basis-1/3">
               <div>{t("authentication", "field")}</div>
               <div className="clWhite sm:hidden">
@@ -143,7 +158,7 @@ export default function PersonalPage() {
             <div className="flex-auto clWhite hidden sm:block">
               {user.realname || t("unauthorized")}
             </div>
-          </div>
+          </div> */}
           <div className="flex justify-between items-center bdLine py-4">
             <div className="sm:basis-1/3">
               <div>{t("lastLoginTime", "field")}</div>

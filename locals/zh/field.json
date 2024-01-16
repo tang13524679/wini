@@ -18,6 +18,7 @@
     "endDate": "结束时间",
     "bankName": "银行名称",
     "accountName": "姓名",
+    "identificationNumber": "身份证号码",
     "accountNo": "卡号",
     "transferType": "转账类型",
     "amount": "金额",
