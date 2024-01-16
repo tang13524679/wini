@@ -11,13 +11,17 @@ const UnSet = ({ title, to, status, btn }) => (
   <Link href={to} passHref>
     <div className="flex justify-between items-center bdLine py-4 cursor-pointer">
       <div className="sm:basis-1/3">
-        <div>{title}</div>
-        <div className="clWhite30 sm:hidden">{status}</div>
+        <div style={{ color: "#959EA8" }}>{title}</div>
+        <div style={{ color: "#fff" }} className="clWhite30 sm:hidden">
+          {status}
+        </div>
       </div>
       <div className="flex-auto clWhite30 hidden sm:block">{status}</div>
       <div className="flex items-center">
-        <div className="clWhite30 text-xs">{btn}</div>
-        <div className="icon-more"></div>
+        <div style={{ color: "#959EA8" }} className="clWhite30 text-xs">
+          {btn}
+        </div>
+        <div style={{ color: "#959EA8" }} className="icon-more"></div>
       </div>
     </div>
   </Link>
@@ -45,8 +49,10 @@ export default function PersonalPage() {
           {/* <InnerPageTitle title={t('personal', 'nav')} /> */}
           <div className="flex justify-between items-center bdLine py-4">
             <div className="sm:basis-1/3">
-              <div>{t("username", "field")}</div>
-              <div className="clWhite sm:hidden">{user.loginaccount}</div>
+              <div style={{ color: "#959EA8" }}>{t("username", "field")}</div>
+              <div style={{ color: "#fff" }} className="clWhite sm:hidden">
+                {user.loginaccount}
+              </div>
             </div>
             <div className="flex-auto clWhite hidden sm:block">
               {user.loginaccount}
@@ -56,13 +62,15 @@ export default function PersonalPage() {
           <Link href="/user/change-password" passHref>
             <div className="flex justify-between items-center bdLine py-4 cursor-pointer">
               <div className="sm:basis-1/3">
-                <div>{t("password", "field")}</div>
+                <div style={{ color: "#959EA8" }}>{t("password", "field")}</div>
                 <div className="clWhite sm:hidden">******</div>
               </div>
               <div className="flex-auto clWhite hidden sm:block">******</div>
               <div className="flex items-center">
-                <div className="clWhite30 text-xs">{t("toChange")}</div>
-                <div className="icon-more"></div>
+                <div style={{ color: "#959EA8" }} className="clWhite30 text-xs">
+                  {t("toChange")}
+                </div>
+                <div style={{ color: "#959EA8" }} className="icon-more"></div>
               </div>
             </div>
           </Link>
@@ -71,13 +79,20 @@ export default function PersonalPage() {
             <Link href="/user/change-wallet-password" passHref>
               <div className="flex justify-between items-center bdLine py-4 cursor-pointer">
                 <div className="sm:basis-1/3">
-                  <div>{t("walletPassword", "field")}</div>
+                  <div style={{ color: "#959EA8" }}>
+                    {t("walletPassword", "field")}
+                  </div>
                   <div className="clWhite sm:hidden">******</div>
                 </div>
                 <div className="flex-auto clWhite hidden sm:block">******</div>
                 <div className="flex items-center">
-                  <div className="clWhite30 text-xs">{t("toChange")}</div>
-                  <div className="icon-more"></div>
+                  <div
+                    style={{ color: "#959EA8" }}
+                    className="clWhite30 text-xs"
+                  >
+                    {t("toChange")}
+                  </div>
+                  <div style={{ color: "#959EA8" }} className="icon-more"></div>
                 </div>
               </div>
             </Link>
@@ -93,7 +108,7 @@ export default function PersonalPage() {
           {user.email ? (
             <div className="flex justify-between items-center bdLine py-4 cursor-pointer">
               <div className="sm:basis-1/3">
-                <div>{t("email", "field")}</div>
+                <div style={{ color: "#959EA8" }}>{t("email", "field")}</div>
                 <div className="clWhite sm:hidden">{user.email}</div>
               </div>
               <div className="flex-auto clWhite hidden sm:block">
@@ -113,7 +128,7 @@ export default function PersonalPage() {
           {user.phoneno ? (
             <div className="flex justify-between items-center bdLine py-4 cursor-pointer">
               <div className="sm:basis-1/3">
-                <div>{t("phone", "field")}</div>
+                <div style={{ color: "#959EA8" }}>{t("phone", "field")}</div>
                 <div className="clWhite sm:hidden">{user.phoneno}</div>
               </div>
               <div className="flex-auto clWhite hidden sm:block">
@@ -133,7 +148,9 @@ export default function PersonalPage() {
           {user.realname ? (
             <div className="flex justify-between items-center bdLine py-4 cursor-pointer">
               <div className="sm:basis-1/3">
-                <div>{t("authentication", "field")}</div>
+                <div style={{ color: "#959EA8" }}>
+                  {t("authentication", "field")}
+                </div>
                 <div className="clWhite sm:hidden">{user.realname}</div>
               </div>
               <div className="flex-auto clWhite hidden sm:block">
@@ -161,7 +178,9 @@ export default function PersonalPage() {
           </div> */}
           <div className="flex justify-between items-center bdLine py-4">
             <div className="sm:basis-1/3">
-              <div>{t("lastLoginTime", "field")}</div>
+              <div style={{ color: "#959EA8" }}>
+                {t("lastLoginTime", "field")}
+              </div>
               <div className="clWhite sm:hidden">{user.logindatetime}</div>
             </div>
             <div className="flex-auto clWhite hidden sm:block">
@@ -170,7 +189,9 @@ export default function PersonalPage() {
           </div>
           <div className="flex justify-between items-center bdLine py-4">
             <div className="sm:basis-1/3">
-              <div>{t("lastLoginIP", "field")}</div>
+              <div style={{ color: "#959EA8" }}>
+                {t("lastLoginIP", "field")}
+              </div>
               <div className="clWhite sm:hidden">{getIpInfo()}</div>
             </div>
             <div className="flex-auto clWhite hidden sm:block">

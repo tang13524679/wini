@@ -602,7 +602,9 @@ input#basic_username.ant-input.ant-input-lg:focus{
         }
     }
 }
-
+.ant-spin-blur:after{
+    display: none !important;
+}
 // dropdown
 .ant-dropdown-menu {
     background: var(--bgModal);

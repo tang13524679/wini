@@ -9,10 +9,13 @@ import viVN from "antd/lib/locale/vi_VN";
 import moment from "moment";
 import "moment/locale/zh-cn";
 import "moment/locale/vi";
-import SearchPanel from "@/components/search-panel";
-import PageLoading from "@/components/page-loading";
 import { isApp } from "@/utils/common";
-import ChatWidgetIframe from "@/components/chat-widget-iframe";
+import dynamic from "next/dynamic";
+const SearchPanel = dynamic(() => import("@/components/search-panel"));
+const PageLoading = dynamic(() => import("@/components/page-loading"));
+const ChatWidgetIframe = dynamic(() =>
+  import("@/components/chat-widget-iframe")
+);
 
 export default function Layout({ children }) {
   const [{ lang, isLoading, isSearch, isIframe, isGaming }, dispatch] =
@@ -80,7 +83,7 @@ export default function Layout({ children }) {
           dispatch({ type: "set_iframe", payload: false });
           dispatch({ type: "set_gaming", payload: true });
         }}
-        bodyStyle={{ height: "calc(100vh - 40px)" }}
+        bodyStyle={{ height: "calc(100vh - 80px)" }}
       >
         <div className="rounded-md overflow-hidden h-full relative">
           <iframe name="_iframe" width="100%" height="100%" />
