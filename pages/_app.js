@@ -82,8 +82,6 @@ export default function App({ Component, pageProps }) {
           name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
-        <meta HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE" />
-        <meta HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.20/ua-parser.min.js"></script>
         <Script
           strategy="lazyOnload"
