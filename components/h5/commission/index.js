@@ -1,10 +1,15 @@
 import react, { useEffect } from "react";
 import styles from "./index.module.scss";
-import NavBar from "@/components/h5/components/nav-bar";
-import InviteWithPrizes from "@/components/h5/commission/components/invite-with-prizes";
-import RewardDescription from "./components/reward-description";
-import Income from "./components/income";
-import Head from "next/head";
+import dynamic from "next/dynamic";
+const NavBar = dynamic(() => import("@/components/h5/components/nav-bar"));
+const InviteWithPrizes = dynamic(() =>
+  import("@/components/h5/commission/components/invite-with-prizes")
+);
+const RewardDescription = dynamic(() =>
+  import("./components/reward-description")
+);
+const Income = dynamic(() => import("./components/income"));
+const Head = dynamic(() => import("next/head"));
 
 const CommissionPage = () => {
   return (

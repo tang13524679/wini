@@ -83,7 +83,7 @@ export default function Layout({ children }) {
           dispatch({ type: "set_iframe", payload: false });
           dispatch({ type: "set_gaming", payload: true });
         }}
-        bodyStyle={{ height: "calc(100vh - 120px)" }}
+        bodyStyle={{ height: "calc(100vh - 40px)" }}
       >
         <div className="rounded-md overflow-hidden h-full relative">
           <iframe name="_iframe" width="100%" height="100%" />

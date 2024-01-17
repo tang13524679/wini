@@ -8,6 +8,7 @@ import { homeApi, promoApi } from "@/requests/frontend";
 import { Toast } from "antd-mobile";
 import { play } from "@/utils/common";
 import { t } from "@/utils/translate";
+import useWindowSize from "@/hooks/useWindowSize";
 import dynamic from "next/dynamic";
 const MobileHeader = dynamic(() => import("../components/mobile-header"));
 const HotGameList = dynamic(() => import("./components/hot-game-list"));
@@ -17,6 +18,7 @@ const Link = dynamic(() => import("next/link"));
 SwiperCore.use([Grid, Pagination]);
 
 const HomePage = () => {
+  const isMobile = useWindowSize();
   const [{ user, lang }, dispatch] = useGlobalState();
   const router = useRouter();
   const [activityList, setActivityList] = useState([]);
@@ -126,7 +128,23 @@ const HomePage = () => {
                   <div
                     className="box"
                     onClick={() => {
-                      play(item, dispatch);
+                      if (isMobile == "mobile") {
+                        const {
+                          id,
+                          gametype,
+                          biggametype,
+                          gameid,
+                          cnname,
+                          enname,
+                        } = item;
+                        router.push(
+                          `/play-game?id=${id}&gametype=${gametype}&biggametype=${biggametype}&gameid=${gameid}&title=${
+                            lang == "en" ? enname : cnname
+                          }`
+                        );
+                      } else {
+                        play(item, dispatch);
+                      }
                     }}
                   >
                     <div className="img-box">

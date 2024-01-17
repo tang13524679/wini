@@ -17,12 +17,14 @@ import { useRouter } from "next/router";
 import { t } from "@/utils/translate";
 import { SpinLoading } from "antd-mobile";
 import dynamic from "next/dynamic";
+import useWindowSize from "@/hooks/useWindowSize";
 const DZgame = dynamic(() => import("./dz-game"));
 const Image = dynamic(() => import("next/image"));
 
 SwiperCore.use([Grid, Pagination]);
 
 const HotGameList = () => {
+  const isMobile = useWindowSize();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [hotGameList, setHotGameList] = useState([]);
@@ -156,11 +158,16 @@ const HotGameList = () => {
   };
 
   const onClickHandle = (item) => {
-    if (item) {
-      play(item, dispatch);
+    if (!user) return (location.href = "/login");
+    if (isMobile == "mobile") {
+      const { id, gametype, biggametype, gameid, cnname, enname } = item;
+      router.push(
+        `/play-game?id=${id}&gametype=${gametype}&biggametype=${biggametype}&gameid=${gameid}&title=${
+          lang == "en" ? enname : cnname
+        }`
+      );
     } else {
-      message.info("游戏维护中。。。。");
-      return;
+      play(item, dispatch);
     }
   };
 

@@ -11,8 +11,12 @@ import { useGlobalState } from "@/hooks/global";
 import Image from "next/image";
 import { SpinLoading } from "antd-mobile";
 import { t } from "@/utils/translate";
+import { useRouter } from "next/router";
+import useWindowSize from "@/hooks/useWindowSize";
 
 const DZgame = () => {
+  const isMobile = useWindowSize();
+  const router = useRouter();
   const ref = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
   const [{ user, lang }, dispatch] = useGlobalState();
@@ -119,11 +123,16 @@ const DZgame = () => {
   };
 
   const onClickHandle = (item) => {
-    if (item) {
-      play(item, dispatch);
+    if (!user) return (location.href = "/login");
+    if (isMobile == "mobile") {
+      const { id, gametype, biggametype, gameid, cnname, enname } = item;
+      router.push(
+        `/play-game?id=${id}&gametype=${gametype}&biggametype=${biggametype}&gameid=${gameid}&title=${
+          lang == "en" ? enname : cnname
+        }`
+      );
     } else {
-      message.info("游戏维护中。。。。");
-      return;
+      play(item, dispatch);
     }
   };
 
