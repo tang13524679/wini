@@ -148,14 +148,30 @@ const HomePage = () => {
                     }}
                   >
                     <div className="img-box">
-                      {item.imagename ? (
-                        <img src={item.imagename} />
-                      ) : (
+                      {item.biggametype != "DZ" ? (
                         <Image
-                          src="/assets/home/LOGO.png"
-                          width={77}
-                          height={30}
+                          src={`/assets/home/games/${item.biggametype}/${item.cnname}.png`}
+                          width={200}
+                          height={200}
                         />
+                      ) : (
+                        <img
+                          src={`/assets/home/DZgame/${item.gametype.replace(
+                            "Game",
+                            ""
+                          )}/${item.gameid}${
+                            item.gametype == "YGRGame"
+                              ? `_200x200_01_${lang == "en" ? "en" : "cn"}.png`
+                              : item.gametype == "AMEBAGame"
+                              ? `${lang == "en" ? "_enUS" : "_zhCN"}.png`
+                              : ".png"
+                          }`}
+                        />
+                        // <Image
+                        //   src={}
+                        //   width={200}
+                        //   height={200}
+                        // />
                       )}
                     </div>
                     <div className="text-box">

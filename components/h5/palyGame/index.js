@@ -4,8 +4,7 @@ import { useGlobalState } from "@/hooks/global";
 import { isMobile, toBigLanguage } from "@/utils/common";
 import { gameApi } from "@/requests/frontend";
 import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
-const NavBar = dynamic(() => import("@/components/h5/components/nav-bar"));
+import { LeftOutlined } from "@ant-design/icons";
 
 const PlayGamePage = () => {
   const router = useRouter();
@@ -36,7 +35,25 @@ const PlayGamePage = () => {
   }, []);
   return (
     <div className={styles.container}>
-      <NavBar title={data.title}></NavBar>
+      <div
+        className="navBarBox"
+        style={{
+          maxWidth: "430px",
+          left: "50%",
+          transform: "translateX(-50%)",
+        }}
+      >
+        <div
+          className="nav-bar-left"
+          onClick={() => {
+            router.push("/home");
+          }}
+        >
+          <LeftOutlined style={{ color: "#329029", fontSize: "18px" }} />
+        </div>
+        <div className="nav-bar-title">{data.title}</div>
+        <div className="nav-bar-right"></div>
+      </div>
       <div className="iframe-box">
         <iframe src={url} width="100%" height="100%" />
       </div>

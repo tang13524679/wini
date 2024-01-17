@@ -36,7 +36,7 @@ export default function MobileHeader() {
     >
       <div className="left">
         <Link href="/home">
-          <Image src="/assets/home/logo1.png" width={50} height={50} />
+          <Image src="/assets/home/logo1.png" width={100} height={100} />
         </Link>
       </div>
       <div className="right">
