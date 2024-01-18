@@ -1,7 +1,8 @@
 import react, { useState } from "react";
 import styles from "./promo-page.module.scss";
-import Activity from "./components/activity";
-import Rebate from "./components/rebate";
+import dynamic from "next/dynamic";
+const Activity = dynamic(() => import("./components/activity"));
+const Rebate = dynamic(() => import("./components/rebate"));
 
 const PromoPage = () => {
   const [pageType, setPageType] = useState("activity");

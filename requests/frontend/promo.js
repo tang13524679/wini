@@ -22,3 +22,13 @@ export function proRecordList(param) {
     signature: encryptMD5({ ...props }),
   });
 }
+
+// 获取用户返水和返水比例
+export function getUserRebate(param) {
+  const props = { ...param, enterprisecode: ENTERPRISE_CODE };
+  return request(`/ecrm-api/Promo/getUserRebate`, {
+    ...props,
+    params: encryptECB({ ...props }),
+    signature: encryptMD5({ ...props }),
+  });
+}
