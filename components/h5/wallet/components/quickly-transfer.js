@@ -80,6 +80,9 @@ const QuicklyTransfer = () => {
         Toast.show({
           content: error,
         });
+        if (error == "未绑定银行卡，请绑定银行卡之后再充值") {
+          router.push("/user/add-bank-card");
+        }
       }
       // router.push({
       //   pathname: "/fund/payment-info",
