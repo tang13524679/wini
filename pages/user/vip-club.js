@@ -114,7 +114,7 @@ export default function VipClubPage() {
           </div>
 
           {/* Daily Rebates Table */}
-          <div className="mt-9">
+          {/* <div className="mt-9">
             <div className="flex items-center justify-between">
               <span className="clWhite text-base">
                 {t("rebatesLabel", "vip")}
@@ -253,10 +253,10 @@ export default function VipClubPage() {
                 </tbody>
               </table>
             </div>
-          </div>
+          </div> */}
 
           {/* Special Bonus Table */}
-          <div className="mt-9">
+          {/* <div className="mt-9">
             <div className="flex items-center justify-between">
               <span className="clWhite text-base">
                 {t("specialBonusLabel", "vip")}
@@ -265,7 +265,7 @@ export default function VipClubPage() {
             <div className="max-w-[100vw] overflow-y-auto">
               <VipSpecialRewardsTable vipInfos={vipInfos} />
             </div>
-          </div>
+          </div> */}
 
           {/* Terms and Conditions */}
           <div className="mt-9 pb-9">
@@ -274,7 +274,11 @@ export default function VipClubPage() {
             </div>
             <ol className="mt-3 app-ol space-y-4">
               {t("conditions", "vip").map((item) => (
-                <li key={item} className="breakWord">
+                <li
+                  key={item}
+                  className="breakWord"
+                  style={{ color: "rgb(113 113 113)" }}
+                >
                   {item}
                 </li>
               ))}

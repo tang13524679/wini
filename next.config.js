@@ -20,6 +20,8 @@ const withTM = require("next-transpile-modules")(["antd-mobile"]);
 
 const withPWA = require("next-pwa")({
   dest: "public",
+  register: true,
+  disable: process.env.NODE_ENV === "development",
 });
 const nextConfig = withTM({
   // 你项目中其他的 Next.js 配置

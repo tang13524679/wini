@@ -63,9 +63,9 @@ const HomePage = () => {
   }, [user]);
 
   useEffect(() => {
-    window.addEventListener("beforeinstallprompt", (e) => {
-      setPwaEvent(e);
-    });
+    // window.addEventListener("beforeinstallprompt", (e) => {
+    //   setPwaEvent(e);
+    // });
   }, []);
 
   return (
@@ -281,14 +281,14 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div
+      {/* <div
         className="add"
         onClick={() => {
           pwaEvent.prompt();
         }}
       >
         {t("addToScreen")}
-      </div>
+      </div> */}
       <div
         className="messages"
         onClick={() => {

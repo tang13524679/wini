@@ -20,7 +20,7 @@ const Recharge = () => {
             }}
           >
             <img className="img1" src="/assets/wallet/yhk.png" />
-            转钱快
+            转数快
           </div>
           <div
             className={`${tabState == 2 ? "active" : ""} tab`}

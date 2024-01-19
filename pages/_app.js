@@ -10,6 +10,7 @@ import { message, Modal } from "antd";
 import { t } from "@/utils/translate";
 import useWindowSize from "@/hooks/useWindowSize";
 import dynamic from "next/dynamic";
+import { Html } from "next/document";
 const Head = dynamic(() => import("next/head"));
 const Script = dynamic(() => import("next/script"));
 const Layout = dynamic(() => import("@/layouts/index"));
@@ -97,22 +98,18 @@ export default function App({ Component, pageProps }) {
         ></Script>
 
         {/* favicon stuff */}
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
+        <link rel="apple-touch-icon" href="/icons/icon-144x144.png" />
         <link
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="/favicon-32x32.png"
+          href="/icons/icon-144x144.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href="/favicon-16x16.png"
+          href="/icons/icon-144x144.png"
         />
         <link rel="manifest" href="/manifest.json" />
       </Head>

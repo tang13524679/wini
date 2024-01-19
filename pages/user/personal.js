@@ -145,7 +145,7 @@ export default function PersonalPage() {
           )}
           {/* </Link> */}
           {/* authentication */}
-          {user.realname ? (
+          {/* {user.realname ? (
             <div className="flex justify-between items-center bdLine py-4 cursor-pointer">
               <div className="sm:basis-1/3">
                 <div style={{ color: "#959EA8" }}>
@@ -164,7 +164,7 @@ export default function PersonalPage() {
               status={t("unauthorized")}
               btn={t("toSet")}
             />
-          )}
+          )} */}
           {/* <div className="flex justify-between items-center bdLine py-4 cursor-pointer">
             <div className="sm:basis-1/3">
               <div>{t("authentication", "field")}</div>

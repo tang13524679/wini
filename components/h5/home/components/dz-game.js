@@ -22,7 +22,7 @@ const DZgame = () => {
   const [{ user, lang }, dispatch] = useGlobalState();
   const [pageIndex, setPageIndex] = useState(1);
   const [pageSize, setPageSize] = useState(30);
-  const [leftPageSize, setleftPageSize] = useState(30);
+  const [leftPageSize, setleftPageSize] = useState(50);
   const [ismain, setIsmain] = useState(1);
   const [ishot, setIshot] = useState(0);
   const [isnew, setIsnew] = useState(0);
@@ -37,7 +37,7 @@ const DZgame = () => {
     setIsLoading(true);
     try {
       const res = await getGameList({
-        ismain,
+        ismain: 0,
         biggametype: "DZ",
         pageIndex,
         pageSize: leftPageSize,
