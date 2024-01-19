@@ -1,0 +1,44 @@
+.vipBannerContainer{
+  :global{
+    .top-box{
+      background-color: #23283c;
+      border-radius: 0.5rem;
+      padding: 20px 15px 25px;
+      .swiper{
+        .swiper-slide{
+          position: relative;
+          .text-box{
+            position: absolute;
+            text-align: left;
+            bottom: 15%;
+            left: 10%;
+            .text{
+              font-size: 14px;
+              color: #fff;
+              margin-bottom: 5px;
+            }
+            .num{
+              color: #fff;
+            }
+          }
+        }
+      }
+      .moreInfo-box{
+        margin-bottom: 10px;
+      }
+      .progress{
+        margin-top: 10px;
+      }
+      .bot-box{
+        margin-top: 10px;
+      }
+      .rounded-box{
+        background: linear-gradient(91deg,#6e6af5 20.09%,#7f3ce3 61%,#6a06ed 96.35%);
+      }
+    }
+    
+    .bottom-box{
+
+    }
+  }
+}

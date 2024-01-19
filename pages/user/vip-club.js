@@ -66,23 +66,29 @@ export default function VipClubPage() {
         <title>VIP Club - WIN</title>
       </Head>
       <div className="sm:px-4">
-        <div className="bgInnerPage">
+        <div className="bgInnerPage" style={{ position: "relative" }}>
           <NavBar title="贵宾俱乐部" />
           {/* <InnerPageTitle title={t('vipClub', 'nav')} /> */}
 
           {/* VIP Progress summary */}
-          {user && (
+          {/* {user && (
             <VipUserProgress
               level={currentLevel}
               percentage={process}
               currentAmount={userVip?.info.currentAmount}
               nextAmount={userVip?.info.nextAmount}
             />
-          )}
+          )} */}
 
           {/* VIP Levels */}
-          <div className={user ? "mt-9" : "mt-4"}>
-            <div className="flex items-center justify-between">
+          <div
+            className={user ? "mt-9" : "mt-4"}
+            style={{ position: "relative", zIndex: "2", marginTop: "10px" }}
+          >
+            {/* <div
+              className="flex items-center justify-between"
+              style={{ padding: "10px 15px 0" }}
+            >
               <span className="clWhite text-base">
                 {t("vipLevelLabel", "vip")}
               </span>
@@ -103,13 +109,16 @@ export default function VipClubPage() {
                 <span>{t("moreInfoLabel", "vip")}</span>
                 <span className="icon-question inline-block" />
               </button>
-            </div>
+            </div> */}
 
             {/* VIP Levels Slider */}
             <VipCardsBanner
               className="mt-4"
               level={currentLevel}
               vipInfos={vipInfos}
+              percentage={process}
+              currentAmount={userVip?.info.currentAmount}
+              nextAmount={userVip?.info.nextAmount}
             />
           </div>
 
