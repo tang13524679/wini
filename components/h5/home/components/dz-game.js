@@ -1,9 +1,14 @@
 import react, { useState, useEffect, useRef, useMemo } from "react";
 import styles from "./dz-game.module.scss";
 import { getGameList } from "@/requests/frontend/home";
+import { userApi } from "@/requests/frontend";
 import { Toast, Swiper } from "antd-mobile";
 import { Input } from "antd";
-import { SearchOutlined, DoubleLeftOutlined } from "@ant-design/icons";
+import {
+  SearchOutlined,
+  DoubleLeftOutlined,
+  StarFilled,
+} from "@ant-design/icons";
 import debounce from "@/utils/debounce";
 import { InfiniteScroll } from "antd-mobile";
 import { play } from "@/utils/common";
@@ -32,6 +37,8 @@ const DZgame = () => {
   const [gameCategory, setGameCategory] = useState("");
   const [inputValue, seInputValue] = useState("");
   const [hasMore, setHasMore] = useState(true);
+  const [islist, setIslist] = useState("true");
+  const [categoryInfo, setCategoryInfo] = useState({});
 
   useEffect(async () => {
     setIsLoading(true);
@@ -136,6 +143,20 @@ const DZgame = () => {
     }
   };
 
+  const collectionHandle = async (id, favourite) => {
+    if (favourite == "1") {
+      const res = await userApi.doDelete({ id });
+      if (res.code == "1") {
+        loadMore();
+      }
+    } else {
+      const res = await userApi.addUserPost({ id });
+      if (res.code == "1") {
+        loadMore();
+      }
+    }
+  };
+
   return (
     <div className={styles.dzGameBox}>
       <div className="top">
@@ -162,6 +183,8 @@ const DZgame = () => {
                         gameCategory == item.gametype ? "active" : ""
                       } content`}
                       onClick={() => {
+                        setIslist(item.islist);
+                        setCategoryInfo(item);
                         setGameCategory(item.gametype);
                         setGameType("all");
                         setPageIndex(1);
@@ -207,6 +230,8 @@ const DZgame = () => {
                           gameCategory == item.gametype ? "active" : ""
                         } content`}
                         onClick={() => {
+                          setIslist(item.islist);
+                          setCategoryInfo(item);
                           setGameCategory(item.gametype);
                           setGameType("all");
                           setPageIndex(1);
@@ -294,53 +319,85 @@ const DZgame = () => {
             </div>
           </div>
           <div className="gameList">
-            <ul>
-              {gamelist.map((item) => {
-                return (
-                  <li key={item.id}>
-                    <div
-                      className="box"
-                      onClick={() => {
-                        onClickHandle(item);
-                      }}
-                    >
-                      <Image
-                        src={`/assets/home/DZgame/${item.gametype.replace(
-                          "Game",
-                          ""
-                        )}/${item.gameid}${
-                          item.gametype == "YGRGame"
-                            ? `_200x200_01_${lang == "en" ? "en" : "cn"}.png`
-                            : item.gametype == "AMEBAGame"
-                            ? `${lang == "en" ? "_enUS" : "_zhCN"}.png`
-                            : ".png"
-                        }`}
-                        width={200}
-                        height={200}
-                      />
-                      {/* <img
-                        src={`/assets/home/DZgame/${item.gametype.replace(
-                          "Game",
-                          ""
-                        )}/${item.gameid}${
-                          item.gametype == "YGRGame"
-                            ? `_200x200_01_${lang == "en" ? "en" : "cn"}.png`
-                            : item.gametype == "AMEBAGame"
-                            ? `${lang == "en" ? "_enUS" : "_zhCN"}.png`
-                            : ".png"
-                        }`}
-                      /> */}
-                      <p>{lang == "en" ? item.enname : item.cnname}</p>
-                      <div className="text">
-                        {t("responseRate")}
-                        {item.RTP}
+            {islist == "true" ? (
+              <ul>
+                {gamelist.map((item, index) => {
+                  return (
+                    <li key={item.id}>
+                      <div
+                        className={
+                          item.favourite == "1" ? "heart active" : "heart"
+                        }
+                        onClick={() => {
+                          collectionHandle(item.id, item.favourite);
+                        }}
+                      >
+                        <StarFilled />
                       </div>
-                    </div>
-                  </li>
-                );
-              })}
-              <InfiniteScroll loadMore={loadMore} hasMore={hasMore} />
-            </ul>
+                      <div
+                        className="box"
+                        onClick={() => {
+                          onClickHandle(item);
+                        }}
+                      >
+                        <Image
+                          src={`/assets/home/DZgame/${item.gametype.replace(
+                            "Game",
+                            ""
+                          )}/${item.gameid}${
+                            item.gametype == "YGRGame"
+                              ? `_200x200_01_${lang == "en" ? "en" : "cn"}.png`
+                              : item.gametype == "AMEBAGame"
+                              ? `${lang == "en" ? "_enUS" : "_zhCN"}.png`
+                              : ".png"
+                          }`}
+                          width={200}
+                          height={200}
+                        />
+                        {/* <img
+                    src={`/assets/home/DZgame/${item.gametype.replace(
+                      "Game",
+                      ""
+                    )}/${item.gameid}${
+                      item.gametype == "YGRGame"
+                        ? `_200x200_01_${lang == "en" ? "en" : "cn"}.png`
+                        : item.gametype == "AMEBAGame"
+                        ? `${lang == "en" ? "_enUS" : "_zhCN"}.png`
+                        : ".png"
+                    }`}
+                  /> */}
+                        <p>{lang == "en" ? item.enname : item.cnname}</p>
+                        <div className="text">
+                          {t("responseRate")}
+                          {item.RTP}
+                        </div>
+                      </div>
+                    </li>
+                  );
+                })}
+
+                <InfiniteScroll loadMore={loadMore} hasMore={hasMore} />
+              </ul>
+            ) : (
+              <div className="gamebox">
+                <div
+                  className="game-box"
+                  onClick={() => {
+                    onClickHandle(categoryInfo);
+                  }}
+                >
+                  <img
+                    src={`/assets/home/gametype/${categoryInfo?.gametype?.replace(
+                      "Game",
+                      ""
+                    )}.png`}
+                  />
+                  <div className="text">
+                    {categoryInfo?.gametype?.replace("Game", "")}
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
         {isLoading && (

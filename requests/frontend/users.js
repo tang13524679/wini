@@ -3,7 +3,7 @@ import { ENTERPRISE_CODE, BRAND_CODE, EMPLOYEE_CODE } from "@/utils/const";
 import { getDomain } from "@/utils/common";
 import { encryptECB, encryptMD5 } from "@/utils/encrypt";
 import store from "store";
-
+const userStore = store.get("user");
 // 注册
 export function register(param) {
   return request(`/ecrm-api/User/register`, {
@@ -44,7 +44,6 @@ export function login(params) {
     ...params,
   });
 }
-const userStore = store.get("user");
 // 退出登录
 export function setOnline(params) {
   return request(`/ecrm-api/User/setOnline`, {
@@ -211,13 +210,37 @@ export function getBonus(params) {
   return request(`/ecrm-api/ActivitySignUpBonus/getBonus`, params);
 }
 // 收藏游戏
-export function collectGame(params) {
-  return request(`/ecrm-api/Post/addUserPost`, params);
+export function addUserPost(params) {
+  const param = {
+    ...params,
+    enterprisecode: ENTERPRISE_CODE,
+    employeecode: userStore?.employeecode,
+  };
+  return request(`/ecrm-api/Post/addUserPost`, {
+    ...param,
+    params: encryptECB({ ...param }),
+    signature: encryptMD5({ ...param }),
+  });
 }
+// export function collectGame(params) {
+//   return request(`/ecrm-api/Post/addUserPost`, params);
+// }
 // 取消收藏
-export function unCollectGame(params) {
-  return request(`/ecrm-api/Post/doDelete`, params);
+export function doDelete(params) {
+  const param = {
+    ...params,
+    enterprisecode: ENTERPRISE_CODE,
+    employeecode: userStore?.employeecode,
+  };
+  return request(`/ecrm-api/Post/doDelete`, {
+    ...param,
+    params: encryptECB({ ...param }),
+    signature: encryptMD5({ ...param }),
+  });
 }
+// export function unCollectGame(params) {
+//   return request(`/ecrm-api/Post/doDelete`, params);
+// }
 // 获取任务列表
 export function getTasks(params) {
   const param = {

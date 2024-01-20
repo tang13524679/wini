@@ -132,9 +132,33 @@
             li{
               padding: 5px;
               width: 33.33333%;
+              position: relative;
+              .heart{
+                width: 20px;
+                height: 20px;
+                border-radius: 5px;
+                background: #fff;
+                position: absolute;
+                right: 5px;
+                top: 5px;
+                z-index: 3;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .anticon{
+                  font-size: 16px;
+                  color: #8c8c8c;
+                }
+              }
+              .heart.active{
+                .anticon{
+                  color:  #7F3CE3;
+                }
+              }
               .box{
                 text-align: center;
                 color: #fff;
+                position: relative;
                 p{
                   font-size: 13px;
                   white-space: nowrap; /* 不换行 */
@@ -152,6 +176,17 @@
                   text-overflow: ellipsis; /* 显示省略号 */
                 }
               }
+            }
+          }
+          .gamebox{
+            width: 33.33333%;
+            text-align: center;
+            .game-box{
+              background: linear-gradient(0deg, #4fbff6 4.5%, #6d85fa 48.64%, #8b5eff 95.5%);
+              color: #fff;
+              font-size: 14px;
+              padding: 0 0 12px;
+              border-radius: 8px;
             }
           }
         }
