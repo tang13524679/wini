@@ -9,64 +9,7 @@ const Rebate = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [activeState, setActiveState] = useState("SX");
   const [rebateInfo, setRebateInfo] = useState({});
-  const rebateList = useMemo(() => {
-    return [
-      {
-        id: 1,
-        name: "全部",
-        list: [
-          { ...rebateInfo["SX"], type: "真人", c_name: "SX" },
-          { ...rebateInfo["TY"], type: "体育", c_name: "TY" },
-          { ...rebateInfo["DZ"], type: "电子", c_name: "DZ" },
-          { ...rebateInfo["QP"], type: "棋牌", c_name: "QP" },
-          { ...rebateInfo["DJ"], type: "电竞", c_name: "DJ" },
-          { ...rebateInfo["CP"], type: "彩票", c_name: "CP" },
-          { ...rebateInfo["RH"], type: "赛马", c_name: "RH" },
-          { ...rebateInfo["BY"], type: "捕鱼", c_name: "BY" },
-        ],
-      },
-      {
-        id: 2,
-        name: "真人",
-        list: [{ ...rebateInfo["SX"], type: "真人", c_name: "SX" }],
-      },
-      {
-        id: 3,
-        name: "体育",
-        list: [{ ...rebateInfo["TY"], type: "体育", c_name: "TY" }],
-      },
-      {
-        id: 4,
-        name: "电子",
-        list: [{ ...rebateInfo["DZ"], type: "电子", c_name: "DZ" }],
-      },
-      {
-        id: 5,
-        name: "棋牌",
-        list: [{ ...rebateInfo["QP"], type: "棋牌", c_name: "QP" }],
-      },
-      {
-        id: 6,
-        name: "电竞",
-        list: [{ ...rebateInfo["DJ"], type: "电竞", c_name: "DJ" }],
-      },
-      {
-        id: 7,
-        name: "电竞",
-        list: [{ ...rebateInfo["CP"], type: "彩票", c_name: "CP" }],
-      },
-      {
-        id: 8,
-        name: "电竞",
-        list: [{ ...rebateInfo["RH"], type: "赛马", c_name: "RH" }],
-      },
-      {
-        id: 9,
-        name: "捕鱼",
-        list: [{ ...rebateInfo["BY"], type: "捕鱼", c_name: "BY" }],
-      },
-    ];
-  }, [rebateInfo]);
+  const [TYgametype, setTYgametype] = useState("");
 
   const categorieList = useMemo(() => {
     return [...Object.keys(rebateInfo)];
@@ -88,6 +31,16 @@ const Rebate = () => {
       setIsLoading(false);
     }
   };
+
+  const TYlisst = useMemo(() => {
+    const newlist = new Map();
+    rebateInfo["TY"]?.bonusList.forEach((item) => {
+      newlist.set(item.gametype, item);
+    });
+    const newTYlist = [...newlist.values()];
+    setTYgametype(newTYlist[0].gametype);
+    return newTYlist;
+  }, [rebateInfo]);
 
   useEffect(() => {
     fetchData();
@@ -143,10 +96,22 @@ const Rebate = () => {
               </div>
             </div>
           ) : (
-            rebateInfo[activeState]?.bonusList.map((item, index) => {
-              return (
-                <div className="item" key={index}>
-                  <div className="box">
+            <div className="TY-box">
+              <div className="item">
+                <div className="box">
+                  <div className="name">{t(activeState)}</div>
+                  <div className="bet">
+                    总计有效投注：
+                    <p>{rebateInfo[activeState]?.sumValidMoney}</p>
+                  </div>
+                  <div className="ratio">
+                    总计返水金额：
+                    <p>{rebateInfo[activeState]?.sumRebatesCash}</p>
+                  </div>
+                </div>
+                {/* {rebateInfo[activeState]?.bonusList.map((item, index) => {
+                return (
+                  <div className="box" key={index}>
                     <div className="name">{item.gametype}</div>
                     <div className="bet">
                       有效投注：
@@ -157,9 +122,46 @@ const Rebate = () => {
                       <p>{item.bonus}</p>
                     </div>
                   </div>
-                </div>
-              );
-            })
+                );
+              })} */}
+              </div>
+              <div className="gametype">
+                {TYlisst.map((item, index) => {
+                  return (
+                    <div
+                      className={`${
+                        TYgametype == item.gametype ? "active it" : "it"
+                      }`}
+                      key={index}
+                      onClick={() => {
+                        setTYgametype(item.gametype);
+                      }}
+                    >
+                      {item.gametype}
+                    </div>
+                  );
+                })}
+              </div>
+              {rebateInfo["TY"].bonusList.map((item, index) => {
+                return (
+                  TYgametype == item.gametype && (
+                    <div className="item">
+                      <div className="box">
+                        <div className="name">{item.gametype}</div>
+                        <div className="bet">
+                          有效投注：
+                          <p>{item.validMoney}</p>
+                        </div>
+                        <div className="ratio">
+                          返水比例：
+                          <p>{(item.bonus * 100).toFixed(2)}%</p>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                );
+              })}
+            </div>
           )}
         </div>
       </div>

@@ -18,7 +18,6 @@ export function doTrans(param) {
   const props = {
     ...param,
     opreateType: 6,
-    employeecode: userStore?.employeecode,
   };
   return request(`/ecrm-api/AgentNew/DoTrans`, {
     ...props,

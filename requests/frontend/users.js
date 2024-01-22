@@ -277,6 +277,18 @@ export function getTasks(params) {
     signature: encryptMD5({ ...param }),
   });
 }
+// 获取收藏列表
+export function postUserGameListPage(params) {
+  const param = {
+    ...params,
+    enterprisecode: ENTERPRISE_CODE,
+  };
+  return request(`/ecrm-api/Post/postUserGameListPage`, {
+    ...param,
+    params: encryptECB({ ...param }),
+    signature: encryptMD5({ ...param }),
+  });
+}
 // 领取任务奖励
 export function getTaskReward(params) {
   return request(`/ecrm-api/ActivityTask/apply`, params);

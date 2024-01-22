@@ -46,7 +46,11 @@ const PlayGamePage = () => {
         <div
           className="nav-bar-left"
           onClick={() => {
-            router.push("/home");
+            if (data.isFavorites) {
+              router.back();
+            } else {
+              router.push("/home");
+            }
           }}
         >
           <LeftOutlined style={{ color: "#329029", fontSize: "18px" }} />

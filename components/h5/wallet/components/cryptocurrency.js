@@ -7,6 +7,7 @@ import { walletApi } from "@/requests/frontend";
 import QRCode from "qrcode.react";
 import Loading from "../../components/loading-mobile";
 import { Input } from "antd";
+import { useGlobalState } from "@/hooks/global";
 
 const Cryptocurrency = () => {
   const currencyTypeList = [
@@ -71,7 +72,7 @@ const Cryptocurrency = () => {
       ],
     },
   ];
-
+  const [{ user, lang }, dispatch] = useGlobalState();
   const [currencyType, setCurrencyType] = useState("USDT");
   const [currencyTypeIndex, setCurrencyTypeIndex] = useState(0);
   const [protocolType, setProtocolType] = useState("");
@@ -124,6 +125,7 @@ const Cryptocurrency = () => {
       const res = await walletApi.doTrans({
         depositNum,
         usdtype: currencyType,
+        employeecode: user?.employeecode,
       });
       if (res.code == "1") {
         Toast.show({

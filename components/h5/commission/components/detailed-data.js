@@ -4,14 +4,15 @@ import { commissionApi } from "@/requests/frontend";
 import Loading from "@/components/h5/components/loading-mobile";
 
 const DetailedData = () => {
-  const [detType, setDetType] = useState("DEPOSIT_RETUR");
+  const [detType, setDetType] = useState("DEPOSIT_RETURN");
   const [timeState, setTimeState] = useState("all");
   const [isLoading, setIsLoading] = useState(false);
+  const [dataList, setDataList] = useState([]);
 
   const detTypeList = [
     {
       text: "存款",
-      type: "DEPOSIT_RETUR",
+      type: "DEPOSIT_RETURN",
     },
     {
       text: "投注",
@@ -61,6 +62,7 @@ const DetailedData = () => {
         timeRange: timeState,
       });
       if (res.code == "1") {
+        setDataList(res?.info?.record);
       }
     } catch (error) {
       Toast.show({
@@ -116,7 +118,21 @@ const DetailedData = () => {
         <div>带来收益(HKD)</div>
       </div>
       <div className="list">
-        <p>暂无数据</p>
+        {dataList.length ? (
+          <div className="list-box">
+            {dataList.map((item, index) => {
+              return (
+                <div className="item" key={index}>
+                  <div className="text text1">{item.loginaccount}</div>
+                  <div className="text text2">{item.depositmoney}</div>
+                  <div className="text text3">{item.lsh}</div>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <p>暂无数据</p>
+        )}
       </div>
       {isLoading && <Loading />}
     </div>

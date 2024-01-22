@@ -13,13 +13,13 @@ import debounce from "@/utils/debounce";
 import { InfiniteScroll } from "antd-mobile";
 import { play } from "@/utils/common";
 import { useGlobalState } from "@/hooks/global";
-import Image from "next/image";
 import { SpinLoading } from "antd-mobile";
 import { t } from "@/utils/translate";
 import { useRouter } from "next/router";
 import useWindowSize from "@/hooks/useWindowSize";
 import dynamic from "next/dynamic";
 const Favourite = dynamic(() => import("./favourite"));
+const Image = dynamic(() => import("next/image"));
 
 const DZgame = () => {
   const isMobile = useWindowSize();
@@ -142,26 +142,6 @@ const DZgame = () => {
       );
     } else {
       play(item, dispatch);
-    }
-  };
-
-  const collectionHandle = async (id, favourite) => {
-    if (favourite == "1") {
-      const res = await userApi.doDelete({
-        id,
-        employeecode: user.employeecode,
-      });
-      if (res.code == "1") {
-        loadMore();
-      }
-    } else {
-      const res = await userApi.addUserPost({
-        id,
-        employeecode: user.employeecode,
-      });
-      if (res.code == "1") {
-        loadMore();
-      }
     }
   };
 

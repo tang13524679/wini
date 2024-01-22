@@ -103,6 +103,31 @@
             }
           }
         }
+        .TY-box{
+          .gametype{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            .it{
+              width: 30%;
+              height: 30px;
+              color: #959EA8;
+              font-family: Inter;
+              font-size: 10.925px;
+              text-align: center;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 30px;
+              background: #26272B;
+              border-radius: 5px;
+            }
+            .it.active{
+              background: #6731D6;
+              color: #fff;
+            }
+          }
+        }
       }
     }
   }

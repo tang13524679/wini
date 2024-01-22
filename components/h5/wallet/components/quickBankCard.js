@@ -20,7 +20,7 @@ const QuickBankCard = (props) => {
       setIsLoading(true);
       const res = await userApi.uFpsAddress();
       if (res.code == "1") {
-        setBankCardList(res.info);
+        setBankCardList(res.info.record);
         setBankInfo(res.info[0]);
       }
     } catch (error) {
@@ -76,7 +76,7 @@ const QuickBankCard = (props) => {
       <div className="card-box">
         <div className="title">最多添加5张转数快</div>
         <div className="card-list">
-          {bankCardList.map((item, index) => {
+          {bankCardList?.map((item, index) => {
             return (
               <div
                 className={`${bankType == index ? "active" : ""} item`}
