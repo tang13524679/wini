@@ -3,10 +3,11 @@ import styles from "./rebate.module.scss";
 import { promoApi } from "@/requests/frontend";
 import Loading from "../../components/loading-mobile";
 import { Toast } from "antd-mobile";
+import { t } from "@/utils/translate";
 
 const Rebate = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [activeState, setActiveState] = useState(1);
+  const [activeState, setActiveState] = useState("SX");
   const [rebateInfo, setRebateInfo] = useState({});
   const rebateList = useMemo(() => {
     return [
@@ -14,46 +15,63 @@ const Rebate = () => {
         id: 1,
         name: "全部",
         list: [
-          { ...rebateInfo["_SX"], type: "真人", c_name: "_SX" },
-          { ...rebateInfo["_TY"], type: "体育", c_name: "_TY" },
-          { ...rebateInfo["_DZ"], type: "电子", c_name: "_DZ" },
-          { ...rebateInfo["_QP"], type: "棋牌", c_name: "_QP" },
-          { ...rebateInfo["_DJ"], type: "电竞", c_name: "_DJ" },
-          { ...rebateInfo["_BY"], type: "捕鱼", c_name: "_BY" },
+          { ...rebateInfo["SX"], type: "真人", c_name: "SX" },
+          { ...rebateInfo["TY"], type: "体育", c_name: "TY" },
+          { ...rebateInfo["DZ"], type: "电子", c_name: "DZ" },
+          { ...rebateInfo["QP"], type: "棋牌", c_name: "QP" },
+          { ...rebateInfo["DJ"], type: "电竞", c_name: "DJ" },
+          { ...rebateInfo["CP"], type: "彩票", c_name: "CP" },
+          { ...rebateInfo["RH"], type: "赛马", c_name: "RH" },
+          { ...rebateInfo["BY"], type: "捕鱼", c_name: "BY" },
         ],
       },
       {
         id: 2,
         name: "真人",
-        list: [{ ...rebateInfo["_SX"], type: "真人", c_name: "_SX" }],
+        list: [{ ...rebateInfo["SX"], type: "真人", c_name: "SX" }],
       },
       {
         id: 3,
         name: "体育",
-        list: [{ ...rebateInfo["_TY"], type: "体育", c_name: "_TY" }],
+        list: [{ ...rebateInfo["TY"], type: "体育", c_name: "TY" }],
       },
       {
         id: 4,
         name: "电子",
-        list: [{ ...rebateInfo["_DZ"], type: "电子", c_name: "_DZ" }],
+        list: [{ ...rebateInfo["DZ"], type: "电子", c_name: "DZ" }],
       },
       {
         id: 5,
         name: "棋牌",
-        list: [{ ...rebateInfo["_QP"], type: "棋牌", c_name: "_QP" }],
+        list: [{ ...rebateInfo["QP"], type: "棋牌", c_name: "QP" }],
       },
       {
         id: 6,
         name: "电竞",
-        list: [{ ...rebateInfo["_DJ"], type: "电竞", c_name: "_DJ" }],
+        list: [{ ...rebateInfo["DJ"], type: "电竞", c_name: "DJ" }],
       },
       {
         id: 7,
+        name: "电竞",
+        list: [{ ...rebateInfo["CP"], type: "彩票", c_name: "CP" }],
+      },
+      {
+        id: 8,
+        name: "电竞",
+        list: [{ ...rebateInfo["RH"], type: "赛马", c_name: "RH" }],
+      },
+      {
+        id: 9,
         name: "捕鱼",
-        list: [{ ...rebateInfo["_BY"], type: "捕鱼", c_name: "_BY" }],
+        list: [{ ...rebateInfo["BY"], type: "捕鱼", c_name: "BY" }],
       },
     ];
   }, [rebateInfo]);
+
+  const categorieList = useMemo(() => {
+    return [...Object.keys(rebateInfo)];
+  }, [rebateInfo]);
+
   const fetchData = async () => {
     try {
       setIsLoading(true);
@@ -78,16 +96,16 @@ const Rebate = () => {
     <div className={styles.container}>
       <div className="left">
         <div className="navlist">
-          {rebateList.map((item, index) => {
+          {categorieList.map((item, index) => {
             return (
               <div
-                className={`${activeState == item.id ? "active" : ""} item`}
+                className={`${activeState == item ? "active" : ""} item`}
                 key={index}
                 onClick={() => {
-                  setActiveState(item.id);
+                  setActiveState(item);
                 }}
               >
-                <p>{item.name}</p>
+                <p>{t(item)}</p>
               </div>
             );
           })}
@@ -110,39 +128,39 @@ const Rebate = () => {
       </div>
       <div className="right">
         <div className="box-list">
-          {rebateList.length > 0 &&
-            rebateList[activeState - 1]?.list?.map((item, index) => {
+          {activeState != "TY" ? (
+            <div className="item">
+              <div className="box">
+                <div className="name">{t(activeState)}</div>
+                <div className="bet">
+                  有效投注：
+                  <p>{rebateInfo[activeState]?.sumValidMoney}</p>
+                </div>
+                <div className="ratio">
+                  返水金额：
+                  <p>{rebateInfo[activeState]?.sumRebatesCash}</p>
+                </div>
+              </div>
+            </div>
+          ) : (
+            rebateInfo[activeState]?.bonusList.map((item, index) => {
               return (
                 <div className="item" key={index}>
                   <div className="box">
-                    <div className="name">{item.type}</div>
-                    <div className="bet">
-                      总有效投注：<p>{item.sumValidMoney}</p>
-                    </div>
-                    <div className="ratio">
-                      总返水比例：<p>{item.sumRebatesCash}%</p>
-                    </div>
-                  </div>
-                  <div className="box">
-                    <div className="name">
-                      {rebateInfo[item.c_name]?.games[""]?.gametype}
-                    </div>
+                    <div className="name">{item.gametype}</div>
                     <div className="bet">
                       有效投注：
-                      <span>
-                        {rebateInfo[item.c_name]?.games[""]?.validMoney}
-                      </span>
+                      <p>{item.validMoney}</p>
                     </div>
                     <div className="ratio">
                       返水比例：
-                      <span>
-                        {rebateInfo[item.c_name]?.games[""]?.rebatesCash}%
-                      </span>
+                      <p>{item.bonus}</p>
                     </div>
                   </div>
                 </div>
               );
-            })}
+            })
+          )}
         </div>
       </div>
       {isLoading && <Loading />}

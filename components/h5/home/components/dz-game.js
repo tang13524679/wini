@@ -18,6 +18,8 @@ import { SpinLoading } from "antd-mobile";
 import { t } from "@/utils/translate";
 import { useRouter } from "next/router";
 import useWindowSize from "@/hooks/useWindowSize";
+import dynamic from "next/dynamic";
+const Favourite = dynamic(() => import("./favourite"));
 
 const DZgame = () => {
   const isMobile = useWindowSize();
@@ -145,12 +147,18 @@ const DZgame = () => {
 
   const collectionHandle = async (id, favourite) => {
     if (favourite == "1") {
-      const res = await userApi.doDelete({ id });
+      const res = await userApi.doDelete({
+        id,
+        employeecode: user.employeecode,
+      });
       if (res.code == "1") {
         loadMore();
       }
     } else {
-      const res = await userApi.addUserPost({ id });
+      const res = await userApi.addUserPost({
+        id,
+        employeecode: user.employeecode,
+      });
       if (res.code == "1") {
         loadMore();
       }
@@ -324,7 +332,8 @@ const DZgame = () => {
                 {gamelist.map((item, index) => {
                   return (
                     <li key={item.id}>
-                      <div
+                      <Favourite favourite={item.favourite} id={item.id} />
+                      {/* <div
                         className={
                           item.favourite == "1" ? "heart active" : "heart"
                         }
@@ -333,7 +342,7 @@ const DZgame = () => {
                         }}
                       >
                         <StarFilled />
-                      </div>
+                      </div> */}
                       <div
                         className="box"
                         onClick={() => {

@@ -1,0 +1,26 @@
+.favouriteBox{
+  :global{
+    .heart{
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      background: #fff;
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .anticon{
+        font-size: 16px;
+        color: #8c8c8c;
+      }
+    }
+    .heart.active{
+      .anticon{
+        color:  #7F3CE3;
+      }
+    }
+  }
+}

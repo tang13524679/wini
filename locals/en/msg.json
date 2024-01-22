@@ -39,5 +39,6 @@
     "onlyMobile": "please try this game on mobile",
     "spaceName": "there should have space in the name",
     "emailRule": "please input an email address",
-    "addBankCard": "Please make sure the bank account is correct. Thank you"
+    "addBankCard": "Please make sure the bank account is correct. Thank you",
+    "addFPSaddress": "Please confirm whether the FPS address is correct. If there is an error, the system will not be able to withdraw money. Thank you."
 }

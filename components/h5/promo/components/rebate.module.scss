@@ -1,6 +1,8 @@
 .container{
   padding: 25px 15px;
   display: flex;
+  height: calc(100vh - 50px);
+  overflow: hidden;
   :global{
     .left{
       width: 78.462px;
@@ -58,6 +60,8 @@
     }
     .right{
       flex: 1;
+      overflow: auto;
+      padding-bottom: 50px;
       .box-list{
         .item{
           margin-bottom: 10px;

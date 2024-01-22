@@ -165,6 +165,20 @@ export function addUBankCard(params) {
     signature: encryptMD5({ ...param }),
   });
 }
+// 用户添加转数快
+export function addUFps(params) {
+  const param = {
+    ...params,
+    bankcode: "B000",
+    openningbank: "FPS",
+    enterprisecode: ENTERPRISE_CODE,
+  };
+  return request(`/ecrm-api/User/AddUFps`, {
+    ...param,
+    params: encryptECB({ ...param }),
+    signature: encryptMD5({ ...param }),
+  });
+}
 // 编辑用户银行卡
 export function editUBankCard(params) {
   return request(`/ecrm-api/User/EditUBankCard`, params);
@@ -180,6 +194,18 @@ export function uBankCards(params) {
     enterprisecode: ENTERPRISE_CODE,
   };
   return request(`/ecrm-api/User/UBankCards`, {
+    ...param,
+    params: encryptECB({ ...param }),
+    signature: encryptMD5({ ...param }),
+  });
+}
+// 查询用户转数快
+export function uFpsAddress(params) {
+  const param = {
+    ...params,
+    enterprisecode: ENTERPRISE_CODE,
+  };
+  return request(`/ecrm-api/User/UFpsAddress`, {
     ...param,
     params: encryptECB({ ...param }),
     signature: encryptMD5({ ...param }),
@@ -214,7 +240,6 @@ export function addUserPost(params) {
   const param = {
     ...params,
     enterprisecode: ENTERPRISE_CODE,
-    employeecode: userStore?.employeecode,
   };
   return request(`/ecrm-api/Post/addUserPost`, {
     ...param,
@@ -230,7 +255,6 @@ export function doDelete(params) {
   const param = {
     ...params,
     enterprisecode: ENTERPRISE_CODE,
-    employeecode: userStore?.employeecode,
   };
   return request(`/ecrm-api/Post/doDelete`, {
     ...param,

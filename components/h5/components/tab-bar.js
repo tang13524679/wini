@@ -13,7 +13,7 @@ const TabBar = () => {
       style={{ maxWidth: "430px", left: "50%", transform: "translateX(-50%)" }}
     >
       <div className="link-list">
-        <Link href="/home" passHref>
+        <Link href="/home" prefetch={false}>
           <div className="box">
             <div className="img-box">
               <img
@@ -29,7 +29,7 @@ const TabBar = () => {
             </div>
           </div>
         </Link>
-        <Link href="/commission" passHref>
+        <Link href="/commission" prefetch={false}>
           <div className="box">
             <div className="img-box">
               <img
@@ -45,7 +45,7 @@ const TabBar = () => {
             </div>
           </div>
         </Link>
-        <Link href="/wallet" passHref>
+        <Link href="/wallet" prefetch={false}>
           <div className="box wallet-box">
             <div className="img-box">
               <img
@@ -61,7 +61,7 @@ const TabBar = () => {
             </div>
           </div>
         </Link>
-        <Link href="/promo" passHref>
+        <Link href="/promo" prefetch={false}>
           <div className="box">
             <div className="img-box">
               <img
@@ -77,7 +77,7 @@ const TabBar = () => {
             </div>
           </div>
         </Link>
-        <Link href="/mine" passHref>
+        <Link href="/mine" prefetch={false}>
           <div className="box">
             <div className="img-box">
               <img
