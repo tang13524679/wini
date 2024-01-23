@@ -24,6 +24,7 @@ import { useSWRConfig } from "swr";
 import NavBar from "@/components/h5/components/nav-bar";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
+import { InfiniteScroll } from "antd-mobile";
 import useWindowSize from "@/hooks/useWindowSize";
 const Image = dynamic(() => import("next/image"));
 const Loading = dynamic(() =>
@@ -36,15 +37,25 @@ export default function FavoritesPage() {
   const isMobile = useWindowSize();
   const [isLoading, setIsLoading] = useState(false);
   const [favorites, setFavorites] = useState([]);
+  const [pageIndex, setPageIndex] = useState(1);
+  const [pageSize, setPageSize] = useState(15);
+  const [hasMore, setHasMore] = useState(true);
   const { mutate } = useSWRConfig();
   const [{ user, lang }, dispatch] = useGlobalState();
   // const favorites = useCollectedGames();
-  const fetchData = async () => {
+
+  const loadMore = async (param) => {
     try {
       setIsLoading(true);
-      const res = await userApi.postUserGameListPage();
+      const res = await userApi.postUserGameListPage({
+        employeecode: user.employeecode,
+        pageIndex,
+        pageSize,
+      });
       if (res.code == "1") {
-        setFavorites(res?.info);
+        setFavorites((val) => [...val, ...res.info?.rows]);
+        setHasMore(res.info?.rows.length > 0);
+        setPageIndex(pageIndex + 1);
       }
     } catch (error) {
       Toast.show({
@@ -55,10 +66,6 @@ export default function FavoritesPage() {
       setIsLoading(false);
     }
   };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   const onClickHandle = (item) => {
     if (!user) return (location.href = "/login");
@@ -74,6 +81,24 @@ export default function FavoritesPage() {
     }
   };
 
+  const cancelHandle = async (id) => {
+    try {
+      const res = await userApi.doDelete({
+        id: id,
+        employeecode: user.employeecode,
+      });
+      if (res.code == "1") {
+        const newFavorites = favorites.filter((item) => item.id != id);
+        setFavorites(newFavorites);
+      }
+    } catch (error) {
+      Toast.show({
+        content: error,
+      });
+      console.error(error);
+    }
+  };
+
   return (
     <InnerPageLayout>
       <Head>
@@ -82,27 +107,23 @@ export default function FavoritesPage() {
       <div className="sm:px-4">
         <div className="bgInnerPage">
           <NavBar title="最喜欢的" />
-          {/* <InnerPageTitle title={t("favorites", "nav")} /> */}
-          {!favorites && <PageLoading />}
-          {favorites && favorites.length === 0 && <EmptyPage />}
-          {favorites && favorites.length > 0 && (
-            <>
-              <div className="my-4 clWhite30">
-                {`${t("favorites", "nav")} ${favorites.length} ${t("items")}`}
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4 pb-6">
-                {favorites.map((item) => (
+          <>
+            <div className="my-4 clWhite30" style={{ color: "#fff" }}>
+              {`${t("favorites", "nav")} ${favorites.length} ${t("items")}`}
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4 pb-6">
+              {favorites.map((item) => (
+                <div
+                  key={item.id}
+                  className="flex items-center justify-between sm:pr-6"
+                >
                   <div
-                    key={item.id}
-                    className="flex items-center justify-between sm:pr-6"
+                    className="flex-none w-16 h-16 bgPlaceholder rounded-md overflow-hidden relative"
+                    onClick={() => {
+                      onClickHandle(item);
+                    }}
                   >
-                    <div
-                      className="flex-none w-16 h-16 bgPlaceholder rounded-md overflow-hidden relative"
-                      onClick={() => {
-                        onClickHandle(item);
-                      }}
-                    >
-                      {/* <Image
+                    {/* <Image
                         src={`/assets/home/DZgame/${item.gametype.replace(
                           "Game",
                           ""
@@ -116,62 +137,56 @@ export default function FavoritesPage() {
                         width={200}
                         height={200}
                       /> */}
-                      <img
-                        src={`/assets/home/DZgame/${item.gametype.replace(
-                          "Game",
-                          ""
-                        )}/${item.gameId}${
-                          item.gametype == "YGRGame"
-                            ? `_200x200_01_${lang == "en" ? "en" : "cn"}.png`
-                            : item.gametype == "AMEBAGame"
-                            ? `${lang == "en" ? "_enUS" : "_zhCN"}.png`
-                            : ".png"
-                        }`}
-                      />
-                      {/* <FadeInImage
+                    <img
+                      src={`/assets/home/DZgame/${item.gametype.replace(
+                        "Game",
+                        ""
+                      )}/${item.gameid}${
+                        item.gametype == "YGRGame"
+                          ? `_200x200_01_${lang == "en" ? "en" : "cn"}.png`
+                          : item.gametype == "AMEBAGame"
+                          ? `${lang == "en" ? "_enUS" : "_zhCN"}.png`
+                          : ".png"
+                      }`}
+                    />
+                    {/* <FadeInImage
                         src={getGameImg(item)}
                         className="transition-all duration-500 hover:scale-110"
                         onClick={() => {
                           play(item, dispatch);
                         }}
                       /> */}
+                  </div>
+                  <div
+                    className="flex-auto ml-3"
+                    onClick={() => {
+                      onClickHandle(item);
+                    }}
+                  >
+                    <div className="line-clamp-1 clWhite text-base">
+                      {getGameName(lang, item)}
                     </div>
-                    <div className="flex-auto ml-3">
-                      <div className="line-clamp-1 clWhite text-base">
-                        {getGameName(lang, item)}
-                      </div>
-                      <div className="clWhite30 uppercase">
-                        {getGameTypeName(item)}
-                      </div>
-                      <div className="tag inline-block">
-                        {getProviderName(item)}
-                      </div>
+                    <div className="clWhite30 uppercase">
+                      {getGameTypeName(item)}
                     </div>
-                    <div
-                      className="bgWhite20 clWhite px-4 py-2 rounded-full hoverMainBg text-xs capitalize text-center"
-                      style={{ minWidth: 85 }}
-                      onClick={() => {
-                        requestApi(
-                          dispatch,
-                          async () => {
-                            await userApi.unCollectGame({
-                              gameid: item.gameId,
-                            });
-                          },
-                          async () => {
-                            await mutate("/ecrm-api/Post/postUserGameList");
-                            message.error(t("success"));
-                          }
-                        );
-                      }}
-                    >
-                      {t("unLike")}
+                    <div className="tag inline-block">
+                      {getProviderName(item)}
                     </div>
                   </div>
-                ))}
-              </div>
-            </>
-          )}
+                  <div
+                    className="bgWhite20 clWhite px-4 py-2 rounded-full hoverMainBg text-xs capitalize text-center"
+                    style={{ minWidth: 85 }}
+                    onClick={() => {
+                      cancelHandle(item.id);
+                    }}
+                  >
+                    {t("unLike")}
+                  </div>
+                </div>
+              ))}
+              <InfiniteScroll loadMore={loadMore} hasMore={hasMore} />
+            </div>
+          </>
         </div>
         {isLoading && <Loading />}
       </div>
