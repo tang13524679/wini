@@ -38,7 +38,7 @@ const Rebate = () => {
       newlist.set(item.gametype, item);
     });
     const newTYlist = [...newlist.values()];
-    setTYgametype(newTYlist[0].gametype);
+    setTYgametype(newTYlist[0]?.gametype);
     return newTYlist;
   }, [rebateInfo]);
 

@@ -3,13 +3,24 @@ import styles from "./record.module.scss";
 import Loading from "@/components/h5/components/loading-mobile";
 import { Toast } from "antd-mobile";
 import { commissionApi } from "@/requests/frontend";
-import { Empty } from "antd-mobile";
+import { Modal, Empty } from "antd-mobile";
 
 const Record = () => {
   const [gradeState, setGradeState] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [amount, setAmount] = useState(0);
-  const [record, setRecord] = useState([]);
+  const [record, setRecord] = useState([
+    {
+      moneychangedate: "2023-11-14 11:53:32",
+      afteramount: 2081,
+      loginaccount: "play001",
+      moneychangetypename: "优惠活动",
+      moneychangeamount: 10,
+      settlementamount: 2071,
+    },
+  ]);
+  const [visible, setVisible] = useState(false);
+  const [infoModal, setInfoModal] = useState({});
 
   const fetchDataAuditRecord = async () => {
     try {
@@ -59,6 +70,42 @@ const Record = () => {
     }
   }, [gradeState]);
 
+  const content = () => {
+    return (
+      <div className="modal-box">
+        <div className="modal-title">
+          <div className="tit">明细</div>
+        </div>
+        <div className="content-box">
+          <div className="item">
+            <p className="l">名字</p>
+            <p className="r">{infoModal.loginaccount}</p>
+          </div>
+          <div className="item">
+            <p className="l">类型</p>
+            <p className="r">{infoModal.moneychangetypename}</p>
+          </div>
+          <div className="item">
+            <p className="l">金额</p>
+            <p className="r">{infoModal.moneychangeamount}</p>
+          </div>
+          <div className="item">
+            <p className="l">首存金额(HKD)</p>
+            <p className="r">{infoModal.settlementamount}</p>
+          </div>
+        </div>
+        <div
+          className="modal-btn"
+          onClick={() => {
+            setVisible(false);
+          }}
+        >
+          我已知晓
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className={styles.container}>
       <div className="top-box">
@@ -103,6 +150,29 @@ const Record = () => {
       </div>
       <div className="list">
         {record.length == 0 && <Empty description="暂无数据" />}
+        {record.length > 0 && (
+          <div className="content-list">
+            {record.map((item, index) => {
+              return (
+                <div className="item" key={index}>
+                  <div className="it it1">
+                    {item.moneychangedate.split(" ")[0]}
+                  </div>
+                  <div className="it it2">{item.afteramount}</div>
+                  <div
+                    className="it text it3"
+                    onClick={() => {
+                      setInfoModal(item);
+                      setVisible(true);
+                    }}
+                  >
+                    明细
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
       <div className="notice-box">
         <div className="item">
@@ -136,6 +206,15 @@ const Record = () => {
         </div>
       </div>
       {isLoading && <Loading />}
+      <Modal
+        visible={visible}
+        closeOnAction
+        showCloseButton
+        content={content()}
+        onClose={() => {
+          setVisible(false);
+        }}
+      />
     </div>
   );
 };

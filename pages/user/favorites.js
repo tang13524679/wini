@@ -35,10 +35,10 @@ export default function FavoritesPage() {
   const router = useRouter();
   const isMobile = useWindowSize();
   const [isLoading, setIsLoading] = useState(false);
-  // const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState([]);
   const { mutate } = useSWRConfig();
   const [{ user, lang }, dispatch] = useGlobalState();
-  const favorites = useCollectedGames();
+  // const favorites = useCollectedGames();
   const fetchData = async () => {
     try {
       setIsLoading(true);
@@ -57,7 +57,7 @@ export default function FavoritesPage() {
   };
 
   useEffect(() => {
-    // fetchData();
+    fetchData();
   }, []);
 
   const onClickHandle = (item) => {
