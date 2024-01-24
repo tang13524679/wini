@@ -2,12 +2,18 @@ import react, { useState, useEffect } from "react";
 import styles from "./detailed-data.module.scss";
 import { commissionApi } from "@/requests/frontend";
 import Loading from "@/components/h5/components/loading-mobile";
+import { Toast } from "antd-mobile";
+import { Pagination } from "antd";
+import { t } from "@/utils/translate";
 
 const DetailedData = () => {
   const [detType, setDetType] = useState("DEPOSIT_RETURN");
   const [timeState, setTimeState] = useState("all");
   const [isLoading, setIsLoading] = useState(false);
   const [dataList, setDataList] = useState([]);
+  const [pageIndex, setPageIndex] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+  const [total, setTotal] = useState(0);
 
   const detTypeList = [
     {
@@ -60,9 +66,12 @@ const DetailedData = () => {
       const res = await commissionApi.commissionKind({
         activityenName: detType,
         timeRange: timeState,
+        pageIndex,
+        pageSize,
       });
       if (res.code == "1") {
-        setDataList(res?.info?.record);
+        setDataList(res?.info?.rows);
+        setTotal(res.info.results);
       }
     } catch (error) {
       Toast.show({
@@ -75,8 +84,24 @@ const DetailedData = () => {
   };
 
   useEffect(() => {
+    setPageIndex(1);
     fetchData();
   }, [detType, timeState]);
+
+  const itemRender = (_, type, originalElement) => {
+    if (type === "prev") {
+      return <a>{t("previous")}</a>;
+    }
+    if (type === "next") {
+      return <a>{t("next")}</a>;
+    }
+    return originalElement;
+  };
+
+  const onChange = (page) => {
+    setPageIndex(page);
+    fetchData();
+  };
 
   return (
     <div className={styles.container}>
@@ -118,18 +143,33 @@ const DetailedData = () => {
         <div>带来收益(HKD)</div>
       </div>
       <div className="list">
-        {dataList.length ? (
-          <div className="list-box">
-            {dataList.map((item, index) => {
-              return (
-                <div className="item" key={index}>
-                  <div className="text text1">{item.loginaccount}</div>
-                  <div className="text text2">{item.depositmoney}</div>
-                  <div className="text text3">{item.lsh}</div>
-                </div>
-              );
-            })}
-          </div>
+        {dataList?.length ? (
+          <>
+            <div className="list-box">
+              {dataList.map((item, index) => {
+                return (
+                  <div className="item" key={index}>
+                    <div className="text text1">{item.loginaccount}</div>
+                    <div className="text text2">{item.depositmoney}</div>
+                    <div className="text text3" style={{ color: "#48B726" }}>
+                      {item.lsh}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="commission-pagination">
+              <Pagination
+                defaultCurrent={1}
+                current={pageIndex}
+                total={total}
+                itemRender={itemRender}
+                pageSize={pageSize}
+                simple
+                onChange={onChange}
+              />
+            </div>
+          </>
         ) : (
           <p>暂无数据</p>
         )}

@@ -1,14 +1,15 @@
 import react, { useState, useEffect } from "react";
 import styles from "./invitationIncome.module.scss";
-import NavBar from "@/components/h5/components/nav-bar";
-import Head from "next/head";
-import Sunmmary from "./components/summary";
-import Member from "./components/member";
-import DetailedData from "./components/detailed-data";
-import Record from "./components/record";
-import RankingList from "./components/ranking-list";
 import { useGlobalState } from "@/hooks/global";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
+const NavBar = dynamic(() => import("@/components/h5/components/nav-bar"));
+const Head = dynamic(() => import("next/head"));
+const Sunmmary = dynamic(() => import("./components/summary"));
+const Member = dynamic(() => import("./components/member"));
+const DetailedData = dynamic(() => import("./components/detailed-data"));
+const Record = dynamic(() => import("./components/record"));
+const RankingList = dynamic(() => import("./components/ranking-list"));
 
 const MarketingPlatform = () => {
   const [navState, setNavState] = useState(1);

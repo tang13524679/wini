@@ -16,9 +16,6 @@
     }
     .top-box{
       text-align: center;
-      padding-bottom: 21px;
-      border-bottom: 1px solid #0F0E0C;
-      margin-bottom: 20px;
       p{
         display: flex;
         align-items: center;
@@ -61,6 +58,9 @@
         }
       }
       .record-list{
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0F0E0C;
+        margin-bottom: 15px;
         .item{
           margin-top: 20px;
           .name{
@@ -101,6 +101,7 @@
       }
     }
     .data-content{
+      margin-top: 15px;
       padding: 0 0 20px;
       .no-data{
         color: #959EA8;
@@ -115,7 +116,7 @@
     .games-odds{
       display: flex;
       flex-wrap: wrap;
-      margin: 0 -7px;
+      margin: 15px -7px 0;
       .item{
         width: 76.71px;
         height: 82.754px;
@@ -162,6 +163,14 @@
       padding: 14.68px 0;
       background: url('/assets/commission/member-bg.png') no-repeat center center;
       margin-top: 20px;
+    }
+    .commission-pagination{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .people{
+        color: #959EA8;
+      }
     }
   }
 }

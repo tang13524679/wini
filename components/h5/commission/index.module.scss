@@ -140,5 +140,18 @@
         }
       }
     }
+    .ant-pagination{
+      color: #959EA8;
+    }
+    .ant-pagination-jump-next, .ant-pagination-jump-prev, .ant-pagination-next, .ant-pagination-prev{
+      color: #959EA8;
+      a[disabled]{
+        color: #959EA8;
+      }
+    }
+    .ant-pagination-item{
+      border: none;
+      background: none;
+    }
   }
 }

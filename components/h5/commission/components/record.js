@@ -4,29 +4,27 @@ import Loading from "@/components/h5/components/loading-mobile";
 import { Toast } from "antd-mobile";
 import { commissionApi } from "@/requests/frontend";
 import { Modal, Empty } from "antd-mobile";
+import { Pagination } from "antd";
+import { t } from "@/utils/translate";
 
 const Record = () => {
   const [gradeState, setGradeState] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [amount, setAmount] = useState(0);
-  const [record, setRecord] = useState([
-    {
-      moneychangedate: "2023-11-14 11:53:32",
-      afteramount: 2081,
-      loginaccount: "play001",
-      moneychangetypename: "优惠活动",
-      moneychangeamount: 10,
-      settlementamount: 2071,
-    },
-  ]);
+  const [record, setRecord] = useState([]);
   const [visible, setVisible] = useState(false);
   const [infoModal, setInfoModal] = useState({});
+  const [pageIndex, setPageIndex] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+  const [total, setTotal] = useState(0);
 
   const fetchDataAuditRecord = async () => {
     try {
       setIsLoading(true);
       const res = await commissionApi.commissionAuditRecord({
         timeRange: "week",
+        pageIndex,
+        pageSize,
       });
       if (res.code == "1") {
         setAmount(res?.info?.amount);
@@ -47,6 +45,8 @@ const Record = () => {
       setIsLoading(true);
       const res = await commissionApi.commissionRecord({
         timeRange: "week",
+        pageIndex,
+        pageSize,
       });
       if (res.code == "1") {
         setAmount(res?.info?.amount);
@@ -63,12 +63,32 @@ const Record = () => {
   };
 
   useEffect(() => {
+    setPageIndex(1);
     if (gradeState == 1) {
       fetchDataAuditRecord();
     } else {
       fetchDataRecord();
     }
   }, [gradeState]);
+
+  const itemRender = (_, type, originalElement) => {
+    if (type === "prev") {
+      return <a>{t("previous")}</a>;
+    }
+    if (type === "next") {
+      return <a>{t("next")}</a>;
+    }
+    return originalElement;
+  };
+
+  const onChange = (page) => {
+    setPageIndex(page);
+    if (gradeState == 1) {
+      fetchDataAuditRecord();
+    } else {
+      fetchDataRecord();
+    }
+  };
 
   const content = () => {
     return (

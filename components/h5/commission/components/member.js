@@ -5,6 +5,8 @@ import { commissionApi } from "@/requests/frontend";
 import { useGlobalState } from "@/hooks/global";
 import Loading from "@/components/h5/components/loading-mobile";
 import { Toast } from "antd-mobile";
+import { Pagination } from "antd";
+import { t } from "@/utils/translate";
 
 const Member = () => {
   const [gradeState, setGradeState] = useState(1);
@@ -12,6 +14,9 @@ const Member = () => {
   const [search, setSearch] = useState("");
   const [levelOneList, setLevelOneList] = useState([]);
   const [levelTwoList, setLevelTwoList] = useState([]);
+  const [pageIndex, setPageIndex] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
+  const [total, setTotal] = useState(0);
   const searchRef = useRef(null);
 
   const fetchData = async () => {
@@ -20,16 +25,22 @@ const Member = () => {
       if (gradeState == 1) {
         const res = await commissionApi.levelOne({
           loginaccount: search,
+          pageIndex,
+          pageSize,
         });
         if (res.code == "1") {
-          setLevelOneList(res.info.record);
+          setLevelOneList(res.info.rows);
+          setTotal(res.info?.results);
         }
       } else {
         const res = await commissionApi.levelTwo({
           loginaccount: search,
+          pageIndex,
+          pageSize,
         });
         if (res.code == "1") {
-          setLevelTwoList(res.info.record);
+          setLevelTwoList(res.info.rows);
+          setTotal(res.info?.results);
         }
       }
     } catch (error) {
@@ -41,9 +52,26 @@ const Member = () => {
       setIsLoading(false);
     }
   };
+
   useEffect(() => {
+    setPageIndex(1);
     fetchData();
   }, [gradeState, search]);
+
+  const itemRender = (_, type, originalElement) => {
+    if (type === "prev") {
+      return <a>{t("previous")}</a>;
+    }
+    if (type === "next") {
+      return <a>{t("next")}</a>;
+    }
+    return originalElement;
+  };
+
+  const onChange = (page) => {
+    setPageIndex(page);
+    fetchData();
+  };
   return (
     <div className={styles.container}>
       <SearchBar
@@ -77,61 +105,89 @@ const Member = () => {
             二级
           </div>
         </div>
-        {gradeState == 1 && levelOneList.length > 0 && (
-          <div className="record-list">
-            {levelOneList.map((item, index) => {
-              return (
-                <div className="item" key={index}>
-                  <div className="name">{item.loginaccount}</div>
-                  <div className="type">
-                    <div className="state">
-                      状态：
-                      <span>
-                        {item.employeestatus == 1 ? "已激活" : "未激活"}
-                      </span>
+        {gradeState == 1 && levelOneList?.length > 0 && (
+          <>
+            <div className="record-list">
+              {levelOneList.map((item, index) => {
+                return (
+                  <div className="item" key={index}>
+                    <div className="name">{item.loginaccount}</div>
+                    <div className="type">
+                      <div className="state">
+                        状态：
+                        <span>
+                          {item.employeestatus == 1 ? "已激活" : "未激活"}
+                        </span>
+                      </div>
+                      <p>带来收益</p>
                     </div>
-                    <p>带来收益</p>
+                    <div className="time">
+                      <p>注册时间：{item.logindatetime}</p>
+                      <p>{item.lose_win_amount}</p>
+                    </div>
                   </div>
-                  <div className="time">
-                    <p>注册时间：{item.logindatetime}</p>
-                    <p>{item.lose_win_amount}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+            <div className="commission-pagination">
+              <div className="people">总计： {levelOneList.length}人</div>
+              <Pagination
+                defaultCurrent={1}
+                current={pageIndex}
+                total={total}
+                itemRender={itemRender}
+                pageSize={pageSize}
+                simple
+                onChange={onChange}
+              />
+            </div>
+          </>
         )}
         {gradeState == 2 && levelTwoList.length > 0 && (
-          <div className="record-list">
-            {levelTwoList.map((item, index) => {
-              return (
-                <div className="item" key={index}>
-                  <div className="name">{item.loginaccount}</div>
-                  <div className="type">
-                    <div className="state">
-                      状态：
-                      <span>
-                        {item.employeestatus == 1 ? "已激活" : "未激活"}
-                      </span>
+          <>
+            <div className="record-list">
+              {levelTwoList.map((item, index) => {
+                return (
+                  <div className="item" key={index}>
+                    <div className="name">{item.loginaccount}</div>
+                    <div className="type">
+                      <div className="state">
+                        状态：
+                        <span>
+                          {item.employeestatus == 1 ? "已激活" : "未激活"}
+                        </span>
+                      </div>
+                      <p>带来收益</p>
                     </div>
-                    <p>带来收益</p>
+                    <div className="time">
+                      <p>注册时间：{item.logindatetime}</p>
+                      <p>{item.lose_win_amount}</p>
+                    </div>
                   </div>
-                  <div className="time">
-                    <p>注册时间：{item.logindatetime}</p>
-                    <p>{item.lose_win_amount}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+            <div className="commission-pagination">
+              <div className="people">总计： {levelTwoList.length}人</div>
+              <Pagination
+                defaultCurrent={1}
+                current={pageIndex}
+                total={total}
+                itemRender={itemRender}
+                pageSize={pageSize}
+                simple
+                onChange={onChange}
+              />
+            </div>
+          </>
         )}
       </div>
-      {gradeState == 1 && levelOneList.length == 0 && (
+      {gradeState == 1 && levelOneList?.length == 0 && (
         <div className="data-content">
           <div className="no-data">暂无数据</div>
         </div>
       )}
-      {gradeState == 2 && levelTwoList.length == 0 && (
+      {gradeState == 2 && levelTwoList?.length == 0 && (
         <div className="data-content">
           <div className="no-data">暂无数据</div>
         </div>

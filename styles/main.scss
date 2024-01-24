@@ -108,6 +108,40 @@ body {
 .breakWord {
     word-break: break-word;
 }
+.commission-pagination{
+    .ant-pagination{
+        color: #959EA8;
+    }
+    .ant-pagination-jump-next, .ant-pagination-jump-prev, .ant-pagination-next, .ant-pagination-prev{
+        color: #959EA8;
+        a[disabled]{
+            color: #959EA8;
+        }
+        a{
+            color: #48B726;
+        }
+    }
+    .ant-pagination-prev{
+        margin-right: 5px;
+    }
+    .ant-pagination-item{
+        border: none;
+        background: none;
+    }
+    .ant-pagination-simple .ant-pagination-simple-pager input{
+        background: none;
+        padding: 0;
+        margin-right: 0;
+        width: 20px;
+        border: none;
+    }
+    .ant-pagination-simple .ant-pagination-simple-pager input:focus{
+        box-shadow: none;
+    }
+    .ant-pagination-simple .ant-pagination-simple-pager input:hover{
+        border: none;
+    }
+}
 
 .promo-tag {
     position: absolute;
