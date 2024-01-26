@@ -93,6 +93,7 @@ const Cryptocurrency = () => {
       const res = await walletApi.getRechargeUsdInfo({
         usdtype: currencyType,
         protocol: protocolType,
+        opreateChannel: 3,
       });
       if (res.code == "1") {
         setUsdtInfo(res.info);
@@ -126,6 +127,7 @@ const Cryptocurrency = () => {
         depositNum,
         usdtype: currencyType,
         employeecode: user?.employeecode,
+        opreateType: 1,
       });
       if (res.code == "1") {
         Toast.show({
@@ -218,7 +220,15 @@ const Cryptocurrency = () => {
                 </div>
               </div>
               <div className="amount-box">
-                <p>输入金额</p>
+                <div className="text-box">
+                  <p>输入金额</p>
+                  <div className="num">
+                    充值的加密货币个数：
+                    <span>
+                      {(depositNum / usdtInfo.echrate).toFixed(2)}USDT
+                    </span>
+                  </div>
+                </div>
                 <Input
                   value={depositNum}
                   placeholder="请输入金额"

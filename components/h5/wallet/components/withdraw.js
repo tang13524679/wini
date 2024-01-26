@@ -21,7 +21,7 @@ const Withdraw = () => {
           }}
         >
           <img className="img1" src="/assets/wallet/yhk.png" />
-          转数快
+          转数快提款
         </div>
         <div
           className={`${tabState == 2 ? "active" : ""} tab`}
@@ -30,10 +30,10 @@ const Withdraw = () => {
           }}
         >
           <img className="img1" src="/assets/wallet/yhk.png" />
-          银行转账
+          网银提款
         </div>
         <div
-          className={`${!tabState == 3 ? "active" : ""} tab`}
+          className={`${tabState == 3 ? "active" : ""} tab`}
           onClick={() => {
             setTabState(3);
           }}

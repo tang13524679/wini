@@ -70,6 +70,7 @@ const BankTransfer = () => {
         const res = await ESaving({
           orderamount: amount,
           channelId: receiveBank.channelId,
+          opreateChannel: 1,
         });
         if (res.code == "1") {
           setIframeurl(res.info);

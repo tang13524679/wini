@@ -17,7 +17,6 @@ export function getRechargeUsdInfo(param) {
 export function doTrans(param) {
   const props = {
     ...param,
-    opreateType: 6,
   };
   return request(`/ecrm-api/AgentNew/DoTrans`, {
     ...props,

@@ -15,7 +15,7 @@ const CurrencyCard = () => {
   const [walletInfo, setWalletInfo] = useState({});
 
   const amountComput = useMemo(() => {
-    return (orderamount / echrate).toFixed(2);
+    return (orderamount / walletInfo.cryptoWalletRate).toFixed(2);
   }, [orderamount]);
 
   const fetchData = async () => {
@@ -25,7 +25,6 @@ const CurrencyCard = () => {
       if (res.code == "1") {
         setWalletList(res.info.record);
         setWalletInfo(res?.info?.record[0]);
-        setEchrate(res.info.echrate);
       }
     } catch (error) {
       Toast.show({
@@ -121,7 +120,7 @@ const CurrencyCard = () => {
           }}
         />
         <div className="tit">
-          当前参考汇率 <span>1 USDT={echrate} HKD</span>
+          当前参考汇率 <span>1 USDT={walletInfo.cryptoWalletRate} HKD</span>
         </div>
         <div className="tit">
           最终取款 <div className="num">USDT {amountComput}个</div>

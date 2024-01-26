@@ -164,6 +164,23 @@
           }
           .amount-box{
             margin-top: 15px;
+            .text-box{
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              margin-bottom: 6.3px;
+              .num{
+                color: #959EA8;
+                font-family: Inter;
+                font-size: 12.444px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                span{
+                  color: #fff;
+                }
+              }
+            }
             p{
               color: #959EA8;
               font-family: Inter;
@@ -171,7 +188,6 @@
               font-style: normal;
               font-weight: 400;
               line-height: normal;
-              margin-bottom: 6.3px;
             }
             .ant-input-affix-wrapper{
               height: 34.566px;
