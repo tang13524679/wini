@@ -159,7 +159,7 @@ const HomePage = () => {
                           src={`/assets/home/DZgame/${item.gametype.replace(
                             "Game",
                             ""
-                          )}/${item.gameid}${
+                          )}/${item.gameId}${
                             item.gametype == "YGRGame"
                               ? `_200x200_01_${lang == "en" ? "en" : "cn"}.png`
                               : item.gametype == "AMEBAGame"

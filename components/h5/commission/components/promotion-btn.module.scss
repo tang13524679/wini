@@ -1,10 +1,10 @@
 .box{
   display: flex;
   justify-content: center;
-  padding-bottom: 23px;
+  padding: 0 25px 23px;
   :global{
     .btn{            
-      width: 151.878px;
+      width: 49%;
       height: 40.863px;
       flex-shrink: 0;
       color: #FFF;
