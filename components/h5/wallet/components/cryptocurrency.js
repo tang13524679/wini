@@ -3,7 +3,7 @@ import styles from "./cryptocurrency.module.scss";
 import copy from "copy-to-clipboard";
 import { Toast } from "antd-mobile";
 import { ExclamationCircleFilled } from "@ant-design/icons";
-import { walletApi, fundApi } from "@/requests/frontend";
+import { walletApi } from "@/requests/frontend";
 import QRCode from "qrcode.react";
 import Loading from "../../components/loading-mobile";
 import { Input } from "antd";
@@ -125,13 +125,13 @@ const Cryptocurrency = () => {
     }
     try {
       setIsLoading(true);
-      const res = await fundApi.taking({
+      const res = await walletApi.doTrans({
         depositNum,
         usdtype: currencyType,
         employeecode: user?.employeecode,
-        opreateChannel: 3,
         opreateType: 1,
         walletId: opreateType,
+        opreateChannel: 3,
       });
       if (res.code == "1") {
         Toast.show({

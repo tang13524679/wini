@@ -2,7 +2,7 @@ import react, { useState, useEffect, useMemo } from "react";
 import styles from "./currency-card.module.scss";
 import { Input } from "antd";
 import { useRouter } from "next/router";
-import { walletApi } from "@/requests/frontend";
+import { walletApi, fundApi } from "@/requests/frontend";
 import Loading from "@/components/h5/components/loading-mobile";
 import { Toast } from "antd-mobile";
 
@@ -52,8 +52,8 @@ const CurrencyCard = () => {
     } else {
       try {
         setIsLoading(true);
-        const res = await walletApi.DoTrans({
-          depositNum: amountComput,
+        const res = await fundApi.taking({
+          orderamount: orderamount,
           usdtype: walletInfo.openningbank,
           fundpassword,
           opreateChannel: 3,
