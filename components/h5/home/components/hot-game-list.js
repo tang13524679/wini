@@ -244,14 +244,14 @@ const HotGameList = () => {
                         onClickHandle(item);
                       }}
                     >
-                      {/* <Image
+                      <Image
                         src={`/assets/home/games/${biggametype}/${item.cnname}.png`}
                         width={200}
                         height={280}
-                      /> */}
-                      <img
-                        src={`/assets/home/games/${biggametype}/${item.cnname}.png`}
                       />
+                      {/* <img
+                        src={`/assets/home/games/${biggametype}/${item.cnname}.png`}
+                      /> */}
                     </div>
                   </SwiperSlide>
                 )
