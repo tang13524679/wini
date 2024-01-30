@@ -3,7 +3,7 @@ import styles from "./cryptocurrency.module.scss";
 import copy from "copy-to-clipboard";
 import { Toast } from "antd-mobile";
 import { ExclamationCircleFilled } from "@ant-design/icons";
-import { walletApi } from "@/requests/frontend";
+import { walletApi, fundApi } from "@/requests/frontend";
 import QRCode from "qrcode.react";
 import Loading from "../../components/loading-mobile";
 import { Input } from "antd";
@@ -125,7 +125,7 @@ const Cryptocurrency = () => {
     }
     try {
       setIsLoading(true);
-      const res = await walletApi.doTrans({
+      const res = await fundApi.taking({
         depositNum,
         usdtype: currencyType,
         employeecode: user?.employeecode,
