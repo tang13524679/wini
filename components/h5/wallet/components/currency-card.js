@@ -13,9 +13,10 @@ const CurrencyCard = () => {
   const [orderamount, setOrderamount] = useState("");
   const [echrate, setEchrate] = useState(7.8);
   const [walletInfo, setWalletInfo] = useState({});
+  const [fundpassword, setFundpassword] = useState("");
 
   const amountComput = useMemo(() => {
-    return (orderamount / walletInfo.cryptoWalletRate).toFixed(2);
+    return (orderamount * walletInfo.cryptoWalletRate).toFixed(2) || 0;
   }, [orderamount]);
 
   const fetchData = async () => {
@@ -43,12 +44,21 @@ const CurrencyCard = () => {
         content: "金额不能为空",
       });
       return;
+    } else if (fundpassword == "") {
+      Toast.show({
+        content: "密码不能为空",
+      });
+      return;
     } else {
       try {
         setIsLoading(true);
         const res = await walletApi.DoTrans({
           depositNum: amountComput,
           usdtype: walletInfo.openningbank,
+          fundpassword,
+          opreateChannel: 3,
+          brandcode: walletInfo.brandcode,
+          informationcode: walletInfo.informationcode,
         });
         if (res.code == "1") {
           Toast.show({
@@ -114,16 +124,25 @@ const CurrencyCard = () => {
           placeholder="请输入金额"
           className="lineInput"
           type="number"
-          suffix="HKD"
+          suffix="USDT"
           onChange={(e) => {
             setOrderamount(e.target.value);
           }}
         />
-        <div className="tit">
+        <Input.Password
+          value={fundpassword}
+          placeholder="请输入资金密码"
+          className="lineInput"
+          type="number"
+          onChange={(e) => {
+            setFundpassword(e.target.value);
+          }}
+        />
+        <div className="tit" style={{ marginTop: "10px" }}>
           当前参考汇率 <span>1 USDT={walletInfo.cryptoWalletRate} HKD</span>
         </div>
         <div className="tit">
-          最终取款 <div className="num">USDT {amountComput}个</div>
+          最终取款 <div className="num">HKD {amountComput}个</div>
         </div>
         <div className="confirm" onClick={confirmHandle}>
           确认取款

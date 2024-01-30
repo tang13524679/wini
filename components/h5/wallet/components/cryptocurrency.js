@@ -79,6 +79,7 @@ const Cryptocurrency = () => {
   const [usdtInfo, setUsdtInfo] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [depositNum, setDepositNum] = useState(0);
+  const [opreateType, setOpreateType] = useState(0);
 
   const copyCot = (value) => {
     copy(value);
@@ -97,6 +98,7 @@ const Cryptocurrency = () => {
       });
       if (res.code == "1") {
         setUsdtInfo(res.info);
+        setOpreateType(res.info.walletId);
       }
     } catch (error) {
       Toast.show({
@@ -127,7 +129,7 @@ const Cryptocurrency = () => {
         depositNum,
         usdtype: currencyType,
         employeecode: user?.employeecode,
-        opreateType: 1,
+        opreateType: opreateType,
       });
       if (res.code == "1") {
         Toast.show({
@@ -223,9 +225,9 @@ const Cryptocurrency = () => {
                 <div className="text-box">
                   <p>输入金额</p>
                   <div className="num">
-                    充值的加密货币个数：
+                    充值的HKD数：
                     <span>
-                      {(depositNum / usdtInfo.echrate).toFixed(2)}USDT
+                      {(depositNum * usdtInfo.echrate).toFixed(2)} HKD
                     </span>
                   </div>
                 </div>
@@ -234,7 +236,7 @@ const Cryptocurrency = () => {
                   placeholder="请输入金额"
                   className="lineInput"
                   type="number"
-                  suffix="HKD"
+                  suffix="USDT"
                   onChange={(e) => {
                     setDepositNum(e.target.value);
                   }}

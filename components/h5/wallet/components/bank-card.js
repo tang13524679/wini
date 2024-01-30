@@ -12,7 +12,7 @@ const BankCard = (props) => {
   const [bankType, setBankType] = useState(0);
   const [bankInfo, setBankInfo] = useState({});
   const [bankCardList, setBankCardList] = useState([]);
-  const [orderamount, setOrderamount] = useState(0);
+  const [orderamount, setOrderamount] = useState("");
   const [fundpassword, setFundpassword] = useState("");
 
   const fetchData = async () => {
@@ -54,6 +54,7 @@ const BankCard = (props) => {
           fundpassword,
           informationcode: bankInfo.informationcode,
           orderamount,
+          opreateChannel: 1,
         });
         if (res.code == "1") {
           Toast.show({
@@ -118,9 +119,9 @@ const BankCard = (props) => {
               setOrderamount(e.target.value);
             }}
           />
-          <Input
+          <Input.Password
             value={fundpassword}
-            placeholder="资金密码"
+            placeholder="请输入资金密码"
             className="lineInput"
             onChange={(e) => {
               setFundpassword(e.target.value);

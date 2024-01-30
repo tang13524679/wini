@@ -12,7 +12,7 @@ const QuickBankCard = (props) => {
   const [bankType, setBankType] = useState(0);
   const [bankInfo, setBankInfo] = useState({});
   const [bankCardList, setBankCardList] = useState([]);
-  const [orderamount, setOrderamount] = useState(0);
+  const [orderamount, setOrderamount] = useState("");
   const [fundpassword, setFundpassword] = useState("");
 
   const fetchData = async () => {
@@ -21,7 +21,7 @@ const QuickBankCard = (props) => {
       const res = await userApi.uFpsAddress();
       if (res.code == "1") {
         setBankCardList(res.info.record);
-        setBankInfo(res.info[0]);
+        setBankInfo(res.info.record[0]);
       }
     } catch (error) {
       Toast.show({
@@ -54,6 +54,8 @@ const QuickBankCard = (props) => {
           fundpassword,
           paymentaccount: bankInfo.paymentaccount,
           orderamount,
+          opreateChannel: 4,
+          informationcode: bankInfo.informationcode,
         });
         if (res.code == "1") {
           Toast.show({
@@ -118,9 +120,9 @@ const QuickBankCard = (props) => {
               setOrderamount(e.target.value);
             }}
           />
-          <Input
+          <Input.Password
             value={fundpassword}
-            placeholder="资金密码"
+            placeholder="请输入资金密码"
             className="lineInput"
             onChange={(e) => {
               setFundpassword(e.target.value);
