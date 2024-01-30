@@ -210,9 +210,90 @@ export default function VipCardsBanner({
 
         {/* VIP Perks Grid */}
       </div>
-      <div className="mt-6 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 bottom-box">
+      {/* <div className="mt-6 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 bottom-box">
         {_vipPerks}
-      </div>
+
+      </div> */}
+      {vipNum < 5 && (
+        <div class="mt-6 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 bottom-box">
+          <div class="flex items-center space-x-2">
+            <div class="shrink-0 icon-vip-cunqukuan-on"></div>
+            <span class="text-sm transition duration-300 breakWord clMainYellow">
+              优先存款和快速取款
+            </span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <div class="shrink-0 icon-vip-huodong-on"></div>
+            <span class="text-sm transition duration-300 breakWord clMainYellow">
+              VIP活动
+            </span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <div class="shrink-0 icon-vip-24hour-on"></div>
+            <span class="text-sm transition duration-300 breakWord clMainYellow">
+              24/7VIP客户服务团队
+            </span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <div class="shrink-0 icon-vip-youhui"></div>
+            <span class="text-sm transition duration-300 breakWord text-white/30">
+              独家优惠、赠品和锦标赛
+            </span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <div class="shrink-0 icon-vip-jieri"></div>
+            <span class="text-sm transition duration-300 breakWord text-white/30">
+              生日红包
+            </span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <div class="shrink-0 icon-vip-dujiafukuan"></div>
+            <span class="text-sm transition duration-300 breakWord text-white/30">
+              访问独家付款方式
+            </span>
+          </div>
+        </div>
+      )}
+      {vipNum >= 5 && (
+        <div class="mt-6 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 bottom-box">
+          <div class="flex items-center space-x-2">
+            <div class="shrink-0 icon-vip-cunqukuan-on"></div>
+            <span class="text-sm transition duration-300 breakWord clMainYellow">
+              优先存款和快速取款
+            </span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <div class="shrink-0 icon-vip-huodong-on"></div>
+            <span class="text-sm transition duration-300 breakWord clMainYellow">
+              VIP活动
+            </span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <div class="shrink-0 icon-vip-24hour-on"></div>
+            <span class="text-sm transition duration-300 breakWord clMainYellow">
+              24/7VIP客户服务团队
+            </span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <div class="shrink-0 icon-vip-youhui-on"></div>
+            <span class="text-sm transition duration-300 breakWord text-white/30">
+              独家优惠、赠品和锦标赛
+            </span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <div class="shrink-0 icon-vip-jieri-on"></div>
+            <span class="text-sm transition duration-300 breakWord text-white/30">
+              生日红包
+            </span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <div class="shrink-0 icon-vip-dujiafukuan-on"></div>
+            <span class="text-sm transition duration-300 breakWord text-white/30">
+              访问独家付款方式
+            </span>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
