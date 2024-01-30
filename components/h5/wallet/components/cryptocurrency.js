@@ -129,7 +129,9 @@ const Cryptocurrency = () => {
         depositNum,
         usdtype: currencyType,
         employeecode: user?.employeecode,
-        opreateType: opreateType,
+        opreateChannel: 3,
+        opreateType: 1,
+        walletId: opreateType,
       });
       if (res.code == "1") {
         Toast.show({
