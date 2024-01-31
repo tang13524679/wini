@@ -17,6 +17,7 @@ export function getRechargeUsdInfo(param) {
 export function doTrans(param) {
   const props = {
     ...param,
+    enterprisecode: ENTERPRISE_CODE,
   };
   return request(`/ecrm-api/AgentNew/DoTrans`, {
     ...props,
