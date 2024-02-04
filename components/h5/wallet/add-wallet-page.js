@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import react, { useState, useEffect } from "react";
 import styles from "./add-wallet-page.module.scss";
 import NavBar from "../components/nav-bar";
 import { RightOutlined } from "@ant-design/icons";
@@ -33,19 +33,46 @@ const AddWalletPage = () => {
         label: (
           <div className="wallet-type">
             <img src="/assets/wallet/eth.png" />
-            ETH ERC20
+            ETH ETH-ERC20
           </div>
         ),
-        value: { bankType: "ETH", accountType: "ERC20" },
+        value: { bankType: "ETH", accountType: "ETH-ERC20" },
+      },
+      {
+        label: (
+          <div className="wallet-type">
+            <img src="/assets/wallet/eth.png" />
+            ETH ETH-OKTC
+          </div>
+        ),
+        value: { bankType: "ETH", accountType: "ETH-OKTC" },
       },
       {
         label: (
           <div className="wallet-type">
             <img src="/assets/wallet/btc.png" />
-            BTC ERC20
+            BTC BTC-Bitcoin
           </div>
         ),
-        value: { bankType: "BTC", accountType: "ERC20" },
+        value: { bankType: "BTC", accountType: "BTC-Bitcoin" },
+      },
+      {
+        label: (
+          <div className="wallet-type">
+            <img src="/assets/wallet/btc.png" />
+            BTC BTC-Lightning
+          </div>
+        ),
+        value: { bankType: "BTC", accountType: "BTC-Lightning" },
+      },
+      {
+        label: (
+          <div className="wallet-type">
+            <img src="/assets/wallet/btc.png" />
+            BTC BTC-OKTC
+          </div>
+        ),
+        value: { bankType: "BTC", accountType: "BTC-OKTC" },
       },
     ],
   ];
@@ -53,12 +80,30 @@ const AddWalletPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [visible, setVisible] = useState(false);
   const [walletName, setWalletName] = useState("");
+  const [walletType, setWalletType] = useState("");
   const [paymentaccount, setPaymentaccount] = useState("");
   const [isPaymentaccount, setIsPaymentaccount] = useState("");
   const [openningbank, setOpenningbank] = useState("USDT");
   const [accountname, setAccountname] = useState("ERC20");
   const [email, setEmail] = useState("");
   const router = useRouter();
+
+  const fetchData = async () => {
+    try {
+      setIsLoading(true);
+      const res = await walletApi.UWalletAddress();
+      if (res.code == "1") {
+        setWalletType(res.info.wallettype);
+      }
+    } catch (error) {
+      Toast.show({
+        content: error,
+      });
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const onConfirm = (val) => {
     setOpenningbank(val[0].bankType);
@@ -88,6 +133,10 @@ const AddWalletPage = () => {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div className={styles.container}>
