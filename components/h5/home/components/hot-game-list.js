@@ -236,7 +236,7 @@ const HotGameList = () => {
                 item.ishot == "1" && (
                   <SwiperSlide
                     key={item.id}
-                    className={item.ishot ? "swiperSlide-on" : ""}
+                    className={minCategory.length < 7 ? "swiperSlide-on" : ""}
                   >
                     <div
                       className="img-box"

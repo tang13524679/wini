@@ -73,7 +73,6 @@
       }
       .swiper{
         .swiper-slide{
-          
           position: relative;
           overflow: hidden;
           .img-box{
@@ -98,6 +97,9 @@
             background: #1F242A;
             transform: rotate(45deg);
           }
+        }
+        .swiperSlide-on:nth-child(3){
+          margin-top: 0 !important;
         }
       }
     }
