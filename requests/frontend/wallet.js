@@ -43,6 +43,7 @@ export function AddUWallet(param) {
 export function UWalletAddress(param) {
   const props = {
     ...param,
+    employeecode: userStore?.employeecode,
     enterprisecode: ENTERPRISE_CODE,
   };
   return request(`/ecrm-api/Promo/UWalletAddress`, {
@@ -56,7 +57,7 @@ export function DoTrans(param) {
   const props = {
     ...param,
     opreateType: 7,
-    employeecode: EMPLOYEE_CODE,
+    employeecode: userStore?.employeecode,
   };
   return request(`/ecrm-api/AgentNew/DoTrans`, {
     ...props,
