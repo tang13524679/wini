@@ -4,6 +4,7 @@ import { Modal } from "antd-mobile";
 import ShaeModal from "./shareModal";
 import { useRouter } from "next/router";
 import store from "store";
+import { t } from "@/utils/translate";
 
 const InviteWithPrizes = () => {
   const [visible, setVisible] = useState(false);
@@ -16,60 +17,63 @@ const InviteWithPrizes = () => {
     return (
       <div className="modal-box">
         <div className="modal-title">
-          <div className="tit">成功邀请，立即见收益</div>
+          <div className="tit">{t("SuccessInvitation")}</div>
           <p>
-            <span></span>成功邀请好友，您都会获得以下相应的奖励。
+            <span></span>
+            {t("SuccessInvitationaward")}
           </p>
-          <div className="txt">(根据好友提款数额，系统自动计算相对应奖励）</div>
+          <div className="txt">{t("correspondingReward")}</div>
         </div>
         <ul className="withdraw-ul">
           <li>
             <div className="num">1</div>
             <p>
-              您的朋友存款启动后，您将共有 <span>1</span> 次获得朋友的
-              存款额外奖励，每次获得最高 <span>500</span> 元奖励。
+              {t("initiatedTotal")}
+              <span>1</span> {t("secondbestfriend")}
+              {t("Depositbonus")} <span>500</span> {t("yuanreward")}
             </p>
           </li>
           <li>
             <div className="num">2</div>
             <p>
-              第 <span>2</span> 次成功提款：立即获得最高
-              <span>500</span> 奖励
+              {t("No")} <span>2</span> {t("text")}
+              <span>500</span>
+              {t("award")}
             </p>
           </li>
           <li>
             <div className="num">3</div>
             <p>
-              第 <span>3</span> 次成功提款：立即获得最高
-              <span>500</span> 奖励
+              {t("No")} <span>3</span> {t("text")}
+              <span>500</span> {t("award")}
             </p>
           </li>
           <li>
             <div className="num">4</div>
             <p>
-              第 <span>4</span> 次成功提款：立即获得最高
-              <span>500</span> 奖励
+              {t("No")} <span>4</span> {t("text")}
+              <span>500</span> {t("award")}
             </p>
           </li>
           <li>
             <div className="num">5</div>
             <p>
-              第 <span>5</span> 次成功提款：立即获得最高
-              <span>500</span> 奖励
+              {t("No")} <span>5</span> {t("text")}
+              <span>500</span> {t("award")}
             </p>
           </li>
           <li>
             <div className="num">6</div>
             <p>
-              第 <span>6</span> 次成功提款：立即获得最高
-              <span>500</span> 奖励
+              {t("No")} <span>6</span> {t("text")}
+              <span>500</span> {t("award")}
             </p>
           </li>
           <li>
             <div className="num">7</div>
             <p>
-              第 <span>7</span> 次成功提款：立即获得最高
-              <span>500</span> 奖励
+              {t("No")} <span>7</span> {t("text")}
+              <span>500</span> {t("award")}
             </p>
           </li>
         </ul>
@@ -79,7 +83,7 @@ const InviteWithPrizes = () => {
             setVisible(false);
           }}
         >
-          我已知晓
+          {t("Ialreadyknow")}
         </div>
       </div>
     );
@@ -90,40 +94,37 @@ const InviteWithPrizes = () => {
       <div className="modal-box">
         <div className="modal-title">
           <div className="tit income-tit">
-            永久产出收益，下线综合提成10%<div>利润分成！</div>
+            {t("permanentoutputincome")}
+            <div>{t("Profitsharing")}</div>
           </div>
           <p className="p">
             <span></span>
-            <div>
-              下线会员带来永久的持续收益，无论是存款、游戏投注、下线邀请好友（无限制分享下线
-              的10%收益）等正常的用户行为，均带来持续
-              的收益。以下是返利比例图示。
-            </div>
+            <div>{t("text2")}</div>
           </p>
         </div>
         <ul className="income-ul">
           <li>
-            <span>体育</span>
+            <span>{t("SX")}</span>
             <div className="num">0.2%</div>
           </li>
           <li>
-            <span>体育</span>
+            <span>{t("TY")}</span>
             <div className="num">0.1%</div>
           </li>
           <li>
-            <span>老虎机/捕鱼</span>
+            <span>{t("Slots/Fishing")}</span>
             <div className="num">0.3%</div>
           </li>
           <li>
-            <span>彩票</span>
+            <span>{t("CP")}</span>
             <div className="num">0.1%</div>
           </li>
           <li>
-            <span>棋牌</span>
+            <span>{t("QP")}</span>
             <div className="num">0.3%</div>
           </li>
           <li>
-            <span>充值返利</span>
+            <span>{t("RechargeRebate")}</span>
             <div className="num">0.2%</div>
           </li>
         </ul>
@@ -133,7 +134,7 @@ const InviteWithPrizes = () => {
             setVisible(false);
           }}
         >
-          我已知晓
+          {t("Ialreadyknow")}
         </div>
       </div>
     );
@@ -143,15 +144,17 @@ const InviteWithPrizes = () => {
     <div className={styles.box}>
       <div className="title">
         <h3>
-          每邀请<span>一名好友</span>
+          {t("perInvitation")}
+          <span>{t("afriend")}</span>
         </h3>
         <h4>
-          每邀请<span>以下奖励</span>
+          {t("perInvitation")}
+          <span>{t("TheFollowingRewards")}</span>
         </h4>
       </div>
       <div className="tab-box">
         <div className="tab tab1">
-          <p>奖金高达</p>
+          <p>{t("Bonusupto")}</p>
           <div className="num">3888</div>
           <div
             className="btn"
@@ -160,11 +163,11 @@ const InviteWithPrizes = () => {
               setIsWithdraw(true);
             }}
           >
-            好友提现
+            {t("Withdrawmoneyfromfriends")}
           </div>
         </div>
         <div className="tab tab2">
-          <p>持续收益</p>
+          <p>{t("sustainedincome")}</p>
           <div className="num">20%</div>
           <div
             className="btn"
@@ -173,11 +176,11 @@ const InviteWithPrizes = () => {
               setIsWithdraw(false);
             }}
           >
-            综合提成
+            {t("ComprehensiveCommission")}
           </div>
         </div>
       </div>
-      <ShaeModal title="立即推广" />
+      <ShaeModal title={t("Promotenow")} />
       <div className="invite-list">
         <div
           className="btn"
@@ -189,7 +192,7 @@ const InviteWithPrizes = () => {
             }
           }}
         >
-          邀请收益
+          {t("Invitationincome")}
         </div>
         <div
           className="btn"
@@ -201,7 +204,7 @@ const InviteWithPrizes = () => {
             }
           }}
         >
-          独特优惠
+          {t("UniqueOffer")}
         </div>
       </div>
       <Modal

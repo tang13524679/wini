@@ -1,6 +1,7 @@
 import react, { useState } from "react";
 import styles from "./recharge.module.scss";
 import dynamic from "next/dynamic";
+import { t } from "@/utils/translate";
 const QuicklyTransfer = dynamic(() => import("./quickly-transfer"));
 const BankTransfer = dynamic(() => import("./bank-transfer"));
 const Cryptocurrency = dynamic(() => import("./cryptocurrency"));
@@ -11,7 +12,7 @@ const Recharge = () => {
   return (
     <div className={styles.container}>
       <div className="top-box">
-        <div className="tit">充值方式</div>
+        <div className="tit">{t("Rechargemethod")}</div>
         <div className="tabBar-list">
           <div
             className={`${tabState == 1 ? "active" : ""} tab`}
@@ -20,7 +21,7 @@ const Recharge = () => {
             }}
           >
             <img className="img1" src="/assets/wallet/yhk.png" />
-            转数快
+            {t("FastRPM")}
           </div>
           <div
             className={`${tabState == 2 ? "active" : ""} tab`}
@@ -29,7 +30,7 @@ const Recharge = () => {
             }}
           >
             <img className="img1" src="/assets/wallet/yhk.png" />
-            网银支付
+            {t("Onlinebankingtopay")}
           </div>
           <div
             className={`${tabState == 3 ? "active" : ""} tab`}
@@ -38,7 +39,7 @@ const Recharge = () => {
             }}
           >
             <img className="img2" src="/assets/wallet/jm.png" />
-            加密货币
+            {t("cryptocurrency")}
           </div>
         </div>
       </div>

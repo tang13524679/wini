@@ -8,6 +8,7 @@ import ShaeModal from "./components/shareModal";
 import { getDomain } from "@/utils/common";
 import { useGlobalState } from "@/hooks/global";
 import QRCode from "qrcode.react";
+import { t } from "@/utils/translate";
 
 const UniqueOffer = () => {
   const [{ user }] = useGlobalState();
@@ -15,7 +16,7 @@ const UniqueOffer = () => {
   const copyCot = (value) => {
     copy(value);
     Toast.show({
-      content: "复制成功",
+      content: t("CopySuccessfully"),
     });
   };
 
@@ -30,21 +31,23 @@ const UniqueOffer = () => {
       <Head>
         <title>Games - WIN</title>
       </Head>
-      <NavBar title="独特优惠" />
+      <NavBar title={t("Uniqueoffer")} />
       <div className="content-box">
         <div className="code-box">
           <div className="qr">
             <QRCode value={invitationLink} />
-            <p>您的邀请码</p>
+            <p>{t("yourinvitationcode")}</p>
           </div>
           <div className="text">
-            您的好友通过您的<span>专属链接</span> 或<span>邀请码</span>
-            注册，首次存款将 获得独特的优惠。
+            {t("Uniqueoffertext1")}
+            <span>{t("Uniqueoffertext2")}</span> {t("Uniqueoffertext3")}
+            <span>{t("Uniqueoffertext4")}</span>
+            {t("Uniqueoffertext5")}
           </div>
         </div>
         <div className="copy-box">
           <div className="item">
-            <p>专属邀请码</p>
+            <p>{t("Uniqueoffertext6")}</p>
             <input type="text" readOnly value={user?.employeecode} />
             <div
               className="copy"
@@ -54,7 +57,7 @@ const UniqueOffer = () => {
             ></div>
           </div>
           <div className="item">
-            <p>邀请链接</p>
+            <p>{t("Uniqueoffertext7")}</p>
             <input type="text" readOnly value={invitationLink} />
             <div
               className="copy"
@@ -64,23 +67,20 @@ const UniqueOffer = () => {
             ></div>
           </div>
         </div>
-        <ShaeModal title="立即邀请" />
+        <ShaeModal title={t("Invitenow")} />
         <div className="illustrate">
-          <div className="title">说明事项</div>
+          <div className="title">{t("Uniqueoffertext8")}</div>
           <ul>
             <li>
               <div className="num">1</div>
               <p>
-                通过您专属链接注册，您的下线首次存款将获得 <span>2%</span> 的优
-                惠，最高可获得 <span>500</span> ，获得的优惠只需要1倍打量。
+                {t("Uniqueoffertext9")} <span>2%</span> {t("Uniqueoffertext10")}
+                <span>500</span> {t("Uniqueoffertext11")}
               </p>
             </li>
             <li>
               <div className="num">2</div>
-              <p>
-                如发现任何作弊行为，所产生的邀请收益均不再计算，并
-                回收所有的收益，严重者作封号处理。
-              </p>
+              <p>{t("Uniqueoffertext12")}</p>
             </li>
           </ul>
         </div>
@@ -100,10 +100,10 @@ const UniqueOffer = () => {
         </div>
         <div className="icon">
           <img src="/assets/commission/icon_gxh.png" />
-          <p>个性化</p>
+          <p>{t("personalise")}</p>
         </div>
         <div className="icon">
-          <ShaeModal title="立即邀请" isMore={true} />
+          <ShaeModal title={t("Invitenow")} isMore={true} />
         </div>
       </div>
     </div>

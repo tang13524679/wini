@@ -3,6 +3,7 @@ import styles from "./invitationIncome.module.scss";
 import { useGlobalState } from "@/hooks/global";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
+import { t } from "@/utils/translate";
 const NavBar = dynamic(() => import("@/components/h5/components/nav-bar"));
 const Head = dynamic(() => import("next/head"));
 const Sunmmary = dynamic(() => import("./components/summary"));
@@ -17,23 +18,23 @@ const MarketingPlatform = () => {
   const router = useRouter();
   const navList = [
     {
-      text: "汇总",
+      text: t("Summary"),
       value: 1,
     },
     {
-      text: "会员",
+      text: t("member"),
       value: 2,
     },
     {
-      text: "详细数据",
+      text: t("Detaileddata"),
       value: 3,
     },
     {
-      text: "佣金记录",
+      text: t("Commissionrecords"),
       value: 4,
     },
     {
-      text: "排行榜",
+      text: t("Ranking"),
       value: 5,
     },
   ];
@@ -49,7 +50,7 @@ const MarketingPlatform = () => {
       <Head>
         <title>Games - WIN</title>
       </Head>
-      <NavBar title="邀请收益" />
+      <NavBar title={t("Invitationincome")} />
       <div className="invitation-nav">
         {navList.map((item) => {
           return (

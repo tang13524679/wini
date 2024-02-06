@@ -43,6 +43,8 @@
           font-style: normal;
           font-weight: 400;
           line-height: 1.5;
+          word-break: break-all;
+          text-align: justify;
           span{
             color: #FFC600;
           }
@@ -133,6 +135,8 @@
               line-height: 1.4;
               margin-bottom: 0;
               margin-top: 1px;
+              word-break: break-all;
+              text-align: justify;
               span{
                 color: #FF5325;
               }

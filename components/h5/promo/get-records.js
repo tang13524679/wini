@@ -6,9 +6,10 @@ import { Modal, Empty } from "antd-mobile";
 import { promoApi } from "@/requests/frontend";
 import { useGlobalState } from "@/hooks/global";
 import Loading from "@/components/h5/components/loading-mobile";
+import { t } from "@/utils/translate";
 
 const GetRecords = () => {
-  const [time, setTime] = useState({ label: "全部", value: "all" });
+  const [time, setTime] = useState({ label: t("all"), value: "all" });
   const [recordsList, setRecordsList] = useState([]);
   const [sumamount, setSumamount] = useState(0);
   const [{ user }, dispatch] = useGlobalState();
@@ -17,11 +18,11 @@ const GetRecords = () => {
   const [infoModal, setInfoModal] = useState({});
 
   const timeList = [
-    { label: "全部", value: "all" },
-    { label: "昨天", value: "yesterday" },
-    { label: "本周", value: "week" },
-    { label: "上周", value: "lastweek" },
-    { label: "本月", value: "month" },
+    { label: t("all"), value: "all" },
+    { label: t("yesterday"), value: "yesterday" },
+    { label: t("week"), value: "week" },
+    { label: t("lastWeek"), value: "lastweek" },
+    { label: t("month"), value: "month" },
   ];
 
   const fetchData = async () => {
@@ -53,23 +54,23 @@ const GetRecords = () => {
     return (
       <div className="modal-box">
         <div className="modal-title">
-          <div className="tit">明细</div>
+          <div className="tit">{t("Details")}</div>
         </div>
         <div className="content-box">
           <div className="item">
-            <p className="l">名字</p>
+            <p className="l">{t("name")}</p>
             <p className="r">{infoModal.loginaccount}</p>
           </div>
           <div className="item">
-            <p className="l">类型</p>
+            <p className="l">{t("type")}</p>
             <p className="r">{infoModal.moneychangetypename}</p>
           </div>
           <div className="item">
-            <p className="l">金额</p>
+            <p className="l">{t("amount")}</p>
             <p className="r">{infoModal.moneychangeamount}</p>
           </div>
           <div className="item">
-            <p className="l">首存金额(HKD)</p>
+            <p className="l">{t("settlementamount")}(HKD)</p>
             <p className="r">{infoModal.settlementamount}</p>
           </div>
         </div>
@@ -79,7 +80,7 @@ const GetRecords = () => {
             setVisible(false);
           }}
         >
-          我已知晓
+          {t("Ialreadyknow")}
         </div>
       </div>
     );
@@ -87,7 +88,7 @@ const GetRecords = () => {
 
   return (
     <div className={styles.container}>
-      <NavBar title="领取记录" />
+      <NavBar title={t("Getrecords")} />
       <div className="records-box">
         <div className="records-tit">
           <Dropdown
@@ -117,15 +118,15 @@ const GetRecords = () => {
             </div>
           </Dropdown>
           <div className="amount">
-            领取总额：<span>{sumamount}</span>
+            {t("Totalamountreceived")}：<span>{sumamount}</span>
           </div>
         </div>
         {recordsList.length > 0 && (
           <div className="records-list">
             <div className="title-box">
-              <div className="tit tit1">提现日期</div>
-              <div className="tit tit2">提现金额(HKD)</div>
-              <div className="tit tit3">查询明细</div>
+              <div className="tit tit1">{t("Withdrawdate")}</div>
+              <div className="tit tit2">{t("WithdrawalAmount")}(HKD)</div>
+              <div className="tit tit3">{t("Querydetails")}</div>
             </div>
             <div className="content-list">
               {recordsList.map((item, index) => {
@@ -140,7 +141,7 @@ const GetRecords = () => {
                         setVisible(true);
                       }}
                     >
-                      明细
+                      {t("Details")}
                     </div>
                   </div>
                 );
@@ -148,7 +149,7 @@ const GetRecords = () => {
             </div>
           </div>
         )}
-        {recordsList.length == 0 && <Empty description="暂无数据" />}
+        {recordsList.length == 0 && <Empty description={t("noRecords")} />}
       </div>
       {isLoading && <Loading />}
       <Modal

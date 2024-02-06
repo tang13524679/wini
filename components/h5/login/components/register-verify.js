@@ -227,7 +227,7 @@ const RegisterVerify = (props) => {
               rules={[
                 {
                   required: true,
-                  message: "不同国家会有不同存款方式，请选择合适您的国家",
+                  message: t("Pleasephonenumber"),
                 },
               ]}
             >
@@ -265,9 +265,9 @@ const RegisterVerify = (props) => {
             rules={[
               {
                 required: true,
-                message: "请输入验证码",
+                message: t("pleaseentererificationcode"),
               },
-              { min: 6, message: "最低6位数字" },
+              { min: 6, message: t("Minimum6digits") },
             ]}
           >
             <Input

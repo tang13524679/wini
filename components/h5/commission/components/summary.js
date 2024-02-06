@@ -8,6 +8,7 @@ import { useGlobalState } from "@/hooks/global";
 import Loading from "@/components/h5/components/loading-mobile";
 import { Toast } from "antd-mobile";
 import { Modal } from "antd";
+import { t } from "@/utils/translate";
 
 const Sunmmary = () => {
   const [timeState, setTimeState] = useState("all");
@@ -16,23 +17,23 @@ const Sunmmary = () => {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const timeList = [
     {
-      text: "全部",
+      text: t("all"),
       value: "all",
     },
     {
-      text: "昨天",
+      text: t("yesterday"),
       value: "yesterday",
     },
     {
-      text: "本周",
+      text: t("week"),
       value: "week",
     },
     {
-      text: "上周",
+      text: t("lastWeek"),
       value: "lastWeek",
     },
     {
-      text: "本月",
+      text: t("month"),
       value: "month",
     },
   ];
@@ -40,49 +41,49 @@ const Sunmmary = () => {
     return [
       {
         id: 1,
-        title: "总佣金（HKD）",
-        directly: "直属佣金",
-        under: "下级佣金",
+        title: t("bonusList1"),
+        directly: t("bonusList2"),
+        under: t("bonusList3"),
         directlyTotal: sumInfo.directCommission || 0,
         underTotal: sumInfo.lowCommission || 0,
       },
       {
         id: 2,
-        title: "总团队成员数",
-        directly: "直属成员",
-        under: "下级成员",
+        title: t("bonusList4"),
+        directly: t("bonusList5"),
+        under: t("bonusList6"),
         directlyTotal: sumInfo.direcMember || 0,
         underTotal: sumInfo.lowMember || 0,
       },
       {
         id: 3,
-        title: "总邀请奖金",
-        directly: "直属邀请奖金",
-        under: "下级邀请奖金",
+        title: t("bonusList7"),
+        directly: t("bonusList8"),
+        under: t("bonusList9"),
         directlyTotal: sumInfo.directInvite || 0,
         underTotal: sumInfo.lowInvite || 0,
       },
       {
         id: 4,
-        title: "总打码量奖金",
-        directly: "直属打码量奖金",
-        under: "下级打码量奖金",
+        title: t("bonusList10"),
+        directly: t("bonusList11"),
+        under: t("bonusList12"),
         directlyTotal: sumInfo.directBet || 0,
         underTotal: sumInfo.lowBet || 0,
       },
       {
         id: 5,
-        title: "总存款奖金",
-        directly: "直属存款奖金",
-        under: "下级存款奖金",
+        title: t("bonusList13"),
+        directly: t("bonusList14"),
+        under: t("bonusList15"),
         directlyTotal: sumInfo.directDeposit || 0,
         underTotal: sumInfo.lowDeposit || 0,
       },
       {
         id: 6,
-        title: "总提款奖金",
-        directly: "直属提款奖金",
-        under: "下级提款奖金",
+        title: t("bonusList16"),
+        directly: t("bonusList17"),
+        under: t("bonusList18"),
         directlyTotal: sumInfo.directWithdraw || 0,
         underTotal: sumInfo.lowWithdraw || 0,
       },
@@ -119,17 +120,17 @@ const Sunmmary = () => {
     <div className={styles.container}>
       <div className="balance-box">
         <div className="top">
-          <div className="text">分享佣金余额（HKD）：</div>
+          <div className="text">{t("bonusList19")}</div>
           <div className="num">{sumInfo.sumCommission || 0}</div>
           <div
             className="extract"
             onClick={() => {
               Modal.confirm({
                 centered: true,
-                title: "温馨提示",
-                content: "确定要提取佣金余额吗?",
-                okText: "确定",
-                cancelText: "取消",
+                title: t("Kindtips"),
+                content: t("wantBalance"),
+                okText: t("Sure"),
+                cancelText: t("Cancel"),
                 confirmLoading: confirmLoading,
                 onOk: async () => {
                   try {
@@ -153,12 +154,12 @@ const Sunmmary = () => {
               });
             }}
           >
-            提取
+            {t("extract")}
           </div>
         </div>
         <div className="bottom">
-          <p>数据有延时，请于次日15:00更新为准</p>
-          <div className="btn">规则说明</div>
+          <p>{t("bonusList20")}</p>
+          <div className="btn">{t("Ruledescription")}</div>
         </div>
       </div>
       <div className="timelist">
@@ -210,7 +211,7 @@ const Sunmmary = () => {
           );
         })}
       </div>
-      <ShaeModal title="立即推广" />
+      <ShaeModal title={t("Promotenow")} />
       {isLoading && <Loading />}
     </div>
   );

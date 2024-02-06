@@ -26,11 +26,11 @@ export default function BankCardPage() {
   return (
     <InnerPageLayout>
       <Head>
-        <title>Add Bank Card - WIN</title>
+        <title>Add Bank Card - WIN1</title>
       </Head>
       <div className="sm:px-4">
         <div className="bgInnerPage">
-          <NavBar title="添加银行卡" />
+          <NavBar title={t("Addbankcard")} />
           {/* <InnerPageTitle title={t('addBankCard', 'nav')} /> */}
           {!banks ? (
             <PageLoading />

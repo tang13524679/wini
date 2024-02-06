@@ -127,9 +127,9 @@ export default function SetEmailPage() {
                     rules={[
                       {
                         required: true,
-                        message: "请输入验证码",
+                        message: t("pleaseentererificationcode"),
                       },
-                      { min: 6, message: "最低6位数字" },
+                      { min: 6, message: t("Minimum6digits") },
                     ]}
                   >
                     <Input

@@ -3,6 +3,7 @@ import styles from "./promoNav.module.scss";
 import { useRouter } from "next/router";
 import { useGlobalState } from "@/hooks/global";
 import { Toast } from "antd-mobile";
+import { t } from "@/utils/translate";
 
 const PromoNav = (props) => {
   const router = useRouter();
@@ -31,7 +32,7 @@ const PromoNav = (props) => {
             router.push(props.href);
           } else {
             await Toast.show({
-              content: "未登录，请先登录",
+              content: t("Notloggedin"),
             });
             router.push("/login");
           }

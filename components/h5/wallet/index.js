@@ -2,6 +2,7 @@ import react, { useState, useEffect } from "react";
 import styles from "./index.module.scss";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
+import { t } from "@/utils/translate";
 const Recharge = dynamic(() => import("./components/recharge"));
 const Withdraw = dynamic(() => import("./components/withdraw"));
 
@@ -27,7 +28,7 @@ const WalletPage = () => {
             router.push("/wallet?tab=recharge");
           }}
         >
-          <span>充值</span>
+          <span>{t("topup")}</span>
         </div>
         <div
           className={`${pageType == "withdraw" ? "active" : ""} item`}
@@ -36,7 +37,7 @@ const WalletPage = () => {
             router.push("/wallet?tab=withdraw");
           }}
         >
-          <span>提款</span>
+          <span>{t("Withdrawmoney")}</span>
         </div>
       </div>
       {pageType == "recharge" && <Recharge />}

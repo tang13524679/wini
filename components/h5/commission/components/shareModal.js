@@ -6,6 +6,7 @@ import { Toast } from "antd-mobile";
 import { getDomain } from "@/utils/common";
 import { useGlobalState } from "@/hooks/global";
 import store from "store";
+import { t } from "@/utils/translate";
 
 const ShaeModal = (props) => {
   const [{ user }] = useGlobalState();
@@ -14,7 +15,7 @@ const ShaeModal = (props) => {
   const copyCot = (value) => {
     copy(value);
     Toast.show({
-      content: "复制成功",
+      content: t("CopySuccessfully"),
     });
   };
   return (
@@ -27,7 +28,7 @@ const ShaeModal = (props) => {
               setVisible(true);
             } else {
               Toast.show({
-                content: "请先登录",
+                content: t("pleaselogin"),
               });
             }
           }}
@@ -43,7 +44,7 @@ const ShaeModal = (props) => {
               setVisible(true);
             } else {
               Toast.show({
-                content: "请先登录",
+                content: t("pleaselogin"),
               });
             }
           }}
@@ -63,7 +64,7 @@ const ShaeModal = (props) => {
         bodyStyle={{ height: "305px" }}
       >
         <div className={styles.sharePopup}>
-          <div className="title">立即分享给好友</div>
+          <div className="title">{t("Sharewithfriendsnow")}</div>
           <div className="box">
             <div className="icon">
               <img src="/assets/commission/icon_fb.png" />
@@ -83,7 +84,7 @@ const ShaeModal = (props) => {
             </div>
             <div className="icon">
               <img src="/assets/commission/icon_gxh.png" />
-              <p>个性化</p>
+              <p>{t("personalise")}</p>
             </div>
             <div
               className="icon"
@@ -96,7 +97,7 @@ const ShaeModal = (props) => {
               }}
             >
               <img src="/assets/commission/icon_fz.png" />
-              <p>复制链接</p>
+              <p>{t("copyLink")}</p>
             </div>
           </div>
           <div
@@ -105,7 +106,7 @@ const ShaeModal = (props) => {
               setVisible(false);
             }}
           >
-            取消
+            {t("Cancel")}
           </div>
         </div>
       </Popup>

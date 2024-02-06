@@ -23,7 +23,7 @@ export default function SetEmailPage() {
   return (
     <InnerPageLayout>
       <Head>
-        <title>Set Email - WIN</title>
+        <title>Set Email - WIN1</title>
       </Head>
       <div className="sm:px-4">
         <div className="bgInnerPage">

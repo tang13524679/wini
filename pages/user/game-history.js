@@ -102,11 +102,11 @@ export default function GameHistoryPage() {
   return (
     <InnerPageLayout>
       <Head>
-        <title>Game History - WIN</title>
+        <title>Game History - WIN1</title>
       </Head>
       <div className="sm:px-4">
         <div className="bgInnerPage">
-          <NavBar title="游戏历史" />
+          <NavBar title={t("gamehistory")} />
           {/* <InnerPageTitle title={t('gameHistory', 'nav')} /> */}
           {/* <div className="clWhite30 mt-3">{`${t('last30')}，${t(
                         'gameHistoryUpdate',

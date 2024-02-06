@@ -20,7 +20,7 @@ export default function SetWalletPasswordPage() {
   return (
     <InnerPageLayout>
       <Head>
-        <title>Set Wallet Password - WIN</title>
+        <title>Set Wallet Password - WIN1</title>
       </Head>
       <div className="sm:px-4">
         <div className="bgInnerPage">

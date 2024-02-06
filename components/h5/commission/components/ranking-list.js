@@ -3,6 +3,7 @@ import styles from "./ranking-list.module.scss";
 import { commissionApi } from "@/requests/frontend";
 import Loading from "@/components/h5/components/loading-mobile";
 import { Empty } from "antd-mobile";
+import { t } from "@/utils/translate";
 
 const RankingList = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -36,15 +37,15 @@ const RankingList = () => {
       <div className="list-box">
         <div className="title">
           <img src="/assets/commission/ranking.png" />
-          <span>周佣金排行榜</span>
+          <span>{t("Rankinglist")}</span>
         </div>
         <div className="title-box">
-          <div>排名</div>
-          <div>账号</div>
-          <div>佣金（HKD）</div>
+          <div>{t("Rankings")}</div>
+          <div>{t("account")}</div>
+          <div>{t("commission")}（HKD）</div>
         </div>
         <div className="list">
-          {rankingList.length == 0 && <Empty description="暂无数据" />}
+          {rankingList.length == 0 && <Empty description={t("noRecords")} />}
           {rankingList.length > 0 &&
             rankingList.map((item, index) => {
               return (
@@ -71,7 +72,9 @@ const RankingList = () => {
               );
             })}
         </div>
-        <div className="ranking-footer">最后更新于2023-10-16 00:00:34</div>
+        <div className="ranking-footer">
+          {t("Lastupdatedon")}2023-10-16 00:00:34
+        </div>
       </div>
       {isLoading && <Loading />}
     </div>

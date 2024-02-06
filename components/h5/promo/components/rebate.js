@@ -62,27 +62,25 @@ const Rebate = () => {
       <div className="top-box">
         <div className="text-box">
           <div className="text">
-            当日累积有效投注：
+            {t("tdayValid")}
             <span>{topRebateInfo.tdayValid}</span>
           </div>
           <div className="text">
-            预计返水：
+            {t("tdayRebates")}
             <span>{topRebateInfo.tdayRebates}</span>
           </div>
           <div className="text">
-            昨日累积有效投注：
+            {t("ydayValid")}
             <span>{topRebateInfo.ydayValid}</span>
           </div>
           <div className="text">
-            已发放返水：
+            {t("ydayRebates")}
             <span style={{ color: "#48B726" }}>
               {topRebateInfo.ydayRebates}
             </span>
           </div>
         </div>
-        <div className="txt">
-          注：如当天有效打码量达到下一价梯或注单延近，還漏，差额部分将会在次日发放至主账户。
-        </div>
+        <div className="txt">{t("topRebateInfotext")}</div>
         <div
           className="link-btn"
           onClick={async () => {
@@ -90,13 +88,13 @@ const Rebate = () => {
               router.push("/user/transaction");
             } else {
               await Toast.show({
-                content: "未登录，请先登录",
+                content: t("Notloggedin"),
               });
               router.push("/login");
             }
           }}
         >
-          育询更多返水记录 <DoubleRightOutlined />
+          {t("rebaterecords")} <DoubleRightOutlined />
         </div>
       </div>
       <div className="bottom-box">
@@ -142,7 +140,7 @@ const Rebate = () => {
               <ContainerOutlined
                 style={{ color: "#959EA8", marginRight: "5px" }}
               />
-              当前有效投注：
+              {t("Currentvalidbets")}
               {activeState == "TY"
                 ? rebateInfo[activeState]?.games[TYgametype]?.currValid
                 : rebateInfo[activeState]?.currValid}
@@ -150,7 +148,7 @@ const Rebate = () => {
             <div className="currRatio-box">
               <div className="currRatio">
                 <div className="item1">
-                  当前返水：
+                  {t("Currentrebate")}
                   {activeState == "TY"
                     ? (
                         rebateInfo[activeState]?.games[TYgametype]?.currRatio *
@@ -160,7 +158,7 @@ const Rebate = () => {
                   %
                 </div>
                 <div className="item2">
-                  下一档返水：
+                  {t("Nextlevelrebate")}
                   <span>
                     {activeState == "TY"
                       ? (
@@ -194,8 +192,8 @@ const Rebate = () => {
           </div>
           <div className="right-bottom">
             <div className="title-box">
-              <div className="im im1">有效投注（HKD）</div>
-              <div className="im im2">返水比例</div>
+              <div className="im im1">{t("Validbet")}（HKD）</div>
+              <div className="im im2">{t("Rebateratio")}</div>
             </div>
             <div className="valid-list">
               {rebateInfo[activeState]?.bonusList.map((item, index) => {

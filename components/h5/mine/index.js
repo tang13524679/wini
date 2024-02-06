@@ -11,6 +11,7 @@ import { Toast } from "antd-mobile";
 import { useAuth } from "@/hooks/user";
 import store from "store";
 import { userApi, gameApi } from "@/requests/frontend";
+import { t } from "@/utils/translate";
 import dynamic from "next/dynamic";
 const Link = dynamic(() => import("next/link"));
 
@@ -57,12 +58,16 @@ const MinePage = () => {
           <div className="name">
             {user?.loginaccount} <span>{data?.info?.currentLevelName}</span>
           </div>
-          <div className="time">第{user?.registerDays}天加入WIN8</div>
+          <div className="time">
+            {t("No.")}
+            {user?.registerDays}
+            {t("daystojoin")}WIN1
+          </div>
         </div>
       </div>
       <div className="wallet-box">
         <div className="left">
-          <div className="tit">钱包中心（HKD）</div>
+          <div className="tit">{t("walletcenter")}（HKD）</div>
           <div className="num">{balance || store.get("balance")}</div>
         </div>
         <div className="right">
@@ -72,7 +77,7 @@ const MinePage = () => {
               router.push("/wallet?tab=recharge");
             }}
           >
-            充值
+            {t("topup")}
           </div>
           <div
             className="btn"
@@ -80,7 +85,7 @@ const MinePage = () => {
               router.push("/wallet?tab=withdraw");
             }}
           >
-            提款
+            {t("Withdrawmoney")}
           </div>
         </div>
       </div>
@@ -89,7 +94,7 @@ const MinePage = () => {
           <div className="box">
             <div className="tit">
               <img src="/assets/mine/icon1.png" />
-              贵宾俱乐部
+              {t("VIPClub")}
             </div>
             <RightOutlined />
           </div>
@@ -98,7 +103,7 @@ const MinePage = () => {
           <div className="box">
             <div className="tit">
               <img src="/assets/mine/icon3.png" />
-              优惠
+              {t("promo")}
             </div>
             <RightOutlined />
           </div>
@@ -107,7 +112,7 @@ const MinePage = () => {
           <div className="box">
             <div className="tit">
               <img src="/assets/mine/icon4.png" />
-              个人信息
+              {t("personalinformation")}
             </div>
             <RightOutlined />
           </div>
@@ -116,7 +121,7 @@ const MinePage = () => {
           <div className="box">
             <div className="tit">
               <img src="/assets/mine/icon5.png" />
-              银行卡
+              {t("bankcards")}
             </div>
             <RightOutlined />
           </div>
@@ -125,7 +130,8 @@ const MinePage = () => {
           <div className="box">
             <div className="tit">
               <img src="/assets/mine/icon6.png" />
-              游戏历史
+
+              {t("gamehistory")}
             </div>
             <RightOutlined />
           </div>
@@ -134,7 +140,7 @@ const MinePage = () => {
           <div className="box">
             <div className="tit">
               <img src="/assets/mine/icon7.png" />
-              交易记录
+              {t("sideRecords")}
             </div>
             <RightOutlined />
           </div>
@@ -143,7 +149,7 @@ const MinePage = () => {
           <div className="box">
             <div className="tit">
               <img src="/assets/mine/icon8.png" />
-              最喜欢的
+              {t("favorite")}
             </div>
             <RightOutlined />
           </div>
@@ -153,10 +159,10 @@ const MinePage = () => {
           onClick={() => {
             Modal.confirm({
               centered: true,
-              title: "提示",
-              content: "确定要退出当前登录状态吗?",
-              okText: "确定",
-              cancelText: "取消",
+              title: t("tips"),
+              content: t("loginstatus"),
+              okText: t("Sure"),
+              cancelText: t("Cancel"),
               confirmLoading: confirmLoading,
               onOk: async () => {
                 try {
@@ -184,7 +190,7 @@ const MinePage = () => {
         >
           <div className="tit">
             <img src="/assets/mine/icon9.png" />
-            登出
+            {t("Signout")}
           </div>
           <RightOutlined />
         </div>

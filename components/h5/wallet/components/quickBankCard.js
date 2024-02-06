@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import Loading from "../../components/loading-mobile";
 import { userApi, fundApi } from "@/requests/frontend";
 import { Toast } from "antd-mobile";
+import { t } from "@/utils/translate";
 
 const QuickBankCard = (props) => {
   const router = useRouter();
@@ -40,11 +41,11 @@ const QuickBankCard = (props) => {
   const confirmHandle = async () => {
     if (!orderamount) {
       Toast.show({
-        content: "金钱数额不能为空",
+        content: t("Moneyamountcannotbeempty"),
       });
     } else if (!fundpassword) {
       Toast.show({
-        content: "资金密码不能为空",
+        content: t("Fundpasswordcannotbeempty"),
       });
     } else {
       try {
@@ -59,7 +60,7 @@ const QuickBankCard = (props) => {
         });
         if (res.code == "1") {
           Toast.show({
-            content: "提现成功，等待客服确认",
+            content: t("Withdrawalsuccessful"),
           });
         }
       } catch (error) {
@@ -76,7 +77,7 @@ const QuickBankCard = (props) => {
   return (
     <div className={styles.container}>
       <div className="card-box">
-        <div className="title">最多添加5张转数快</div>
+        <div className="title">{t("AddFPSphotos")}</div>
         <div className="card-list">
           {bankCardList?.map((item, index) => {
             return (
@@ -103,16 +104,16 @@ const QuickBankCard = (props) => {
               router.push("/user/add-quick-card");
             }}
           >
-            + 添加一张
+            + {t("addone")}
           </div>
         </div>
       </div>
       <div className="sbmit-box">
-        <div className="title">提现金额</div>
+        <div className="title">{t("WithdrawalAmount")}</div>
         <div className="input-box">
           <Input
             value={orderamount}
-            placeholder="请输入金额"
+            placeholder={t("Pleaseentertheamount")}
             className="lineInput"
             type="number"
             suffix="HKD"
@@ -122,7 +123,7 @@ const QuickBankCard = (props) => {
           />
           <Input.Password
             value={fundpassword}
-            placeholder="请输入资金密码"
+            placeholder={t("Pleaseenterthefundpassword")}
             className="lineInput"
             onChange={(e) => {
               setFundpassword(e.target.value);
@@ -130,17 +131,18 @@ const QuickBankCard = (props) => {
           />
         </div>
         <div className="title">
-          钱包余额：{props.balance}{" "}
+          {t("walletbalance")}
+          {props.balance}{" "}
           <span
             onClick={() => {
               setOrderamount(props.balance);
             }}
           >
-            全部
+            {t("all")}
           </span>
         </div>
         <div className="confirm" onClick={confirmHandle}>
-          确认
+          {t("confirm")}
         </div>
       </div>
       {isLoading && <Loading />}

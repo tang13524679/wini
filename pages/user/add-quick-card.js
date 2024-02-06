@@ -30,7 +30,7 @@ export default function QuickCardPage() {
       </Head>
       <div className="sm:px-4">
         <div className="bgInnerPage">
-          <NavBar title="添加转数快" />
+          <NavBar title={t("AddFPS")} />
           {/* <InnerPageTitle title={t('addBankCard', 'nav')} /> */}
           {!banks ? (
             <PageLoading />

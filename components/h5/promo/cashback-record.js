@@ -6,8 +6,8 @@ import { Empty } from "antd-mobile";
 const CashbackRecord = () => {
   return (
     <div className={styles.container}>
-      <NavBar title="交易记录" />
-      <Empty description="暂无数据" />
+      <NavBar title={t("sideRecords")} />
+      <Empty description={t("noRecords")} />
     </div>
   );
 };

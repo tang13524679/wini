@@ -115,6 +115,8 @@
                 line-height: 1.1;
                 margin-bottom: 0;
                 margin-top: 1px;
+                word-break: break-all;
+                text-align: justify;
                 span{
                   color: #FF5325;
                 }
@@ -176,6 +178,8 @@
               margin-bottom: 4px;
               &>div{
                 flex: 1;
+                word-break: break-all;
+                text-align: justify;
               }
               span{
                 width: 8.818px;
@@ -281,6 +285,8 @@
               font-style: normal;
               font-weight: 400;
               line-height: 1.4;
+              word-break: break-all;
+              text-align: justify;
             }
             img{
               display: inline-block;
@@ -360,6 +366,8 @@
             font-weight: 400;
             line-height: 1.5;
             margin-bottom: 11px;
+            word-break: break-all;
+            text-align: justify;
             span{
               color: #FFC600;
             }

@@ -121,6 +121,10 @@
               }
               li:nth-child(1){
                 p{
+                  word-break: break-all;
+                  text-align: justify;
+                }
+                p{
                   @media (min-width: 391px) {
                     font-size: 13px;
                   }

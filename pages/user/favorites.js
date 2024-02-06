@@ -102,11 +102,11 @@ export default function FavoritesPage() {
   return (
     <InnerPageLayout>
       <Head>
-        <title>Favorites - WIN</title>
+        <title>Favorites - WIN1</title>
       </Head>
       <div className="sm:px-4">
         <div className="bgInnerPage">
-          <NavBar title="最喜欢的" />
+          <NavBar title={t("favorite")} />
           <>
             <div className="my-4 clWhite30" style={{ color: "#fff" }}>
               {`${t("favorites", "nav")} ${favorites.length} ${t("items")}`}

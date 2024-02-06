@@ -1,6 +1,7 @@
 import react, { useState } from "react";
 import styles from "./promo-page.module.scss";
 import dynamic from "next/dynamic";
+import { t } from "@/utils/translate";
 const Activity = dynamic(() => import("./components/activity"));
 const Rebate = dynamic(() => import("./components/rebate"));
 
@@ -15,7 +16,7 @@ const PromoPage = () => {
             setPageType("activity");
           }}
         >
-          <span>活动</span>
+          <span>{t("Activity")}</span>
         </div>
         <div
           className={`${pageType == "rebate" ? "active" : ""} item`}
@@ -23,7 +24,7 @@ const PromoPage = () => {
             setPageType("rebate");
           }}
         >
-          <span>返水</span>
+          <span>{t("rebate")}</span>
         </div>
       </div>
       {pageType == "activity" && <Activity />}

@@ -2,6 +2,7 @@ import react, { useState } from "react";
 import styles from "./withdraw.module.scss";
 import { useBalance } from "@/hooks/fund";
 import dynamic from "next/dynamic";
+import { t } from "@/utils/translate";
 const QuickBankCard = dynamic(() => import("./quickBankCard"));
 const BankCard = dynamic(() => import("./bank-card"));
 const CurrencyCard = dynamic(() => import("./currency-card"));
@@ -12,7 +13,9 @@ const Withdraw = () => {
 
   return (
     <div className={styles.container}>
-      <div className="wallet-balance">钱包余额：{balance} HKD</div>
+      <div className="wallet-balance">
+        {t("walletbalance")} {balance} HKD
+      </div>
       <div className="tabBar-list">
         <div
           className={`${tabState == 1 ? "active" : ""} tab`}
@@ -21,7 +24,8 @@ const Withdraw = () => {
           }}
         >
           <img className="img1" src="/assets/wallet/yhk.png" />
-          转数快提款
+          {t("FastRPM")}
+          {t("Withdrawmoney")}
         </div>
         <div
           className={`${tabState == 2 ? "active" : ""} tab`}
@@ -30,7 +34,8 @@ const Withdraw = () => {
           }}
         >
           <img className="img1" src="/assets/wallet/yhk.png" />
-          网银提款
+          {t("Onlinebanking")}
+          {t("Withdrawmoney")}
         </div>
         <div
           className={`${tabState == 3 ? "active" : ""} tab`}
@@ -39,7 +44,7 @@ const Withdraw = () => {
           }}
         >
           <img className="img2" src="/assets/wallet/jm.png" />
-          加密货币
+          {t("cryptocurrency")}
         </div>
       </div>
       {tabState == 1 && <QuickBankCard balance={balance} />}

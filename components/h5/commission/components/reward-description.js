@@ -19,7 +19,7 @@ const RewardDescription = () => {
             }}
           >
             <img src="/assets/commission/tab-icon1.png" />
-            奖励说明
+            {t("RewardDescription")}
           </div>
           <div
             className={`${!tabState ? "active" : ""} tab`}
@@ -28,7 +28,7 @@ const RewardDescription = () => {
             }}
           >
             <img src="/assets/commission/tab-icon2.png" />
-            近期推廣
+            {t("Recentpromotion")}
           </div>
         </div>
         <div className="tabBar-content">
@@ -37,61 +37,61 @@ const RewardDescription = () => {
               <div className="text-box">
                 <div className="title">
                   <p>
-                    <span></span>成功邀请好友，您都会获得以下相应的奖励。
+                    <span></span>
+                    {t("SuccessInvitationaward")}
                   </p>
-                  <div className="txt">
-                    (根据好友提款数额，系统自动计算相对应奖励）
-                  </div>
+                  <div className="txt">{t("initiatedTotal")}</div>
                 </div>
                 <ul>
                   <li>
                     <div className="num">1</div>
                     <p>
-                      您的朋友存款启动后，您将共有<span>1</span>
-                      次获得朋友的 存款额外奖励，每次获得最高 <span>500</span>
-                      元奖励。
+                      {t("initiatedTotal")}
+                      <span>1</span> {t("secondbestfriend")}
+                      {t("Depositbonus")} <span>500</span> {t("yuanreward")}
                     </p>
                   </li>
                   <li>
                     <div className="num">2</div>
                     <p>
-                      第 <span>2</span> 次成功提款：立即获得最高
-                      <span>500</span> 奖励
+                      {t("No")} <span>2</span> {t("text")}
+                      <span>500</span>
+                      {t("award")}
                     </p>
                   </li>
                   <li>
                     <div className="num">3</div>
                     <p>
-                      第 <span>3</span> 次成功提款：立即获得最高
-                      <span>500</span> 奖励
+                      {t("No")} <span>3</span> {t("text")}
+                      <span>500</span> {t("award")}
                     </p>
                   </li>
                   <li>
                     <div className="num">4</div>
                     <p>
-                      第 <span>4</span> 次成功提款：立即获得最高
-                      <span>500</span> 奖励
+                      {t("No")} <span>4</span> {t("text")}
+                      <span>500</span> {t("award")}
                     </p>
                   </li>
                   <li>
                     <div className="num">5</div>
                     <p>
-                      第 <span>5</span> 次成功提款：立即获得最高
-                      <span>500</span> 奖励
+                      {t("No")} <span>5</span> {t("text")}
+                      <span>500</span> {t("award")}
                     </p>
                   </li>
                   <li>
                     <div className="num">6</div>
                     <p>
-                      第 <span>6</span> 次成功提款：立即获得最高
-                      <span>500</span> 奖励
+                      {t("No")} <span>6</span> {t("text")}
+                      <span>500</span> {t("award")}
                     </p>
                   </li>
                   <li>
                     <div className="num">7</div>
                     <p>
-                      第 <span>7</span> 次成功提款：立即获得最高
-                      <span>500</span> 奖励
+                      {t("No")} <span>7</span> {t("text")}
+                      <span>500</span> {t("award")}
                     </p>
                   </li>
                 </ul>

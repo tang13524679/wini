@@ -7,6 +7,7 @@ import { walletApi } from "@/requests/frontend";
 import Loading from "@/components/h5/components/loading-mobile";
 import { Toast } from "antd-mobile";
 import { useRouter } from "next/router";
+import { t } from "@/utils/translate";
 
 const AddWalletPage = () => {
   const walletColumns = [
@@ -120,7 +121,7 @@ const AddWalletPage = () => {
       });
       if (res.code == "1") {
         Toast.show({
-          content: "钱包添加成功",
+          content: t("Walletaddedsuccessfully"),
         });
         router.push("/wallet?tab=withdraw");
       }
@@ -140,14 +141,14 @@ const AddWalletPage = () => {
 
   return (
     <div className={styles.container}>
-      <NavBar title="添加加密货币钱包" />
+      <NavBar title={t("Addcryptocurrencywallet")} />
       <div
         className="wallet-select"
         onClick={() => {
           setVisible(true);
         }}
       >
-        <div className="left">加密货币类型</div>
+        <div className="left">{t("Cryptocurrencytype")}</div>
         <div className="right">
           <div className="wallet-type">
             <img src="/assets/wallet/usdt.png" />
@@ -165,51 +166,56 @@ const AddWalletPage = () => {
           onFinish={confirmHandle}
           autoComplete="off"
         >
-          <Form.Item label="钱包名称：" name="walletName">
+          <Form.Item label={t("Walletname")} name="walletName">
             <Input
               value={walletName}
-              placeholder="请输入3-10位中文、英文、数字"
+              placeholder={t("PleaseenterChineseEnglishandnumbers")}
               onChange={(value) => {
                 setWalletName(value);
               }}
             />
           </Form.Item>
-          <Form.Item label="钱包地址：" name="paymentaccount">
+          <Form.Item label={t("walletaddress") + "："} name="paymentaccount">
             <Input
               value={paymentaccount}
-              placeholder="请输入42位USDT钱包地址"
+              placeholder={t("Pleaseenterwalletaddress")}
               onChange={(value) => {
                 setPaymentaccount(value);
               }}
             />
           </Form.Item>
-          <Form.Item label="确认地址：" name="isPaymentaccount">
+          <Form.Item label={t("Confirmaddress")} name="isPaymentaccount">
             <Input
               value={isPaymentaccount}
-              placeholder="请再次确认42位USDT钱包地址"
+              placeholder={t("Pleaseconfirmaddress")}
               onChange={(value) => {
                 setIsPaymentaccount(value);
               }}
             />
           </Form.Item>
-          <div className="notice">
-            重要：请确认42位 USDT钱包地址正确无误，否则资金将不可找回
-          </div>
-          <Form.Item label="邮箱" extra={<a>验证码</a>} name="E-mail">
+          <div className="notice">{t("Important")}</div>
+          <Form.Item
+            label={t("Mail", "login")}
+            extra={<a>{t("VerificationCode", "login")}</a>}
+            name="E-mail"
+          >
             <Input value={email} placeholder="2407***q.com" />
           </Form.Item>
-          <Form.Item label="验证码" name="verificationCode">
-            <Input value="" placeholder="请输入验证码" />
+          <Form.Item
+            label={t("VerificationCode", "login")}
+            name="verificationCode"
+          >
+            <Input value="" placeholder={t("pleaseentererificationcode")} />
           </Form.Item>
           <div className="confirm" onClick={confirmHandle}>
-            确认保存
+            {t("Confirmtosave")}
           </div>
         </Form>
       </div>
 
       <Picker
         popupClassName={styles.walletPicker}
-        title="请选择货币类型"
+        title={t("Pleaseselectcurrencytype")}
         // defaultValue={{
         //   name: "USDT ERC20",
         //   img: "/assets/wallet/usdt.png",

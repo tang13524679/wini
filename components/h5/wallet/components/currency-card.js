@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { walletApi, fundApi } from "@/requests/frontend";
 import Loading from "@/components/h5/components/loading-mobile";
 import { Toast } from "antd-mobile";
+import { t } from "@/utils/translate";
 
 const CurrencyCard = () => {
   const router = useRouter();
@@ -25,7 +26,7 @@ const CurrencyCard = () => {
       const res = await walletApi.UWalletAddress();
       if (res.code == "1") {
         setWalletList(res.info.record);
-        setWalletInfo(res?.info?.record[0]);
+        setWalletInfo(res?.info?.record[0] || 0);
       }
     } catch (error) {
       Toast.show({
@@ -41,12 +42,12 @@ const CurrencyCard = () => {
     console.log(amountComput);
     if (!Number(amountComput)) {
       Toast.show({
-        content: "金额不能为空",
+        content: t("Pleaseentertheamount"),
       });
       return;
     } else if (fundpassword == "") {
       Toast.show({
-        content: "密码不能为空",
+        content: t("Pleaseenterthefundpassword"),
       });
       return;
     } else {
@@ -62,7 +63,7 @@ const CurrencyCard = () => {
         });
         if (res.code == "1") {
           Toast.show({
-            content: "充值取款信息已提交，等待客服确认！",
+            content: t("Withdrawalsubmitted"),
           });
         }
       } catch (error) {
@@ -83,7 +84,7 @@ const CurrencyCard = () => {
   return (
     <div className={styles.container}>
       <div className="card-box">
-        <div className="title">选择要提款的加密货币钱包</div>
+        <div className="title">{t("Selectcryptocurrencywallet")}</div>
         <div className="card-list">
           {walletList.length > 0 &&
             walletList.map((item, index) => {
@@ -100,11 +101,12 @@ const CurrencyCard = () => {
                     setWalletInfo(item);
                   }}
                 >
-                  <div className="name">钱包地址：</div>
+                  <div className="name">{t("walletaddress")}：</div>
                   <div className="content">
                     <p>{item.paymentaccount}</p>
                     <p>
-                      协议: {item.openningbank}-{item.accountname} bitpie
+                      {t("protocol")}: {item.openningbank}-{item.accountname}{" "}
+                      bitpie
                     </p>
                   </div>
                 </div>
@@ -116,12 +118,12 @@ const CurrencyCard = () => {
               router.push("/wallet/add-wallet");
             }}
           >
-            + 添加加密货币钱包
+            + {t("Addcryptocurrencywallet")}
           </div>
         </div>
         <Input
           value={orderamount}
-          placeholder="请输入金额"
+          placeholder={t("Pleaseentertheamount")}
           className="lineInput"
           type="number"
           suffix="USDT"
@@ -131,7 +133,7 @@ const CurrencyCard = () => {
         />
         <Input.Password
           value={fundpassword}
-          placeholder="请输入资金密码"
+          placeholder={t("Pleaseenterthefundpassword")}
           className="lineInput"
           type="number"
           onChange={(e) => {
@@ -139,41 +141,36 @@ const CurrencyCard = () => {
           }}
         />
         <div className="tit" style={{ marginTop: "10px" }}>
-          当前参考汇率 <span>1 USDT={walletInfo.cryptoWalletRate} HKD</span>
+          {t("Currentreferenceexchangerate")}{" "}
+          <span>1 USDT={walletInfo?.cryptoWalletRate} HKD</span>
         </div>
         <div className="tit">
-          最终取款 <div className="num">HKD {amountComput}个</div>
+          {t("finalwithdrawal")}{" "}
+          <div className="num">
+            HKD {amountComput}
+            {t("indivual")}
+          </div>
         </div>
         <div className="confirm" onClick={confirmHandle}>
-          确认取款
+          {t("Confirmwithdrawal")}
         </div>
         <div className="notice">
           <ul className="notice-list">
             <li>
               <div className="num">1</div>
-              <p>您每日可提款10次（每日00：00重置）。</p>
+              <p>{t("Withdrawmoneytext1")}</p>
             </li>
             <li>
               <div className="num">2</div>
-              <p>
-                取款前需完成存款金额的1倍有效投注额；若参与优惠，则需完成
-                优惠的所需有效投注额。
-              </p>
+              <p>{t("Withdrawmoneytext2")}</p>
             </li>
             <li>
               <div className="num">3</div>
-              <p>
-                加密货币钱包需确保正确的物议和地址取款才能到账；错误信息
-                请勿提文取款申请，需立即联系在线客服修改；提款将在1-5分钟
-                完成（根据区块网络到账时间为准）。
-              </p>
+              <p>{t("Withdrawmoneytext3")}</p>
             </li>
             <li>
               <div className="num">4</div>
-              <p>
-                如利用本平台进行任何洗钱诈骗行为，本公司将保留权利终止
-                会员服务及冻结其候户。
-              </p>
+              <p>{t("Withdrawmoneytext4")}</p>
             </li>
           </ul>
         </div>

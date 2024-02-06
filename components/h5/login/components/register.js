@@ -82,10 +82,10 @@ const Register = () => {
             rules={[
               {
                 required: true,
-                message: "请输入6-12位的密码",
+                message: t("Upto6-12characters"),
               },
-              { min: 6, message: "最低6位字符" },
-              { max: 12, message: "最多12位字符" },
+              { min: 6, message: t("Upto6characters") },
+              { max: 12, message: t("Upto12characters") },
             ]}
           >
             <Input.Password
@@ -104,10 +104,10 @@ const Register = () => {
             rules={[
               {
                 required: true,
-                message: "请输入6-12位的密码",
+                message: t("Upto6-12characters"),
               },
-              { min: 6, message: "最低6位字符" },
-              { max: 12, message: "最多12位字符" },
+              { min: 6, message: t("Upto6characters") },
+              { max: 12, message: t("Upto12characters") },
             ]}
           >
             <Input.Password

@@ -7,6 +7,7 @@ import Loading from "../../components/loading-mobile";
 import { promoApi } from "@/requests/frontend";
 import Link from "next/link";
 import { Toast } from "antd-mobile";
+import { t } from "@/utils/translate";
 
 const Activity = () => {
   const router = useRouter();
@@ -62,13 +63,13 @@ const Activity = () => {
                 router.push("/promo/activity");
               } else {
                 await Toast.show({
-                  content: "未登录，请先登录",
+                  content: t("Notloggedin"),
                 });
                 router.push("/login");
               }
             }}
           >
-            领取记录
+            {t("Getrecords")}
           </div>
         </div>
       </div>

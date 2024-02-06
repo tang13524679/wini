@@ -18,7 +18,7 @@ export default function ChangePasswordPage() {
   return (
     <InnerPageLayout>
       <Head>
-        <title>Change Password - WIN</title>
+        <title>Change Password - WIN1</title>
       </Head>
       <div className="sm:px-4">
         <div className="bgInnerPage">

@@ -49,7 +49,7 @@ const LoginModal = () => {
           options={[
             {
               value: "zh",
-              label: "简体中文",
+              label: "簡體中文",
             },
             {
               value: "en",

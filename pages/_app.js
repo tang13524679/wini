@@ -114,10 +114,10 @@ export default function App({ Component, pageProps }) {
         <link rel="manifest" href="/manifest.json" />
       </Head>
 
-      <Script
+      {/* <Script
         src="https://login-am.hotspin88.com/jswrapper/hotspin88am/integration.js"
         strategy="beforeInteractive"
-      />
+      /> */}
 
       <SWRConfig
         value={{

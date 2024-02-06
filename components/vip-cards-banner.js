@@ -152,7 +152,7 @@ export default function VipCardsBanner({
                   src={`/assets/vip-levels/vip${index + 1}.png`}
                 />
                 <div className="text-box">
-                  <div className="text">升级所需流水</div>
+                  <div className="text">{t("Requiredforupgrading")}</div>
                   <div className="num">
                     {vipInfos?.info?.vipInfos[level - 1 - index]?.upgrade}
                   </div>
@@ -219,37 +219,37 @@ export default function VipCardsBanner({
           <div class="flex items-center space-x-2">
             <div class="shrink-0 icon-vip-cunqukuan-on"></div>
             <span class="text-sm transition duration-300 breakWord clMainYellow">
-              优先存款和快速取款
+              {t("vipActivitytext1")}
             </span>
           </div>
           <div class="flex items-center space-x-2">
             <div class="shrink-0 icon-vip-huodong-on"></div>
             <span class="text-sm transition duration-300 breakWord clMainYellow">
-              VIP活动
+              {t("vipActivitytext2")}
             </span>
           </div>
           <div class="flex items-center space-x-2">
             <div class="shrink-0 icon-vip-24hour-on"></div>
             <span class="text-sm transition duration-300 breakWord clMainYellow">
-              24/7VIP客户服务团队
+              {t("vipActivitytext3")}
             </span>
           </div>
           <div class="flex items-center space-x-2">
             <div class="shrink-0 icon-vip-youhui"></div>
             <span class="text-sm transition duration-300 breakWord text-white/30">
-              独家优惠、赠品和锦标赛
+              {t("vipActivitytext4")}{" "}
             </span>
           </div>
           <div class="flex items-center space-x-2">
             <div class="shrink-0 icon-vip-jieri"></div>
             <span class="text-sm transition duration-300 breakWord text-white/30">
-              生日红包
+              {t("vipActivitytext5")}
             </span>
           </div>
           <div class="flex items-center space-x-2">
             <div class="shrink-0 icon-vip-dujiafukuan"></div>
             <span class="text-sm transition duration-300 breakWord text-white/30">
-              访问独家付款方式
+              {t("vipActivitytext6")}
             </span>
           </div>
         </div>
@@ -259,37 +259,37 @@ export default function VipCardsBanner({
           <div class="flex items-center space-x-2">
             <div class="shrink-0 icon-vip-cunqukuan-on"></div>
             <span class="text-sm transition duration-300 breakWord clMainYellow">
-              优先存款和快速取款
+              {t("vipActivitytext1")}
             </span>
           </div>
           <div class="flex items-center space-x-2">
             <div class="shrink-0 icon-vip-huodong-on"></div>
             <span class="text-sm transition duration-300 breakWord clMainYellow">
-              VIP活动
+              {t("vipActivitytext2")}
             </span>
           </div>
           <div class="flex items-center space-x-2">
             <div class="shrink-0 icon-vip-24hour-on"></div>
             <span class="text-sm transition duration-300 breakWord clMainYellow">
-              24/7VIP客户服务团队
+              {t("vipActivitytext3")}
             </span>
           </div>
           <div class="flex items-center space-x-2">
             <div class="shrink-0 icon-vip-youhui-on"></div>
             <span class="text-sm transition duration-300 breakWord text-white/30">
-              独家优惠、赠品和锦标赛
+              {t("vipActivitytext4")}
             </span>
           </div>
           <div class="flex items-center space-x-2">
             <div class="shrink-0 icon-vip-jieri-on"></div>
             <span class="text-sm transition duration-300 breakWord text-white/30">
-              生日红包
+              {t("vipActivitytext5")}
             </span>
           </div>
           <div class="flex items-center space-x-2">
             <div class="shrink-0 icon-vip-dujiafukuan-on"></div>
             <span class="text-sm transition duration-300 breakWord text-white/30">
-              访问独家付款方式
+              {t("vipActivitytext6")}
             </span>
           </div>
         </div>

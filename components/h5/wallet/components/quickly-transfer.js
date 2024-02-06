@@ -59,11 +59,11 @@ const QuicklyTransfer = () => {
   const confirmHandler = async () => {
     if (!amount) {
       Toast.show({
-        content: "金钱数额不能为空",
+        content: t("Moneyamountcannotbeempty"),
       });
     } else if (JSON.stringify(receiveBank) == "{}") {
       Toast.show({
-        content: "WIN1收款账号不能为空",
+        content: t("Accountcannotbeempty"),
       });
     } else {
       try {
@@ -81,7 +81,7 @@ const QuicklyTransfer = () => {
         Toast.show({
           content: error,
         });
-        if (error == "未绑定银行卡，请绑定银行卡之后再充值") {
+        if (error == t("bankcard")) {
           router.push("/user/add-bank-card");
         }
       }
@@ -97,11 +97,11 @@ const QuicklyTransfer = () => {
 
   return (
     <div className={styles.container}>
-      <div className="tit">金钱数额</div>
+      <div className="tit">{t("amountofmoney")}</div>
       <div className="money-box">
         <Input
           value={amount}
-          placeholder="请输入金额"
+          placeholder={t("Pleaseentertheamount")}
           className="lineInput"
           type="number"
           suffix="HKD"
@@ -126,7 +126,7 @@ const QuicklyTransfer = () => {
           })}
         </div>
       </div>
-      <div className="tit">支付方式</div>
+      <div className="tit">{t("paymentmethod")}</div>
       <div className="method-list">
         {/* <div className="box">
           <div
@@ -189,10 +189,11 @@ const QuicklyTransfer = () => {
       </Dropdown> */}
       <div className="confirm-box">
         <div className="confirm" onClick={confirmHandler}>
-          确认
+          {t("confirm")}
         </div>
         <div className="text">
-          存款遇到问题？请联系 <span>线上客服</span> 进行解决
+          {t("pleasecontact")} <span>{t("Onlinecustomerservice")}</span>{" "}
+          {t("toresolve")}
         </div>
       </div>
       {isIframe && (

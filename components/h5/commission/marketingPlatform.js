@@ -3,6 +3,7 @@ import styles from "./marketingPlatform.module.scss";
 import NavBar from "@/components/h5/components/nav-bar";
 import Head from "next/head";
 import MarketingContent from "./components/marketing-content";
+import { t } from "@/utils/translate";
 
 const MarketingPlatform = () => {
   const [navState, setNavState] = useState("award");
@@ -11,7 +12,7 @@ const MarketingPlatform = () => {
       <Head>
         <title>Games - WIN</title>
       </Head>
-      <NavBar title="推广平台" />
+      <NavBar title={t("Marketingplatform")} />
       <div className="marketing-nav">
         <div
           className={`${navState == "award" ? "active" : ""} item`}
@@ -19,7 +20,7 @@ const MarketingPlatform = () => {
             setNavState("award");
           }}
         >
-          <div className="text">推广奖励</div>
+          <div className="text">{t("Promotionalrewards")}</div>
         </div>
         <div
           className={`${navState == "step" ? "active" : ""} item`}
@@ -27,7 +28,7 @@ const MarketingPlatform = () => {
             setNavState("step");
           }}
         >
-          <div className="text">推广步骤</div>
+          <div className="text">{t("Promotionsteps")}</div>
         </div>
         <div
           className={`${navState == "platform" ? "active" : ""} item`}
@@ -35,20 +36,20 @@ const MarketingPlatform = () => {
             setNavState("platform");
           }}
         >
-          <div className="text">推广平台</div>
+          <div className="text">{t("Marketingplatform")}</div>
         </div>
       </div>
       {navState == "award" && (
-        <MarketingContent type={navState} title="推广越多 奖励越多" />
+        <MarketingContent type={navState} title={t("Themorepromotion")} />
       )}
       {navState == "step" && (
-        <MarketingContent type={navState} title="邀请好友三部曲" />
+        <MarketingContent type={navState} title={t("Invitefriendstrilogy")} />
       )}
       {navState == "platform" && (
         <MarketingContent
           type={navState}
-          title="众多平台 更多技巧"
-          tit="祝您的收益越来越多"
+          title={t("Manyplatforms")}
+          tit={t("incomeisincreasing")}
         />
       )}
     </div>

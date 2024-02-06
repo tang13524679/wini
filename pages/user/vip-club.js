@@ -67,7 +67,7 @@ export default function VipClubPage() {
       </Head>
       <div className="sm:px-4">
         <div className="bgInnerPage" style={{ position: "relative" }}>
-          <NavBar title="贵宾俱乐部" />
+          <NavBar title={t("VIPClub")} />
           {/* <InnerPageTitle title={t('vipClub', 'nav')} /> */}
 
           {/* VIP Progress summary */}

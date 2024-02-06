@@ -76,14 +76,15 @@ const Member = () => {
     <div className={styles.container}>
       <SearchBar
         ref={searchRef}
-        placeholder="请输入会员账号搜索"
+        placeholder={t("Searchplaceholder")}
         onSearch={(val) => {
           setSearch(val);
         }}
       />
       <div className="top-box">
         <p>
-          <span></span>注册有三分钟延迟显示，完成提款则成为启动用户
+          <span></span>
+          {t("withdrawal")}
         </p>
         <div className="tabar">
           <div
@@ -93,7 +94,7 @@ const Member = () => {
               searchRef.current?.clear();
             }}
           >
-            一级
+            {t("Level1")}
           </div>
           <div
             className={`${gradeState == 2 ? "active" : ""} item`}
@@ -102,7 +103,7 @@ const Member = () => {
               searchRef.current?.clear();
             }}
           >
-            二级
+            {t("Level2")}
           </div>
         </div>
         {gradeState == 1 && levelOneList?.length > 0 && (
@@ -114,15 +115,18 @@ const Member = () => {
                     <div className="name">{item.loginaccount}</div>
                     <div className="type">
                       <div className="state">
-                        状态：
+                        {t("state")}
                         <span>
                           {item.employeestatus == 1 ? "已激活" : "未激活"}
                         </span>
                       </div>
-                      <p>带来收益</p>
+                      <p>{t("bringprofit")}</p>
                     </div>
                     <div className="time">
-                      <p>注册时间：{item.logindatetime}</p>
+                      <p>
+                        {t("Registrationtime")}
+                        {item.logindatetime}
+                      </p>
                       <p>{item.lose_win_amount}</p>
                     </div>
                   </div>
@@ -152,15 +156,20 @@ const Member = () => {
                     <div className="name">{item.loginaccount}</div>
                     <div className="type">
                       <div className="state">
-                        状态：
+                        {t("state")}
                         <span>
-                          {item.employeestatus == 1 ? "已激活" : "未激活"}
+                          {item.employeestatus == 1
+                            ? t("activated")
+                            : t("inactivated")}
                         </span>
                       </div>
-                      <p>带来收益</p>
+                      <p>{t("bringprofit")}</p>
                     </div>
                     <div className="time">
-                      <p>注册时间：{item.logindatetime}</p>
+                      <p>
+                        {t("Registrationtime")}
+                        {item.logindatetime}
+                      </p>
                       <p>{item.lose_win_amount}</p>
                     </div>
                   </div>
@@ -168,7 +177,9 @@ const Member = () => {
               })}
             </div>
             <div className="commission-pagination">
-              <div className="people">总计： {levelTwoList.length}人</div>
+              <div className="people">
+                {t("totals")} {levelTwoList.length}人
+              </div>
               <Pagination
                 defaultCurrent={1}
                 current={pageIndex}
@@ -184,45 +195,45 @@ const Member = () => {
       </div>
       {gradeState == 1 && levelOneList?.length == 0 && (
         <div className="data-content">
-          <div className="no-data">暂无数据</div>
+          <div className="no-data">{t("noRecords")}</div>
         </div>
       )}
       {gradeState == 2 && levelTwoList?.length == 0 && (
         <div className="data-content">
-          <div className="no-data">暂无数据</div>
+          <div className="no-data">{t("noRecords")}</div>
         </div>
       )}
       <div className="games-odds">
         <div className="item">
-          <span>体育</span>
+          <span>{t("TY")}</span>
           <p>0.2%</p>
         </div>
         <div className="item">
-          <span>真人</span>
+          <span>{t("SX")}</span>
           <p>0.1%</p>
         </div>
         <div className="item">
-          <span>电子</span>
+          <span>{t("DZ")}</span>
           <p>0.3%</p>
         </div>
         <div className="item">
-          <span>彩票</span>
+          <span>{t("CP")}</span>
           <p>0.1%</p>
         </div>
         <div className="item">
-          <span>棋牌</span>
+          <span>{t("QP")}</span>
           <p>0.3%</p>
         </div>
         <div className="item">
-          <span>捕鱼</span>
+          <span>{t("BY")}</span>
           <p>0.3%</p>
         </div>
         <div className="item">
-          <span>充值返利</span>
+          <span>{t("RechargeRebate")}</span>
           <p>0.2%</p>
         </div>
       </div>
-      <div className="member-footer">另外分享下线收益的10%无限层级！</div>
+      <div className="member-footer">{t("memberfootertext")}</div>
       {isLoading && <Loading />}
     </div>
   );

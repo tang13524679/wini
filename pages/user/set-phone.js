@@ -85,7 +85,7 @@ export default function SetEmailPage() {
   return (
     <InnerPageLayout>
       <Head>
-        <title>Set Email - WIN</title>
+        <title>Set Email - WIN1</title>
       </Head>
       <div className={styles.container}>
         <div className="sm:px-4">
@@ -158,7 +158,7 @@ export default function SetEmailPage() {
                     rules={[
                       {
                         required: true,
-                        message: "不同国家会有不同存款方式，请选择合适您的国家",
+                        message: t("Pleasephonenumber"),
                       },
                     ]}
                   >
@@ -179,9 +179,9 @@ export default function SetEmailPage() {
                     rules={[
                       {
                         required: true,
-                        message: "请输入验证码",
+                        message: t("pleaseentererificationcode"),
                       },
-                      { min: 6, message: "最低6位数字" },
+                      { min: 6, message: t("Minimum6digits") },
                     ]}
                   >
                     <Input

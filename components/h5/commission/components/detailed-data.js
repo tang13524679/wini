@@ -17,45 +17,45 @@ const DetailedData = () => {
 
   const detTypeList = [
     {
-      text: "存款",
+      text: t("DEPOSIT_RETURN"),
       type: "DEPOSIT_RETURN",
     },
     {
-      text: "投注",
+      text: t("GAME_RETURN"),
       type: "GAME_RETURN",
     },
     {
-      text: "开客奖",
+      text: t("INVITE_NEW_PLAYER"),
       type: "INVITE_NEW_PLAYER",
     },
     {
-      text: "下线代理分成",
+      text: t("SHARE_RETURN"),
       type: "SHARE_RETURN",
     },
     {
-      text: "提现",
+      text: t("WITHDRAW_RETURN"),
       type: "WITHDRAW_RETURN",
     },
   ];
   const timeList = [
     {
-      text: "全部",
+      text: t("all"),
       value: "all",
     },
     {
-      text: "昨天",
+      text: t("yesterday"),
       value: "yesterday",
     },
     {
-      text: "本周",
+      text: t("week"),
       value: "week",
     },
     {
-      text: "上周",
+      text: t("lastWeek"),
       value: "lastWeek",
     },
     {
-      text: "本月",
+      text: t("month"),
       value: "month",
     },
   ];
@@ -105,7 +105,7 @@ const DetailedData = () => {
 
   return (
     <div className={styles.container}>
-      <div className="tit">数据有延时，请于次日15:00更新为准</div>
+      <div className="tit">{t("bonusList20")}</div>
       <div className="detail-type-box">
         {detTypeList.map((item) => {
           return (
@@ -138,9 +138,9 @@ const DetailedData = () => {
         })}
       </div>
       <div className="list-title">
-        <div>会员</div>
-        <div>存款金额(KHD)</div>
-        <div>带来收益(HKD)</div>
+        <div>{t("member")}</div>
+        <div>{t("bringprofit")}(KHD)</div>
+        <div>{t("bringprofit")}(HKD)</div>
       </div>
       <div className="list">
         {dataList?.length ? (
@@ -171,7 +171,7 @@ const DetailedData = () => {
             </div>
           </>
         ) : (
-          <p>暂无数据</p>
+          <p>{t("noRecords")}</p>
         )}
       </div>
       {isLoading && <Loading />}

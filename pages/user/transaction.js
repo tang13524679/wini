@@ -127,11 +127,11 @@ export default function TransactionPage() {
   return (
     <InnerPageLayout>
       <Head>
-        <title>Transaction - WIN</title>
+        <title>Transaction - WIN1</title>
       </Head>
       <div className="sm:px-4">
         <div className="bgInnerPage">
-          <NavBar title="交易记录" />
+          <NavBar title={t("sideRecords")} />
           {/* <InnerPageTitle title={t('transaction', 'nav')} /> */}
           <div className={styles.container}>
             <div className="mt-5 flex flex-wrap lg:gap-5 nav-list">

@@ -178,10 +178,10 @@ export default function ResetPasswordPage() {
           rules={[
             {
               required: true,
-              message: "请输入6-12位的密码",
+              message: t("Upto6-12characters"),
             },
-            { min: 6, message: "最低6位字符" },
-            { max: 12, message: "最多12位字符" },
+            { min: 6, message: t("Upto6characters") },
+            { max: 12, message: t("Upto12characters") },
           ]}
         >
           <Input.Password
@@ -200,10 +200,10 @@ export default function ResetPasswordPage() {
           rules={[
             {
               required: true,
-              message: "请输入6-12位的密码",
+              message: t("Upto6-12characters"),
             },
-            { min: 6, message: "最低6位字符" },
-            { max: 12, message: "最多12位字符" },
+            { min: 6, message: t("Upto6characters") },
+            { max: 12, message: t("Upto12characters") },
           ]}
         >
           <Input.Password
@@ -275,7 +275,7 @@ export default function ResetPasswordPage() {
               rules={[
                 {
                   required: true,
-                  message: "不同国家会有不同存款方式，请选择合适您的国家",
+                  message: t("Pleasephonenumber"),
                 },
               ]}
             >
@@ -313,9 +313,9 @@ export default function ResetPasswordPage() {
             rules={[
               {
                 required: true,
-                message: "请输入验证码",
+                message: t("pleaseentererificationcode"),
               },
-              { min: 6, message: "最低6位数字" },
+              { min: 6, message: t("Minimum6digits") },
             ]}
           >
             <Input

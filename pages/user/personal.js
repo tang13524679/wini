@@ -41,11 +41,11 @@ export default function PersonalPage() {
   return (
     <InnerPageLayout>
       <Head>
-        <title>Personal - WIN</title>
+        <title>Personal - WIN1</title>
       </Head>
       <div className="sm:px-4">
         <div className="bgInnerPage">
-          <NavBar title="个人信息" />
+          <NavBar title={t("personalinformation")} />
           {/* <InnerPageTitle title={t('personal', 'nav')} /> */}
           <div className="flex justify-between items-center bdLine py-4">
             <div className="sm:basis-1/3">
