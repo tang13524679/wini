@@ -1,23 +1,23 @@
 {
-    "title": "联系我们",
-    "description": "您有问题要回答或想给我们建议。不要犹豫，随时与我们联系，您的每一个意见或建议都是我们进一步改进的动力源泉，以便一天比一天更好地为您服务。我们支持当今大多数形式的联系。以下联系方式等（具体看现有支持的联系方式，点击各联系方式能直接使用最好）",
+    "title": "聯系我們",
+    "description": "您有問題要回答或想給我們建議。不要猶豫，隨時與我們聯系，您的每壹個意見或建議都是我們進壹步改進的動力源泉，以便壹天比壹天更好地爲您服務。我們支持當今大多數形式的聯系。以下聯系方式等（具體看現有支持的聯系方式，點擊各聯系方式能直接使用最好）",
     "tutorials": [
         {
             "icon": "/assets/contact/icon-tutorial-deposit.svg",
             "title": "充值教程",
-            "desc": "查看详情",
+            "desc": "查看詳情",
             "link": "/tutorials/recharge"
         },
         {
             "icon": "/assets/contact/icon-tutorial-withdrawal.svg",
             "title": "提款教程",
-            "desc": "查看详情",
+            "desc": "查看詳情",
             "link": "/tutorials/withdrawal"
         },
         {
             "icon": "/assets/contact/icon-tutorial-deposit.svg",
-            "title": "优惠活动",
-            "desc": "查看详情",
+            "title": "優惠活動",
+            "desc": "查看詳情",
             "link": "/promo"
         }
     ],
@@ -47,7 +47,7 @@
             "link": "https://facebook.com"
         }
     },
-    "downloadLabel": "下载app，随时联系我们",
+    "downloadLabel": "下載app，隨時聯系我們",
     "downloadIosLink": "https://apps.apple.com/us/app/facebook/id284882215",
     "downloadAndroidLink": "https://play.google.com/store/apps/details?id=com.facebook.katana&hl=en&gl=US"
 }

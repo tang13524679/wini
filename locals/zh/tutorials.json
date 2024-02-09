@@ -3,26 +3,26 @@
         "title": "充值教程",
         "tabs": [
             {
-                "label": "银行卡充值",
+                "label": "銀行卡充值",
                 "steps": [
                     {
-                        "title": "第一步",
-                        "details": "选择支付渠道为“网银支付”，输入金额，点击“提交”",
+                        "title": "第壹步",
+                        "details": "選擇支付渠道爲“網銀支付”，輸入金額，點擊“提交”",
                         "image": "recharge/online-banking/step1-zh.png"
                     },
                     {
                         "title": "第二步",
-                        "details": "点击“去支付”",
+                        "details": "點擊“去支付”",
                         "image": "recharge/online-banking/step2-zh.png"
                     },
                     {
                         "title": "第三步",
-                        "details": "选择银行，并点击下一步",
+                        "details": "選擇銀行，並點擊下壹步",
                         "image": "recharge/online-banking/step3-zh.png"
                     },
                     {
                         "title": "第四步",
-                        "details": "根据银行界面提示信息，填写个人资料，完成充值",
+                        "details": "根據銀行界面提示信息，填寫個人資料，完成充值",
                         "image": "recharge/online-banking/step4-zh.png"
                     }
                 ]
@@ -31,48 +31,48 @@
                 "label": "Bank Transfer",
                 "steps": [
                     {
-                        "title": "第一步",
-                        "details": "选择支付渠道为“银行转账”，输入金额，点击“提交”",
+                        "title": "第壹步",
+                        "details": "選擇支付渠道爲“銀行轉賬”，輸入金額，點擊“提交”",
                         "image": "recharge/bank-transfer/step1-zh.png"
                     },
                     {
                         "title": "第二步",
-                        "details": "点击“去支付”",
+                        "details": "點擊“去支付”",
                         "image": "recharge/bank-transfer/step2-zh.png"
                     },
                     {
                         "title": "第三步",
-                        "details": "选择银行，并点击确认",
+                        "details": "選擇銀行，並點擊確認",
                         "image": "recharge/bank-transfer/step3-zh.png"
                     },
                     {
                         "title": "第四步",
-                        "details": "根据银行界面提示信息，进行转账操作，完成充值",
+                        "details": "根據銀行界面提示信息，進行轉賬操作，完成充值",
                         "image": "recharge/bank-transfer/step4-zh.png"
                     }
                 ]
             },
             {
-                "label": "扫码充值",
+                "label": "掃碼充值",
                 "steps": [
                     {
-                        "title": "第一步",
-                        "details": "选择支付渠道为“扫码支付”，输入金额，点击“提交”",
+                        "title": "第壹步",
+                        "details": "選擇支付渠道爲“掃碼支付”，輸入金額，點擊“提交”",
                         "image": "recharge/scan-qr-code/step1-zh.png"
                     },
                     {
                         "title": "第二步",
-                        "details": "点击“去支付”",
+                        "details": "點擊“去支付”",
                         "image": "recharge/scan-qr-code/step2-zh.png"
                     },
                     {
                         "title": "第三步",
-                        "details": "选择银行，并点击确认",
+                        "details": "選擇銀行，並點擊確認",
                         "image": "recharge/scan-qr-code/step3-zh.png"
                     },
                     {
                         "title": "第四步",
-                        "details": "根据银行界面提示信息，进行扫码操作，完成充值",
+                        "details": "根據銀行界面提示信息，進行掃碼操作，完成充值",
                         "image": "recharge/scan-qr-code/step4-zh.png"
                     }
                 ]
@@ -81,18 +81,18 @@
                 "label": "Momo 支付充值",
                 "steps": [
                     {
-                        "title": "第一步",
-                        "details": "选择支付渠道为“Momo支付”，输入金额，点击提交",
+                        "title": "第壹步",
+                        "details": "選擇支付渠道爲“Momo支付”，輸入金額，點擊提交",
                         "image": "recharge/momo-pay/step1-zh.png"
                     },
                     {
                         "title": "第二步",
-                        "details": "点击“去支付”",
+                        "details": "點擊“去支付”",
                         "image": "recharge/momo-pay/step2-zh.png"
                     },
                     {
                         "title": "第三步",
-                        "details": "根据Momo支付界面提示信息，进行扫码操作，完成充值",
+                        "details": "根據Momo支付界面提示信息，進行掃碼操作，完成充值",
                         "image": "recharge/momo-pay/step3-zh.png"
                     }
                 ]
@@ -106,17 +106,17 @@
                 "label": "default",
                 "steps": [
                     {
-                        "title": "第一步",
-                        "details": "登录账号后，选择提现"
+                        "title": "第壹步",
+                        "details": "登錄賬號後，選擇提現"
                     },
                     {
                         "title": "第二步",
-                        "details": "根据提现页面填写提款信息<br>1. 银行名称： 您选择要取款的银行<br>2. 姓名：银行卡对应的姓名<br>3. 卡号： 输入您要接收的帐号<br>然后，点击确认",
+                        "details": "根據提現頁面填寫提款信息<br>1. 銀行名稱： 您選擇要取款的銀行<br>2. 姓名：銀行卡對應的姓名<br>3. 卡號： 輸入您要接收的帳號<br>然後，點擊確認",
                         "image": "withdrawal/default/step2-zh.png"
                     },
                     {
                         "title": "第三步",
-                        "details": "输入提款金额<br>1. 我的银行卡：您选择要取款的银行<br>2. 金额： 填写您要提取的金额<br>3. 密码： 资金密码<br>最后，点击提交",
+                        "details": "輸入提款金額<br>1. 我的銀行卡：您選擇要取款的銀行<br>2. 金額： 填寫您要提取的金額<br>3. 密碼： 資金密碼<br>最後，點擊提交",
                         "image": "withdrawal/default/step3-zh.png"
                     }
                 ]
